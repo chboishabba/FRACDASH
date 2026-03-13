@@ -2,6 +2,7 @@
 
 ## 2026-03-13
 
+- Added a top-level [`README.md`](/home/c/Documents/code/FRACDASH/README.md) summarizing the repo mission, current CPU-first status, benchmark workflow, structure, and guardrails.
 - Initialized repo-facing project memory for FRACDASH.
 - Added [`AGENTS.md`](/home/c/Documents/code/FRACDASH/AGENTS.md) to define the mission, guardrails, and experiment priorities.
 - Added [`COMPACTIFIED_CONTEXT.md`](/home/c/Documents/code/FRACDASH/COMPACTIFIED_CONTEXT.md) with resolved conversation metadata and current project truth.
