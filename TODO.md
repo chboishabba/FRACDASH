@@ -40,10 +40,20 @@
 ## Phase 4: GPU Reuse Path
 
 - [ ] Confirm which `../dashiCORE` modules are stable enough to reference directly for Vulkan dispatch, shader compilation, and GEMV-style kernels.
-- [ ] Add a thin FRACDASH-local adapter that imports `../dashiCORE` Vulkan helpers by reference.
-- [ ] Design a thin FRACDASH adapter layer that imports or shells out to `../dashiCORE` GPU infrastructure without copying files.
-- [ ] Keep GPU state resident across many FRACTRAN steps; avoid per-step host/device roundtrips.
-- [ ] Add a deterministic CPU/GPU routing rule only after real baseline measurements exist.
+- [x] Add a thin FRACDASH-local adapter that imports `../dashiCORE` Vulkan helpers by reference.
+- [x] Design a thin FRACDASH adapter layer that imports or shells out to `../dashiCORE` GPU infrastructure without copying files.
+- [x] Add a smoke script that proves by-reference import and adapter passthrough without copying CORE code.
+- [x] Define the first FRACTRAN-specific GPU buffer layout on top of the new bridge.
+- [x] Prove the dense FRACTRAN GPU contract against the compiled CPU baseline on `mult_smoke` and `primegame_small`.
+- [x] Turn the dense FRACTRAN contract into the first real Vulkan kernel interface.
+- [x] Prove one-step GPU parity on `mult_smoke` and `primegame_small`.
+- [x] Expand the Vulkan path from single-state stepping to batched state buffers.
+- [x] Keep GPU state resident across many FRACTRAN steps; avoid per-step host/device roundtrips.
+- [x] Extend the batched Vulkan path from one-step dispatch to multi-step device-resident execution.
+- [x] Reduce submit and command-buffer overhead on the now-correct resident multi-step path.
+- [x] Benchmark the single-submit resident GPU path against the dense compiled-equivalent CPU contract on larger batches.
+- [x] Expand the routing benchmark beyond `primegame_small` and beyond the current `batch_size >= 32`, `steps = 32` regime.
+- [ ] Promote the current conservative routing rule into a deterministic CPU/GPU routing rule after more middle-region measurements and one additional program beyond `paper_smoke`.
 - [ ] Define the rule for when a FRACDASH GPU helper/kernel should be upstreamed back into `../dashiCORE`.
 
 ## Open Decisions
@@ -53,4 +63,5 @@
 - [ ] Should experiments start from a hand-written FRACTRAN kernel, a higher-level compiler, or a wrapper around an existing fast CPU evaluator?
 - [ ] What measured hotspot, if any, would justify GPU work later?
 - [ ] After compiled-path tuning, is the next CPU experiment a generalized LUT keyed by threshold buckets or a batched/vectorized path?
-- [ ] Should FRACDASH use direct imports from `../dashiCORE`, local symlinks, or a small compatibility layer for shared GPU assets?
+- [x] Should FRACDASH use direct imports from `../dashiCORE`, local symlinks, or a small compatibility layer for shared GPU assets?
+- [x] Should the first Vulkan kernel advance one trajectory exactly or prioritize multi-trajectory batching from the start?

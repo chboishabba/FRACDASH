@@ -1,0 +1,74 @@
+#version 450
+
+layout(local_size_x = 64, local_size_y = 1, local_size_z = 1) in;
+
+layout(push_constant) uniform PushConstants {
+    uint prime_count;
+    uint rule_count;
+    uint state_count;
+} pc;
+
+layout(set = 0, binding = 0) readonly buffer StateIn {
+    int exponents_in[];
+};
+
+layout(set = 0, binding = 1) readonly buffer DenThresholds {
+    int den_thresholds[];
+};
+
+layout(set = 0, binding = 2) readonly buffer Deltas {
+    int deltas[];
+};
+
+layout(set = 0, binding = 3) readonly buffer RequiredMasks {
+    uint required_masks[];
+};
+
+layout(set = 0, binding = 4) writeonly buffer StateOut {
+    int exponents_out[];
+};
+
+layout(set = 0, binding = 5) writeonly buffer MetaOut {
+    int meta_out[];
+};
+
+bool compatible_rule(uint state_ix, uint rule_ix) {
+    uint base = rule_ix * pc.prime_count;
+    uint state_base = state_ix * pc.prime_count;
+    for (uint ix = 0; ix < pc.prime_count; ++ix) {
+        if (exponents_in[state_base + ix] < den_thresholds[base + ix]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void main() {
+    uint state_ix = gl_GlobalInvocationID.x;
+    if (state_ix >= pc.state_count) {
+        return;
+    }
+
+    uint state_base = state_ix * pc.prime_count;
+    uint meta_base = state_ix * 2;
+    for (uint ix = 0; ix < pc.prime_count; ++ix) {
+        exponents_out[state_base + ix] = exponents_in[state_base + ix];
+    }
+
+    meta_out[meta_base + 0] = -1;
+    meta_out[meta_base + 1] = 1;
+
+    for (uint rule_ix = 0; rule_ix < pc.rule_count; ++rule_ix) {
+        if (!compatible_rule(state_ix, rule_ix)) {
+            continue;
+        }
+
+        uint rule_base = rule_ix * pc.prime_count;
+        for (uint ix = 0; ix < pc.prime_count; ++ix) {
+            exponents_out[state_base + ix] = exponents_in[state_base + ix] + deltas[rule_base + ix];
+        }
+        meta_out[meta_base + 0] = int(rule_ix);
+        meta_out[meta_base + 1] = 0;
+        return;
+    }
+}

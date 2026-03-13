@@ -94,6 +94,21 @@ This gives:
 - FRACDASH-specific execution semantics remain local
 - clear path to upstream useful generic kernels later
 
+Current FRACDASH bridge entrypoints:
+
+- `gpu/dashicore_bridge.py`
+- `scripts/check_dashicore_reuse.py`
+
+The bridge inserts `../dashiCORE` onto `sys.path` at runtime and imports the reusable helper modules by their existing names. The smoke script proves that FRACDASH can resolve the external repo, import those helpers by reference, resolve shared shader/SPIR-V assets, and exercise the `VulkanBackendAdapter` passthrough path without copying CORE code.
+
+For the first exact-step FRACTRAN GPU contract on top of that bridge, see `GPU_CONTRACT.md`. The key point is that exact FRACTRAN state is a dense exponent vector, not a `dashiCORE` ternary `Carrier`.
+
+That contract now has a first real Vulkan step implementation:
+
+- `gpu_shaders/fractran_step.comp`
+- `gpu/vulkan_fractran_step.py`
+- `scripts/check_fractran_vulkan_step.py`
+
 ## Proposed First Reuse Boundary
 
 The first minimal GPU implementation should reuse:

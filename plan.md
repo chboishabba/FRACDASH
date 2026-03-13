@@ -84,14 +84,27 @@ Current direction:
 - reuse `../dashiCORE` Vulkan helper modules by import/reference, not by copying files
 - keep FRACTRAN state packing, parity checking, and step semantics in FRACDASH
 - upstream only generic helpers or kernels back into `dashiCORE`
+- `gpu/dashicore_bridge.py` is now the FRACDASH-local reference/import seam
+- `scripts/check_dashicore_reuse.py` is now the minimal smoke path for by-reference imports and adapter passthrough
+- `gpu/fractran_layout.py` now defines the first FRACTRAN-specific dense GPU contract
+- `scripts/check_fractran_gpu_layout.py` now proves that contract against the compiled CPU baseline on `mult_smoke` and `primegame_small`
+- `gpu_shaders/fractran_step.comp` and `gpu/vulkan_fractran_step.py` now implement the first real one-step Vulkan path
+- `scripts/check_fractran_vulkan_step.py` now proves one-step GPU parity against the dense CPU contract on `mult_smoke` and `primegame_small`
+- the Vulkan step path now also supports batched state buffers and matches dense CPU parity across every tested batch slot
+- the Vulkan runner now keeps batched buffers resident across repeated exact steps and matches dense CPU parity on the final resident state
+- the Vulkan runner now records the resident multi-step path into one command buffer submission with ping-pong descriptor sets, preserving parity while reducing host dispatch overhead
+- the first routing benchmark now shows the resident GPU path ahead of the dense CPU contract on `primegame_small` at batch sizes `32`, `128`, and `512` for `32` exact steps
+- the broader routing matrix now supports a first conservative rule: CPU for `batch_size <= 4`, GPU for `batch_size >= 128`, with a measured middle region that already favors GPU for `primegame_small` at `batch_size = 32`, `steps >= 8`
+- the `paper_smoke` matrix matches the same threshold pattern (GPU at `batch_size = 32`, `steps >= 8`) with a narrow `measure-more` band
 
 ## Immediate Next Actions
 
 1. Treat `compiled` as the active exact-step CPU baseline for future work.
 2. Pivot to minimal GPU implementation planning against the current compiled semantics and benchmark contract.
 3. Use `../dashiCORE` host-side Vulkan helpers as the first reuse seam instead of cloning GPU code into FRACDASH.
-4. Preserve the current exact-vs-at-least checkpoint semantics in all future benchmark extensions.
-5. Keep LUT parked unless it becomes specifically useful as a GPU-side representation.
+4. Expand the routing benchmark to at least one more program beyond `paper_smoke`, focusing on the `batch_size = 4..32`, `steps = 4..16` middle region.
+5. Preserve the current exact-vs-at-least checkpoint semantics in all future benchmark extensions.
+6. Keep LUT parked unless it becomes specifically useful as a GPU-side representation.
 
 ## CPU To GPU Handoff Criteria
 

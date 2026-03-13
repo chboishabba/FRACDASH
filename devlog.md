@@ -36,3 +36,15 @@
 - Declared the compiled path the active exact-step CPU baseline and pivoted the next milestone toward the minimal GPU path.
 - Audited `../dashiCORE` for actual FRACDASH reuse candidates and documented a non-duplicating integration boundary centered on `gpu_common_methods.py`, `gpu_vulkan_dispatcher.py`, `gpu_vulkan_backend.py`, `gpu_vulkan_adapter.py`, and `gpu_vulkan_gemv.py`.
 - Documented the rule that generic helpers should be upstreamed back into `dashiCORE`, while FRACTRAN-specific kernels remain local to FRACDASH.
+- Added `gpu/dashicore_bridge.py` as the FRACDASH-local import seam for `../dashiCORE`.
+- Added `scripts/check_dashicore_reuse.py` to prove by-reference module import, shared shader asset resolution, and adapter passthrough without copying CORE code.
+- Added `GPU_CONTRACT.md` and `gpu/fractran_layout.py` to define the first exact-step FRACTRAN GPU contract as dense exponent vectors plus per-rule thresholds/deltas.
+- Added `scripts/check_fractran_gpu_layout.py` to compare that contract against the Haskell `compiled` baseline on `mult_smoke` and `primegame_small`.
+- Added `gpu_shaders/fractran_step.comp` and `gpu/vulkan_fractran_step.py` to implement the first real one-step FRACTRAN Vulkan kernel path.
+- Added `scripts/check_fractran_vulkan_step.py` and verified host-GPU parity against the dense CPU step on `mult_smoke` and `primegame_small`.
+- Expanded the Vulkan step path to flattened batched state buffers and verified host-GPU batch parity, including per-state selected-rule and halted metadata.
+- Extended the batched Vulkan runner to keep buffers resident across repeated exact steps and verified final-state parity against the dense CPU contract.
+- Reworked the resident multi-step runner to use ping-pong descriptor sets and a single recorded command buffer submission, then revalidated host-GPU parity.
+- Added `scripts/benchmark_fractran_gpu.py`, saved the first routing benchmark artifact, and measured the resident GPU path ahead of the dense CPU contract on `primegame_small` for batch sizes `32`, `128`, and `512` at `32` exact steps.
+- Expanded the routing matrix across `mult_smoke` and `primegame_small` for multiple batch/step regimes, saved `2026-03-13-gpu-routing-matrix.json`, and derived the first conservative host routing rule.
+- Added the `paper_smoke` routing matrix (`2026-03-13-gpu-routing-paper.json`), confirming the same GPU-favored threshold at `batch_size = 32`, `steps >= 8`.

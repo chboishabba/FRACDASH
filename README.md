@@ -121,6 +121,57 @@ The first candidate files to reuse later are:
 - [`../dashiCORE/gpu_vulkan_backend.py`](/home/c/Documents/code/dashiCORE/gpu_vulkan_backend.py)
 - [`../dashiCORE/spv/`](/home/c/Documents/code/dashiCORE/spv)
 
+The concrete FRACDASH bridge for that boundary now lives in:
+
+- [`gpu/dashicore_bridge.py`](/home/c/Documents/code/FRACDASH/gpu/dashicore_bridge.py)
+- [`scripts/check_dashicore_reuse.py`](/home/c/Documents/code/FRACDASH/scripts/check_dashicore_reuse.py)
+
+Run the reuse smoke test with:
+
+```sh
+python3 scripts/check_dashicore_reuse.py
+```
+
+Override the default `../dashiCORE` location by setting `FRACDASH_DASHICORE_ROOT` if needed.
+
+The current exact-step FRACTRAN GPU contract is documented in:
+
+- [`GPU_CONTRACT.md`](/home/c/Documents/code/FRACDASH/GPU_CONTRACT.md)
+- [`gpu/fractran_layout.py`](/home/c/Documents/code/FRACDASH/gpu/fractran_layout.py)
+- [`scripts/check_fractran_gpu_layout.py`](/home/c/Documents/code/FRACDASH/scripts/check_fractran_gpu_layout.py)
+
+Run the contract parity smoke with:
+
+```sh
+python3 scripts/check_fractran_gpu_layout.py
+```
+
+The first real Vulkan step smoke now lives in:
+
+- [`gpu_shaders/fractran_step.comp`](/home/c/Documents/code/FRACDASH/gpu_shaders/fractran_step.comp)
+- [`gpu/vulkan_fractran_step.py`](/home/c/Documents/code/FRACDASH/gpu/vulkan_fractran_step.py)
+- [`scripts/check_fractran_vulkan_step.py`](/home/c/Documents/code/FRACDASH/scripts/check_fractran_vulkan_step.py)
+
+Run it on the host with Vulkan access:
+
+```sh
+VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.x86_64.json python3 scripts/check_fractran_vulkan_step.py --batch-size 4 --multi-steps 3
+```
+
+That entrypoint now validates single-state, batched one-step, and batched multi-step resident dispatch.
+
+The first routing benchmark artifact now lives in:
+
+- [`benchmarks/results/2026-03-13-gpu-benchmark-primegame-small.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-13-gpu-benchmark-primegame-small.json)
+- [`benchmarks/results/2026-03-13-gpu-routing-matrix.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-13-gpu-routing-matrix.json)
+- [`benchmarks/results/2026-03-13-gpu-routing-paper.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-13-gpu-routing-paper.json)
+
+Current measured hint on this host:
+
+- for `primegame_small`-like resident workloads at `32` exact steps, GPU already wins at batch sizes `32`, `128`, and `512`
+- in the broader matrix, CPU remains the safe default for `batch_size <= 4`, GPU is already preferred for `batch_size >= 128`, and `primegame_small` reaches the GPU-preferred region at `batch_size = 32`, `steps >= 8`
+- `paper_smoke` shows the same threshold behavior, with GPU preferred at `batch_size = 32`, `steps >= 8`
+
 ## Read First
 
 Before making substantial changes, read:

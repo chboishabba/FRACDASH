@@ -34,3 +34,39 @@ Files captured so far:
 - `2026-03-13-primegame-compiled.txt`
 - `2026-03-13-cpu-matrix.jsonl`
 - `2026-03-13-cpu-matrix-summary.json`
+- `2026-03-13-gpu-benchmark-primegame-small.json`
+
+## Initial GPU Routing Result
+
+The first host-GPU routing benchmark is captured in:
+
+- `benchmarks/results/2026-03-13-gpu-benchmark-primegame-small.json`
+
+Current measured result on the RX 580 / RADV host:
+
+- workload: `primegame_small`
+- exact steps per state: `32`
+- tested batch sizes: `32`, `128`, `512`
+- parity held between the dense CPU contract and the resident Vulkan path
+- the resident GPU path was already preferred on every tested batch size
+
+Current routing hint:
+
+- prefer GPU for `primegame_small`-like resident workloads once the batch is at least `32` states and the run length is at least `32` exact steps
+- keep CPU as the default for tiny or unmeasured workloads until the matrix is expanded
+
+Broader routing matrix artifact:
+
+- `benchmarks/results/2026-03-13-gpu-routing-matrix.json`
+- `benchmarks/results/2026-03-13-gpu-routing-paper.json`
+
+Current conservative routing rule from the broader matrix:
+
+- default to CPU when `batch_size <= 4`
+- prefer GPU when `batch_size >= 128`
+- for `primegame_small`-like resident workloads, prefer GPU already at `batch_size = 32` once `steps >= 8`
+- keep the remaining middle region as `measure-more`, especially when `batch_size = 32` with very short runs
+
+Additional paper smoke result:
+
+- `paper_smoke` confirms the same shape: CPU for tiny batches, GPU preferred at `batch_size = 32` once `steps >= 8`, and a narrow middle band (`batch_size = 4`, `steps = 32`) that remains `measure-more`.
