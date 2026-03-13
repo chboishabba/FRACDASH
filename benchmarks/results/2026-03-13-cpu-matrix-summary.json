@@ -1,0 +1,338 @@
+{
+  "rows": 85,
+  "parity_failures": [],
+  "invalid_runs": [],
+  "cycle_checkpoint_policy": "at-least",
+  "cycle_report": [
+    {
+      "scenario": "mult_smoke",
+      "repeat": 1,
+      "logical_steps_target": 2,
+      "logical_steps_reached": 2,
+      "logical_steps_overshoot": 0
+    },
+    {
+      "scenario": "mult_smoke",
+      "repeat": 2,
+      "logical_steps_target": 2,
+      "logical_steps_reached": 2,
+      "logical_steps_overshoot": 0
+    },
+    {
+      "scenario": "mult_smoke",
+      "repeat": 3,
+      "logical_steps_target": 2,
+      "logical_steps_reached": 2,
+      "logical_steps_overshoot": 0
+    },
+    {
+      "scenario": "mult_smoke",
+      "repeat": 4,
+      "logical_steps_target": 2,
+      "logical_steps_reached": 2,
+      "logical_steps_overshoot": 0
+    },
+    {
+      "scenario": "mult_smoke",
+      "repeat": 5,
+      "logical_steps_target": 2,
+      "logical_steps_reached": 2,
+      "logical_steps_overshoot": 0
+    },
+    {
+      "scenario": "primegame_small",
+      "repeat": 1,
+      "logical_steps_target": 1000,
+      "logical_steps_reached": 1000,
+      "logical_steps_overshoot": 0
+    },
+    {
+      "scenario": "primegame_small",
+      "repeat": 2,
+      "logical_steps_target": 1000,
+      "logical_steps_reached": 1000,
+      "logical_steps_overshoot": 0
+    },
+    {
+      "scenario": "primegame_small",
+      "repeat": 3,
+      "logical_steps_target": 1000,
+      "logical_steps_reached": 1000,
+      "logical_steps_overshoot": 0
+    },
+    {
+      "scenario": "primegame_small",
+      "repeat": 4,
+      "logical_steps_target": 1000,
+      "logical_steps_reached": 1000,
+      "logical_steps_overshoot": 0
+    },
+    {
+      "scenario": "primegame_small",
+      "repeat": 5,
+      "logical_steps_target": 1000,
+      "logical_steps_reached": 1000,
+      "logical_steps_overshoot": 0
+    },
+    {
+      "scenario": "primegame_medium",
+      "repeat": 1,
+      "logical_steps_target": 10000,
+      "logical_steps_reached": 10022,
+      "logical_steps_overshoot": 22
+    },
+    {
+      "scenario": "primegame_medium",
+      "repeat": 2,
+      "logical_steps_target": 10000,
+      "logical_steps_reached": 10022,
+      "logical_steps_overshoot": 22
+    },
+    {
+      "scenario": "primegame_medium",
+      "repeat": 3,
+      "logical_steps_target": 10000,
+      "logical_steps_reached": 10022,
+      "logical_steps_overshoot": 22
+    },
+    {
+      "scenario": "primegame_medium",
+      "repeat": 4,
+      "logical_steps_target": 10000,
+      "logical_steps_reached": 10022,
+      "logical_steps_overshoot": 22
+    },
+    {
+      "scenario": "primegame_medium",
+      "repeat": 5,
+      "logical_steps_target": 10000,
+      "logical_steps_reached": 10022,
+      "logical_steps_overshoot": 22
+    },
+    {
+      "scenario": "primegame_large",
+      "repeat": 1,
+      "logical_steps_target": 100000,
+      "logical_steps_reached": 100041,
+      "logical_steps_overshoot": 41
+    },
+    {
+      "scenario": "primegame_large",
+      "repeat": 2,
+      "logical_steps_target": 100000,
+      "logical_steps_reached": 100041,
+      "logical_steps_overshoot": 41
+    },
+    {
+      "scenario": "primegame_large",
+      "repeat": 3,
+      "logical_steps_target": 100000,
+      "logical_steps_reached": 100041,
+      "logical_steps_overshoot": 41
+    },
+    {
+      "scenario": "primegame_large",
+      "repeat": 4,
+      "logical_steps_target": 100000,
+      "logical_steps_reached": 100041,
+      "logical_steps_overshoot": 41
+    },
+    {
+      "scenario": "primegame_large",
+      "repeat": 5,
+      "logical_steps_target": 100000,
+      "logical_steps_reached": 100041,
+      "logical_steps_overshoot": 41
+    }
+  ],
+  "summary": [
+    {
+      "scenario": "mult_smoke",
+      "engine": "compiled",
+      "runs": 5,
+      "median_cpu_seconds": 7.5855e-05,
+      "logical_steps_reached": [
+        2
+      ],
+      "median_logical_steps_overshoot": 0,
+      "median_cpu_seconds_per_logical_step": 3.79275e-05
+    },
+    {
+      "scenario": "mult_smoke",
+      "engine": "cycle",
+      "runs": 5,
+      "median_cpu_seconds": 5.5887e-05,
+      "logical_steps_reached": [
+        2
+      ],
+      "median_logical_steps_overshoot": 0,
+      "median_cpu_seconds_per_logical_step": 2.79435e-05
+    },
+    {
+      "scenario": "mult_smoke",
+      "engine": "frac-opt",
+      "runs": 5,
+      "median_cpu_seconds": 6.4961e-05,
+      "logical_steps_reached": [
+        2
+      ],
+      "median_logical_steps_overshoot": 0,
+      "median_cpu_seconds_per_logical_step": 3.24805e-05
+    },
+    {
+      "scenario": "mult_smoke",
+      "engine": "naive-fast",
+      "runs": 5,
+      "median_cpu_seconds": 9.904e-06,
+      "logical_steps_reached": [
+        2
+      ],
+      "median_logical_steps_overshoot": 0,
+      "median_cpu_seconds_per_logical_step": 4.952e-06
+    },
+    {
+      "scenario": "mult_smoke",
+      "engine": "reg",
+      "runs": 5,
+      "median_cpu_seconds": 2.3238e-05,
+      "logical_steps_reached": [
+        2
+      ],
+      "median_logical_steps_overshoot": 0,
+      "median_cpu_seconds_per_logical_step": 1.1619e-05
+    },
+    {
+      "scenario": "primegame_large",
+      "engine": "compiled",
+      "runs": 5,
+      "median_cpu_seconds": 0.260076774,
+      "logical_steps_reached": [
+        100000
+      ],
+      "median_logical_steps_overshoot": 0,
+      "median_cpu_seconds_per_logical_step": 2.60076774e-06
+    },
+    {
+      "scenario": "primegame_large",
+      "engine": "cycle",
+      "runs": 5,
+      "median_cpu_seconds": 0.183992529,
+      "logical_steps_reached": [
+        100041
+      ],
+      "median_logical_steps_overshoot": 41,
+      "median_cpu_seconds_per_logical_step": 1.8391712297957837e-06
+    },
+    {
+      "scenario": "primegame_large",
+      "engine": "frac-opt",
+      "runs": 5,
+      "median_cpu_seconds": 0.245478704,
+      "logical_steps_reached": [
+        100000
+      ],
+      "median_logical_steps_overshoot": 0,
+      "median_cpu_seconds_per_logical_step": 2.4547870399999998e-06
+    },
+    {
+      "scenario": "primegame_large",
+      "engine": "reg",
+      "runs": 5,
+      "median_cpu_seconds": 0.323872487,
+      "logical_steps_reached": [
+        100000
+      ],
+      "median_logical_steps_overshoot": 0,
+      "median_cpu_seconds_per_logical_step": 3.23872487e-06
+    },
+    {
+      "scenario": "primegame_medium",
+      "engine": "compiled",
+      "runs": 5,
+      "median_cpu_seconds": 0.021396044,
+      "logical_steps_reached": [
+        10000
+      ],
+      "median_logical_steps_overshoot": 0,
+      "median_cpu_seconds_per_logical_step": 2.1396044e-06
+    },
+    {
+      "scenario": "primegame_medium",
+      "engine": "cycle",
+      "runs": 5,
+      "median_cpu_seconds": 0.027969551,
+      "logical_steps_reached": [
+        10022
+      ],
+      "median_logical_steps_overshoot": 22,
+      "median_cpu_seconds_per_logical_step": 2.7908153063260826e-06
+    },
+    {
+      "scenario": "primegame_medium",
+      "engine": "frac-opt",
+      "runs": 5,
+      "median_cpu_seconds": 0.023067474,
+      "logical_steps_reached": [
+        10000
+      ],
+      "median_logical_steps_overshoot": 0,
+      "median_cpu_seconds_per_logical_step": 2.3067474000000003e-06
+    },
+    {
+      "scenario": "primegame_medium",
+      "engine": "reg",
+      "runs": 5,
+      "median_cpu_seconds": 0.033390998,
+      "logical_steps_reached": [
+        10000
+      ],
+      "median_logical_steps_overshoot": 0,
+      "median_cpu_seconds_per_logical_step": 3.3390997999999996e-06
+    },
+    {
+      "scenario": "primegame_small",
+      "engine": "compiled",
+      "runs": 5,
+      "median_cpu_seconds": 0.003519026,
+      "logical_steps_reached": [
+        1000
+      ],
+      "median_logical_steps_overshoot": 0,
+      "median_cpu_seconds_per_logical_step": 3.519026e-06
+    },
+    {
+      "scenario": "primegame_small",
+      "engine": "cycle",
+      "runs": 5,
+      "median_cpu_seconds": 0.003645487,
+      "logical_steps_reached": [
+        1000
+      ],
+      "median_logical_steps_overshoot": 0,
+      "median_cpu_seconds_per_logical_step": 3.6454870000000004e-06
+    },
+    {
+      "scenario": "primegame_small",
+      "engine": "frac-opt",
+      "runs": 5,
+      "median_cpu_seconds": 0.001847929,
+      "logical_steps_reached": [
+        1000
+      ],
+      "median_logical_steps_overshoot": 0,
+      "median_cpu_seconds_per_logical_step": 1.847929e-06
+    },
+    {
+      "scenario": "primegame_small",
+      "engine": "reg",
+      "runs": 5,
+      "median_cpu_seconds": 0.008347224,
+      "logical_steps_reached": [
+        1000
+      ],
+      "median_logical_steps_overshoot": 0,
+      "median_cpu_seconds_per_logical_step": 8.347224000000001e-06
+    }
+  ],
+  "next_target": "continue compiled-path tuning"
+}

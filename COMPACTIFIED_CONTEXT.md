@@ -46,6 +46,11 @@ The conversation sharpened these decisions:
 - The updated live thread added a concrete port sequence: baseline benchmark harness, exponent-vector representation, LUT/divisibility-mask lookup, vectorized CPU batches, then GPU batches.
 - The updated live thread also emphasized throughput-oriented GPU design: DMA overlap, fused or persistent kernels, device-resident state, and per-state independence so out-of-order execution stays safe.
 - Local seam finding: in [`fractran/src/Fractran.hs`](/home/c/Documents/code/FRACDASH/fractran/src/Fractran.hs), both `fracOpt` and `cycles` already begin by compiling rationals into exponent maps. That compile step is the right insertion point for an alternate dense/vector execution backend.
+- Benchmark-backed decision: after running the CPU matrix, parity held for `reg`, `frac-opt`, and `compiled`, and the current decision rule selected LUT/divisibility-mask CPU work as the next target.
+- Benchmark contract decision: `cycle` is now treated as an `at-least` checkpoint engine because leap compression can overshoot target steps. Exact-step parity remains reserved for `reg`, `frac-opt`, and `compiled`.
+- LUT experiment result: a binary-threshold `mask -> rule index` path was implemented for LUT-compatible programs. It preserves parity on `mult_smoke` and `primegame_*`, rejects `hamming` as incompatible, and does not beat `frac-opt` on the current primegame matrix. The active CPU baseline therefore remains `frac-opt`.
+- Active optimization pivot: LUT is now parked. The compiled evaluator has gained `frac-opt`-style rule-order narrowing, the active benchmark matrix no longer includes `lut`, and the current matrix summary routes to `continue compiled-path tuning`.
+- Latest compiled-path result: the benchmark harness now summarizes compiled runs directly from exponent vectors instead of decoding every state to `IntMap`. Parity still holds, and the current canonical matrix has `compiled` ahead of `frac-opt` on the sampled `primegame_*` scenarios.
 
 ## Repo State
 
@@ -62,6 +67,12 @@ The conversation sharpened these decisions:
   - [`CHANGELOG.md`](/home/c/Documents/code/FRACDASH/CHANGELOG.md)
 - The repo now also contains a checked-out `fractran/` directory for the fast CPU baseline.
 - Initial benchmark artifacts now live under [`benchmarks/results/`](/home/c/Documents/code/FRACDASH/benchmarks/results).
+- The full CPU comparison matrix and summary now live in:
+  - corrected scenario set includes `mult_smoke` at exact logical-step target `2`
+  - [`benchmarks/results/2026-03-13-cpu-matrix.jsonl`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-13-cpu-matrix.jsonl)
+  - [`benchmarks/results/2026-03-13-cpu-matrix-summary.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-13-cpu-matrix-summary.json)
+  - the active matrix currently compares `reg`, `frac-opt`, `cycle`, and `compiled`
+  - the current summary resolves the next target to `continue compiled-path tuning`
 
 ## Guardrails
 

@@ -20,7 +20,7 @@
 
 - Source: `fractran/src/Compiled.hs`
 - Purpose: explicit compiled program representation and dense exponent-vector stepping path.
-- Current status: parity-oriented prototype, not yet a tuned performance engine.
+- Current status: exact-step prototype now entering a tuning phase against `frac-opt`.
 
 ### 4. Benchmark layer
 
@@ -44,6 +44,16 @@
 2. Improve compiled path data layout and compatibility testing.
 3. Add LUT-oriented CPU experiments.
 4. Only then define a thin adapter to `../dashiCORE` GPU infrastructure.
+
+## CPU To GPU Handoff
+
+FRACDASH should not move into `../dashiCORE` integration just because a GPU path exists. The handoff only happens once:
+
+1. the intended CPU fast path is settled,
+2. one more focused CPU tuning round fails to beat the baseline clearly,
+3. the next workload is batch-friendly enough to amortize dispatch and transfer costs,
+4. state can remain device-resident across many FRACTRAN steps,
+5. the current benchmark contract stays usable as the correctness oracle.
 
 ## Key Invariants
 

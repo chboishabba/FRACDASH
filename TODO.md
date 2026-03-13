@@ -8,7 +8,14 @@
 - [ ] Inspect `fractran/src/Fractran.hs` and identify the seam where a benchmark harness or alternative state representation can be introduced with minimal disruption.
 - [ ] Extend the new `fractran-bench` harness with representative workloads, result capture, and stable output files.
 - [ ] Compare the new compiled exponent-vector path against `reg`, `frac-opt`, and `cycle` on the same workloads.
-- [ ] Optimize the compiled path's compatibility checks and data layout; it currently validates parity but trails `frac-opt` on sampled `primegame` runs.
+- [x] Define the LUT/divisibility-mask representation to test next.
+- [x] Implement a CPU LUT path and benchmark it against the current matrix baseline.
+- [ ] Keep `cycle` on `at-least` checkpoint semantics in future matrices; do not regress to exact-step comparison.
+- [x] Decide whether to pursue a threshold-aware generalized LUT or return to compiled-path tuning.
+- [x] Port `frac-opt`-style rule-order narrowing into the compiled evaluator.
+- [x] Reduce benchmark-side compiled-path decoding overhead and rerun the matrix.
+- [ ] Reduce compiled-path allocation overhead inside `Compiled.hs` and rerun the matrix.
+- [ ] Decide whether `compiled` is now the practical CPU baseline for subsequent work.
 - [ ] Decide the initial deliverable:
   - a direct interpreter for the signed encoding
   - a compiler from DASHI transitions to vanilla FRACTRAN fractions
@@ -43,4 +50,5 @@
 - [ ] Which signed encoding is simplest while remaining faithful?
 - [ ] Should experiments start from a hand-written FRACTRAN kernel, a higher-level compiler, or a wrapper around an existing fast CPU evaluator?
 - [ ] What measured hotspot, if any, would justify GPU work later?
+- [ ] After compiled-path tuning, is the next CPU experiment a generalized LUT keyed by threshold buckets or a batched/vectorized path?
 - [ ] Should FRACDASH use direct imports from `../dashiCORE`, local symlinks, or a small compatibility layer for shared GPU assets?
