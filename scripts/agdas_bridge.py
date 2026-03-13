@@ -372,6 +372,76 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
             description="Boundary reset clears the scan latch and re-arms the interior/action phase.",
         ),
     ]
+    physics3 = [
+        *physics2[:-1],
+        TemplateRule(
+            name="physics3_boundary_to_shell",
+            template_set="physics3",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "negative"},
+            action={"R4": "zero", "R6": "zero"},
+            description="Refine the coarse boundary reset into a latent shell step.",
+        ),
+        TemplateRule(
+            name="physics3_shell_to_interior",
+            template_set="physics3",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero"},
+            action={"R4": "positive", "R5": "zero", "R6": "negative"},
+            description="Re-arm the interior from the latent shell and clear the scan latch.",
+        ),
+    ]
+    physics4 = [
+        TemplateRule(
+            name="physics4_scan_left_high",
+            template_set="physics4",
+            module="DASHI.Algebra.PhysicsSignature.scan",
+            condition={"R1": "negative", "R4": "positive", "R5": "zero", "R6": "negative"},
+            action={"R1": "negative", "R5": "positive"},
+            description="Latch left-dominant scan only from an explicitly armed interior state.",
+        ),
+        TemplateRule(
+            name="physics4_scan_left_mid",
+            template_set="physics4",
+            module="DASHI.Algebra.PhysicsSignature.scan",
+            condition={"R1": "positive", "R4": "positive", "R5": "zero", "R6": "negative"},
+            action={"R1": "positive", "R5": "positive"},
+            description="Latch mid left scan only from an explicitly armed interior state.",
+        ),
+        TemplateRule(
+            name="physics4_scan_right_high",
+            template_set="physics4",
+            module="DASHI.Algebra.PhysicsSignature.scan",
+            condition={"R2": "negative", "R4": "positive", "R5": "zero", "R6": "negative"},
+            action={"R2": "negative", "R5": "negative"},
+            description="Latch right-dominant scan only from an explicitly armed interior state.",
+        ),
+        TemplateRule(
+            name="physics4_scan_right_mid",
+            template_set="physics4",
+            module="DASHI.Algebra.PhysicsSignature.scan",
+            condition={"R2": "positive", "R4": "positive", "R5": "zero", "R6": "negative"},
+            action={"R2": "positive", "R5": "negative"},
+            description="Latch mid right scan only from an explicitly armed interior state.",
+        ),
+        *physics2[4:10],
+        TemplateRule(
+            name="physics4_boundary_to_shell",
+            template_set="physics4",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R3": "zero", "R4": "negative", "R6": "zero"},
+            action={"R4": "zero", "R6": "zero"},
+            description="Enter the latent shell only from a discharged boundary state.",
+        ),
+        TemplateRule(
+            name="physics4_shell_to_interior",
+            template_set="physics4",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R3": "zero", "R4": "zero", "R5": "zero", "R6": "zero"},
+            action={"R4": "positive", "R5": "zero", "R6": "negative"},
+            description="Re-arm the interior only after the shell is cleared of joined severity and scan latch.",
+        ),
+    ]
     phase_cycle = [
         (("zero", "zero"), ("positive", "zero"), "00->10"),
         (("positive", "zero"), ("negative", "zero"), "10->20"),
@@ -419,10 +489,14 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
         return physics1
     if template_set == "physics2":
         return physics2
+    if template_set == "physics3":
+        return physics3
+    if template_set == "physics4":
+        return physics4
     if template_set == "wave3":
         return wave3
     if template_set == "all":
-        return wave1 + wave2 + physics1 + physics2 + wave3
+        return wave1 + wave2 + physics1 + physics2 + physics3 + physics4 + wave3
     raise ValueError(f"unknown template set: {template_set}")
 
 
@@ -738,7 +812,7 @@ def main() -> None:
     parser.add_argument(
         "--template-set",
         default="wave1",
-        choices=("wave1", "wave2", "wave3", "physics1", "physics2", "all"),
+        choices=("wave1", "wave2", "wave3", "physics1", "physics2", "physics3", "physics4", "all"),
         help="Which FRACDASH-side template transition set to use.",
     )
     parser.add_argument(

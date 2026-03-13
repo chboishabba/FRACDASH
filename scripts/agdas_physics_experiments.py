@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run dedicated physics-facing bridge experiments over the physics2 carrier."""
+"""Run dedicated physics-facing bridge experiments over the shared 6-register physics carrier."""
 
 from __future__ import annotations
 
@@ -75,6 +75,15 @@ def apply_transition(vector: tuple[int, ...], transition: Transition) -> tuple[i
         -1 if names[reg.name] == "negative" else 0 if names[reg.name] == "zero" else 1
         for reg in REGISTERS
     )
+
+
+def action_rank(vector: tuple[int, ...]) -> int:
+    value = vector[5]
+    if value == -1:
+        return 2
+    if value == 1:
+        return 1
+    return 0
 
 
 def all_vectors() -> list[tuple[int, ...]]:
@@ -168,6 +177,47 @@ def fixed_walk_summary(transitions: Sequence[Transition], max_steps: int) -> dic
     }
 
 
+def action_monotonicity_summary(
+    graph: Mapping[tuple[int, ...], list[tuple[Transition, tuple[int, ...]]]]
+) -> dict[str, object]:
+    decreases = 0
+    preserves = 0
+    increases = 0
+    samples: list[dict[str, object]] = []
+    for source, edges in graph.items():
+        for transition, target in edges:
+            before = action_rank(source)
+            after = action_rank(target)
+            if after < before:
+                decreases += 1
+                label = "decrease"
+            elif after == before:
+                preserves += 1
+                label = "preserve"
+            else:
+                increases += 1
+                label = "increase"
+            if len(samples) < 12:
+                samples.append(
+                    {
+                        "transition": transition.name,
+                        "source": source,
+                        "target": target,
+                        "before": before,
+                        "after": after,
+                        "classification": label,
+                    }
+                )
+    total = decreases + preserves + increases
+    return {
+        "total_edges": total,
+        "decreases": decreases,
+        "preserves": preserves,
+        "increases": increases,
+        "samples": samples,
+    }
+
+
 def longest_chain_profile(graph: Mapping[tuple[int, ...], list[tuple[Transition, tuple[int, ...]]]]) -> dict[str, object]:
     @lru_cache(maxsize=None)
     def depth(node: tuple[int, ...], visiting: frozenset[tuple[int, ...]] = frozenset()) -> int:
@@ -193,19 +243,20 @@ def longest_chain_profile(graph: Mapping[tuple[int, ...], list[tuple[Transition,
     }
 
 
-def compare_physics1() -> dict[str, object]:
-    path = Path(__file__).resolve().parents[1] / "benchmarks/results/2026-03-14-agdas-physics1-phase2.json"
+def compare_artifact(filename: str, label: str) -> dict[str, object]:
+    path = Path(__file__).resolve().parents[1] / f"benchmarks/results/{filename}"
     if not path.exists():
         return {"status": "missing", "path": str(path)}
     obj = json.loads(path.read_text())
     return {
         "status": "ok",
         "path": str(path),
-        "physics1_full_space_profile": obj.get("full_space_profile"),
-        "physics1_fixed_prime_walk_summary": {
+        f"{label}_full_space_profile": obj.get("full_space_profile"),
+        f"{label}_fixed_prime_walk_summary": {
             key: obj.get("fixed_prime_walk_summary", {}).get(key)
             for key in ("state_count", "terminal", "cycle", "timeout", "max_steps_observed")
         },
+        f"{label}_action_monotonicity": obj.get("action_monotonicity"),
     }
 
 
@@ -230,20 +281,27 @@ def summary(template_set: str, max_steps: int) -> dict[str, object]:
             for item in transitions
         ],
         "full_space_profile": longest_chain_profile(graph),
+        "action_monotonicity": action_monotonicity_summary(graph),
         "fixed_walk_summary": fixed_walk_summary(transitions, max_steps),
         "deterministic_start": start,
         "deterministic_start_decoded": decode_signed_state(
             encode_signed_state({reg.name: start[idx] for idx, reg in enumerate(REGISTERS)})
         ),
         "deterministic_walk": walk,
-        "physics1_comparison": compare_physics1(),
+        "physics1_comparison": compare_artifact("2026-03-14-agdas-physics1-phase2.json", "physics1"),
+        "physics3_comparison": compare_artifact("2026-03-14-agdas-physics3-phase2.json", "physics3"),
     }
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run widened physics2 bridge experiments.")
+    parser = argparse.ArgumentParser(description="Run widened physics bridge experiments.")
     parser.add_argument("--json", action="store_true", help="Emit JSON summary.")
-    parser.add_argument("--template-set", default="physics2", choices=("physics2",), help="Template set to execute.")
+    parser.add_argument(
+        "--template-set",
+        default="physics2",
+        choices=("physics2", "physics3", "physics4"),
+        help="Template set to execute.",
+    )
     parser.add_argument("--max-steps", type=int, default=12, help="Deterministic walk step cap.")
     args = parser.parse_args()
 
@@ -252,7 +310,7 @@ def main() -> None:
         print(json.dumps(payload, indent=2))
         return
 
-    print("Physics2 AGDAS experiments")
+    print("Physics AGDAS experiments")
     print(f"Transition set: {payload['transition_source_summary']['template_set']}")
     print(f"Transitions: {payload['transition_count']}")
     print(f"State space size: {payload['state_space_size']}")

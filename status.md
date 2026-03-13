@@ -38,6 +38,8 @@
 - `scripts/agdas_physics2_state.py` now defines and validates a dedicated 6-register carrier for the widened physics layer.
 - The physics2 carrier artifact now lives at `benchmarks/results/2026-03-14-agdas-physics2-state.json`.
 - `scripts/agdas_physics_experiments.py` now executes the widened `physics2` layer over that carrier, and the artifact lives at `benchmarks/results/2026-03-14-agdas-physics2-phase2.json`.
+- `scripts/agdas_physics_experiments.py` now also executes the `physics3` cone-shell refinement layer and reports action-phase monotonicity; the artifact lives at `benchmarks/results/2026-03-14-agdas-physics3-phase2.json`.
+- `scripts/agdas_physics_experiments.py` now also executes the stricter `physics4` rearm variant; its artifact lives at `benchmarks/results/2026-03-14-agdas-physics4-phase2.json`.
 - batched one-step GPU parity through the same shader/runner path
 - batched multi-step resident GPU parity through the same shader/runner path
 - single-submit multi-dispatch optimization through ping-pong descriptor sets
@@ -84,6 +86,8 @@
 - The full AGDAS-to-FRACTRAN bridge from the AGDA semantics into executable dynamics is still not proven: the wave-1 FRACDASH-side template bridge exists, the wave-2 and wave-3 Monster probes now run, but wave-3 is still effectively a one-shot surface because pending choice/admissibility state is not refreshed after a step.
 - The first physics-facing bridge seam is more promising: `physics1` already produces nontrivial recurrent behavior on the existing 4-register carrier, so it is currently a higher-signal path than pushing Monster compression further.
 - The widened physics layer is now also proven executable: `physics2` expands from the `physics1` carrier to `3^6 = 729` states and yields a much denser recurrent graph (`657` edges, longest chain `12`, deterministic 4-step cycle from the canonical start), so physics-facing bridge work is now the main experimental path.
+- The cone-refined physics layer is stronger again: `physics3` preserves the same 6-register carrier, increases the graph to `900` edges over `729` states, raises longest chain to `15`, and exposes an explicit action monotonicity summary, so it is now the leading physics-facing bridge layer.
+- The stricter `physics4` layer answers the next question, but negatively: it cuts action-rank increases sharply (`162 -> 9`) and keeps the same carrier, yet collapses the graph to `162` edges with no cycles, so `physics3` remains the better current lead and the next task is a recurrent hybrid rather than tighter guards alone.
 - How the current middle region behaves on more programs and whether the provisional `batch_size = 32` boundary generalizes beyond `primegame_small` and `paper_smoke`.
 - Whether a generalized threshold-aware LUT or another compiled-path optimization can beat `frac-opt`.
 - Whether the minimal GPU path can preserve the same exact-step semantics and benchmark contract while keeping state device-resident.

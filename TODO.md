@@ -49,7 +49,13 @@
   - [x] capture the first physics-facing artifact (`benchmarks/results/2026-03-14-agdas-physics1-phase2.json`)
   - [x] implement the widened `physics2` layer on a dedicated 6-register carrier
   - [x] capture the first `physics2` artifact and compare it to `physics1`
-  - [ ] decide whether the next physics pass should add scan refinement, action monotonicity, or cone-interior structure first
+  - [x] decide that the next physics pass should add cone-interior refinement first and report action monotonicity
+  - [x] implement `physics3` on the same 6-register carrier
+  - [x] capture the first `physics3` artifact and compare it to `physics2`
+  - [x] decide that the next physics pass should tighten action-monotonicity constraints before adding more scan variants
+  - [x] implement `physics4` on the same 6-register carrier with stricter shell/interior rearm guards
+  - [x] capture the first `physics4` artifact and compare it to `physics3`
+  - [ ] design a `physics5` hybrid that restores recurrence while keeping most of the `physics4` monotonicity gain
 - [ ] Introduce a prime-exponent-vector engine for batched runs and compare it against the bigint/cycle-detecting baseline.
 - [ ] Prototype LUT or divisibility-mask rule selection on CPU before any GPU port.
 

@@ -121,7 +121,9 @@ Current direction:
 6. Continue widening the physics-facing bridge:
    - `physics1` on the 4-register carrier is already recurrent and informative.
    - `physics2` now runs on a dedicated 6-register carrier and produces a denser recurrent graph than `physics1`.
-   - the next pass should choose between scan refinement, action monotonicity, or cone-interior structure as the next added layer.
+   - `physics3` now adds cone-shell refinement and action monotonicity reporting on the same 6-register carrier, and currently leads the bridge path.
+   - `physics4` tightened shell/interior rearm guards on the same carrier and cut action-rank increases sharply, but it overconstrained the dynamics and eliminated recurrence.
+   - the next pass should therefore be a `physics5` hybrid: keep the stronger rearm discipline where it matters, but selectively restore recurrence from the `physics3` loop instead of adding more scan variants first.
 
 ## CPU To GPU Handoff Criteria
 

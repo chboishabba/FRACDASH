@@ -136,3 +136,69 @@ The intended update loop is:
 3. relax `R3` under contraction in the interior
 4. fall to boundary when relaxation completes
 5. reset/re-arm at the boundary so the process can recur
+
+## Physics 3 Refinement
+
+The next refinement keeps the same 6-register carrier and adds:
+
+- a latent cone shell on `R4` (`zero`) between boundary and interior
+- an explicit action-phase monotonicity report on `R6`
+
+Refined region semantics on `R4`:
+
+- `positive`: interior
+- `negative`: boundary
+- `zero`: latent shell / recovery layer
+
+Refined reset loop:
+
+1. `boundary -> latent shell`
+2. `latent shell -> interior rearm`
+
+Action-phase rank on `R6`:
+
+- `negative`: high
+- `positive`: mid
+- `zero`: spent
+
+Artifacts should report how many transitions:
+
+- decrease the action rank
+- preserve it
+- increase it
+
+## Physics 4 Guard Tightening
+
+`physics4` keeps the same 6-register carrier but tightens the reset discipline
+instead of adding more carrier structure.
+
+The stricter interpretation is:
+
+- scan only from an explicitly armed interior state
+  - require `R4 = positive`
+  - require `R5 = zero`
+  - require `R6 = negative`
+- enter the latent shell only from a discharged boundary state
+  - require `R3 = zero`
+  - require `R4 = negative`
+  - require `R6 = zero`
+- re-arm the interior only from a cleared shell state
+  - require `R3 = zero`
+  - require `R4 = zero`
+  - require `R5 = zero`
+  - require `R6 = zero`
+
+This improves action-order cleanliness substantially, but it also eliminates the
+recurrent loop. So `physics4` should be treated as a constraint probe, not the
+new default semantics.
+
+## Physics 5 Target
+
+The next bridge pass should be a hybrid:
+
+- keep the `physics4` scan guard
+- keep the discharged-boundary requirement for shell entry
+- selectively relax shell-to-interior rearm just enough to restore recurrence
+
+The design goal is the narrow recurrent band between the loose `physics3`
+rearm and the overconstrained `physics4` reset.
