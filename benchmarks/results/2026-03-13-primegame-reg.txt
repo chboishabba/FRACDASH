@@ -1,0 +1,9 @@
+program=primegame
+engine=reg
+init=2
+take=1000
+cycle_len=2
+states=1000
+last_step=1000
+checksum=526310084307799
+cpu_seconds=7.123281e-3
