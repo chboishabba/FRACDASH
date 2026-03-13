@@ -2,32 +2,54 @@
 
 ## Phase 1: Minimal Model
 
-- [ ] Define the smallest DASHI state space that still preserves balanced ternary structure.
-- [ ] Specify one signed-register FRACTRAN encoding and its invariants.
-- [ ] Evaluate CPU-first FRACTRAN baselines, especially cycle-detecting or fast-forwarding interpreters.
-- [ ] Inspect `fractran/src/Fractran.hs` and identify the seam where a benchmark harness or alternative state representation can be introduced with minimal disruption.
-- [ ] Extend the new `fractran-bench` harness with representative workloads, result capture, and stable output files.
-- [ ] Compare the new compiled exponent-vector path against `reg`, `frac-opt`, and `cycle` on the same workloads.
+- [x] Define the smallest DASHI state space that still preserves balanced ternary structure.
+- [x] Specify one signed-register FRACTRAN encoding and its invariants.
+- [x] Evaluate CPU-first FRACTRAN baselines, especially cycle-detecting or fast-forwarding interpreters.
+- [x] Inspect `fractran/src/Fractran.hs` and identify the seam where a benchmark harness or alternative state representation can be introduced with minimal disruption.
+- [x] Extend the new `fractran-bench` harness with representative workloads, result capture, and stable output files.
+- [x] Compare the new compiled exponent-vector path against `reg`, `frac-opt`, and `cycle` on the same workloads.
 - [x] Define the LUT/divisibility-mask representation to test next.
 - [x] Implement a CPU LUT path and benchmark it against the current matrix baseline.
-- [ ] Keep `cycle` on `at-least` checkpoint semantics in future matrices; do not regress to exact-step comparison.
+- [x] Keep `cycle` on `at-least` checkpoint semantics in future matrices; do not regress to exact-step comparison.
 - [x] Decide whether to pursue a threshold-aware generalized LUT or return to compiled-path tuning.
 - [x] Port `frac-opt`-style rule-order narrowing into the compiled evaluator.
 - [x] Reduce benchmark-side compiled-path decoding overhead and rerun the matrix.
 - [x] Reduce compiled-path allocation overhead inside `Compiled.hs` and rerun the matrix.
 - [x] Decide whether `compiled` is now the practical CPU baseline for subsequent work.
-- [ ] Decide the initial deliverable:
+- [x] Decide the initial deliverable:
   - a direct interpreter for the signed encoding
   - a compiler from DASHI transitions to vanilla FRACTRAN fractions
   - a benchmark harness around an existing fast CPU interpreter
+    The current deliverable is the deterministic benchmark harness (with compiled parity checks) that exercises the signed encoding.
 
 ## Phase 2: Core Experiments
 
-- [ ] Implement a toy DASHI-to-FRACTRAN transition set for the `{-1, 0, +1}^3` cube or a smaller slice of it.
-- [ ] Build a decoder that maps prime exponent vectors back to DASHI states.
-- [ ] Compare fixed-prime dynamics against dynamics that explicitly reintroduce primes.
-- [ ] Encode and test the 10-basin walk as data.
-- [ ] Verify the claimed maximum monotone-chain length `4` by executable search or a stronger graph argument.
+- [x] Implement a toy DASHI-to-FRACTRAN transition set for a signed 4-register `3^4` state space.
+- [x] Build a decoder that maps prime exponent vectors back to DASHI states.
+- [x] Compare fixed-prime dynamics against dynamics that explicitly reintroduce primes.
+- [x] Encode and test the 10-basin walk as data (captured as deterministic basin partition statistics).
+- [x] Verify the fixed-prime monotone-chain bound across all `3^4` states by executable search (`--max-chain-bound`) in
+  [`scripts/toy_dashi_transitions.py`](/home/c/Documents/code/FRACDASH/scripts/toy_dashi_transitions.py). Current artifact reports `max_observed_chain=2`, so the bound holds for `2`.
+- [ ] Implement the full AGDAS physics bridge from the AGDA semantics in `../dashi_agda`:
+  - [x] add typed extraction/parsing into transition primitives (`scripts/agdas_bridge.py`)
+  - [x] map parsed transition rules into FRACTRAN candidates with provenance
+  - [x] wire that output into the Phase 2 verifier path and preserve round-trip checks (`scripts/toy_dashi_transitions.py --agdas-path`)
+  - [x] define a FRACDASH-side wave-1 mapping in `AGDAS_BRIDGE_MAPPING.md`
+  - [x] implement FRACDASH-side wave-1 template transitions in `scripts/agdas_bridge.py`
+  - [x] run the wave-1 template transitions through the Phase 2 verifier path (`--agdas-templates`)
+  - [x] add a compressed wave-2 `MonsterState` / `Monster.Step` template set
+  - [x] run the wave-2 template set through the Phase 2 verifier path and capture the artifact
+  - [x] decide to enlarge the encoded state model before widening beyond the compressed Monster seam
+  - [x] add a prototype wave-3 enlarged state carrier in `scripts/agdas_wave3_state.py`
+  - [x] thread the wave-3 carrier into executable bridge experiments
+  - [x] add a wave-3 Monster-facing template set in `scripts/agdas_bridge.py`
+  - [x] compare the wave-3 bridge graph against the wave-2 artifact
+  - [ ] add recurrent/refresh transitions so wave-3 is not just a one-shot step surface
+  - [x] add a first physics-facing recurrent bridge seam (`physics1`) based on severity propagation and contraction
+  - [x] capture the first physics-facing artifact (`benchmarks/results/2026-03-14-agdas-physics1-phase2.json`)
+  - [x] implement the widened `physics2` layer on a dedicated 6-register carrier
+  - [x] capture the first `physics2` artifact and compare it to `physics1`
+  - [ ] decide whether the next physics pass should add scan refinement, action monotonicity, or cone-interior structure first
 - [ ] Introduce a prime-exponent-vector engine for batched runs and compare it against the bigint/cycle-detecting baseline.
 - [ ] Prototype LUT or divisibility-mask rule selection on CPU before any GPU port.
 
@@ -39,7 +61,7 @@
 
 ## Phase 4: GPU Reuse Path
 
-- [ ] Confirm which `../dashiCORE` modules are stable enough to reference directly for Vulkan dispatch, shader compilation, and GEMV-style kernels.
+- [x] Confirm which `../dashiCORE` modules are stable enough to reference directly for Vulkan dispatch, shader compilation, and GEMV-style kernels.
 - [x] Add a thin FRACDASH-local adapter that imports `../dashiCORE` Vulkan helpers by reference.
 - [x] Design a thin FRACDASH adapter layer that imports or shells out to `../dashiCORE` GPU infrastructure without copying files.
 - [x] Add a smoke script that proves by-reference import and adapter passthrough without copying CORE code.
@@ -53,8 +75,8 @@
 - [x] Reduce submit and command-buffer overhead on the now-correct resident multi-step path.
 - [x] Benchmark the single-submit resident GPU path against the dense compiled-equivalent CPU contract on larger batches.
 - [x] Expand the routing benchmark beyond `primegame_small` and beyond the current `batch_size >= 32`, `steps = 32` regime.
-- [ ] Promote the current conservative routing rule into a deterministic CPU/GPU routing rule after more middle-region measurements and one additional program beyond `paper_smoke`.
-- [ ] Define the rule for when a FRACDASH GPU helper/kernel should be upstreamed back into `../dashiCORE`.
+- [x] Promote the current conservative routing rule into a deterministic CPU/GPU routing rule after more middle-region measurements and one additional program beyond `paper_smoke`.
+- [x] Define the rule for when a FRACDASH GPU helper/kernel should be upstreamed back into `../dashiCORE`.
 
 ## Open Decisions
 

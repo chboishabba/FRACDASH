@@ -1,0 +1,6192 @@
+{
+  "register_count": 4,
+  "state_space_size": 81,
+  "start_signed": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "start_value": 10353,
+  "start_decoded_signed": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "start_decoded_names": [
+    "positive",
+    "zero",
+    "zero",
+    "zero"
+  ],
+  "transitions": [
+    {
+      "name": "physics_join_from_left_high",
+      "description": "Materialize high effective severity from the left code.",
+      "fraction": "23/17"
+    },
+    {
+      "name": "physics_join_from_right_high",
+      "description": "Materialize high effective severity from the right code.",
+      "fraction": "23/17"
+    },
+    {
+      "name": "physics_join_from_left_mid",
+      "description": "Materialize mid effective severity from the left code.",
+      "fraction": "19/17"
+    },
+    {
+      "name": "physics_join_from_right_mid",
+      "description": "Materialize mid effective severity from the right code.",
+      "fraction": "19/17"
+    },
+    {
+      "name": "physics_contract_high",
+      "description": "Interior contraction lowers high severity to mid.",
+      "fraction": "19/23"
+    },
+    {
+      "name": "physics_contract_mid",
+      "description": "Interior contraction lowers mid severity to zero and reaches boundary.",
+      "fraction": "629/589"
+    },
+    {
+      "name": "physics_boundary_reset",
+      "description": "Boundary reset re-arms the local interior for another relaxation pass.",
+      "fraction": "31/37"
+    }
+  ],
+  "transition_source": "agdas_templates",
+  "transition_source_path": null,
+  "transition_source_summary": {
+    "source": "agdas_templates",
+    "template_set": "physics1",
+    "template_count": 7,
+    "template_modules": [
+      "Contraction.StrictContraction",
+      "UFTC_Lattice.C_XOR",
+      "UFTC_Lattice.ConeInteriorPreserved"
+    ]
+  },
+  "basin_profile": {
+    "nodes": 2,
+    "edges": 1,
+    "terminal_states": 1,
+    "longest_chain": 1,
+    "chain_length_histogram": {
+      "1": 1,
+      "0": 1
+    },
+    "max_chain_start_states": [
+      "10353"
+    ]
+  },
+  "full_space_profile": {
+    "nodes": 81,
+    "edges": 81,
+    "terminal_states": 20,
+    "longest_chain": 5,
+    "chain_length_histogram": {
+      "0": 20,
+      "2": 1,
+      "1": 9,
+      "3": 8,
+      "4": 25,
+      "5": 18
+    },
+    "max_chain_start_states": [
+      "13702",
+      "17871",
+      "18278",
+      "18445",
+      "18722"
+    ]
+  },
+  "basin_path": [
+    {
+      "step": 1,
+      "value": 10353,
+      "transition": "physics_join_from_left_mid",
+      "next": 11571,
+      "fraction": "19/17",
+      "source_signed": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        1,
+        0,
+        1,
+        0
+      ]
+    }
+  ],
+  "round_trip_checks": {
+    "status": "ok",
+    "failure_count": 0,
+    "failures": []
+  },
+  "fixed_prime_walk_summary": {
+    "max_steps": 16,
+    "state_count": 81,
+    "terminal": 33,
+    "cycle": 48,
+    "timeout": 0,
+    "max_steps_observed": 5,
+    "samples_by_length": [
+      [
+        "(-1, -1, 0, 1)",
+        5,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 1, -1)",
+        5,
+        "cycle"
+      ],
+      [
+        "(-1, 0, 0, 1)",
+        5,
+        "cycle"
+      ],
+      [
+        "(-1, 0, 1, -1)",
+        5,
+        "cycle"
+      ],
+      [
+        "(-1, 1, 0, 1)",
+        5,
+        "cycle"
+      ]
+    ],
+    "outcomes": {
+      "(-1, -1, -1, -1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(-1, -1, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, -1, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(-1, -1, 0, -1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(-1, -1, 0, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(-1, -1, 0, 1)": {
+        "status": "cycle",
+        "steps": 5
+      },
+      "(-1, -1, 1, -1)": {
+        "status": "cycle",
+        "steps": 5
+      },
+      "(-1, -1, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, 1, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(-1, 0, -1, -1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(-1, 0, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, -1, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(-1, 0, 0, -1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(-1, 0, 0, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(-1, 0, 0, 1)": {
+        "status": "cycle",
+        "steps": 5
+      },
+      "(-1, 0, 1, -1)": {
+        "status": "cycle",
+        "steps": 5
+      },
+      "(-1, 0, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, 1, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(-1, 1, -1, -1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(-1, 1, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, -1, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(-1, 1, 0, -1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(-1, 1, 0, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(-1, 1, 0, 1)": {
+        "status": "cycle",
+        "steps": 5
+      },
+      "(-1, 1, 1, -1)": {
+        "status": "cycle",
+        "steps": 5
+      },
+      "(-1, 1, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, 1, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(0, -1, -1, -1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(0, -1, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, -1, -1, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(0, -1, 0, -1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(0, -1, 0, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 0, 1)": {
+        "status": "cycle",
+        "steps": 5
+      },
+      "(0, -1, 1, -1)": {
+        "status": "cycle",
+        "steps": 5
+      },
+      "(0, -1, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, -1, 1, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(0, 0, -1, -1)": {
+        "status": "terminal",
+        "steps": 4
+      },
+      "(0, 0, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, -1, 1)": {
+        "status": "terminal",
+        "steps": 3
+      },
+      "(0, 0, 0, -1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, 0, 0, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 0, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, -1)": {
+        "status": "terminal",
+        "steps": 3
+      },
+      "(0, 0, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, 1)": {
+        "status": "terminal",
+        "steps": 2
+      },
+      "(0, 1, -1, -1)": {
+        "status": "cycle",
+        "steps": 5
+      },
+      "(0, 1, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, -1, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(0, 1, 0, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 1, 0, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, 0, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(0, 1, 1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 1, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, 1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, -1, -1, -1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(1, -1, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, -1, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(1, -1, 0, -1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(1, -1, 0, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(1, -1, 0, 1)": {
+        "status": "cycle",
+        "steps": 5
+      },
+      "(1, -1, 1, -1)": {
+        "status": "cycle",
+        "steps": 5
+      },
+      "(1, -1, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, 1, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(1, 0, -1, -1)": {
+        "status": "cycle",
+        "steps": 5
+      },
+      "(1, 0, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, -1, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(1, 0, 0, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 0, 0, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(1, 0, 0, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(1, 0, 1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 0, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, 1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 1, -1, -1)": {
+        "status": "cycle",
+        "steps": 5
+      },
+      "(1, 1, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, -1, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(1, 1, 0, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 1, 0, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(1, 1, 0, 1)": {
+        "status": "cycle",
+        "steps": 4
+      },
+      "(1, 1, 1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 1, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, 1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      }
+    },
+    "longest_paths": [
+      [
+        "(-1, -1, 0, 1)",
+        5,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 1, -1)",
+        5,
+        "cycle"
+      ],
+      [
+        "(-1, 0, 0, 1)",
+        5,
+        "cycle"
+      ],
+      [
+        "(-1, 0, 1, -1)",
+        5,
+        "cycle"
+      ],
+      [
+        "(-1, 1, 0, 1)",
+        5,
+        "cycle"
+      ],
+      [
+        "(-1, 1, 1, -1)",
+        5,
+        "cycle"
+      ],
+      [
+        "(0, -1, 0, 1)",
+        5,
+        "cycle"
+      ],
+      [
+        "(0, -1, 1, -1)",
+        5,
+        "cycle"
+      ],
+      [
+        "(0, 1, -1, -1)",
+        5,
+        "cycle"
+      ],
+      [
+        "(1, -1, 0, 1)",
+        5,
+        "cycle"
+      ]
+    ]
+  },
+  "fixed_prime_basin_walks": {
+    "max_steps": 16,
+    "basin_count": 49,
+    "target_walk_count": 10,
+    "has_target_walker_count": true,
+    "top_10_basins_by_size": [
+      [
+        "terminal:(0, 0, 0, 1)",
+        6
+      ],
+      [
+        "cycle:(0, 1, 1, 1)",
+        4
+      ],
+      [
+        "cycle:(1, 0, 1, 1)",
+        4
+      ],
+      [
+        "cycle:(1, 1, 1, 1)",
+        4
+      ],
+      [
+        "cycle:(-1, -1, -1, 1)",
+        2
+      ],
+      [
+        "cycle:(-1, -1, 1, 1)",
+        2
+      ],
+      [
+        "cycle:(-1, 0, -1, 1)",
+        2
+      ],
+      [
+        "cycle:(-1, 0, 1, 1)",
+        2
+      ],
+      [
+        "cycle:(-1, 1, -1, 1)",
+        2
+      ],
+      [
+        "cycle:(-1, 1, 1, 1)",
+        2
+      ]
+    ],
+    "sample_basin_walks": [
+      [
+        "cycle:(-1, -1, -1, -1)",
+        1,
+        [
+          "(-1, -1, -1, -1)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, -1, 1)",
+        2,
+        [
+          "(-1, -1, -1, 1)",
+          "(-1, -1, 0, 1)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, 0, -1)",
+        1,
+        [
+          "(-1, -1, 0, -1)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, 1, 1)",
+        2,
+        [
+          "(-1, -1, 1, -1)",
+          "(-1, -1, 1, 1)"
+        ]
+      ],
+      [
+        "cycle:(-1, 0, -1, -1)",
+        1,
+        [
+          "(-1, 0, -1, -1)"
+        ]
+      ],
+      [
+        "cycle:(-1, 0, -1, 1)",
+        2,
+        [
+          "(-1, 0, -1, 1)",
+          "(-1, 0, 0, 1)"
+        ]
+      ],
+      [
+        "cycle:(-1, 0, 0, -1)",
+        1,
+        [
+          "(-1, 0, 0, -1)"
+        ]
+      ],
+      [
+        "cycle:(-1, 0, 1, 1)",
+        2,
+        [
+          "(-1, 0, 1, -1)",
+          "(-1, 0, 1, 1)"
+        ]
+      ],
+      [
+        "cycle:(-1, 1, -1, -1)",
+        1,
+        [
+          "(-1, 1, -1, -1)"
+        ]
+      ],
+      [
+        "cycle:(-1, 1, -1, 1)",
+        2,
+        [
+          "(-1, 1, -1, 1)",
+          "(-1, 1, 0, 1)"
+        ]
+      ]
+    ]
+  },
+  "fixed_prime_vs_explicit_summary": {
+    "max_steps": 12,
+    "state_count": 81,
+    "comparison_match_count": 81,
+    "mismatch_count": 0,
+    "terminal": 33,
+    "timeout": 48,
+    "comparison_status_histogram": {
+      "timeout": 48,
+      "terminal": 33
+    },
+    "mismatches": [],
+    "outcomes": {
+      "(-1, -1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(-1, -1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(-1, 0, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(-1, 1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, -1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, -1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 0, -1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 4
+      },
+      "(0, 0, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, -1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 3
+      },
+      "(0, 0, 0, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, 0, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 0, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 3
+      },
+      "(0, 0, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 2
+      },
+      "(0, 1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(1, -1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(1, 0, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(1, 1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      }
+    }
+  },
+  "fixed_prime_walks": {
+    "(-1, -1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, -1, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "final_state": [
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, -1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "final_state": [
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            0,
+            0
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        0,
+        1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "steps": 5,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            0,
+            1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 5,
+          "state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "steps": 5,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 5,
+          "state": [
+            -1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        -1,
+        1,
+        0
+      ],
+      "final_state": [
+        -1,
+        -1,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, -1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        0,
+        -1,
+        0
+      ],
+      "final_state": [
+        -1,
+        0,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 0, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        -1,
+        1
+      ],
+      "final_state": [
+        -1,
+        0,
+        -1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        0,
+        -1
+      ],
+      "final_state": [
+        -1,
+        0,
+        0,
+        -1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            0,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "final_state": [
+        -1,
+        0,
+        -1,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            0,
+            0
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        0,
+        1
+      ],
+      "final_state": [
+        -1,
+        0,
+        -1,
+        1
+      ],
+      "steps": 5,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            0,
+            1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 5,
+          "state": [
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        0,
+        1,
+        1
+      ],
+      "steps": 5,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 5,
+          "state": [
+            -1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        0,
+        1,
+        0
+      ],
+      "final_state": [
+        -1,
+        0,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 0, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        1,
+        1
+      ],
+      "final_state": [
+        -1,
+        0,
+        1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        1,
+        -1,
+        -1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "final_state": [
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "final_state": [
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        0,
+        -1
+      ],
+      "final_state": [
+        -1,
+        1,
+        0,
+        -1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        1,
+        0,
+        0
+      ],
+      "final_state": [
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            0,
+            0
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        0,
+        1
+      ],
+      "final_state": [
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "steps": 5,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            0,
+            1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 5,
+          "state": [
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        1,
+        1,
+        1
+      ],
+      "steps": 5,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 5,
+          "state": [
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        1,
+        1,
+        0
+      ],
+      "final_state": [
+        -1,
+        1,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        1,
+        1
+      ],
+      "final_state": [
+        -1,
+        1,
+        1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            -1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_high",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            -1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, -1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        -1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        0,
+        -1,
+        -1,
+        -1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            0,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, -1, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "final_state": [
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, -1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        -1,
+        -1,
+        1
+      ],
+      "final_state": [
+        0,
+        -1,
+        -1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            0,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        -1,
+        0,
+        -1
+      ],
+      "final_state": [
+        0,
+        -1,
+        0,
+        -1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            0,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            0,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            -1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        0,
+        0
+      ],
+      "final_state": [
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            0,
+            0
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, -1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "final_state": [
+        0,
+        -1,
+        -1,
+        1
+      ],
+      "steps": 5,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            0,
+            1
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            0,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 5,
+          "state": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        -1,
+        1,
+        -1
+      ],
+      "final_state": [
+        0,
+        -1,
+        1,
+        1
+      ],
+      "steps": 5,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 5,
+          "state": [
+            0,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            0,
+            -1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        1,
+        0
+      ],
+      "final_state": [
+        0,
+        -1,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, -1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        -1,
+        1,
+        1
+      ],
+      "final_state": [
+        0,
+        -1,
+        1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            0,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            0,
+            -1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 0, -1, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            0,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            0,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 0, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        -1,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, -1, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        -1,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            0,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 0, 0, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        0,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 0, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, 0, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, 1, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        1,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            0,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 0, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, 1, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "steps": 5,
+      "max_steps": 16,
+      "cycle_start": 2,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            0,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 5,
+          "state": [
+            0,
+            1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 1, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        -1,
+        0
+      ],
+      "final_state": [
+        0,
+        1,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        1,
+        -1,
+        1
+      ],
+      "final_state": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            0,
+            1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        1,
+        0,
+        -1
+      ],
+      "final_state": [
+        0,
+        1,
+        0,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, 1, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "final_state": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "transition": "physics_join_from_right_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, 1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "final_state": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "transition": "physics_join_from_right_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            0,
+            1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        1,
+        1,
+        -1
+      ],
+      "final_state": [
+        0,
+        1,
+        1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, 1, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "final_state": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "final_state": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            0,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            0,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, -1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, -1, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        -1,
+        -1,
+        0
+      ],
+      "final_state": [
+        1,
+        -1,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, -1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "final_state": [
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, -1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        0,
+        -1
+      ],
+      "final_state": [
+        1,
+        -1,
+        0,
+        -1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            -1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, -1, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        -1,
+        0,
+        0
+      ],
+      "final_state": [
+        1,
+        -1,
+        -1,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            0,
+            0
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, -1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        0,
+        1
+      ],
+      "final_state": [
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "steps": 5,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            0,
+            1
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 5,
+          "state": [
+            1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, -1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "final_state": [
+        1,
+        -1,
+        1,
+        1
+      ],
+      "steps": 5,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 5,
+          "state": [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            1,
+            -1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, -1, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        -1,
+        1,
+        0
+      ],
+      "final_state": [
+        1,
+        -1,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, -1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        1,
+        1
+      ],
+      "final_state": [
+        1,
+        -1,
+        1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_right_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            1,
+            -1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 0, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        -1,
+        -1
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "steps": 5,
+      "max_steps": 16,
+      "cycle_start": 2,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            0,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 5,
+          "state": [
+            1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 0, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        0,
+        -1,
+        0
+      ],
+      "final_state": [
+        1,
+        0,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 0, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        -1,
+        1
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            0,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 0, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        0,
+        -1
+      ],
+      "final_state": [
+        1,
+        0,
+        0,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            0,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            0,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 0, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            0,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, 0, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            0,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 0, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        1,
+        -1
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            0,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 0, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 0, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            0,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "steps": 5,
+      "max_steps": 16,
+      "cycle_start": 2,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 5,
+          "state": [
+            1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 1, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        1,
+        -1,
+        0
+      ],
+      "final_state": [
+        1,
+        1,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        -1,
+        1
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "physics_contract_high",
+          "next_state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        0,
+        -1
+      ],
+      "final_state": [
+        1,
+        1,
+        0,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 1, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            1,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, 1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "steps": 4,
+      "max_steps": 16,
+      "cycle_start": 1,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 4,
+          "state": [
+            1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        1,
+        -1
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            1,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 1, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "transition": "physics_contract_mid",
+          "next_state": [
+            1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "physics_join_from_left_mid",
+          "next_state": [
+            1,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "physics_boundary_reset",
+          "next_state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    }
+  },
+  "fixed_prime_chain_bound_check": null,
+  "start_signed_vector": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "basin_profile_for_start": {
+    "nodes": 2,
+    "edges": 1,
+    "terminal_states": 1,
+    "longest_chain": 1,
+    "chain_length_histogram": {
+      "1": 1,
+      "0": 1
+    },
+    "max_chain_start_states": [
+      "10353"
+    ]
+  },
+  "full_space_nodes": 81,
+  "start_graph": {
+    "10353": {
+      "physics_join_from_left_mid": 11571
+    },
+    "11571": {}
+  },
+  "fixed_prime_steps": 16
+}

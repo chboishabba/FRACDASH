@@ -1,0 +1,6873 @@
+{
+  "register_count": 4,
+  "state_space_size": 81,
+  "start_signed": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "start_value": 10353,
+  "start_decoded_signed": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "start_decoded_names": [
+    "positive",
+    "zero",
+    "zero",
+    "zero"
+  ],
+  "transitions": [
+    {
+      "name": "tri_rotate_low_to_mid",
+      "description": "Map tri-low -> tri-mid on R1.",
+      "fraction": "2/5"
+    },
+    {
+      "name": "tri_rotate_mid_to_high",
+      "description": "Map tri-mid -> tri-high on R1.",
+      "fraction": "3/2"
+    },
+    {
+      "name": "tri_rotate_high_to_low",
+      "description": "Map tri-high -> tri-low on R1.",
+      "fraction": "5/3"
+    },
+    {
+      "name": "stage_seed_to_counter",
+      "description": "Stage seed -> counter using R1 for tri state and R2 as overflow flag.",
+      "fraction": "2/5"
+    },
+    {
+      "name": "stage_counter_to_resonance",
+      "description": "Stage counter -> resonance.",
+      "fraction": "3/2"
+    },
+    {
+      "name": "stage_resonance_to_overflow",
+      "description": "Stage resonance -> overflow (overflow flag set).",
+      "fraction": "55/21"
+    },
+    {
+      "name": "stage_overflow_to_seed",
+      "description": "Stage overflow -> seed (overflow flag cleared).",
+      "fraction": "7/11"
+    },
+    {
+      "name": "kernel_involution_neg_to_pos",
+      "description": "Kernel involution on R3: neg -> pos.",
+      "fraction": "19/23"
+    },
+    {
+      "name": "kernel_involution_pos_to_neg",
+      "description": "Kernel involution on R3: pos -> neg.",
+      "fraction": "23/19"
+    },
+    {
+      "name": "kernel_involution_zero_fixed",
+      "description": "Kernel involution on R3: zero fixed.",
+      "fraction": "1"
+    }
+  ],
+  "transition_source": "agdas_templates",
+  "transition_source_path": null,
+  "transition_source_summary": {
+    "source": "agdas_templates",
+    "template_count": 10,
+    "template_modules": [
+      "Base369.rotateTri",
+      "Kernel.Algebra.\u03b9",
+      "LogicTlurey.next"
+    ]
+  },
+  "basin_profile": {
+    "nodes": 6,
+    "edges": 16,
+    "terminal_states": 0,
+    "longest_chain": 6,
+    "chain_length_histogram": {
+      "5": 2,
+      "4": 2,
+      "6": 2
+    },
+    "max_chain_start_states": [
+      "10846",
+      "17255"
+    ]
+  },
+  "full_space_profile": {
+    "nodes": 81,
+    "edges": 198,
+    "terminal_states": 0,
+    "longest_chain": 12,
+    "chain_length_histogram": {
+      "5": 6,
+      "12": 30,
+      "4": 6,
+      "6": 24,
+      "11": 6,
+      "3": 9
+    },
+    "max_chain_start_states": [
+      "7714",
+      "8246",
+      "9338",
+      "9842",
+      "9982"
+    ]
+  },
+  "basin_path": [
+    {
+      "step": 1,
+      "value": 10353,
+      "transition": "tri_rotate_high_to_low",
+      "next": 17255,
+      "fraction": "5/3",
+      "source_signed": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 2,
+      "value": 17255,
+      "transition": "tri_rotate_low_to_mid",
+      "next": 6902,
+      "fraction": "2/5",
+      "source_signed": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 3,
+      "value": 6902,
+      "transition": "tri_rotate_mid_to_high",
+      "next": 10353,
+      "fraction": "3/2",
+      "source_signed": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 4,
+      "value": 10353,
+      "transition": "tri_rotate_high_to_low",
+      "next": 17255,
+      "fraction": "5/3",
+      "source_signed": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 5,
+      "value": 17255,
+      "transition": "tri_rotate_low_to_mid",
+      "next": 6902,
+      "fraction": "2/5",
+      "source_signed": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 6,
+      "value": 6902,
+      "transition": "tri_rotate_mid_to_high",
+      "next": 10353,
+      "fraction": "3/2",
+      "source_signed": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 7,
+      "value": 10353,
+      "transition": "tri_rotate_high_to_low",
+      "next": 17255,
+      "fraction": "5/3",
+      "source_signed": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 8,
+      "value": 17255,
+      "transition": "tri_rotate_low_to_mid",
+      "next": 6902,
+      "fraction": "2/5",
+      "source_signed": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 9,
+      "value": 6902,
+      "transition": "tri_rotate_mid_to_high",
+      "next": 10353,
+      "fraction": "3/2",
+      "source_signed": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 10,
+      "value": 10353,
+      "transition": "tri_rotate_high_to_low",
+      "next": 17255,
+      "fraction": "5/3",
+      "source_signed": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 11,
+      "value": 17255,
+      "transition": "tri_rotate_low_to_mid",
+      "next": 6902,
+      "fraction": "2/5",
+      "source_signed": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 12,
+      "value": 6902,
+      "transition": "tri_rotate_mid_to_high",
+      "next": 10353,
+      "fraction": "3/2",
+      "source_signed": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        1,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "round_trip_checks": {
+    "status": "ok",
+    "failure_count": 0,
+    "failures": []
+  },
+  "fixed_prime_walk_summary": {
+    "max_steps": 16,
+    "state_count": 81,
+    "terminal": 0,
+    "cycle": 81,
+    "timeout": 0,
+    "max_steps_observed": 3,
+    "samples_by_length": [
+      [
+        "(-1, -1, -1, -1)",
+        3,
+        "cycle"
+      ],
+      [
+        "(-1, -1, -1, 0)",
+        3,
+        "cycle"
+      ],
+      [
+        "(-1, -1, -1, 1)",
+        3,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 0, -1)",
+        3,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 0, 0)",
+        3,
+        "cycle"
+      ]
+    ],
+    "outcomes": {
+      "(-1, -1, -1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, -1, -1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, -1, -1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, -1, 0, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, -1, 0, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, -1, 0, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, -1, 1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, -1, 1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, -1, 1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 0, -1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 0, -1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 0, -1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 0, 0, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 0, 0, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 0, 0, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 0, 1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 0, 1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 0, 1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 1, -1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 1, -1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 1, -1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 1, 0, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 1, 0, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 1, 0, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 1, 1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 1, 1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(-1, 1, 1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, -1, -1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, -1, -1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, -1, -1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, -1, 0, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, -1, 0, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, -1, 0, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, -1, 1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, -1, 1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, -1, 1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 0, -1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 0, -1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 0, -1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 0, 0, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 0, 0, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 0, 0, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 0, 1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 0, 1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 0, 1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 1, -1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 1, -1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 1, -1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 1, 0, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 1, 0, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 1, 0, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 1, 1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 1, 1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(0, 1, 1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, -1, -1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, -1, -1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, -1, -1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, -1, 0, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, -1, 0, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, -1, 0, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, -1, 1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, -1, 1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, -1, 1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 0, -1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 0, -1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 0, -1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 0, 0, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 0, 0, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 0, 0, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 0, 1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 0, 1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 0, 1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 1, -1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 1, -1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 1, -1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 1, 0, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 1, 0, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 1, 0, 1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 1, 1, -1)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 1, 1, 0)": {
+        "status": "cycle",
+        "steps": 3
+      },
+      "(1, 1, 1, 1)": {
+        "status": "cycle",
+        "steps": 3
+      }
+    },
+    "longest_paths": [
+      [
+        "(-1, -1, -1, -1)",
+        3,
+        "cycle"
+      ],
+      [
+        "(-1, -1, -1, 0)",
+        3,
+        "cycle"
+      ],
+      [
+        "(-1, -1, -1, 1)",
+        3,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 0, -1)",
+        3,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 0, 0)",
+        3,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 0, 1)",
+        3,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 1, -1)",
+        3,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 1, 0)",
+        3,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 1, 1)",
+        3,
+        "cycle"
+      ],
+      [
+        "(-1, 0, -1, -1)",
+        3,
+        "cycle"
+      ]
+    ]
+  },
+  "fixed_prime_basin_walks": {
+    "max_steps": 16,
+    "basin_count": 81,
+    "target_walk_count": 10,
+    "has_target_walker_count": true,
+    "top_10_basins_by_size": [
+      [
+        "cycle:(-1, -1, -1, -1)",
+        1
+      ],
+      [
+        "cycle:(-1, -1, -1, 0)",
+        1
+      ],
+      [
+        "cycle:(-1, -1, -1, 1)",
+        1
+      ],
+      [
+        "cycle:(-1, -1, 0, -1)",
+        1
+      ],
+      [
+        "cycle:(-1, -1, 0, 0)",
+        1
+      ],
+      [
+        "cycle:(-1, -1, 0, 1)",
+        1
+      ],
+      [
+        "cycle:(-1, -1, 1, -1)",
+        1
+      ],
+      [
+        "cycle:(-1, -1, 1, 0)",
+        1
+      ],
+      [
+        "cycle:(-1, -1, 1, 1)",
+        1
+      ],
+      [
+        "cycle:(-1, 0, -1, -1)",
+        1
+      ]
+    ],
+    "sample_basin_walks": [
+      [
+        "cycle:(-1, -1, -1, -1)",
+        1,
+        [
+          "(-1, -1, -1, -1)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, -1, 0)",
+        1,
+        [
+          "(-1, -1, -1, 0)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, -1, 1)",
+        1,
+        [
+          "(-1, -1, -1, 1)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, 0, -1)",
+        1,
+        [
+          "(-1, -1, 0, -1)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, 0, 0)",
+        1,
+        [
+          "(-1, -1, 0, 0)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, 0, 1)",
+        1,
+        [
+          "(-1, -1, 0, 1)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, 1, -1)",
+        1,
+        [
+          "(-1, -1, 1, -1)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, 1, 0)",
+        1,
+        [
+          "(-1, -1, 1, 0)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, 1, 1)",
+        1,
+        [
+          "(-1, -1, 1, 1)"
+        ]
+      ],
+      [
+        "cycle:(-1, 0, -1, -1)",
+        1,
+        [
+          "(-1, 0, -1, -1)"
+        ]
+      ]
+    ]
+  },
+  "fixed_prime_vs_explicit_summary": {
+    "max_steps": 12,
+    "state_count": 81,
+    "comparison_match_count": 81,
+    "mismatch_count": 0,
+    "terminal": 0,
+    "timeout": 81,
+    "comparison_status_histogram": {
+      "timeout": 81
+    },
+    "mismatches": [],
+    "outcomes": {
+      "(-1, -1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, -1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 0, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 0, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 0, -1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 0, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 0, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 0, 0, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 0, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 0, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 0, 1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 0, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, 1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, -1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 0, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      }
+    }
+  },
+  "fixed_prime_walks": {
+    "(-1, -1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, -1, -1, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "final_state": [
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            -1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, -1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 0, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "final_state": [
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            -1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            -1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        0,
+        1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        0,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            -1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            -1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 1, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        1,
+        0
+      ],
+      "final_state": [
+        -1,
+        -1,
+        1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            -1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            -1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            -1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, -1, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        -1,
+        0
+      ],
+      "final_state": [
+        -1,
+        0,
+        -1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            0,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            0,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, 0, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        -1,
+        1
+      ],
+      "final_state": [
+        -1,
+        0,
+        -1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            0,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        0,
+        -1
+      ],
+      "final_state": [
+        -1,
+        0,
+        0,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            0,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 0, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "final_state": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        0,
+        1
+      ],
+      "final_state": [
+        -1,
+        0,
+        0,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        0,
+        1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            0,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 1, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        1,
+        0
+      ],
+      "final_state": [
+        -1,
+        0,
+        1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        1,
+        1
+      ],
+      "final_state": [
+        -1,
+        0,
+        1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        1,
+        -1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, -1, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "final_state": [
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, 1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "final_state": [
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        0,
+        -1
+      ],
+      "final_state": [
+        -1,
+        1,
+        0,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 0, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        0,
+        0
+      ],
+      "final_state": [
+        -1,
+        1,
+        0,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        0,
+        1
+      ],
+      "final_state": [
+        -1,
+        1,
+        0,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 1, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        1,
+        0
+      ],
+      "final_state": [
+        -1,
+        1,
+        1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        1,
+        1
+      ],
+      "final_state": [
+        -1,
+        1,
+        1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, -1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        -1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        0,
+        -1,
+        -1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, -1, -1, 0)": {
+      "status": "cycle",
+      "start": [
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "final_state": [
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            -1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, -1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        -1,
+        -1,
+        1
+      ],
+      "final_state": [
+        0,
+        -1,
+        -1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        -1,
+        0,
+        -1
+      ],
+      "final_state": [
+        0,
+        -1,
+        0,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 0, 0)": {
+      "status": "cycle",
+      "start": [
+        0,
+        -1,
+        0,
+        0
+      ],
+      "final_state": [
+        0,
+        -1,
+        0,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            -1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, -1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "final_state": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            -1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        -1,
+        1,
+        -1
+      ],
+      "final_state": [
+        0,
+        -1,
+        1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 1, 0)": {
+      "status": "cycle",
+      "start": [
+        0,
+        -1,
+        1,
+        0
+      ],
+      "final_state": [
+        0,
+        -1,
+        1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            -1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, -1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        -1,
+        1,
+        1
+      ],
+      "final_state": [
+        0,
+        -1,
+        1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 0, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, 0, -1, 0)": {
+      "status": "cycle",
+      "start": [
+        0,
+        0,
+        -1,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            0,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            0,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, 0, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        0,
+        -1,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            0,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 0, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        0,
+        0,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            0,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, 0, 0, 0)": {
+      "status": "cycle",
+      "start": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            0,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, 0, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            0,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 0, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        0,
+        1,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            0,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, 0, 1, 0)": {
+      "status": "cycle",
+      "start": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            0,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, 0, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            0,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, 1, -1, 0)": {
+      "status": "cycle",
+      "start": [
+        0,
+        1,
+        -1,
+        0
+      ],
+      "final_state": [
+        0,
+        1,
+        -1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, 1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        1,
+        -1,
+        1
+      ],
+      "final_state": [
+        0,
+        1,
+        -1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        1,
+        0,
+        -1
+      ],
+      "final_state": [
+        0,
+        1,
+        0,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, 1, 0, 0)": {
+      "status": "cycle",
+      "start": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "final_state": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, 1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "final_state": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        1,
+        1,
+        -1
+      ],
+      "final_state": [
+        0,
+        1,
+        1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, 1, 1, 0)": {
+      "status": "cycle",
+      "start": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "final_state": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, 1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "final_state": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            -1,
+            1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, -1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, -1, -1, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        -1,
+        0
+      ],
+      "final_state": [
+        1,
+        -1,
+        -1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, -1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "final_state": [
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, -1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        0,
+        -1
+      ],
+      "final_state": [
+        1,
+        -1,
+        0,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, -1, 0, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        0,
+        0
+      ],
+      "final_state": [
+        1,
+        -1,
+        0,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            -1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, -1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        0,
+        1
+      ],
+      "final_state": [
+        1,
+        -1,
+        0,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            -1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, -1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "final_state": [
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, -1, 1, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        1,
+        0
+      ],
+      "final_state": [
+        1,
+        -1,
+        1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            -1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, -1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        1,
+        1
+      ],
+      "final_state": [
+        1,
+        -1,
+        1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            -1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            -1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 0, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        -1,
+        -1
+      ],
+      "final_state": [
+        1,
+        0,
+        -1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 0, -1, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        -1,
+        0
+      ],
+      "final_state": [
+        1,
+        0,
+        -1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            0,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, 0, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        -1,
+        1
+      ],
+      "final_state": [
+        1,
+        0,
+        -1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            0,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 0, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        0,
+        -1
+      ],
+      "final_state": [
+        1,
+        0,
+        0,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            0,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 0, 0, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "final_state": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, 0, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "final_state": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 0, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        1,
+        -1
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            0,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 0, 1, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, 0, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        1,
+        1,
+        -1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 1, -1, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        -1,
+        0
+      ],
+      "final_state": [
+        1,
+        1,
+        -1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            1,
+            -1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, 1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        -1,
+        1
+      ],
+      "final_state": [
+        1,
+        1,
+        -1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            1,
+            -1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        0,
+        -1
+      ],
+      "final_state": [
+        1,
+        1,
+        0,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            1,
+            0,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 1, 0, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "final_state": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, 1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "final_state": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        1,
+        -1
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        -1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            1,
+            1,
+            -1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 1, 1, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, 1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "steps": 3,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_high_to_low",
+          "next_state": [
+            -1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_low_to_mid",
+          "next_state": [
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 3,
+          "state": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "transition": "tri_rotate_mid_to_high",
+          "next_state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    }
+  },
+  "fixed_prime_chain_bound_check": null,
+  "start_signed_vector": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "basin_profile_for_start": {
+    "nodes": 6,
+    "edges": 16,
+    "terminal_states": 0,
+    "longest_chain": 6,
+    "chain_length_histogram": {
+      "5": 2,
+      "4": 2,
+      "6": 2
+    },
+    "max_chain_start_states": [
+      "10846",
+      "17255"
+    ]
+  },
+  "full_space_nodes": 81,
+  "start_graph": {
+    "10353": {
+      "tri_rotate_high_to_low": 17255,
+      "stage_resonance_to_overflow": 27115,
+      "kernel_involution_zero_fixed": 10353
+    },
+    "17255": {
+      "tri_rotate_low_to_mid": 6902,
+      "stage_seed_to_counter": 6902,
+      "kernel_involution_zero_fixed": 17255
+    },
+    "27115": {
+      "tri_rotate_low_to_mid": 10846,
+      "stage_overflow_to_seed": 17255,
+      "kernel_involution_zero_fixed": 27115
+    },
+    "6902": {
+      "tri_rotate_mid_to_high": 10353,
+      "stage_counter_to_resonance": 10353,
+      "kernel_involution_zero_fixed": 6902
+    },
+    "10846": {
+      "tri_rotate_mid_to_high": 16269,
+      "kernel_involution_zero_fixed": 10846
+    },
+    "16269": {
+      "tri_rotate_high_to_low": 27115,
+      "kernel_involution_zero_fixed": 16269
+    }
+  },
+  "fixed_prime_steps": 16
+}

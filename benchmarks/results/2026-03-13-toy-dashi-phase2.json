@@ -1,0 +1,4799 @@
+{
+  "register_count": 4,
+  "state_space_size": 81,
+  "start_signed": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "start_value": 10353,
+  "start_decoded_signed": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "start_decoded_names": [
+    "positive",
+    "zero",
+    "zero",
+    "zero"
+  ],
+  "transitions": [
+    {
+      "name": "flip_r1_to_negative",
+      "description": "Flip R1 from +1 to \u22121 while leaving all other registers untouched.",
+      "fraction": "5/3"
+    },
+    {
+      "name": "flip_r1_to_positive",
+      "description": "Flip R1 from \u22121 back to +1.",
+      "fraction": "3/5"
+    },
+    {
+      "name": "ignite_r2_from_r1",
+      "description": "If R1 is +1 and R2 is zero, seed R2 as +1 while keeping R1 positive.",
+      "fraction": "11/7"
+    },
+    {
+      "name": "settle_parity",
+      "description": "Mark parity register R4 as +1 when the first two registers are +1.",
+      "fraction": "31/29"
+    },
+    {
+      "name": "reset_r2",
+      "description": "Bring R2 back to zero when it is negative.",
+      "fraction": "7/13"
+    }
+  ],
+  "transition_source": "toy",
+  "transition_source_path": null,
+  "transition_source_summary": null,
+  "basin_profile": {
+    "nodes": 6,
+    "edges": 8,
+    "terminal_states": 0,
+    "longest_chain": 5,
+    "chain_length_histogram": {
+      "4": 2,
+      "3": 1,
+      "5": 1,
+      "2": 2
+    },
+    "max_chain_start_states": [
+      "17255"
+    ]
+  },
+  "full_space_profile": {
+    "nodes": 81,
+    "edges": 93,
+    "terminal_states": 18,
+    "longest_chain": 7,
+    "chain_length_histogram": {
+      "0": 18,
+      "4": 12,
+      "3": 9,
+      "1": 9,
+      "5": 9,
+      "2": 12,
+      "7": 3,
+      "6": 9
+    },
+    "max_chain_start_states": [
+      "19227",
+      "21489",
+      "26013"
+    ]
+  },
+  "basin_path": [
+    {
+      "step": 1,
+      "value": 10353,
+      "transition": "flip_r1_to_negative",
+      "next": 17255,
+      "fraction": "5/3",
+      "source_signed": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 2,
+      "value": 17255,
+      "transition": "flip_r1_to_positive",
+      "next": 10353,
+      "fraction": "3/5",
+      "source_signed": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 3,
+      "value": 10353,
+      "transition": "flip_r1_to_negative",
+      "next": 17255,
+      "fraction": "5/3",
+      "source_signed": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 4,
+      "value": 17255,
+      "transition": "flip_r1_to_positive",
+      "next": 10353,
+      "fraction": "3/5",
+      "source_signed": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 5,
+      "value": 10353,
+      "transition": "flip_r1_to_negative",
+      "next": 17255,
+      "fraction": "5/3",
+      "source_signed": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 6,
+      "value": 17255,
+      "transition": "flip_r1_to_positive",
+      "next": 10353,
+      "fraction": "3/5",
+      "source_signed": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 7,
+      "value": 10353,
+      "transition": "flip_r1_to_negative",
+      "next": 17255,
+      "fraction": "5/3",
+      "source_signed": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 8,
+      "value": 17255,
+      "transition": "flip_r1_to_positive",
+      "next": 10353,
+      "fraction": "3/5",
+      "source_signed": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 9,
+      "value": 10353,
+      "transition": "flip_r1_to_negative",
+      "next": 17255,
+      "fraction": "5/3",
+      "source_signed": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 10,
+      "value": 17255,
+      "transition": "flip_r1_to_positive",
+      "next": 10353,
+      "fraction": "3/5",
+      "source_signed": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 11,
+      "value": 10353,
+      "transition": "flip_r1_to_negative",
+      "next": 17255,
+      "fraction": "5/3",
+      "source_signed": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "step": 12,
+      "value": 17255,
+      "transition": "flip_r1_to_positive",
+      "next": 10353,
+      "fraction": "3/5",
+      "source_signed": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "next_signed": [
+        1,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "round_trip_checks": {
+    "status": "ok",
+    "failure_count": 0,
+    "failures": []
+  },
+  "fixed_prime_walk_summary": {
+    "max_steps": 16,
+    "state_count": 81,
+    "terminal": 27,
+    "cycle": 54,
+    "timeout": 0,
+    "max_steps_observed": 2,
+    "samples_by_length": [
+      [
+        "(-1, -1, -1, -1)",
+        2,
+        "cycle"
+      ],
+      [
+        "(-1, -1, -1, 0)",
+        2,
+        "cycle"
+      ],
+      [
+        "(-1, -1, -1, 1)",
+        2,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 0, -1)",
+        2,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 0, 0)",
+        2,
+        "cycle"
+      ]
+    ],
+    "outcomes": {
+      "(-1, -1, -1, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, -1, -1, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, -1, -1, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, -1, 0, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, -1, 0, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, -1, 0, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, -1, 1, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, -1, 1, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, -1, 1, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 0, -1, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 0, -1, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 0, -1, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 0, 0, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 0, 0, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 0, 0, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 0, 1, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 0, 1, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 0, 1, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 1, -1, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 1, -1, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 1, -1, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 1, 0, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 1, 0, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 1, 0, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 1, 1, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 1, 1, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(-1, 1, 1, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(0, -1, -1, -1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, -1, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, -1, 1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 0, -1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 0, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 0, 1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 1, -1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 1, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 1, 1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, 0, -1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, -1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 0, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 0, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 0, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, -1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, -1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, 0, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, 0, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, 0, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, 1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, 1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, -1, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, -1, -1, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, -1, -1, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, -1, 0, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, -1, 0, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, -1, 0, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, -1, 1, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, -1, 1, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, -1, 1, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 0, -1, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 0, -1, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 0, -1, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 0, 0, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 0, 0, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 0, 0, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 0, 1, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 0, 1, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 0, 1, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 1, -1, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 1, -1, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 1, -1, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 1, 0, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 1, 0, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 1, 0, 1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 1, 1, -1)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 1, 1, 0)": {
+        "status": "cycle",
+        "steps": 2
+      },
+      "(1, 1, 1, 1)": {
+        "status": "cycle",
+        "steps": 2
+      }
+    },
+    "longest_paths": [
+      [
+        "(-1, -1, -1, -1)",
+        2,
+        "cycle"
+      ],
+      [
+        "(-1, -1, -1, 0)",
+        2,
+        "cycle"
+      ],
+      [
+        "(-1, -1, -1, 1)",
+        2,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 0, -1)",
+        2,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 0, 0)",
+        2,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 0, 1)",
+        2,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 1, -1)",
+        2,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 1, 0)",
+        2,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 1, 1)",
+        2,
+        "cycle"
+      ],
+      [
+        "(-1, 0, -1, -1)",
+        2,
+        "cycle"
+      ]
+    ]
+  },
+  "fixed_prime_basin_walks": {
+    "max_steps": 16,
+    "basin_count": 72,
+    "target_walk_count": 10,
+    "has_target_walker_count": true,
+    "top_10_basins_by_size": [
+      [
+        "terminal:(0, 0, -1, -1)",
+        2
+      ],
+      [
+        "terminal:(0, 0, -1, 0)",
+        2
+      ],
+      [
+        "terminal:(0, 0, -1, 1)",
+        2
+      ],
+      [
+        "terminal:(0, 0, 0, -1)",
+        2
+      ],
+      [
+        "terminal:(0, 0, 0, 0)",
+        2
+      ],
+      [
+        "terminal:(0, 0, 0, 1)",
+        2
+      ],
+      [
+        "terminal:(0, 0, 1, -1)",
+        2
+      ],
+      [
+        "terminal:(0, 0, 1, 0)",
+        2
+      ],
+      [
+        "terminal:(0, 0, 1, 1)",
+        2
+      ],
+      [
+        "cycle:(-1, -1, -1, -1)",
+        1
+      ]
+    ],
+    "sample_basin_walks": [
+      [
+        "cycle:(-1, -1, -1, -1)",
+        1,
+        [
+          "(-1, -1, -1, -1)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, -1, 0)",
+        1,
+        [
+          "(-1, -1, -1, 0)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, -1, 1)",
+        1,
+        [
+          "(-1, -1, -1, 1)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, 0, -1)",
+        1,
+        [
+          "(-1, -1, 0, -1)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, 0, 0)",
+        1,
+        [
+          "(-1, -1, 0, 0)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, 0, 1)",
+        1,
+        [
+          "(-1, -1, 0, 1)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, 1, -1)",
+        1,
+        [
+          "(-1, -1, 1, -1)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, 1, 0)",
+        1,
+        [
+          "(-1, -1, 1, 0)"
+        ]
+      ],
+      [
+        "cycle:(-1, -1, 1, 1)",
+        1,
+        [
+          "(-1, -1, 1, 1)"
+        ]
+      ],
+      [
+        "cycle:(-1, 0, -1, -1)",
+        1,
+        [
+          "(-1, 0, -1, -1)"
+        ]
+      ]
+    ]
+  },
+  "fixed_prime_vs_explicit_summary": {
+    "max_steps": 12,
+    "state_count": 81,
+    "comparison_match_count": 81,
+    "mismatch_count": 0,
+    "terminal": 27,
+    "timeout": 54,
+    "comparison_status_histogram": {
+      "timeout": 54,
+      "terminal": 27
+    },
+    "mismatches": [],
+    "outcomes": {
+      "(-1, -1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, -1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, -1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 0, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 0, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(-1, 1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(0, -1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, 0, -1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, -1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 0, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 0, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, -1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, -1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 0, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 0, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      },
+      "(1, 1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "timeout",
+        "steps": 12
+      }
+    }
+  },
+  "fixed_prime_walks": {
+    "(-1, -1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, -1, -1, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "final_state": [
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            -1,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            -1,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, -1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 0, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "final_state": [
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            0,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            0,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        0,
+        1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        0,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            0,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            0,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 1, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        1,
+        0
+      ],
+      "final_state": [
+        -1,
+        -1,
+        1,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            1,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            1,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, -1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, -1, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        -1,
+        0
+      ],
+      "final_state": [
+        -1,
+        0,
+        -1,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            -1,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            -1,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, 0, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        -1,
+        1
+      ],
+      "final_state": [
+        -1,
+        0,
+        -1,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        0,
+        -1
+      ],
+      "final_state": [
+        -1,
+        0,
+        0,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 0, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "final_state": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            0,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        0,
+        1
+      ],
+      "final_state": [
+        -1,
+        0,
+        0,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            0,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        0,
+        1,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 1, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        1,
+        0
+      ],
+      "final_state": [
+        -1,
+        0,
+        1,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            1,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, 0, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        0,
+        1,
+        1
+      ],
+      "final_state": [
+        -1,
+        0,
+        1,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            0,
+            1,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        1,
+        -1,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, -1, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "final_state": [
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            -1,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, 1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "final_state": [
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        0,
+        -1
+      ],
+      "final_state": [
+        -1,
+        1,
+        0,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 0, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        0,
+        0
+      ],
+      "final_state": [
+        -1,
+        1,
+        0,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            0,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        0,
+        1
+      ],
+      "final_state": [
+        -1,
+        1,
+        0,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            0,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 1, 0)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        1,
+        0
+      ],
+      "final_state": [
+        -1,
+        1,
+        1,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            1,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(-1, 1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        -1,
+        1,
+        1,
+        1
+      ],
+      "final_state": [
+        -1,
+        1,
+        1,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            -1,
+            1,
+            1,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, -1, -1, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "reset_r2",
+          "next_state": [
+            0,
+            0,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, -1, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "transition": "reset_r2",
+          "next_state": [
+            0,
+            0,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, -1, -1, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        -1,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "reset_r2",
+          "next_state": [
+            0,
+            0,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 0, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        0,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        -1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "reset_r2",
+          "next_state": [
+            0,
+            0,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        0,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            0,
+            0
+          ],
+          "transition": "reset_r2",
+          "next_state": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, -1, 0, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            0,
+            1
+          ],
+          "transition": "reset_r2",
+          "next_state": [
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 1, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        1,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        -1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "reset_r2",
+          "next_state": [
+            0,
+            0,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        1,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            1,
+            0
+          ],
+          "transition": "reset_r2",
+          "next_state": [
+            0,
+            0,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, -1, 1, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        1,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            1,
+            1
+          ],
+          "transition": "reset_r2",
+          "next_state": [
+            0,
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 0, -1, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        -1,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, -1, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        -1,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, 0, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        0,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, 0, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, 1, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        1,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, 1, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 1, -1, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 1, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        -1,
+        0
+      ],
+      "final_state": [
+        0,
+        1,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 1, -1, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        -1,
+        1
+      ],
+      "final_state": [
+        0,
+        1,
+        -1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 1, 0, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        0,
+        -1
+      ],
+      "final_state": [
+        0,
+        1,
+        0,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 1, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "final_state": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 1, 0, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "final_state": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 1, 1, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        1,
+        -1
+      ],
+      "final_state": [
+        0,
+        1,
+        1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 1, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "final_state": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 1, 1, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "final_state": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, -1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, -1, -1, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        -1,
+        0
+      ],
+      "final_state": [
+        1,
+        -1,
+        -1,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            -1,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            -1,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, -1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "final_state": [
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, -1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        0,
+        -1
+      ],
+      "final_state": [
+        1,
+        -1,
+        0,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, -1, 0, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        0,
+        0
+      ],
+      "final_state": [
+        1,
+        -1,
+        0,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            0,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            0,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, -1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        0,
+        1
+      ],
+      "final_state": [
+        1,
+        -1,
+        0,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            0,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            0,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, -1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "final_state": [
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, -1, 1, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        1,
+        0
+      ],
+      "final_state": [
+        1,
+        -1,
+        1,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            1,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            1,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, -1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        -1,
+        1,
+        1
+      ],
+      "final_state": [
+        1,
+        -1,
+        1,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            -1,
+            1,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            -1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 0, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        -1,
+        -1
+      ],
+      "final_state": [
+        1,
+        0,
+        -1,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 0, -1, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        -1,
+        0
+      ],
+      "final_state": [
+        1,
+        0,
+        -1,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            -1,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            -1,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, 0, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        -1,
+        1
+      ],
+      "final_state": [
+        1,
+        0,
+        -1,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            -1,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 0, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        0,
+        -1
+      ],
+      "final_state": [
+        1,
+        0,
+        0,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 0, 0, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "final_state": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            0,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, 0, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "final_state": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            0,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 0, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        1,
+        -1
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            1,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 0, 1, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            1,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, 0, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            0,
+            1,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 1, -1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        1,
+        1,
+        -1,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 1, -1, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        -1,
+        0
+      ],
+      "final_state": [
+        1,
+        1,
+        -1,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            -1,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            -1,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, 1, -1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        -1,
+        1
+      ],
+      "final_state": [
+        1,
+        1,
+        -1,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            -1,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 1, 0, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        0,
+        -1
+      ],
+      "final_state": [
+        1,
+        1,
+        0,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 1, 0, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "final_state": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            0,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, 1, 0, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "final_state": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            0,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(1, 1, 1, -1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        1,
+        -1
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        -1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            1,
+            -1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, 1, 1, 0)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            1,
+            0
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(1, 1, 1, 1)": {
+      "status": "cycle",
+      "start": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "steps": 2,
+      "max_steps": 16,
+      "cycle_start": 0,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "transition": "flip_r1_to_negative",
+          "next_state": [
+            -1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "step": 2,
+          "state": [
+            -1,
+            1,
+            1,
+            1
+          ],
+          "transition": "flip_r1_to_positive",
+          "next_state": [
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    }
+  },
+  "fixed_prime_chain_bound_check": null,
+  "start_signed_vector": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "basin_profile_for_start": {
+    "nodes": 6,
+    "edges": 8,
+    "terminal_states": 0,
+    "longest_chain": 5,
+    "chain_length_histogram": {
+      "4": 2,
+      "3": 1,
+      "5": 1,
+      "2": 2
+    },
+    "max_chain_start_states": [
+      "17255"
+    ]
+  },
+  "full_space_nodes": 81,
+  "start_graph": {
+    "10353": {
+      "flip_r1_to_negative": 17255,
+      "ignite_r2_from_r1": 16269
+    },
+    "17255": {
+      "flip_r1_to_positive": 10353
+    },
+    "16269": {
+      "flip_r1_to_negative": 27115,
+      "settle_parity": 17391
+    },
+    "27115": {
+      "flip_r1_to_positive": 16269
+    },
+    "17391": {
+      "flip_r1_to_negative": 28985
+    },
+    "28985": {
+      "flip_r1_to_positive": 17391
+    }
+  },
+  "fixed_prime_steps": 16
+}

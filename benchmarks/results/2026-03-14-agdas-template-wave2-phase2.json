@@ -1,0 +1,2923 @@
+{
+  "register_count": 4,
+  "state_space_size": 81,
+  "start_signed": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "start_value": 10353,
+  "start_decoded_signed": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "start_decoded_names": [
+    "positive",
+    "zero",
+    "zero",
+    "zero"
+  ],
+  "transitions": [
+    {
+      "name": "monster_step_accept_p0",
+      "description": "Compressed Monster step: accepted candidate, advance window phase 0 -> 1.",
+      "fraction": "651/638"
+    },
+    {
+      "name": "monster_step_accept_p1",
+      "description": "Compressed Monster step: accepted candidate, advance window phase 1 -> 2.",
+      "fraction": "777/682"
+    },
+    {
+      "name": "monster_step_accept_p2",
+      "description": "Compressed Monster step: accepted candidate, advance window phase 2 -> 0.",
+      "fraction": "609/814"
+    },
+    {
+      "name": "monster_step_reject_p0",
+      "description": "Compressed Monster step: rejected candidate, fallback/current mask kept, phase 0 -> 1.",
+      "fraction": "217/377"
+    },
+    {
+      "name": "monster_step_reject_p1",
+      "description": "Compressed Monster step: rejected candidate, fallback/current mask kept, phase 1 -> 2.",
+      "fraction": "259/403"
+    },
+    {
+      "name": "monster_step_reject_p2",
+      "description": "Compressed Monster step: rejected candidate, fallback/current mask kept, phase 2 -> 0.",
+      "fraction": "203/481"
+    }
+  ],
+  "transition_source": "agdas_templates",
+  "transition_source_path": null,
+  "transition_source_summary": {
+    "source": "agdas_templates",
+    "template_set": "wave2",
+    "template_count": 6,
+    "template_modules": [
+      "Monster.Step.step"
+    ]
+  },
+  "basin_profile": {
+    "nodes": 1,
+    "edges": 0,
+    "terminal_states": 1,
+    "longest_chain": 0,
+    "chain_length_histogram": {
+      "0": 1
+    },
+    "max_chain_start_states": [
+      "10353"
+    ]
+  },
+  "full_space_profile": {
+    "nodes": 81,
+    "edges": 18,
+    "terminal_states": 63,
+    "longest_chain": 1,
+    "chain_length_histogram": {
+      "0": 63,
+      "1": 18
+    },
+    "max_chain_start_states": [
+      "10846",
+      "11594",
+      "12122",
+      "12818",
+      "12958"
+    ]
+  },
+  "basin_path": [],
+  "round_trip_checks": {
+    "status": "ok",
+    "failure_count": 0,
+    "failures": []
+  },
+  "fixed_prime_walk_summary": {
+    "max_steps": 16,
+    "state_count": 81,
+    "terminal": 81,
+    "cycle": 0,
+    "timeout": 0,
+    "max_steps_observed": 1,
+    "samples_by_length": [
+      [
+        "(0, -1, -1, -1)",
+        1,
+        "terminal"
+      ],
+      [
+        "(0, -1, -1, 0)",
+        1,
+        "terminal"
+      ],
+      [
+        "(0, -1, -1, 1)",
+        1,
+        "terminal"
+      ],
+      [
+        "(0, -1, 0, -1)",
+        1,
+        "terminal"
+      ],
+      [
+        "(0, -1, 0, 0)",
+        1,
+        "terminal"
+      ]
+    ],
+    "outcomes": {
+      "(-1, -1, -1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, -1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, 0, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, 0, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, 0, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, 1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, 1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, -1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, -1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, 0, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, 0, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, 0, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, 1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, 1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, -1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, -1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, 0, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, 0, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, 0, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, 1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, 1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, -1, -1, -1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, -1, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, -1, 1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 0, -1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 0, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 0, 1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 1, -1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 1, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 1, 1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, 0, -1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, -1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 0, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 0, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 0, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, -1, -1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, -1, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, -1, 1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, 0, -1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, 0, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, 0, 1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, 1, -1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, 1, 0)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, 1, 1)": {
+        "status": "terminal",
+        "steps": 1
+      },
+      "(1, -1, -1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, -1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, 0, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, 0, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, 0, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, 1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, 1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, -1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, -1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, 0, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, 0, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, 0, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, 1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, 1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, -1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, -1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, -1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, 0, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, 0, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, 0, 1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, 1, -1)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, 1, 0)": {
+        "status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, 1, 1)": {
+        "status": "terminal",
+        "steps": 0
+      }
+    },
+    "longest_paths": [
+      [
+        "(0, -1, -1, -1)",
+        1,
+        "terminal"
+      ],
+      [
+        "(0, -1, -1, 0)",
+        1,
+        "terminal"
+      ],
+      [
+        "(0, -1, -1, 1)",
+        1,
+        "terminal"
+      ],
+      [
+        "(0, -1, 0, -1)",
+        1,
+        "terminal"
+      ],
+      [
+        "(0, -1, 0, 0)",
+        1,
+        "terminal"
+      ],
+      [
+        "(0, -1, 0, 1)",
+        1,
+        "terminal"
+      ],
+      [
+        "(0, -1, 1, -1)",
+        1,
+        "terminal"
+      ],
+      [
+        "(0, -1, 1, 0)",
+        1,
+        "terminal"
+      ],
+      [
+        "(0, -1, 1, 1)",
+        1,
+        "terminal"
+      ],
+      [
+        "(0, 1, -1, -1)",
+        1,
+        "terminal"
+      ]
+    ]
+  },
+  "fixed_prime_basin_walks": {
+    "max_steps": 16,
+    "basin_count": 63,
+    "target_walk_count": 10,
+    "has_target_walker_count": true,
+    "top_10_basins_by_size": [
+      [
+        "terminal:(0, 0, -1, -1)",
+        2
+      ],
+      [
+        "terminal:(0, 0, -1, 0)",
+        2
+      ],
+      [
+        "terminal:(0, 0, -1, 1)",
+        2
+      ],
+      [
+        "terminal:(0, 0, 0, -1)",
+        2
+      ],
+      [
+        "terminal:(0, 0, 0, 0)",
+        2
+      ],
+      [
+        "terminal:(0, 0, 0, 1)",
+        2
+      ],
+      [
+        "terminal:(0, 0, 1, -1)",
+        2
+      ],
+      [
+        "terminal:(0, 0, 1, 0)",
+        2
+      ],
+      [
+        "terminal:(0, 0, 1, 1)",
+        2
+      ],
+      [
+        "terminal:(1, 0, -1, -1)",
+        2
+      ]
+    ],
+    "sample_basin_walks": [
+      [
+        "terminal:(-1, -1, -1, -1)",
+        1,
+        [
+          "(-1, -1, -1, -1)"
+        ]
+      ],
+      [
+        "terminal:(-1, -1, -1, 0)",
+        1,
+        [
+          "(-1, -1, -1, 0)"
+        ]
+      ],
+      [
+        "terminal:(-1, -1, -1, 1)",
+        1,
+        [
+          "(-1, -1, -1, 1)"
+        ]
+      ],
+      [
+        "terminal:(-1, -1, 0, -1)",
+        1,
+        [
+          "(-1, -1, 0, -1)"
+        ]
+      ],
+      [
+        "terminal:(-1, -1, 0, 0)",
+        1,
+        [
+          "(-1, -1, 0, 0)"
+        ]
+      ],
+      [
+        "terminal:(-1, -1, 0, 1)",
+        1,
+        [
+          "(-1, -1, 0, 1)"
+        ]
+      ],
+      [
+        "terminal:(-1, -1, 1, -1)",
+        1,
+        [
+          "(-1, -1, 1, -1)"
+        ]
+      ],
+      [
+        "terminal:(-1, -1, 1, 0)",
+        1,
+        [
+          "(-1, -1, 1, 0)"
+        ]
+      ],
+      [
+        "terminal:(-1, -1, 1, 1)",
+        1,
+        [
+          "(-1, -1, 1, 1)"
+        ]
+      ],
+      [
+        "terminal:(-1, 0, -1, -1)",
+        1,
+        [
+          "(-1, 0, -1, -1)"
+        ]
+      ]
+    ]
+  },
+  "fixed_prime_vs_explicit_summary": {
+    "max_steps": 12,
+    "state_count": 81,
+    "comparison_match_count": 81,
+    "mismatch_count": 0,
+    "terminal": 81,
+    "timeout": 0,
+    "comparison_status_histogram": {
+      "terminal": 81
+    },
+    "mismatches": [],
+    "outcomes": {
+      "(-1, -1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, -1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, -1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, -1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, 0, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, 0, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, 1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 0, 1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(-1, 1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, -1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, -1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, 0, -1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, -1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 0, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 0, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 0, 1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(0, 1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(0, 1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 1
+      },
+      "(1, -1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, -1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, -1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, -1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, 0, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, 0, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, 1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 0, 1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, -1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, -1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, -1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, 0, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, 0, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, 0, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, 1, -1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, 1, 0)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      },
+      "(1, 1, 1, 1)": {
+        "status": "match",
+        "comparison_status": "terminal",
+        "steps": 0
+      }
+    }
+  },
+  "fixed_prime_walks": {
+    "(-1, -1, -1, -1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, -1, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "final_state": [
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, -1, -1, 1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, -1, 0, -1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, -1, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "final_state": [
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, -1, 0, 1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        -1,
+        0,
+        1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        0,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, -1, 1, -1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, -1, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        -1,
+        1,
+        0
+      ],
+      "final_state": [
+        -1,
+        -1,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, -1, 1, 1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "final_state": [
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 0, -1, -1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 0, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        0,
+        -1,
+        0
+      ],
+      "final_state": [
+        -1,
+        0,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 0, -1, 1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        0,
+        -1,
+        1
+      ],
+      "final_state": [
+        -1,
+        0,
+        -1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 0, 0, -1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        0,
+        0,
+        -1
+      ],
+      "final_state": [
+        -1,
+        0,
+        0,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 0, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "final_state": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 0, 0, 1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        0,
+        0,
+        1
+      ],
+      "final_state": [
+        -1,
+        0,
+        0,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 0, 1, -1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        0,
+        1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        0,
+        1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 0, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        0,
+        1,
+        0
+      ],
+      "final_state": [
+        -1,
+        0,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 0, 1, 1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        0,
+        1,
+        1
+      ],
+      "final_state": [
+        -1,
+        0,
+        1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 1, -1, -1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        1,
+        -1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 1, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "final_state": [
+        -1,
+        1,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 1, -1, 1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "final_state": [
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 1, 0, -1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        1,
+        0,
+        -1
+      ],
+      "final_state": [
+        -1,
+        1,
+        0,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 1, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        1,
+        0,
+        0
+      ],
+      "final_state": [
+        -1,
+        1,
+        0,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 1, 0, 1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        1,
+        0,
+        1
+      ],
+      "final_state": [
+        -1,
+        1,
+        0,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 1, 1, -1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "final_state": [
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 1, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        1,
+        1,
+        0
+      ],
+      "final_state": [
+        -1,
+        1,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(-1, 1, 1, 1)": {
+      "status": "terminal",
+      "start": [
+        -1,
+        1,
+        1,
+        1
+      ],
+      "final_state": [
+        -1,
+        1,
+        1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, -1, -1, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "transition": "monster_step_reject_p2",
+          "next_state": [
+            0,
+            0,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, -1, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "transition": "monster_step_reject_p0",
+          "next_state": [
+            0,
+            0,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, -1, -1, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        -1,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            -1,
+            1
+          ],
+          "transition": "monster_step_reject_p1",
+          "next_state": [
+            0,
+            0,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 0, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        0,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "transition": "monster_step_reject_p2",
+          "next_state": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, -1, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        0,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            0,
+            0
+          ],
+          "transition": "monster_step_reject_p0",
+          "next_state": [
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 0, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        -1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            0,
+            1
+          ],
+          "transition": "monster_step_reject_p1",
+          "next_state": [
+            0,
+            0,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 1, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        1,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "transition": "monster_step_reject_p2",
+          "next_state": [
+            0,
+            0,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, -1, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        1,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            1,
+            0
+          ],
+          "transition": "monster_step_reject_p0",
+          "next_state": [
+            0,
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, -1, 1, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        -1,
+        1,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        -1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            -1,
+            1,
+            1
+          ],
+          "transition": "monster_step_reject_p1",
+          "next_state": [
+            0,
+            0,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, 0, -1, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        -1,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, -1, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        -1,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        -1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, 0, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        0,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, 0, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, 1, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        1,
+        -1
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 0, 1, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "final_state": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(0, 1, -1, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        1,
+        0,
+        -1,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            -1,
+            -1
+          ],
+          "transition": "monster_step_accept_p2",
+          "next_state": [
+            1,
+            0,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, 1, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        -1,
+        0
+      ],
+      "final_state": [
+        1,
+        0,
+        -1,
+        1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            -1,
+            0
+          ],
+          "transition": "monster_step_accept_p0",
+          "next_state": [
+            1,
+            0,
+            -1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 1, -1, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        -1,
+        1
+      ],
+      "final_state": [
+        1,
+        0,
+        -1,
+        -1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            -1,
+            1
+          ],
+          "transition": "monster_step_accept_p1",
+          "next_state": [
+            1,
+            0,
+            -1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, 1, 0, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        0,
+        -1
+      ],
+      "final_state": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            0,
+            -1
+          ],
+          "transition": "monster_step_accept_p2",
+          "next_state": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, 1, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "final_state": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "transition": "monster_step_accept_p0",
+          "next_state": [
+            1,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 1, 0, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "final_state": [
+        1,
+        0,
+        0,
+        -1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "transition": "monster_step_accept_p1",
+          "next_state": [
+            1,
+            0,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "(0, 1, 1, -1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        1,
+        -1
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            1,
+            -1
+          ],
+          "transition": "monster_step_accept_p2",
+          "next_state": [
+            1,
+            0,
+            1,
+            0
+          ]
+        }
+      ]
+    },
+    "(0, 1, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "transition": "monster_step_accept_p0",
+          "next_state": [
+            1,
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "(0, 1, 1, 1)": {
+      "status": "terminal",
+      "start": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        -1
+      ],
+      "steps": 1,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": [
+        {
+          "step": 1,
+          "state": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "transition": "monster_step_accept_p1",
+          "next_state": [
+            1,
+            0,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    "(1, -1, -1, -1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, -1, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        -1,
+        -1,
+        0
+      ],
+      "final_state": [
+        1,
+        -1,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, -1, -1, 1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "final_state": [
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, -1, 0, -1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        -1,
+        0,
+        -1
+      ],
+      "final_state": [
+        1,
+        -1,
+        0,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, -1, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        -1,
+        0,
+        0
+      ],
+      "final_state": [
+        1,
+        -1,
+        0,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, -1, 0, 1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        -1,
+        0,
+        1
+      ],
+      "final_state": [
+        1,
+        -1,
+        0,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, -1, 1, -1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "final_state": [
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, -1, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        -1,
+        1,
+        0
+      ],
+      "final_state": [
+        1,
+        -1,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, -1, 1, 1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        -1,
+        1,
+        1
+      ],
+      "final_state": [
+        1,
+        -1,
+        1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 0, -1, -1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        0,
+        -1,
+        -1
+      ],
+      "final_state": [
+        1,
+        0,
+        -1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 0, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        0,
+        -1,
+        0
+      ],
+      "final_state": [
+        1,
+        0,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 0, -1, 1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        0,
+        -1,
+        1
+      ],
+      "final_state": [
+        1,
+        0,
+        -1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 0, 0, -1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        0,
+        0,
+        -1
+      ],
+      "final_state": [
+        1,
+        0,
+        0,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 0, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "final_state": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 0, 0, 1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "final_state": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 0, 1, -1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        0,
+        1,
+        -1
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 0, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 0, 1, 1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "final_state": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 1, -1, -1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        1,
+        -1,
+        -1
+      ],
+      "final_state": [
+        1,
+        1,
+        -1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 1, -1, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        1,
+        -1,
+        0
+      ],
+      "final_state": [
+        1,
+        1,
+        -1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 1, -1, 1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        1,
+        -1,
+        1
+      ],
+      "final_state": [
+        1,
+        1,
+        -1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 1, 0, -1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        1,
+        0,
+        -1
+      ],
+      "final_state": [
+        1,
+        1,
+        0,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 1, 0, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "final_state": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 1, 0, 1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "final_state": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 1, 1, -1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        1,
+        1,
+        -1
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        -1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 1, 1, 0)": {
+      "status": "terminal",
+      "start": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    },
+    "(1, 1, 1, 1)": {
+      "status": "terminal",
+      "start": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "final_state": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "steps": 0,
+      "max_steps": 16,
+      "cycle_start": null,
+      "path": []
+    }
+  },
+  "fixed_prime_chain_bound_check": null,
+  "start_signed_vector": [
+    1,
+    0,
+    0,
+    0
+  ],
+  "basin_profile_for_start": {
+    "nodes": 1,
+    "edges": 0,
+    "terminal_states": 1,
+    "longest_chain": 0,
+    "chain_length_histogram": {
+      "0": 1
+    },
+    "max_chain_start_states": [
+      "10353"
+    ]
+  },
+  "full_space_nodes": 81,
+  "start_graph": {
+    "10353": {}
+  },
+  "fixed_prime_steps": 16
+}

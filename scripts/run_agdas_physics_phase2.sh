@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)"
+OUT_DIR="${ROOT_DIR}/benchmarks/results"
+DATE_TAG="$(date +%F)"
+OUT_JSON="${OUT_DIR}/${DATE_TAG}-agdas-physics1-phase2.json"
+
+mkdir -p "${OUT_DIR}"
+
+python3 "${ROOT_DIR}/scripts/toy_dashi_transitions.py" \
+  --json \
+  --agdas-templates \
+  --agdas-template-set physics1 \
+  --disable-chain-bound \
+  > "${OUT_JSON}"
+
+echo "wrote ${OUT_JSON}"

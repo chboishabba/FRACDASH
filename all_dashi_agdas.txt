@@ -8,7 +8,6 @@ open import Data.Nat.Properties as NatP using (≤-refl; ≤-trans; ≤-antisym;
 open import Data.Nat using (_≤_; _⊔_)
 open import Data.Sum using (_⊎_; inj₁; inj₂)
 
-------------------------------------------------------------------------
 -- Severity levels (0..9). (You can restrict further if you want Fin 10.)
 
 Severity : Set

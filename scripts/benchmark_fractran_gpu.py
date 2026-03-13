@@ -22,6 +22,7 @@ SCENARIOS = {
     "primegame_small": {"program": "primegame", "init": 2},
     "mult_smoke": {"program": "mult", "init": 2},
     "paper_smoke": {"program": "paper", "init": 2},
+    "hamming_smoke": {"program": "hamming", "init": 2},
 }
 
 

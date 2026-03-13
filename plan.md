@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-Phase 1: CPU-side seam extraction and exponent-vector validation
+Phase 2: Core experiments (detailed toy DASHI dynamics)
 
 ## Milestones
 
@@ -88,6 +88,7 @@ Current direction:
 - `scripts/check_dashicore_reuse.py` is now the minimal smoke path for by-reference imports and adapter passthrough
 - `gpu/fractran_layout.py` now defines the first FRACTRAN-specific dense GPU contract
 - `scripts/check_fractran_gpu_layout.py` now proves that contract against the compiled CPU baseline on `mult_smoke` and `primegame_small`
+- `DASHI_STATE.md` records the minimal signed ternary registers and their FRACTRAN mapping
 - `gpu_shaders/fractran_step.comp` and `gpu/vulkan_fractran_step.py` now implement the first real one-step Vulkan path
 - `scripts/check_fractran_vulkan_step.py` now proves one-step GPU parity against the dense CPU contract on `mult_smoke` and `primegame_small`
 - the Vulkan step path now also supports batched state buffers and matches dense CPU parity across every tested batch slot
@@ -99,12 +100,28 @@ Current direction:
 
 ## Immediate Next Actions
 
-1. Treat `compiled` as the active exact-step CPU baseline for future work.
-2. Pivot to minimal GPU implementation planning against the current compiled semantics and benchmark contract.
-3. Use `../dashiCORE` host-side Vulkan helpers as the first reuse seam instead of cloning GPU code into FRACDASH.
-4. Expand the routing benchmark to at least one more program beyond `paper_smoke`, focusing on the `batch_size = 4..32`, `steps = 4..16` middle region.
-5. Preserve the current exact-vs-at-least checkpoint semantics in all future benchmark extensions.
-6. Keep LUT parked unless it becomes specifically useful as a GPU-side representation.
+1. Keep the `compiled` engine as the stable exact-step CPU baseline while monitoring parity/artifacts.
+2. Record the deterministic GPU routing rule derived from `benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json` and use it as the gating condition for future host/GPU work.
+3. Once the routing policy is locked, upstream any reusable helper/adapter plumbing back into `../dashiCORE` while keeping the FRACTRAN-specific state layout and parity logic local to FRACDASH.
+4. Continue referencing the `../dashiCORE` Vulkan helpers via `gpu/dashicore_bridge.py` and the adapter passthrough smoke path.
+5. Preserve the exact vs. at-least checkpoint semantics and keep the `cycle` engine pegged as the at-least sentinel.
+6. Implement the full AGDAS-to-FRACTRAN physics bridge from the AGDA semantics in `../dashi_agda` into a typed transition IR before broader CORE integration work. The primary route is now FRACDASH-side mapping/templates, not edits to the `.agda` sources: `scripts/agdas_bridge.py` emits the wave-1 templates, and `scripts/toy_dashi_transitions.py` can execute them via `--agdas-templates`.
+7. Resume Phase 2 CORE experiments with that bridge and keep the toy transition set as the deterministic safety gate. The parser remains available in `scripts/agdas_bridge.py` for optional source-coupled extraction, but the main execution path no longer depends on marker availability in the `.agda` tree.
+8. Prioritize the physics-facing bridge over deeper Monster compression unless the Monster path starts producing equally strong structure. `physics1` and `physics2` now provide the most relevant James-facing signal.
+9. Run timing regression checks between matrix runs with `scripts/check_timing_regression.py` after material CPU changes.
+
+## Phase 2 Experiment Work
+
+1. Use `scripts/toy_dashi_transitions.py` to enumerate the FRACTRAN fractions for the toy signed-ternary state space, detail the prime-level invariants, and verify that the decoder round-trips each encoded state.
+2. Build the basin graph starting from the canonical start state, capture the sequence of transitions, and measure the longest monotone chain within the explored subset.
+3. Expand the exploration to the full `3^4=81` encoded state space, compare fixed-prime vs explicit prime dynamics, and collect the deterministic basin partition data.
+4. Feed these reproducible outputs back into the CORE experiment log so these results can drive the next CORE-facing experiment pass.
+5. Build the first AGDAS parser/extractor and interpreter surface in `scripts/toy_dashi_transitions.py` or a companion module so full transition programs can be emitted as FRACTRAN fractions.
+   Current state: parser exists in `scripts/agdas_bridge.py`; verifier execution is connected via `scripts/toy_dashi_transitions.py --agdas-path`; the active bridge path is the FRACDASH-side template/mapping route exercised via `--agdas-templates`, with the `.agda` tree used as semantic reference rather than a required annotated input.
+6. Continue widening the physics-facing bridge:
+   - `physics1` on the 4-register carrier is already recurrent and informative.
+   - `physics2` now runs on a dedicated 6-register carrier and produces a denser recurrent graph than `physics1`.
+   - the next pass should choose between scan refinement, action monotonicity, or cone-interior structure as the next added layer.
 
 ## CPU To GPU Handoff Criteria
 
@@ -119,3 +136,11 @@ Current direction:
 - Benchmarks may be too noisy or too narrow to guide optimization well.
 - Binary-threshold LUTs may be too narrow to matter unless generalized beyond presence-only masks.
 - GPU reuse may become messy if the boundary to `../dashiCORE` is not explicit.
+
+## Latest Phase 2 Output
+
+- `scripts/toy_dashi_transitions.py --json` now emits:
+  - fixed-prime walk summaries over all 81 states,
+  - deterministic basin partition summaries,
+  - fixed-prime vs explicit-semantics comparison for all states,
+  - deterministic fixed-prime chain-bound verification, with canonical JSON artifacts defaulting to `--max-chain-bound 2`.

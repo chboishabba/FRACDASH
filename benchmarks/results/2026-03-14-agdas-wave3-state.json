@@ -1,0 +1,155 @@
+{
+  "register_count": 6,
+  "state_space_size": 729,
+  "registers": [
+    {
+      "name": "R1",
+      "role": "mask summary",
+      "negative": 47,
+      "zero": 41,
+      "positive": 43
+    },
+    {
+      "name": "R2",
+      "role": "candidate / choice summary",
+      "negative": 61,
+      "zero": 53,
+      "positive": 59
+    },
+    {
+      "name": "R3",
+      "role": "admissibility summary",
+      "negative": 73,
+      "zero": 67,
+      "positive": 71
+    },
+    {
+      "name": "R4",
+      "role": "window low trit",
+      "negative": 89,
+      "zero": 79,
+      "positive": 83
+    },
+    {
+      "name": "R5",
+      "role": "window high trit",
+      "negative": 103,
+      "zero": 97,
+      "positive": 101
+    },
+    {
+      "name": "R6",
+      "role": "kernel / polarity",
+      "negative": 113,
+      "zero": 107,
+      "positive": 109
+    }
+  ],
+  "round_trip": {
+    "status": "ok",
+    "failure_count": 0,
+    "failures": []
+  },
+  "samples": [
+    {
+      "name": "monster_idle_p0",
+      "state": {
+        "R1": 0,
+        "R2": 0,
+        "R3": 0,
+        "R4": 0,
+        "R5": 0,
+        "R6": 0
+      },
+      "encoded": 119376030131,
+      "decoded": {
+        "R1": 0,
+        "R2": 0,
+        "R3": 0,
+        "R4": 0,
+        "R5": 0,
+        "R6": 0
+      }
+    },
+    {
+      "name": "monster_accept_p0",
+      "state": {
+        "R1": 0,
+        "R2": 1,
+        "R3": 1,
+        "R4": 0,
+        "R5": 0,
+        "R6": 0
+      },
+      "encoded": 140824046809,
+      "decoded": {
+        "R1": 0,
+        "R2": 1,
+        "R3": 1,
+        "R4": 0,
+        "R5": 0,
+        "R6": 0
+      }
+    },
+    {
+      "name": "monster_reject_p0",
+      "state": {
+        "R1": 0,
+        "R2": -1,
+        "R3": -1,
+        "R4": 0,
+        "R5": 0,
+        "R6": 0
+      },
+      "encoded": 149699088193,
+      "decoded": {
+        "R1": 0,
+        "R2": -1,
+        "R3": -1,
+        "R4": 0,
+        "R5": 0,
+        "R6": 0
+      }
+    },
+    {
+      "name": "monster_accept_p1",
+      "state": {
+        "R1": 1,
+        "R2": 0,
+        "R3": 0,
+        "R4": 1,
+        "R5": 0,
+        "R6": 0
+      },
+      "encoded": 131538453701,
+      "decoded": {
+        "R1": 1,
+        "R2": 0,
+        "R3": 0,
+        "R4": 1,
+        "R5": 0,
+        "R6": 0
+      }
+    },
+    {
+      "name": "monster_window_wrap",
+      "state": {
+        "R1": 1,
+        "R2": 0,
+        "R3": 0,
+        "R4": -1,
+        "R5": 1,
+        "R6": 0
+      },
+      "encoded": 146863639339,
+      "decoded": {
+        "R1": 1,
+        "R2": 0,
+        "R3": 0,
+        "R4": -1,
+        "R5": 1,
+        "R6": 0
+      }
+    }
+  ]
+}

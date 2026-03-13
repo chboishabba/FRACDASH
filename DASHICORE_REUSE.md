@@ -133,3 +133,5 @@ If FRACDASH produces a kernel/helper that is:
 then move it into `../dashiCORE` and keep FRACDASH consuming it by reference.
 
 If a kernel is specific to FRACTRAN execution semantics, keep it in FRACDASH even if it uses CORE’s Vulkan plumbing.
+
+Once the deterministic GPU routing rule is locked in (see `README.md` and `benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json` for the expanded matrix), the upstreaming trigger is simple: move any helper or adapter piece that is agnostic enough to document into `../dashiCORE`, then keep the FRACTRAN parser/contract here.

@@ -6,7 +6,7 @@
 - Online UUID: `69b35d79-1d90-839f-a358-5a26949aebd2`
 - Canonical thread ID: `afc007c96393bf9b32c8029bc7d510bfc4947b63`
 - Source used: `db`
-- Resolution date: `2026-03-13`
+- Resolution date: `2026-03-14`
 
 Secondary resolved conversation:
 
@@ -37,6 +37,7 @@ The conversation sharpened these decisions:
 - DASHI's `3 x 3 x 3` balanced ternary cube was treated as the main local coordinate grammar.
 - FRACTRAN was treated as motion on prime exponent lattices.
 - The likely translation problem is not just "encode transitions", but "encode signed transitions without losing the geometry."
+- Refreshed thread signal on `2026-03-14`: the basin-side story is now framed around two independent rank-4 diagnostics, namely longest monotone chain `4` and PCA effective dimension `4` on the `10 x 15` basin-prime matrix. For FRACDASH this strengthens one practical requirement: richer AGDAS/Monster bridge encodings should preserve nontrivial low-dimensional structure, not collapse into a nearly terminal toy compression.
 - A suggested experiment path was:
   - build a basin graph
   - encode DASHI transitions as FRACTRAN rules
@@ -51,10 +52,11 @@ The conversation sharpened these decisions:
 - LUT experiment result: a binary-threshold `mask -> rule index` path was implemented for LUT-compatible programs. It preserves parity on `mult_smoke` and `primegame_*`, rejects `hamming` as incompatible, and does not beat `frac-opt` on the current primegame matrix. The active CPU baseline therefore remains `frac-opt`.
 - Active optimization pivot: LUT is now parked. The compiled evaluator has gained `frac-opt`-style rule-order narrowing, the active benchmark matrix no longer includes `lut`, and the current matrix summary routes to `continue compiled-path tuning`.
 - Latest compiled-path result: the benchmark harness now summarizes compiled runs directly from exponent vectors instead of decoding every state to `IntMap`. Parity still holds, and the current canonical matrix has `compiled` ahead of `frac-opt` on the sampled `primegame_*` scenarios.
+- Routing expansion: the GPU matrix now includes `primegame_small`, `mult_smoke`, `paper_smoke`, and `hamming_smoke` across `batch_size = 4, 16, 32, 64, 128` and `steps = 4, 8, 16`, which generated `benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json` and a deterministic CPU/GPU rule that will also trigger upstreaming the reusable helper plumbing.
+- Phase 2 launch: `scripts/toy_dashi_transitions.py` now encodes a toy `{-1,0,+1}^3` transition set, provides the FRACTRAN fractions that drive it, and decodes the signed state so the CORE experiments have a concrete artifact instead of a blank slate.
 
 ## Repo State
 
-- No implementation exists yet.
 - Project memory was initialized on `2026-03-13` with:
   - [`spec.md`](/home/c/Documents/code/FRACDASH/spec.md)
   - [`architecture.md`](/home/c/Documents/code/FRACDASH/architecture.md)
@@ -67,6 +69,12 @@ The conversation sharpened these decisions:
   - [`CHANGELOG.md`](/home/c/Documents/code/FRACDASH/CHANGELOG.md)
 - The repo now also contains a checked-out `fractran/` directory for the fast CPU baseline.
 - Initial benchmark artifacts now live under [`benchmarks/results/`](/home/c/Documents/code/FRACDASH/benchmarks/results).
+- The repo now also contains:
+  - a stable CPU benchmark harness and canonical matrix artifacts
+  - a reused-by-reference Vulkan/GPU path through `../dashiCORE`
+  - a toy signed 4-register DASHI/FRACTRAN experiment harness
+  - FRACDASH-side AGDAS bridge mappings and template execution paths
+  - local formalism sketches and physics-facing bridge experiments (`physics1`, `physics2`)
 - The full CPU comparison matrix and summary now live in:
   - corrected scenario set includes `mult_smoke` at exact logical-step target `2`
   - [`benchmarks/results/2026-03-13-cpu-matrix.jsonl`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-13-cpu-matrix.jsonl)

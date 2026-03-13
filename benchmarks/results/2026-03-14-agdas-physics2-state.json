@@ -1,0 +1,135 @@
+{
+  "register_count": 6,
+  "state_space_size": 729,
+  "registers": [
+    {
+      "name": "R1",
+      "role": "left/source severity code",
+      "negative": 127,
+      "zero": 131,
+      "positive": 137
+    },
+    {
+      "name": "R2",
+      "role": "right/source severity code",
+      "negative": 139,
+      "zero": 149,
+      "positive": 151
+    },
+    {
+      "name": "R3",
+      "role": "effective joined severity",
+      "negative": 157,
+      "zero": 163,
+      "positive": 167
+    },
+    {
+      "name": "R4",
+      "role": "region flag",
+      "negative": 173,
+      "zero": 179,
+      "positive": 181
+    },
+    {
+      "name": "R5",
+      "role": "signature/scan latch",
+      "negative": 191,
+      "zero": 193,
+      "positive": 197
+    },
+    {
+      "name": "R6",
+      "role": "action/energy phase",
+      "negative": 199,
+      "zero": 211,
+      "positive": 223
+    }
+  ],
+  "round_trip": {
+    "status": "ok",
+    "failure_count": 0,
+    "failures": []
+  },
+  "samples": [
+    {
+      "name": "physics2_idle",
+      "state": {
+        "R1": 0,
+        "R2": 0,
+        "R3": 0,
+        "R4": 1,
+        "R5": 0,
+        "R6": -1
+      },
+      "encoded": 22117402872199,
+      "decoded": {
+        "R1": 0,
+        "R2": 0,
+        "R3": 0,
+        "R4": 1,
+        "R5": 0,
+        "R6": -1
+      }
+    },
+    {
+      "name": "physics2_left_mid",
+      "state": {
+        "R1": 1,
+        "R2": 0,
+        "R3": 0,
+        "R4": 1,
+        "R5": 0,
+        "R6": -1
+      },
+      "encoded": 23130413690773,
+      "decoded": {
+        "R1": 1,
+        "R2": 0,
+        "R3": 0,
+        "R4": 1,
+        "R5": 0,
+        "R6": -1
+      }
+    },
+    {
+      "name": "physics2_right_high",
+      "state": {
+        "R1": 0,
+        "R2": -1,
+        "R3": 0,
+        "R4": 1,
+        "R5": 0,
+        "R6": -1
+      },
+      "encoded": 20633013417689,
+      "decoded": {
+        "R1": 0,
+        "R2": -1,
+        "R3": 0,
+        "R4": 1,
+        "R5": 0,
+        "R6": -1
+      }
+    },
+    {
+      "name": "physics2_boundary",
+      "state": {
+        "R1": 1,
+        "R2": 0,
+        "R3": 0,
+        "R4": -1,
+        "R5": 1,
+        "R6": 0
+      },
+      "encoded": 23927053715029,
+      "decoded": {
+        "R1": 1,
+        "R2": 0,
+        "R3": 0,
+        "R4": -1,
+        "R5": 1,
+        "R6": 0
+      }
+    }
+  ]
+}

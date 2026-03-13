@@ -116,6 +116,8 @@ The first minimal Vulkan kernel interface now exists:
 
 Immediate next expansion:
 
-- expand the routing benchmark beyond `primegame_small` and `mult_smoke`, now that the first conservative routing rule exists
+- the routing benchmark now spans `primegame_small`, `mult_smoke`, `paper_smoke`, and `hamming_smoke` over `batch_size = 4, 16, 32, 64, 128` and `steps = 4, 8, 16`, producing `benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json` so the `measure-more` band can be replaced with the deterministic rule in README
 - decide whether tracked integer values stay on host or gain a device-side fixed-width representation
 - preserve the current exact-step parity harness while moving toward real CPU/GPU routing decisions
+
+Once the routing rule stabilizes, the next GPU helper upstream step is to fold any general-purpose dispatch/adapter helpers back into `../dashiCORE` while keeping the FRACTRAN-specific state layout local to FRACDASH.

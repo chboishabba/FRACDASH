@@ -59,14 +59,42 @@ Broader routing matrix artifact:
 
 - `benchmarks/results/2026-03-13-gpu-routing-matrix.json`
 - `benchmarks/results/2026-03-13-gpu-routing-paper.json`
+- `benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json`
 
-Current conservative routing rule from the broader matrix:
+The extended matrix now includes `primegame_small`, `mult_smoke`, `paper_smoke`, and the new `hamming_smoke` program sampled across `batch_size = 4, 16, 32, 64, 128` and `steps = 4, 8, 16`. That coverage lets us fix the previous `measure-more` band into a deterministic routing rule:
 
-- default to CPU when `batch_size <= 4`
-- prefer GPU when `batch_size >= 128`
-- for `primegame_small`-like resident workloads, prefer GPU already at `batch_size = 32` once `steps >= 8`
-- keep the remaining middle region as `measure-more`, especially when `batch_size = 32` with very short runs
+- default to CPU when `batch_size <= 4` or when `batch_size = 16` and `steps < 16`
+- prefer GPU when `batch_size >= 32` and `steps >= 8`, or when the run lasts at least `16` exact steps regardless of batch size
+- scenario-specific GPU wins still appear (e.g., `paper_smoke` at `batch_size = 16`, `steps = 4` or `primegame_small` at `batch_size = 32`, `steps = 4`), but the deterministic rule above stays stable until further tuning requires per-scenario overrides
 
 Additional paper smoke result:
 
 - `paper_smoke` confirms the same shape: CPU for tiny batches, GPU preferred at `batch_size = 32` once `steps >= 8`, and a narrow middle band (`batch_size = 4`, `steps = 32`) that remains `measure-more`.
+
+## Timing regression check
+
+Use the regression gate after CPU tuning changes.
+
+Run:
+
+```bash
+scripts/run_cpu_regression.sh \
+  [base-jsonl] \
+  [current-jsonl] \
+  [tolerance]
+```
+
+Or run the checker directly when you need custom options:
+
+```bash
+python3 scripts/check_timing_regression.py \
+  --baseline benchmarks/results/2026-03-13-cpu-matrix.jsonl \
+  --current benchmarks/results/2026-03-13-cpu-matrix-regression-*.jsonl \
+  --engine compiled \
+  --engine frac-opt \
+  --engine reg \
+  --min-baseline-seconds 0.0001 \
+  --tolerance 0.20
+```
+
+The check compares median `cpu_seconds` for each tracked `(scenario, engine)` pair and fails when slowdown exceeds the configured tolerance. Use `--json` for CI-friendly output.

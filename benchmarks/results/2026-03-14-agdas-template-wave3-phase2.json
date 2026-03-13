@@ -1,0 +1,442 @@
+{
+  "register_count": 6,
+  "state_space_size": 729,
+  "transition_source": "agdas_templates",
+  "transition_source_summary": {
+    "source": "agdas_templates",
+    "template_set": "wave3",
+    "template_count": 18,
+    "template_modules": [
+      "Monster.Step.step"
+    ]
+  },
+  "transition_count": 18,
+  "transitions": [
+    {
+      "name": "monster_wave3_accept_00->10",
+      "condition": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "zero"
+      },
+      "action": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "zero"
+      },
+      "description": "Wave-3 Monster step: accepted candidate, promote mask summary, advance window phase 00->10."
+    },
+    {
+      "name": "monster_wave3_reject_00->10",
+      "condition": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "negative",
+        "R4": "zero",
+        "R5": "zero"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "zero"
+      },
+      "description": "Wave-3 Monster step: rejected candidate, mark reduced/fallback mask, advance window phase 00->10."
+    },
+    {
+      "name": "monster_wave3_accept_10->20",
+      "condition": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "zero"
+      },
+      "action": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero"
+      },
+      "description": "Wave-3 Monster step: accepted candidate, promote mask summary, advance window phase 10->20."
+    },
+    {
+      "name": "monster_wave3_reject_10->20",
+      "condition": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "negative",
+        "R4": "positive",
+        "R5": "zero"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero"
+      },
+      "description": "Wave-3 Monster step: rejected candidate, mark reduced/fallback mask, advance window phase 10->20."
+    },
+    {
+      "name": "monster_wave3_accept_20->01",
+      "condition": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "positive",
+        "R4": "negative",
+        "R5": "zero"
+      },
+      "action": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive"
+      },
+      "description": "Wave-3 Monster step: accepted candidate, promote mask summary, advance window phase 20->01."
+    },
+    {
+      "name": "monster_wave3_reject_20->01",
+      "condition": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "negative",
+        "R4": "negative",
+        "R5": "zero"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive"
+      },
+      "description": "Wave-3 Monster step: rejected candidate, mark reduced/fallback mask, advance window phase 20->01."
+    },
+    {
+      "name": "monster_wave3_accept_01->11",
+      "condition": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "positive"
+      },
+      "action": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "positive"
+      },
+      "description": "Wave-3 Monster step: accepted candidate, promote mask summary, advance window phase 01->11."
+    },
+    {
+      "name": "monster_wave3_reject_01->11",
+      "condition": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "negative",
+        "R4": "zero",
+        "R5": "positive"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "positive"
+      },
+      "description": "Wave-3 Monster step: rejected candidate, mark reduced/fallback mask, advance window phase 01->11."
+    },
+    {
+      "name": "monster_wave3_accept_11->21",
+      "condition": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "positive"
+      },
+      "action": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "positive"
+      },
+      "description": "Wave-3 Monster step: accepted candidate, promote mask summary, advance window phase 11->21."
+    },
+    {
+      "name": "monster_wave3_reject_11->21",
+      "condition": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "negative",
+        "R4": "positive",
+        "R5": "positive"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "positive"
+      },
+      "description": "Wave-3 Monster step: rejected candidate, mark reduced/fallback mask, advance window phase 11->21."
+    },
+    {
+      "name": "monster_wave3_accept_21->02",
+      "condition": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "positive",
+        "R4": "negative",
+        "R5": "positive"
+      },
+      "action": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative"
+      },
+      "description": "Wave-3 Monster step: accepted candidate, promote mask summary, advance window phase 21->02."
+    },
+    {
+      "name": "monster_wave3_reject_21->02",
+      "condition": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "negative",
+        "R4": "negative",
+        "R5": "positive"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative"
+      },
+      "description": "Wave-3 Monster step: rejected candidate, mark reduced/fallback mask, advance window phase 21->02."
+    },
+    {
+      "name": "monster_wave3_accept_02->12",
+      "condition": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "negative"
+      },
+      "action": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "negative"
+      },
+      "description": "Wave-3 Monster step: accepted candidate, promote mask summary, advance window phase 02->12."
+    },
+    {
+      "name": "monster_wave3_reject_02->12",
+      "condition": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "negative",
+        "R4": "zero",
+        "R5": "negative"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "negative"
+      },
+      "description": "Wave-3 Monster step: rejected candidate, mark reduced/fallback mask, advance window phase 02->12."
+    },
+    {
+      "name": "monster_wave3_accept_12->22",
+      "condition": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "negative"
+      },
+      "action": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "negative"
+      },
+      "description": "Wave-3 Monster step: accepted candidate, promote mask summary, advance window phase 12->22."
+    },
+    {
+      "name": "monster_wave3_reject_12->22",
+      "condition": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "negative",
+        "R4": "positive",
+        "R5": "negative"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "negative"
+      },
+      "description": "Wave-3 Monster step: rejected candidate, mark reduced/fallback mask, advance window phase 12->22."
+    },
+    {
+      "name": "monster_wave3_accept_22->00",
+      "condition": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "positive",
+        "R4": "negative",
+        "R5": "negative"
+      },
+      "action": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero"
+      },
+      "description": "Wave-3 Monster step: accepted candidate, promote mask summary, advance window phase 22->00."
+    },
+    {
+      "name": "monster_wave3_reject_22->00",
+      "condition": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "negative",
+        "R4": "negative",
+        "R5": "negative"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero"
+      },
+      "description": "Wave-3 Monster step: rejected candidate, mark reduced/fallback mask, advance window phase 22->00."
+    }
+  ],
+  "full_space_profile": {
+    "nodes": 729,
+    "edges": 54,
+    "terminal_states": 675,
+    "longest_chain": 1,
+    "chain_length_histogram": {
+      "0": 675,
+      "1": 54
+    },
+    "max_chain_start_states": [
+      "(0, -1, -1, -1, -1, -1)",
+      "(0, -1, -1, -1, -1, 0)",
+      "(0, -1, -1, -1, -1, 1)",
+      "(0, -1, -1, -1, 0, -1)",
+      "(0, -1, -1, -1, 0, 0)",
+      "(0, -1, -1, -1, 0, 1)",
+      "(0, -1, -1, -1, 1, -1)",
+      "(0, -1, -1, -1, 1, 0)",
+      "(0, -1, -1, -1, 1, 1)",
+      "(0, -1, -1, 0, -1, -1)"
+    ]
+  },
+  "deterministic_start": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0
+  ],
+  "deterministic_start_decoded": {
+    "R1": 0,
+    "R2": 1,
+    "R3": 1,
+    "R4": 0,
+    "R5": 0,
+    "R6": 0
+  },
+  "deterministic_walk": {
+    "status": "terminal",
+    "steps": 1,
+    "cycle_start": null,
+    "final_state": [
+      1,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "path": [
+      {
+        "step": 1,
+        "state": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "transition": "monster_wave3_accept_00->10",
+        "next_state": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "encoded": 140824046809
+      }
+    ]
+  },
+  "wave2_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-14-agdas-template-wave2-phase2.json",
+    "wave2_full_space_profile": {
+      "nodes": 81,
+      "edges": 18,
+      "terminal_states": 63,
+      "longest_chain": 1,
+      "chain_length_histogram": {
+        "0": 63,
+        "1": 18
+      },
+      "max_chain_start_states": [
+        "10846",
+        "11594",
+        "12122",
+        "12818",
+        "12958"
+      ]
+    },
+    "wave2_fixed_prime_walk_summary": {
+      "state_count": 81,
+      "terminal": 81,
+      "cycle": 0,
+      "timeout": 0,
+      "max_steps_observed": 1
+    }
+  }
+}
