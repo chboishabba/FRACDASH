@@ -33,17 +33,20 @@
 - Source of truth: `../dashiCORE`
 - Candidate shared components:
   - `gpu_common_methods.py`
+  - `gpu_vulkan_adapter.py`
   - `gpu_vulkan_dispatcher.py`
   - `gpu_vulkan_backend.py`
   - `gpu_vulkan_gemv.py`
 - Constraint: FRACDASH should import, adapt, or link these, not vendor-copy them.
+- Current interpretation: reuse the Vulkan host/device plumbing and shader asset conventions, but keep FRACTRAN state semantics and step logic local to FRACDASH.
 
 ## Intended Near-Term Evolution
 
 1. Stabilize CPU benchmark coverage.
 2. Improve compiled path data layout and compatibility testing.
 3. Add LUT-oriented CPU experiments.
-4. Only then define a thin adapter to `../dashiCORE` GPU infrastructure.
+4. Define a thin adapter to `../dashiCORE` GPU infrastructure without copying helper code.
+5. Upstream any general-purpose kernel/dispatch helper back into `dashiCORE` once it proves reusable beyond FRACTRAN.
 
 ## CPU To GPU Handoff
 

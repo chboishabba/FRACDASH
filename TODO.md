@@ -14,8 +14,8 @@
 - [x] Decide whether to pursue a threshold-aware generalized LUT or return to compiled-path tuning.
 - [x] Port `frac-opt`-style rule-order narrowing into the compiled evaluator.
 - [x] Reduce benchmark-side compiled-path decoding overhead and rerun the matrix.
-- [ ] Reduce compiled-path allocation overhead inside `Compiled.hs` and rerun the matrix.
-- [ ] Decide whether `compiled` is now the practical CPU baseline for subsequent work.
+- [x] Reduce compiled-path allocation overhead inside `Compiled.hs` and rerun the matrix.
+- [x] Decide whether `compiled` is now the practical CPU baseline for subsequent work.
 - [ ] Decide the initial deliverable:
   - a direct interpreter for the signed encoding
   - a compiler from DASHI transitions to vanilla FRACTRAN fractions
@@ -40,9 +40,11 @@
 ## Phase 4: GPU Reuse Path
 
 - [ ] Confirm which `../dashiCORE` modules are stable enough to reference directly for Vulkan dispatch, shader compilation, and GEMV-style kernels.
+- [ ] Add a thin FRACDASH-local adapter that imports `../dashiCORE` Vulkan helpers by reference.
 - [ ] Design a thin FRACDASH adapter layer that imports or shells out to `../dashiCORE` GPU infrastructure without copying files.
 - [ ] Keep GPU state resident across many FRACTRAN steps; avoid per-step host/device roundtrips.
 - [ ] Add a deterministic CPU/GPU routing rule only after real baseline measurements exist.
+- [ ] Define the rule for when a FRACDASH GPU helper/kernel should be upstreamed back into `../dashiCORE`.
 
 ## Open Decisions
 

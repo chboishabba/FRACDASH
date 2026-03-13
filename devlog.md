@@ -27,3 +27,12 @@
 - Verified that parity still holds and that the updated summary now routes to `continue compiled-path tuning`.
 - Added a compiled-specific benchmark summary path that keeps compiled states as exponent vectors until checksum/hash evaluation instead of decoding every step to `IntMap`.
 - Re-ran the canonical matrix and measured `compiled` ahead of `frac-opt` on `primegame_small`, `primegame_medium`, and `primegame_large`.
+- Installed the host GHC static profiling package and updated `fractran/build.sh --profile` to use static profiling on this machine.
+- Ran real cost-centre profiling on `compiled` for `primegame_medium` and `primegame_large`, with RTS comparison runs against `frac-opt`.
+- Confirmed that compiled profiling is dominated by benchmark-side `unfExpVec`/checksum work, with `applyRule` the largest remaining engine-side hotspot and rule matching smaller.
+- Rewrote `applyRule` to use element-wise zipping over the compiled state and rule delta instead of repeated array indexing in the hot path.
+- Added direct integer-value tracking to the compiled benchmark trace so checksum generation no longer reconstructs every emitted state with `unfExpVec`.
+- Re-ran the canonical matrix and confirmed `compiled` now leads `frac-opt` on `primegame_small`, `primegame_medium`, and `primegame_large`.
+- Declared the compiled path the active exact-step CPU baseline and pivoted the next milestone toward the minimal GPU path.
+- Audited `../dashiCORE` for actual FRACDASH reuse candidates and documented a non-duplicating integration boundary centered on `gpu_common_methods.py`, `gpu_vulkan_dispatcher.py`, `gpu_vulkan_backend.py`, `gpu_vulkan_adapter.py`, and `gpu_vulkan_gemv.py`.
+- Documented the rule that generic helpers should be upstreamed back into `dashiCORE`, while FRACTRAN-specific kernels remain local to FRACDASH.

@@ -52,7 +52,7 @@ Result:
 
 ### Milestone E: Compiled-path tuning
 
-Status: active
+Status: completed
 
 - park LUT as a completed side experiment, not the current optimization path
 - target the compiled exact-step path directly against `frac-opt`
@@ -66,21 +66,32 @@ Current result:
 - the current summary rule therefore routes to `continue compiled-path tuning`
 - a later tuning round keeps compiled runs in exponent-vector form until summary time, removing benchmark-side `IntMap` decoding overhead
 - the current canonical matrix now has `compiled` ahead of `frac-opt` on `primegame_small`, `primegame_medium`, and `primegame_large`
+- `fractran/build.sh --profile` now works on this host by using static profiling instead of incompatible dynamic profiling
+- GHC cost-centre profiling on `primegame_medium` and `primegame_large` shows `unfExpVec` and checksum work dominating compiled runs, `applyRule` as the largest engine-side hotspot, and rule matching materially smaller
+- an `applyRule` rewrite from indexed array updates to element-wise zipping landed cleanly and improved the exact-step compiled path
+- the compiled benchmark path now tracks current integer values directly, removing the dominant `unfExpVec` reconstruction cost from checksum generation
+- after these two extra profiling-backed rounds, `compiled` is now the leading exact-step CPU path on the sampled `primegame_*` workloads
 
 ### Milestone F: GPU reuse adapter
 
-Status: pending
+Status: active
 
 - define how FRACDASH references `../dashiCORE`
 - prove one trivial dispatch path
 - keep state movement and semantics isolated
 
+Current direction:
+- reuse `../dashiCORE` Vulkan helper modules by import/reference, not by copying files
+- keep FRACTRAN state packing, parity checking, and step semantics in FRACDASH
+- upstream only generic helpers or kernels back into `dashiCORE`
+
 ## Immediate Next Actions
 
-1. Decide whether `compiled` should now be treated as the practical CPU baseline for subsequent tuning rounds.
-2. Reduce compiled-path allocation overhead inside `Compiled.hs`, not just at the benchmark boundary.
-3. Preserve the current exact-vs-at-least checkpoint semantics in all future benchmark extensions.
-4. Move to GPU only after CPU representation, correctness, and batch-shape are stable enough to justify `../dashiCORE` integration.
+1. Treat `compiled` as the active exact-step CPU baseline for future work.
+2. Pivot to minimal GPU implementation planning against the current compiled semantics and benchmark contract.
+3. Use `../dashiCORE` host-side Vulkan helpers as the first reuse seam instead of cloning GPU code into FRACDASH.
+4. Preserve the current exact-vs-at-least checkpoint semantics in all future benchmark extensions.
+5. Keep LUT parked unless it becomes specifically useful as a GPU-side representation.
 
 ## CPU To GPU Handoff Criteria
 

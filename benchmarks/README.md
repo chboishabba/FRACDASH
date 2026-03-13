@@ -11,8 +11,8 @@ Current baseline notes:
   - `cycle`
   - `compiled`
   - `lut`
-- The current `compiled` engine is a seam/prototype for exponent-vector execution, not yet a performance-optimized replacement.
-- The benchmark harness now summarizes `compiled` directly from exponent vectors instead of decoding every state back into `IntMap`.
+- The current `compiled` engine is now the active exact-step CPU baseline for the sampled `primegame` workloads.
+- The benchmark harness now summarizes `compiled` by tracking emitted integer values directly, avoiding repeated `unfExpVec` reconstruction during checksum generation.
 - The current `lut` engine is limited to binary-threshold denominator programs where every denominator exponent is `<= 1`.
 - The benchmark matrix is run via `benchmarks/run_cpu_matrix.sh`.
 - The current summary/decision report is produced by `benchmarks/summarize_cpu_matrix.py`.
@@ -21,7 +21,7 @@ Current baseline notes:
   - `reg`, `frac-opt`, `compiled`, `lut`: `exact`
   - `cycle`: `at-least`
 - `mult_smoke` is a 2-step exact logical-step smoke scenario.
-- Current decision: continue compiled-path tuning; the latest matrix currently has `compiled` ahead of `frac-opt` on the sampled `primegame` scenarios, so do not move to GPU yet.
+- Current decision: CPU tuning has reached a good checkpoint; `compiled` is the exact-step baseline and the next milestone is the minimal GPU path.
 
 Initial snapshot date:
 
