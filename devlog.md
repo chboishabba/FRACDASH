@@ -1,5 +1,13 @@
 # FRACDASH Devlog
 
+## 2026-03-15
+
+- Reworked `scripts/derive_rank4_dataset.py` into a dual-derivation pipeline (`walk_partition` + `scc_condensation`) with canonical best-of-two selection, keep-previous tiebreak support, and explicit lock-gate metadata.
+- Reworked `scripts/run_rank4_diagnostics.py` to compare both derivations in one report and split strict behavior into `--strict-stable` vs `--strict-lock`.
+- Updated `scripts/run_rank4_discriminators.py` to consume the selected canonical derivation by default (or an explicit derivation override).
+- Added `scripts/run_rank4_canonical_gpu_parity.py` to run a lock-gated GPU parity batch on canonical basin representative states; current artifact correctly reports `skipped` because lock gate is not yet satisfied.
+- Captured updated artifacts: `2026-03-15-rank4-dataset.json`, `2026-03-15-rank4-diagnostics.json`, `2026-03-15-rank4-discriminators.json`, `2026-03-15-rank4-discriminators.md`, and `2026-03-15-rank4-canonical-gpu-parity.json`.
+
 ## 2026-03-13
 
 - Initialized repo memory around the DASHI-to-FRACTRAN objective.
@@ -79,3 +87,16 @@
 - Took the next pass as `physics4` and kept the same 6-register carrier: tightened scan/rearm guards in `scripts/agdas_bridge.py`, extended `scripts/agdas_physics_experiments.py` to compare against the `physics3` artifact, and added `scripts/run_agdas_physics4_phase2.sh`.
 - Captured `benchmarks/results/2026-03-14-agdas-physics4-phase2.json`; it cuts the action monotonicity increases from `162` to `9`, but also collapses the graph to `162` edges, longest chain `9`, and zero cycles, so the stricter guard discipline is informative but overconstrained.
 - The current leading interpretation is now sharper: `physics3` is still the best recurrent physics seam, while `physics4` isolates the part of the reset logic that is too strict. The next pass should be a hybrid that recovers recurrence without reopening the full `physics3` increase surface.
+- Implemented the `physics5` hybrid on the same 6-register carrier: kept the `physics4` scan/boundary discipline, split shell-to-interior rearm into cleared and latched-left/right variants in `scripts/agdas_bridge.py`, extended `scripts/agdas_physics_experiments.py` to compare directly against both `physics3` and `physics4`, and added `scripts/run_agdas_physics5_phase2.sh`.
+- Captured `benchmarks/results/2026-03-14-agdas-physics5-phase2.json`; it restores recurrence with `100` cyclic starts and a cyclic deterministic walk, while keeping action-rank increases to `27` instead of the `162` seen in `physics3`.
+- The tradeoff is now much clearer: `physics5` is the best ordered hybrid so far, but it does not recover the richer `physics3` graph (`180` edges and longest chain `10` versus `900` edges and `15`), so the next pass should widen recurrence from the `physics5` core rather than loosen the bridge all the way back to `physics3`.
+- Implemented `physics6` as the next narrow recurrence-widening pass: kept the `physics5` core, added left/right shell-refresh transitions in `scripts/agdas_bridge.py`, extended `scripts/agdas_physics_experiments.py` to compare against `physics5`, and added `scripts/run_agdas_physics6_phase2.sh`.
+- Captured `benchmarks/results/2026-03-14-agdas-physics6-phase2.json`; it improves the ordered hybrid again with `198` edges, longest chain `12`, `115` cyclic starts, and the same `27` action-rank increases as `physics5`.
+- Added built-in long-tail diagnosis to `scripts/agdas_physics_experiments.py` so the artifact now reruns any apparent timeout states at a higher cap. For `physics6`, the lone state that timed out at `12` resolves to a cycle by `32`, which removes tail instability as the immediate concern.
+- The canonical deterministic walk remains a 6-step cycle with explicit shell refresh, and the next pass should now focus on widening recurrence from the `physics6` baseline rather than chasing timeout ambiguity.
+- Implemented `physics7` on top of `physics6`: added preserve-only shell probe transitions for cleared shell states in `scripts/agdas_bridge.py`, extended the experiment runner to execute `physics7`, and added `scripts/run_agdas_physics7_phase2.sh`.
+- Captured `benchmarks/results/2026-03-14-agdas-physics7-phase2.json`; it improves breadth over `physics6` (`204` edges vs `198`, `116` cyclic starts vs `115`) while keeping action-rank increases flat at `27`.
+- Longest chain remains `12`, so the current constraint-preserving improvements are breadth-first. Next pass should target depth improvements without increasing jump count.
+- Implemented `physics8` on top of `physics7`: added staged shell probe/release transitions in `scripts/agdas_bridge.py`, extended the experiment runner to execute `physics8` and compare against `physics7`, and added `scripts/run_agdas_physics8_phase2.sh`.
+- Captured `benchmarks/results/2026-03-14-agdas-physics8-phase2.json`; it improves both breadth and depth over `physics7` (`222` edges vs `204`, longest chain `13` vs `12`, `132` cyclic starts vs `116`) while keeping action-rank increases flat at `27` and timeout count at `0` for `max-steps 12`.
+- `physics8` is now the strongest constrained hybrid baseline; the next pass should continue from this shape without relaxing the jump-count or timeout constraints.

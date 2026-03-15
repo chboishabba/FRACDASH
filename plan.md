@@ -123,7 +123,12 @@ Current direction:
    - `physics2` now runs on a dedicated 6-register carrier and produces a denser recurrent graph than `physics1`.
    - `physics3` now adds cone-shell refinement and action monotonicity reporting on the same 6-register carrier, and currently leads the bridge path.
    - `physics4` tightened shell/interior rearm guards on the same carrier and cut action-rank increases sharply, but it overconstrained the dynamics and eliminated recurrence.
-   - the next pass should therefore be a `physics5` hybrid: keep the stronger rearm discipline where it matters, but selectively restore recurrence from the `physics3` loop instead of adding more scan variants first.
+   - `physics5` now restores recurrence with split cleared/latched shell rearm and keeps action-rank increases far below `physics3`, but it is still much sparser than the `physics3` lead.
+   - `physics6` now improves the ordered hybrid further by adding narrow shell-refresh transitions; it recovers more structure than `physics5` without increasing action-rank jumps, and is the best controlled hybrid so far.
+   - the built-in long-tail diagnosis now resolves the one apparent `physics6` timeout to a cycle under a higher cap, so the next pass should widen recurrence from the `physics6` baseline rather than chase tail uncertainty.
+   - `physics7` now widens recurrence from `physics6` through preserve-only shell probes, increasing breadth while keeping the action-rank jump count flat.
+   - `physics8` now adds staged shell release and improves both breadth and depth from `physics7` while keeping the jump count flat and timeout count at zero.
+   - the next pass should improve richness from the `physics8` baseline while preserving both the current jump-count and timeout bounds.
 
 ## CPU To GPU Handoff Criteria
 

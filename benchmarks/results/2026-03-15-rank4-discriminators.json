@@ -1,0 +1,140 @@
+{
+  "claim_status": {
+    "identity_level_claims": "unproven",
+    "rank4_structure": "observed experimentally",
+    "root_system_identity": "conjectured"
+  },
+  "clifford_reflection_test": {
+    "reason": "python package 'clifford' is not installed; skipping Clifford versor check.",
+    "status": "not_available"
+  },
+  "dataset_path": "benchmarks/results/rank4-dataset-latest.json",
+  "dataset_sha256": "8fbafbfc40f6b068789a7f52b0668d2f696412d7ea6373c3d8fb5d76089b5e7f",
+  "embedding": {
+    "dimensions": 4,
+    "explained_variance_ratio": [
+      0.32421663371997406,
+      0.2021701096300401,
+      0.20199336058507486,
+      0.2014698761143258
+    ]
+  },
+  "orbit_multiplicity_test": {
+    "reflection_orbit_sizes": [
+      10
+    ],
+    "repeated_stability_groups": [
+      {
+        "count": 4,
+        "stability": 17
+      },
+      {
+        "count": 4,
+        "stability": 16
+      }
+    ],
+    "status": "ok",
+    "supports_repeated_orbit_hypothesis": true
+  },
+  "reflection_closure_test": {
+    "axes": [
+      {
+        "adjacency_preservation_ratio": 0.0,
+        "axis": 0,
+        "bijective_permutation": true,
+        "gram_error": 0.0,
+        "mapping": [
+          0,
+          6,
+          2,
+          1,
+          4,
+          9,
+          7,
+          8,
+          5,
+          3
+        ]
+      },
+      {
+        "adjacency_preservation_ratio": 0.0,
+        "axis": 1,
+        "bijective_permutation": true,
+        "gram_error": 0.0,
+        "mapping": [
+          0,
+          1,
+          4,
+          8,
+          2,
+          5,
+          6,
+          7,
+          3,
+          9
+        ]
+      },
+      {
+        "adjacency_preservation_ratio": 0.0,
+        "axis": 2,
+        "bijective_permutation": true,
+        "gram_error": 0.0,
+        "mapping": [
+          0,
+          1,
+          2,
+          3,
+          7,
+          6,
+          5,
+          4,
+          8,
+          9
+        ]
+      },
+      {
+        "adjacency_preservation_ratio": 0.0,
+        "axis": 3,
+        "bijective_permutation": true,
+        "gram_error": 0.0,
+        "mapping": [
+          2,
+          1,
+          0,
+          3,
+          5,
+          4,
+          7,
+          6,
+          8,
+          9
+        ]
+      }
+    ],
+    "closure_score": 0.0,
+    "status": "ok",
+    "valid_axis_count": 4,
+    "weyl_action_candidate": false
+  },
+  "root_length_test": {
+    "candidate_hint": "F4/B4-like",
+    "coefficient_of_variation": 0.21434281672375938,
+    "distance_max": 2.3739055536568228,
+    "distance_min": 0.5561811913670681,
+    "distance_ratio": 4.268223360487741,
+    "distance_source": "all_pairs_fallback",
+    "edge_count": 45,
+    "single_scale_signal": false,
+    "status": "ok",
+    "two_scale_signal": true
+  },
+  "selected_derivation": "scc_condensation",
+  "stability_gradient_chamber_test": {
+    "cross_chamber_edges": 0,
+    "cross_monotone_ratio": null,
+    "status": "ok",
+    "supports_chamber_hypothesis": false,
+    "within_chamber_edges": 0,
+    "within_monotone_ratio": null
+  }
+}

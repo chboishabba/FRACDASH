@@ -55,7 +55,20 @@
   - [x] decide that the next physics pass should tighten action-monotonicity constraints before adding more scan variants
   - [x] implement `physics4` on the same 6-register carrier with stricter shell/interior rearm guards
   - [x] capture the first `physics4` artifact and compare it to `physics3`
-  - [ ] design a `physics5` hybrid that restores recurrence while keeping most of the `physics4` monotonicity gain
+  - [x] design a `physics5` hybrid that restores recurrence while keeping most of the `physics4` monotonicity gain
+  - [x] implement `physics5` on the same 6-register carrier with split shell-to-interior rearm
+  - [x] capture the first `physics5` artifact and compare it to `physics3` and `physics4`
+  - [x] design a `physics6` refinement that keeps the `physics5` hybrid but recovers more recurrent structure
+  - [x] implement `physics6` with narrow shell-refresh transitions on top of `physics5`
+  - [x] capture the first `physics6` artifact and compare it to `physics5`
+  - [x] diagnose the remaining `physics6` timeout tail by rerunning with a higher walk cap and classifying the long-path states
+  - [x] design a `physics7` refinement that widens recurrence from the `physics6` baseline without increasing the action-rank jump count
+  - [x] implement `physics7` with preserve-only shell probe transitions on top of `physics6`
+  - [x] capture the first `physics7` artifact and compare it to `physics6`
+  - [x] design a `physics8` refinement that increases chain depth from the `physics7` baseline without increasing the action-rank jump count
+  - [x] implement `physics8` with shell-stage release transitions on top of `physics7`
+  - [x] capture the first `physics8` artifact and compare it to `physics7`
+  - [ ] design a `physics9` refinement that improves richness from `physics8` without increasing action-rank jump count or timeout count
 - [ ] Introduce a prime-exponent-vector engine for batched runs and compare it against the bigint/cycle-detecting baseline.
 - [ ] Prototype LUT or divisibility-mask rule selection on CPU before any GPU port.
 
@@ -64,6 +77,15 @@
 - [ ] Measure which invariants survive translation: locality, parity, reversibility, contraction, chamber structure.
 - [ ] Decide whether the `113` total degeneracy has structural support or should be discarded as coincidence.
 - [ ] Write a short result note distinguishing observations from conjectures.
+- [ ] Reproduce the rank-4 obstruction diagnostics locally as artifacts:
+  - [x] PCA effective-dimension measurement on the basin-prime matrix
+  - [x] independent monotone-chain height measurement
+- [ ] Run rank-4 discriminator experiments from `RANK4_OBSTRUCTION_NOTE.md`:
+  - [x] root-length test (`D4` vs `F4`)
+  - [x] reflection-closure test
+  - [x] orbit-multiplicity test
+  - [x] Clifford reflection test
+  - [x] stability-gradient chamber test
 
 ## Phase 4: GPU Reuse Path
 

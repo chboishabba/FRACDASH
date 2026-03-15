@@ -154,3 +154,173 @@ The target is to recover recurrence without returning all the way to the loose
 This is now the main physics design problem: not "more carrier" and not "more
 scan", but finding the narrow recurrent hybrid between `physics3` and
 `physics4`.
+
+The concrete `physics5` plan is:
+
+- keep the `physics4` scan guard unchanged
+- keep the discharged-boundary requirement for `boundary -> shell`
+- split `shell -> interior` into:
+  - a cleared rearm when `R5 = zero`
+  - a latched-left rearm when `R5 = positive`
+  - a latched-right rearm when `R5 = negative`
+
+This is the smallest semantic change that can plausibly restore recurrence,
+because it only reopens rearm for shell states that already carry a specific
+scan decision.
+
+## `physics5` Result
+
+`physics5` is now implemented on the same 6-register carrier.
+
+- artifact: `benchmarks/results/2026-03-14-agdas-physics5-phase2.json`
+- first measured shape:
+  - `729` states
+  - `180` edges
+  - longest chain `10`
+  - `100` cycles in the fixed-walk summary
+  - action monotonicity summary:
+    - decreases: `72`
+    - preserves: `81`
+    - increases: `27`
+
+Interpretation:
+
+- the hybrid works in the narrow sense: recurrence is back and the action-order
+  profile is still far cleaner than `physics3`
+- but it does not yet recover the graph richness of `physics3`
+- so `physics5` is the best ordered hybrid so far, not the new overall lead
+
+## Next Pass After `physics5`
+
+The next pass should preserve the `physics5` rearm split and try to recover
+more recurrent structure without reopening the broad `physics3` increase
+surface.
+
+The most likely move is to add a narrow shell-refresh path for selected latched
+states, rather than weakening the scan guard.
+
+The concrete `physics6` plan is:
+
+- keep the `physics5` rearm split unchanged
+- add a left-shell refresh that clears a positive latch while staying in the shell
+- add a right-shell refresh that clears a negative latch while staying in the shell
+
+This should add structure through extra shell-local preserve steps instead of
+through broader rearm permission.
+
+## `physics6` Result
+
+`physics6` is now implemented on the same 6-register carrier.
+
+- artifact: `benchmarks/results/2026-03-14-agdas-physics6-phase2.json`
+- first measured shape:
+  - `729` states
+  - `198` edges
+  - longest chain `12`
+  - `115` cycles in the fixed-walk summary
+  - action monotonicity summary:
+    - decreases: `72`
+    - preserves: `99`
+    - increases: `27`
+  - deterministic walk: 6-step cycle with an explicit shell-refresh step
+
+Interpretation:
+
+- this is a real improvement over `physics5`
+- the extra structure came entirely from preserve edges, which is what we wanted
+- `physics3` still leads on raw richness, but `physics6` is now the best
+  controlled hybrid
+- the built-in long-tail diagnosis resolves the one apparent timeout under a
+  higher cap: it is a cycle, not evidence of a broader runaway tail
+
+## Next Pass After `physics6`
+
+The next pass should keep the `physics6` shell-refresh path and recover more
+recurrent structure without giving back the current action-order profile.
+
+The most likely move is:
+
+- keep the built-in diagnostic rerun in place
+- use `physics6` as the new controlled baseline
+- only then decide whether to add another narrow shell-local transition
+
+The concrete `physics7` plan is:
+
+- keep all `physics6` transitions unchanged
+- add two shell-local probe transitions from cleared shell states:
+  - one left-high probe that sets a left latch
+  - one right-high probe that sets a right latch
+
+This keeps the change small and preserve-only at the new edge level, which is
+the cleanest way to widen recurrence without inflating action-rank increases.
+
+## `physics7` Result
+
+`physics7` is now implemented on the same 6-register carrier.
+
+- artifact: `benchmarks/results/2026-03-14-agdas-physics7-phase2.json`
+- first measured shape:
+  - `729` states
+  - `204` edges
+  - longest chain `12`
+  - `116` cycles in the fixed-walk summary
+  - action monotonicity summary:
+    - decreases: `72`
+    - preserves: `105`
+    - increases: `27`
+  - fixed-walk timeout count at `max-steps 12`: `0`
+
+Interpretation:
+
+- this widens recurrence from `physics6` in the intended way
+- the improvement is mostly breadth through preserve edges, not deeper chains
+- the action-jump count stays flat, so the constraint is still respected
+- `physics3` still leads on raw richness, but `physics7` is now the best
+  controlled hybrid
+
+## Next Pass After `physics7`
+
+The next pass should keep the `physics7` core and target chain depth rather
+than only breadth.
+
+The most likely move is:
+
+- add one narrow chain-extending shell/interior micro-step that preserves the
+  current increase count
+- keep long-tail diagnosis enabled in the artifact
+- reject variants that increase the action-jump count above `27`
+
+## `physics8` Result
+
+`physics8` is now implemented on the same 6-register carrier.
+
+- artifact: `benchmarks/results/2026-03-14-agdas-physics8-phase2.json`
+- first measured shape:
+  - `729` states
+  - `222` edges
+  - longest chain `13`
+  - `132` cycles in the fixed-walk summary
+  - action monotonicity summary:
+    - decreases: `72`
+    - preserves: `123`
+    - increases: `27`
+  - fixed-walk timeout count at `max-steps 12`: `0`
+
+Interpretation:
+
+- this is the first constrained hybrid pass that improves both breadth and
+  depth from the `physics7` baseline
+- the increase count remains flat, so the jump constraint is still respected
+- `physics3` still leads on raw richness, but `physics8` is now the strongest
+  constrained baseline
+
+## Next Pass After `physics8`
+
+The next pass should continue from `physics8` and improve richness toward
+`physics3` without relaxing the jump bound.
+
+The most likely move is:
+
+- add one more narrow shell/interior micro-step in high-source branches only
+- keep the increase count at or below `27`
+- reject variants that raise timeout count above `0` at `max-steps 12`

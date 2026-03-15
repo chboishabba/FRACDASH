@@ -155,6 +155,7 @@ def fixed_walk_summary(transitions: Sequence[Transition], max_steps: int) -> dic
     timeout = 0
     max_steps_observed = 0
     longest_paths: list[tuple[str, int, str]] = []
+    timeout_states: list[str] = []
     for vector in all_vectors():
         result = deterministic_walk(vector, transitions, max_steps)
         max_steps_observed = max(max_steps_observed, int(result["steps"]))
@@ -165,6 +166,7 @@ def fixed_walk_summary(transitions: Sequence[Transition], max_steps: int) -> dic
             cycle += 1
         else:
             timeout += 1
+            timeout_states.append(str(vector))
         longest_paths.append((str(vector), int(result["steps"]), status))
     longest_paths.sort(key=lambda item: (-item[1], item[0]))
     return {
@@ -174,6 +176,53 @@ def fixed_walk_summary(transitions: Sequence[Transition], max_steps: int) -> dic
         "timeout": timeout,
         "max_steps_observed": max_steps_observed,
         "longest_paths": longest_paths[:10],
+        "timeout_states": timeout_states[:20],
+    }
+
+
+def diagnose_long_tail(
+    transitions: Sequence[Transition], primary_summary: Mapping[str, object], diagnostic_max_steps: int
+) -> dict[str, object]:
+    timeout_states = [item for item in primary_summary.get("timeout_states", []) if isinstance(item, str)]
+    if not timeout_states:
+        return {
+            "primary_timeout_count": 0,
+            "diagnostic_max_steps": diagnostic_max_steps,
+            "resolved_to_cycle": 0,
+            "resolved_to_terminal": 0,
+            "still_timeout": 0,
+            "samples": [],
+        }
+
+    samples: list[dict[str, object]] = []
+    resolved_to_cycle = 0
+    resolved_to_terminal = 0
+    still_timeout = 0
+    for raw in timeout_states:
+        vector = tuple(int(part.strip()) for part in raw.strip("()").split(","))  # type: ignore[assignment]
+        result = deterministic_walk(vector, transitions, diagnostic_max_steps)
+        status = str(result["status"])
+        if status == "cycle":
+            resolved_to_cycle += 1
+        elif status == "terminal":
+            resolved_to_terminal += 1
+        else:
+            still_timeout += 1
+        samples.append(
+            {
+                "state": vector,
+                "diagnostic_status": status,
+                "steps": int(result["steps"]),
+                "cycle_start": result["cycle_start"],
+            }
+        )
+    return {
+        "primary_timeout_count": len(timeout_states),
+        "diagnostic_max_steps": diagnostic_max_steps,
+        "resolved_to_cycle": resolved_to_cycle,
+        "resolved_to_terminal": resolved_to_terminal,
+        "still_timeout": still_timeout,
+        "samples": samples[:10],
     }
 
 
@@ -248,23 +297,25 @@ def compare_artifact(filename: str, label: str) -> dict[str, object]:
     if not path.exists():
         return {"status": "missing", "path": str(path)}
     obj = json.loads(path.read_text())
+    walk_summary = obj.get("fixed_walk_summary") or obj.get("fixed_prime_walk_summary", {})
     return {
         "status": "ok",
         "path": str(path),
         f"{label}_full_space_profile": obj.get("full_space_profile"),
-        f"{label}_fixed_prime_walk_summary": {
-            key: obj.get("fixed_prime_walk_summary", {}).get(key)
+        f"{label}_fixed_walk_summary": {
+            key: walk_summary.get(key)
             for key in ("state_count", "terminal", "cycle", "timeout", "max_steps_observed")
         },
         f"{label}_action_monotonicity": obj.get("action_monotonicity"),
     }
 
 
-def summary(template_set: str, max_steps: int) -> dict[str, object]:
+def summary(template_set: str, max_steps: int, diagnostic_max_steps: int) -> dict[str, object]:
     transitions, transition_source_summary = transitions_from_templates(template_set)
     graph = graph_for(transitions)
     start = (1, 0, 0, 1, 0, -1)
     walk = deterministic_walk(start, transitions, max_steps)
+    walk_summary = fixed_walk_summary(transitions, max_steps)
     return {
         "register_count": len(REGISTERS),
         "state_space_size": 3 ** len(REGISTERS),
@@ -282,7 +333,8 @@ def summary(template_set: str, max_steps: int) -> dict[str, object]:
         ],
         "full_space_profile": longest_chain_profile(graph),
         "action_monotonicity": action_monotonicity_summary(graph),
-        "fixed_walk_summary": fixed_walk_summary(transitions, max_steps),
+        "fixed_walk_summary": walk_summary,
+        "long_tail_diagnosis": diagnose_long_tail(transitions, walk_summary, diagnostic_max_steps),
         "deterministic_start": start,
         "deterministic_start_decoded": decode_signed_state(
             encode_signed_state({reg.name: start[idx] for idx, reg in enumerate(REGISTERS)})
@@ -290,6 +342,10 @@ def summary(template_set: str, max_steps: int) -> dict[str, object]:
         "deterministic_walk": walk,
         "physics1_comparison": compare_artifact("2026-03-14-agdas-physics1-phase2.json", "physics1"),
         "physics3_comparison": compare_artifact("2026-03-14-agdas-physics3-phase2.json", "physics3"),
+        "physics4_comparison": compare_artifact("2026-03-14-agdas-physics4-phase2.json", "physics4"),
+        "physics5_comparison": compare_artifact("2026-03-14-agdas-physics5-phase2.json", "physics5"),
+        "physics6_comparison": compare_artifact("2026-03-14-agdas-physics6-phase2.json", "physics6"),
+        "physics7_comparison": compare_artifact("2026-03-14-agdas-physics7-phase2.json", "physics7"),
     }
 
 
@@ -299,13 +355,19 @@ def main() -> None:
     parser.add_argument(
         "--template-set",
         default="physics2",
-        choices=("physics2", "physics3", "physics4"),
+        choices=("physics2", "physics3", "physics4", "physics5", "physics6", "physics7", "physics8"),
         help="Template set to execute.",
     )
     parser.add_argument("--max-steps", type=int, default=12, help="Deterministic walk step cap.")
+    parser.add_argument(
+        "--diagnostic-max-steps",
+        type=int,
+        default=32,
+        help="Secondary walk cap used only to classify any states that timed out under --max-steps.",
+    )
     args = parser.parse_args()
 
-    payload = summary(args.template_set, args.max_steps)
+    payload = summary(args.template_set, args.max_steps, args.diagnostic_max_steps)
     if args.json:
         print(json.dumps(payload, indent=2))
         return

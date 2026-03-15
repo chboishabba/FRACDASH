@@ -200,5 +200,146 @@ The next bridge pass should be a hybrid:
 - keep the discharged-boundary requirement for shell entry
 - selectively relax shell-to-interior rearm just enough to restore recurrence
 
+Concrete `physics5` rearm split:
+
+- `physics5_shell_to_interior_cleared`
+  - require `R3 = zero`
+  - require `R4 = zero`
+  - require `R5 = zero`
+  - require `R6 = zero`
+  - action: `R4 = positive`, `R6 = negative`
+- `physics5_shell_to_interior_latched_left`
+  - require `R3 = zero`
+  - require `R4 = zero`
+  - require `R5 = positive`
+  - require `R6 = zero`
+  - action: `R4 = positive`, `R5 = positive`, `R6 = negative`
+- `physics5_shell_to_interior_latched_right`
+  - require `R3 = zero`
+  - require `R4 = zero`
+  - require `R5 = negative`
+  - require `R6 = zero`
+  - action: `R4 = positive`, `R5 = negative`, `R6 = negative`
+
 The design goal is the narrow recurrent band between the loose `physics3`
 rearm and the overconstrained `physics4` reset.
+
+Observed first-pass result:
+
+- recurrence is restored through latched shell states
+- action-rank increases drop from `162` in `physics3` to `27`
+- the bridge remains much sparser than `physics3`, so `physics5` is currently a
+  controlled hybrid rather than the new default lead
+
+## Physics 6 Target
+
+`physics6` should keep the `physics5` hybrid intact and add only a narrow
+shell-refresh branch:
+
+- `physics6_shell_refresh_left`
+  - require `R3 = zero`
+  - require `R4 = zero`
+  - require `R5 = positive`
+  - require `R6 = zero`
+  - action: `R4 = zero`, `R5 = zero`, `R6 = zero`
+- `physics6_shell_refresh_right`
+  - require `R3 = zero`
+  - require `R4 = zero`
+  - require `R5 = negative`
+  - require `R6 = zero`
+  - action: `R4 = zero`, `R5 = zero`, `R6 = zero`
+
+The design intent is to add shell-local preserve edges and longer recurrent
+routes without broadening the increase-producing rearm surface.
+
+Observed first-pass result:
+
+- the hybrid improves over `physics5` without increasing action-rank jumps
+- edges rise from `180` to `198`
+- longest chain rises from `10` to `12`
+- cyclic starts rise from `100` to `115`
+- action-rank increases stay at `27`
+
+So `physics6` is the current best ordered hybrid, though it still does not
+match the raw graph richness of `physics3`.
+
+## Physics 7 Target
+
+`physics7` should keep the full `physics6` set and add only shell-local probe
+transitions from cleared shell states:
+
+- `physics7_shell_probe_left_high`
+  - require `R1 = negative`
+  - require `R3 = zero`
+  - require `R4 = zero`
+  - require `R5 = zero`
+  - require `R6 = zero`
+  - action: `R5 = positive`
+- `physics7_shell_probe_right_high`
+  - require `R2 = negative`
+  - require `R3 = zero`
+  - require `R4 = zero`
+  - require `R5 = zero`
+  - require `R6 = zero`
+  - action: `R5 = negative`
+
+Design intent:
+
+- add recurrence structure through preserve-only shell edges
+- keep the current rearm surface unchanged
+- avoid adding any new transition that directly raises action rank
+
+Observed first-pass result:
+
+- the hybrid improves breadth over `physics6` without increasing action-rank
+  jumps
+- edges rise from `198` to `204`
+- cyclic starts rise from `115` to `116`
+- longest chain stays at `12`
+- action-rank increases stay at `27`
+
+So `physics7` is the current best controlled hybrid baseline. The next pass
+should target chain-depth growth while holding the same jump-count bound.
+
+## Physics 8 Target
+
+`physics8` should keep the full `physics7` set and add a staged shell-release
+micro-step:
+
+- `physics8_shell_probe_left_high`
+  - require `R1 = negative`
+  - require `R3 = zero`
+  - require `R4 = zero`
+  - require `R5 = zero`
+  - require `R6 = zero`
+  - action: `R3 = positive`, `R5 = positive`
+- `physics8_shell_probe_right_high`
+  - require `R2 = negative`
+  - require `R3 = zero`
+  - require `R4 = zero`
+  - require `R5 = zero`
+  - require `R6 = zero`
+  - action: `R3 = positive`, `R5 = negative`
+- `physics8_shell_stage_release_left`
+  - require `R3 = positive`
+  - require `R4 = zero`
+  - require `R5 = positive`
+  - require `R6 = zero`
+  - action: `R3 = zero`, `R5 = positive`
+- `physics8_shell_stage_release_right`
+  - require `R3 = positive`
+  - require `R4 = zero`
+  - require `R5 = negative`
+  - require `R6 = zero`
+  - action: `R3 = zero`, `R5 = negative`
+
+Observed first-pass result:
+
+- the constrained hybrid improves both breadth and depth over `physics7`
+- edges rise from `204` to `222`
+- longest chain rises from `12` to `13`
+- cyclic starts rise from `116` to `132`
+- action-rank increases stay at `27`
+- fixed-walk timeout count stays at `0` for `max-steps 12`
+
+So `physics8` is now the strongest constrained hybrid baseline.

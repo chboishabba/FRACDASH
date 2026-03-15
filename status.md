@@ -2,7 +2,7 @@
 
 ## Snapshot
 
-- Date: `2026-03-14`
+- Date: `2026-03-15`
 - Phase: `Phase 2 CORE experiments running`
 - State: `active`
 
@@ -40,6 +40,14 @@
 - `scripts/agdas_physics_experiments.py` now executes the widened `physics2` layer over that carrier, and the artifact lives at `benchmarks/results/2026-03-14-agdas-physics2-phase2.json`.
 - `scripts/agdas_physics_experiments.py` now also executes the `physics3` cone-shell refinement layer and reports action-phase monotonicity; the artifact lives at `benchmarks/results/2026-03-14-agdas-physics3-phase2.json`.
 - `scripts/agdas_physics_experiments.py` now also executes the stricter `physics4` rearm variant; its artifact lives at `benchmarks/results/2026-03-14-agdas-physics4-phase2.json`.
+- `scripts/agdas_physics_experiments.py` now also executes the `physics5` hybrid rearm variant; its artifact lives at `benchmarks/results/2026-03-14-agdas-physics5-phase2.json`.
+- `scripts/agdas_physics_experiments.py` now also executes the `physics6` shell-refresh refinement; its artifact lives at `benchmarks/results/2026-03-14-agdas-physics6-phase2.json`.
+- `scripts/agdas_physics_experiments.py` now also executes the `physics7` shell-probe refinement; its artifact lives at `benchmarks/results/2026-03-14-agdas-physics7-phase2.json`.
+- `scripts/agdas_physics_experiments.py` now also executes the `physics8` shell-stage-release refinement; its artifact lives at `benchmarks/results/2026-03-14-agdas-physics8-phase2.json`.
+- canonical rank-4 dataset derivation in `scripts/derive_rank4_dataset.py` with artifacts at `benchmarks/results/2026-03-15-rank4-dataset.json` and `benchmarks/results/rank4-dataset-latest.json`
+- rank-4 diagnostics runner in `scripts/run_rank4_diagnostics.py` with artifact `benchmarks/results/2026-03-15-rank4-diagnostics.json`
+- rank-4 discriminator runner in `scripts/run_rank4_discriminators.py` with artifacts `benchmarks/results/2026-03-15-rank4-discriminators.json` and `benchmarks/results/2026-03-15-rank4-discriminators.md`
+- lock-gated canonical GPU parity runner in `scripts/run_rank4_canonical_gpu_parity.py` with artifact `benchmarks/results/2026-03-15-rank4-canonical-gpu-parity.json`
 - batched one-step GPU parity through the same shader/runner path
 - batched multi-step resident GPU parity through the same shader/runner path
 - single-submit multi-dispatch optimization through ping-pong descriptor sets
@@ -88,6 +96,13 @@
 - The widened physics layer is now also proven executable: `physics2` expands from the `physics1` carrier to `3^6 = 729` states and yields a much denser recurrent graph (`657` edges, longest chain `12`, deterministic 4-step cycle from the canonical start), so physics-facing bridge work is now the main experimental path.
 - The cone-refined physics layer is stronger again: `physics3` preserves the same 6-register carrier, increases the graph to `900` edges over `729` states, raises longest chain to `15`, and exposes an explicit action monotonicity summary, so it is now the leading physics-facing bridge layer.
 - The stricter `physics4` layer answers the next question, but negatively: it cuts action-rank increases sharply (`162 -> 9`) and keeps the same carrier, yet collapses the graph to `162` edges with no cycles, so `physics3` remains the better current lead and the next task is a recurrent hybrid rather than tighter guards alone.
+- The `physics5` hybrid answers that next question positively but only partially: it restores recurrence (`100` cyclic starts) and keeps action-rank increases much lower than `physics3` (`27` vs `162`), but the graph remains much sparser (`180` edges, longest chain `10`), so `physics3` stays the current lead while `physics5` is the best ordered hybrid so far.
+- The `physics6` refinement improves that controlled-hybrid line again: it raises the graph to `198` edges, raises longest chain to `12`, raises cyclic starts to `115`, and keeps action-rank increases flat at `27`. That makes `physics6` the best controlled hybrid so far. The runner now also includes a built-in higher-cap diagnosis, and the one apparent timeout state resolves to a cycle, so the remaining gap is recurrence richness rather than tail instability.
+- The `physics7` refinement improves the controlled-hybrid line again through preserve-only shell probes: it raises the graph to `204` edges, raises cyclic starts to `116`, keeps longest chain at `12`, keeps action-rank increases flat at `27`, and shows `0` fixed-walk timeouts at `max-steps 12`. `physics3` still leads on raw richness, but `physics7` is now the best controlled hybrid baseline.
+- The `physics8` refinement improves the controlled-hybrid line again by adding staged shell release: it raises the graph to `222` edges, raises longest chain to `13`, raises cyclic starts to `132`, keeps action-rank increases flat at `27`, and keeps fixed-walk timeouts at `0` for `max-steps 12`. `physics3` still leads on raw richness, but `physics8` is now the strongest constrained baseline.
+- Added `RANK4_OBSTRUCTION_NOTE.md` as a research-grade statement with explicit claim-status boundaries (`observed experimentally` vs `conjectured`) and linked discriminator experiments; TODO Phase 3 now includes local reproduction tasks for those rank-4 diagnostics and tests.
+- The local rank-4 reproduction pipeline is now executable and artifact-backed, but the current derived dataset does not yet reproduce the exact `effective dimension = 4` / `chain height = 4` signal; outputs remain report-only while dataset derivation and stability semantics are refined.
+- Diagnostics strict-mode is now split: `--strict-stable` enforces structural validity, and `--strict-lock` enforces the rank-4 lock gate on the selected canonical derivation.
 - How the current middle region behaves on more programs and whether the provisional `batch_size = 32` boundary generalizes beyond `primegame_small` and `paper_smoke`.
 - Whether a generalized threshold-aware LUT or another compiled-path optimization can beat `frac-opt`.
 - Whether the minimal GPU path can preserve the same exact-step semantics and benchmark contract while keeping state device-resident.

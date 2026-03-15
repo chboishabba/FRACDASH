@@ -98,3 +98,34 @@ python3 scripts/check_timing_regression.py \
 ```
 
 The check compares median `cpu_seconds` for each tracked `(scenario, engine)` pair and fails when slowdown exceeds the configured tolerance. Use `--json` for CI-friendly output.
+
+## Rank-4 Obstruction Reproduction
+
+Rank-4 diagnostics are now artifact-backed and reproducible from scripts.
+
+Run:
+
+```bash
+python3 scripts/derive_rank4_dataset.py
+python3 scripts/run_rank4_diagnostics.py
+python3 scripts/run_rank4_discriminators.py
+python3 scripts/run_rank4_canonical_gpu_parity.py
+```
+
+Strict checks:
+
+```bash
+python3 scripts/run_rank4_diagnostics.py --strict-stable
+python3 scripts/run_rank4_diagnostics.py --strict-lock
+```
+
+Current artifacts:
+
+- `benchmarks/results/2026-03-15-rank4-dataset.json`
+- `benchmarks/results/rank4-dataset-latest.json`
+- `benchmarks/results/2026-03-15-rank4-diagnostics.json`
+- `benchmarks/results/2026-03-15-rank4-discriminators.json`
+- `benchmarks/results/2026-03-15-rank4-discriminators.md`
+- `benchmarks/results/2026-03-15-rank4-canonical-gpu-parity.json`
+
+Default mode is report-only. Identity-level `B4`/`D4`/`F4` claims remain unproven.

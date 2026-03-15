@@ -1,0 +1,247 @@
+{
+  "canonical_derivation": "scc_condensation",
+  "canonical_selection": {
+    "lock_pass": false,
+    "policy": "best-of-two",
+    "previous_canonical": null,
+    "reason": "no-gate-pass-bootstrap-scc",
+    "tiebreak": "keep-previous"
+  },
+  "comparison": {
+    "scc_condensation": {
+      "chain_height": 1,
+      "effective_dimension": 5,
+      "lock_gate_pass": false,
+      "stable_pass": true
+    },
+    "walk_partition": {
+      "chain_height": 1,
+      "effective_dimension": 6,
+      "lock_gate_pass": false,
+      "stable_pass": true
+    }
+  },
+  "dataset_path": "benchmarks/results/rank4-dataset-latest.json",
+  "dataset_sha256": "8fbafbfc40f6b068789a7f52b0668d2f696412d7ea6373c3d8fb5d76089b5e7f",
+  "derivations": {
+    "scc_condensation": {
+      "chain": {
+        "descending_edge_count": 0,
+        "edge_count": 0,
+        "longest_monotone_chain_height": 1,
+        "node_count": 10,
+        "stability_distinct_values": [
+          17,
+          16,
+          15,
+          2
+        ],
+        "stability_values": [
+          17,
+          17,
+          17,
+          17,
+          16,
+          16,
+          16,
+          16,
+          15,
+          2
+        ]
+      },
+      "lock_gate": {
+        "checks": {
+          "chain_height_is_4": false,
+          "effective_dimension_is_4": false,
+          "shape_10x15": true
+        },
+        "pass": false
+      },
+      "observations": {
+        "both_rank4_signals": false,
+        "chain4_observed": false,
+        "rank4_observed": false
+      },
+      "pca": {
+        "cumulative_variance_ratio": [
+          0.32421663371997406,
+          0.5263867433500141,
+          0.728380103935089,
+          0.9298499800494148,
+          0.9999983623541415,
+          0.9999999999999999,
+          0.9999999999999999,
+          0.9999999999999999,
+          0.9999999999999999,
+          0.9999999999999999
+        ],
+        "effective_dimension": 5,
+        "explained_variance_ratio": [
+          0.32421663371997406,
+          0.2021701096300401,
+          0.20199336058507486,
+          0.2014698761143258,
+          0.0701483823047268,
+          1.637645858322388e-06,
+          1.4287221438895927e-32,
+          1.850219494335135e-33,
+          6.10966237278453e-34,
+          2.3063237162626478e-34
+        ],
+        "matrix_shape": [
+          10,
+          15
+        ],
+        "singular_values": [
+          2.1972183320114436,
+          1.7350581753035001,
+          1.7342995643185521,
+          1.7320508075688772,
+          1.0220317738871516,
+          0.004938164616234102,
+          4.612426468099029e-16,
+          1.6598436980567051e-16,
+          9.538150555653604e-17,
+          5.860244016771261e-17
+        ],
+        "variance_threshold": 0.997
+      },
+      "shape": {
+        "basins": 10,
+        "primes": 15
+      },
+      "stable": {
+        "all_pass": true,
+        "checks": {
+          "adjacency_indices_valid": true,
+          "chain_computable": true,
+          "matrix_finite": true,
+          "matrix_shape_consistent": true,
+          "pca_computable": true,
+          "shape_10x15": true,
+          "stability_length_consistent": true
+        }
+      }
+    },
+    "walk_partition": {
+      "chain": {
+        "descending_edge_count": 0,
+        "edge_count": 1,
+        "longest_monotone_chain_height": 1,
+        "node_count": 10,
+        "stability_distinct_values": [
+          15,
+          11,
+          9,
+          8,
+          7
+        ],
+        "stability_values": [
+          15,
+          11,
+          9,
+          9,
+          9,
+          8,
+          8,
+          8,
+          8,
+          7
+        ]
+      },
+      "lock_gate": {
+        "checks": {
+          "chain_height_is_4": false,
+          "effective_dimension_is_4": false,
+          "shape_10x15": true
+        },
+        "pass": false
+      },
+      "observations": {
+        "both_rank4_signals": false,
+        "chain4_observed": false,
+        "rank4_observed": false
+      },
+      "pca": {
+        "cumulative_variance_ratio": [
+          0.2972284795880285,
+          0.5649972360761472,
+          0.7624375507891904,
+          0.9589994094983242,
+          0.9944124714597264,
+          0.9995797431097325,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "effective_dimension": 6,
+        "explained_variance_ratio": [
+          0.2972284795880285,
+          0.26776875648811865,
+          0.19744031471304327,
+          0.1965618587091338,
+          0.03541306196140225,
+          0.005167271650006032,
+          0.00042025689026755123,
+          8.91669321714049e-33,
+          1.864082901331909e-33,
+          1.3335178111703888e-33
+        ],
+        "matrix_shape": [
+          10,
+          15
+        ],
+        "singular_values": [
+          2.13230600126572,
+          2.0238777230056746,
+          1.7378898090886756,
+          1.7340193694579493,
+          0.73601397219586,
+          0.2811479790241786,
+          0.08017920403146694,
+          3.693228953807301e-16,
+          1.6886394484642025e-16,
+          1.4282483453845022e-16
+        ],
+        "variance_threshold": 0.997
+      },
+      "shape": {
+        "basins": 10,
+        "primes": 15
+      },
+      "stable": {
+        "all_pass": true,
+        "checks": {
+          "adjacency_indices_valid": true,
+          "chain_computable": true,
+          "matrix_finite": true,
+          "matrix_shape_consistent": true,
+          "pca_computable": true,
+          "shape_10x15": true,
+          "stability_length_consistent": true
+        }
+      }
+    }
+  },
+  "independence_check": {
+    "chain_inputs": [
+      "stability",
+      "adjacency"
+    ],
+    "input_overlap": [],
+    "pca_inputs": [
+      "matrix"
+    ],
+    "valid": true
+  },
+  "status_mode": {
+    "strict_lock": false,
+    "strict_stable": true
+  },
+  "summary": {
+    "all_derivations_stable": true,
+    "canonical_lock_gate_pass": false,
+    "stable_failures": []
+  }
+}

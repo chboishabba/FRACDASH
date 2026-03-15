@@ -226,7 +226,11 @@ The first wave-3 execution path now exists in `scripts/agdas_wave3_experiments.p
 For a more physics-facing path, FRACDASH now also has a local formal sketch in `formalism/PhysicsBridgeRefreshSketch.agda` and a recurrent `physics1` template set covering severity join, contraction-style relaxation, and boundary reset. Its artifact is `benchmarks/results/2026-03-14-agdas-physics1-phase2.json`, and it already shows nontrivial recurrent behavior on the existing 4-register carrier, making it the higher-signal bridge direction for now.
 The widened `physics2` layer is implemented on a dedicated 6-register carrier with separate source severities, effective joined severity, region flag, signature latch, and action/energy phase. The carrier lives in `scripts/agdas_physics2_state.py`, the runner in `scripts/agdas_physics_experiments.py`, and the canonical artifact in `benchmarks/results/2026-03-14-agdas-physics2-phase2.json`. On the first pass it produces a substantially denser recurrent structure than `physics1`, with `657` edges over `729` states, longest chain `12`, and a canonical 4-step scan -> join -> contract -> rearm cycle.
 The `physics3` refinement is also implemented on the same 6-register carrier. It adds an explicit latent cone shell between boundary and interior and reports action-phase monotonicity directly in the artifact. The canonical result is `benchmarks/results/2026-03-14-agdas-physics3-phase2.json`, which increases the graph to `900` edges over `729` states, raises longest chain to `15`, and makes the canonical loop explicitly 5-step by splitting `boundary -> shell -> interior rearm`. Its first monotonicity split is mixed rather than cleanly ordered: `234` decreases, `504` preserves, `162` increases.
-That next pass is now implemented as `physics4` on the same 6-register carrier. Its artifact is `benchmarks/results/2026-03-14-agdas-physics4-phase2.json`. The result is informative but not yet the new lead: stricter shell/interior guards cut action-rank increases from `162` to `9`, but they also collapse the recurrent structure to `162` edges, longest chain `9`, and `0` cycles, so every fixed walk terminates. In other words, `physics4` improves order cleanliness by overconstraining the bridge. The next pass should recover recurrence without giving back all of that monotonicity improvement.
+That next pass is now implemented as `physics4` on the same 6-register carrier. Its artifact is `benchmarks/results/2026-03-14-agdas-physics4-phase2.json`. The result is informative but not yet the new lead: stricter shell/interior guards cut action-rank increases from `162` to `9`, but they also collapse the recurrent structure to `162` edges, longest chain `9`, and `0` cycles, so every fixed walk terminates. In other words, `physics4` improves order cleanliness by overconstraining the bridge.
+The `physics5` hybrid is now implemented as the next recovery pass. It keeps the `physics4` scan guard and discharged-boundary shell entry, but splits shell-to-interior rearm into a cleared rearm plus latched left/right rearms. Its artifact is `benchmarks/results/2026-03-14-agdas-physics5-phase2.json`. The result lands in the intended middle band: recurrence returns (`100` cyclic starts), action-rank increases stay far below `physics3` (`27` vs `162`), and the canonical deterministic walk becomes cyclic again. But it is still much sparser than `physics3` overall (`180` edges, longest chain `10`), so `physics3` remains the best current lead while `physics5` becomes the best ordered hybrid so far.
+The `physics6` refinement is now implemented on top of `physics5`. It adds a narrow shell-refresh branch for latched shell states before cleared rearm. Its artifact is `benchmarks/results/2026-03-14-agdas-physics6-phase2.json`. This moves the ordered-hybrid line forward again: the graph grows to `198` edges, longest chain rises to `12`, cyclic starts rise to `115`, and action-rank increases stay flat at `27`. The canonical deterministic walk becomes a 6-step cycle with an explicit shell-refresh step. `physics3` still leads on overall richness, but `physics6` is now the best controlled hybrid. The earlier apparent timeout tail is now resolved inside the artifact: the one state that timed out at `--max-steps 12` becomes a cycle under the built-in diagnostic cap of `32`, so there is currently no evidence of a broader runaway tail.
+The `physics7` refinement is now implemented on top of `physics6`. It adds a very narrow shell-local latch-probe path from cleared shell states. Its artifact is `benchmarks/results/2026-03-14-agdas-physics7-phase2.json`. This gives another controlled gain: the graph rises to `204` edges, cyclic starts rise to `116`, and action-rank increases stay flat at `27`. Longest chain remains `12`, so the gain is mostly breadth via preserve edges, not deeper chains. `physics3` still leads on total richness, but `physics7` is now the best controlled hybrid and does not show the earlier timeout ambiguity at `--max-steps 12`.
+The `physics8` refinement is now implemented on top of `physics7`. It inserts a staged shell-release micro-step (`probe -> stage -> release -> refresh -> rearm`) while preserving the same action-rank jump surface. Its artifact is `benchmarks/results/2026-03-14-agdas-physics8-phase2.json`. This is the first constrained pass that improves both breadth and depth from the hybrid baseline: `222` edges, longest chain `13`, `132` cyclic starts, `0` timeouts at `max-steps 12`, and still `27` action-rank increases. `physics3` still leads on total richness, but `physics8` is now the strongest constrained hybrid path.
 
 [`scripts/toy_dashi_transitions.py`](/home/c/Documents/code/FRACDASH/scripts/toy_dashi_transitions.py) is now wired to consume AGDAS candidates either from optional parsed source markers via `--agdas-path` or from the primary FRACDASH-side bridge templates via `--agdas-templates --agdas-template-set wave1|wave2|all`. This keeps the verifier and basin tooling usable without editing upstream AGDA sources.
 
@@ -241,6 +245,47 @@ That script writes `benchmarks/results/YYYY-MM-DD-toy-dashi-phase2.json` and enf
 
 You can keep the check interactive by adding `--disable-chain-bound` or using custom values with `--max-chain-bound`.
 
+## Rank-4 Reproduction Artifacts
+
+FRACDASH now has a local, reproducible rank-4 analysis pipeline that derives a canonical basin dataset from existing artifacts and runs both diagnostics and discriminator tests as scripts.
+
+Entry points:
+
+- [`scripts/derive_rank4_dataset.py`](/home/c/Documents/code/FRACDASH/scripts/derive_rank4_dataset.py)
+- [`scripts/run_rank4_diagnostics.py`](/home/c/Documents/code/FRACDASH/scripts/run_rank4_diagnostics.py)
+- [`scripts/run_rank4_discriminators.py`](/home/c/Documents/code/FRACDASH/scripts/run_rank4_discriminators.py)
+- [`scripts/run_rank4_canonical_gpu_parity.py`](/home/c/Documents/code/FRACDASH/scripts/run_rank4_canonical_gpu_parity.py)
+
+Run:
+
+```sh
+python3 scripts/derive_rank4_dataset.py
+python3 scripts/run_rank4_diagnostics.py
+python3 scripts/run_rank4_discriminators.py
+python3 scripts/run_rank4_canonical_gpu_parity.py
+```
+
+Strict-mode checks:
+
+```sh
+python3 scripts/run_rank4_diagnostics.py --strict-stable
+python3 scripts/run_rank4_diagnostics.py --strict-lock
+```
+
+Current artifacts:
+
+- `benchmarks/results/2026-03-15-rank4-dataset.json`
+- `benchmarks/results/rank4-dataset-latest.json`
+- `benchmarks/results/2026-03-15-rank4-diagnostics.json`
+- `benchmarks/results/2026-03-15-rank4-discriminators.json`
+- `benchmarks/results/2026-03-15-rank4-discriminators.md`
+- `benchmarks/results/2026-03-15-rank4-canonical-gpu-parity.json`
+
+Claim boundary remains strict:
+
+- rank-4 identity-level claims are unproven
+- diagnostics/discriminators are reported as experimental outputs, not proofs
+
 ## Read First
 
 # Minimal DASHI state space
@@ -254,5 +299,6 @@ Before making substantial changes, read:
 3. [`TODO.md`](/home/c/Documents/code/FRACDASH/TODO.md)
 4. [`AGDAS_BRIDGE_NOTES.md`](/home/c/Documents/code/FRACDASH/AGDAS_BRIDGE_NOTES.md)
 5. [`AGDAS_BRIDGE_MAPPING.md`](/home/c/Documents/code/FRACDASH/AGDAS_BRIDGE_MAPPING.md)
+6. [`RANK4_OBSTRUCTION_NOTE.md`](/home/c/Documents/code/FRACDASH/RANK4_OBSTRUCTION_NOTE.md)
 
 That is the current source of truth for project intent, guardrails, and active priorities.
