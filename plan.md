@@ -109,6 +109,18 @@ Current direction:
 7. Resume Phase 2 CORE experiments with that bridge and keep the toy transition set as the deterministic safety gate. The parser remains available in `scripts/agdas_bridge.py` for optional source-coupled extraction, but the main execution path no longer depends on marker availability in the `.agda` tree.
 8. Prioritize the physics-facing bridge over deeper Monster compression unless the Monster path starts producing equally strong structure. `physics1` and `physics2` now provide the most relevant James-facing signal.
 9. Run timing regression checks between matrix runs with `scripts/check_timing_regression.py` after material CPU changes.
+10. Keep the Monster 10-walk lane on locked canonical semantics (`MONSTER10WALK_CANONICAL.md`) and run `scripts/freeze_monster10walk_canonical.py --strict-lock` as a regression gate whenever physics templates change.
+11. Keep canonical edge semantics transition-witnessed by the required template set (`physics8|physics9`) instead of sequence policy alone.
+12. Treat `monster/MonsterLean` theorem claims file-by-file by quarantine status; only `closed_for_local_claim_reuse` files may be cited as local proof support.
+13. Prioritize closure tracking for `MonsterWalk.lean`, `MonsterWalkPrimes.lean`, `MonsterWalkRings.lean`, and `BottPeriodicity.lean` via the quarantine report queue.
+14. Treat the physics lane as a discrete-law measurement problem first: keep exact gates for source-charge conservation, source-parity preservation, locality bounds, forward-cone bounds, and cycle-distance nonincrease, then layer statistical geometry surrogates (perturbation stability, geodesic-like flow, curvature-like concentration, defect attraction) on top of the same artifacts.
+15. Continue the template lane only against the corrected cycle-reachable geometry surrogate, not the earlier `distance_to_cycle = -1` biased version.
+16. Widen the analyzer with explicit observable surrogates so the next phase can talk about shell/interior occupancy, re-entry, and source-defect coupling directly rather than only through candidate-law scores.
+17. Use `physics20` as the current exploratory recurrent-widening branch beyond `physics18/19`, but keep the hard lock anchored to `physics2..physics8` until a later branch is intentionally promoted.
+18. Split the next physics round into two explicit branches:
+   - `physics21` on the current 6-register carrier, targeting the first direct `boundary -> interior` re-entry without breaking the exact V1 laws.
+   - `carrier8_physics1` on a new physics-local 8-register carrier that preserves the first 6 registers and adds `R7` boundary-return memory plus `R8` transport/debt memory.
+19. Treat the 6-register `physics21` branch as the only near-term promotion candidate; keep the 8-register branch exploratory and excluded from the hard lock until it emits stable, branch-local observables.
 
 ## Phase 2 Experiment Work
 
@@ -128,7 +140,19 @@ Current direction:
    - the built-in long-tail diagnosis now resolves the one apparent `physics6` timeout to a cycle under a higher cap, so the next pass should widen recurrence from the `physics6` baseline rather than chase tail uncertainty.
    - `physics7` now widens recurrence from `physics6` through preserve-only shell probes, increasing breadth while keeping the action-rank jump count flat.
    - `physics8` now adds staged shell release and improves both breadth and depth from `physics7` while keeping the jump count flat and timeout count at zero.
-   - the next pass should improve richness from the `physics8` baseline while preserving both the current jump-count and timeout bounds.
+   - `physics9` now adds shell-stage mid probes and improves breadth from `physics8` (`228` vs `222` edges) while preserving timeout and action-jump bounds.
+   - `physics10` now adds a constrained neutral-shell probe on top of `physics9`, improving cyclic coverage (`146` vs `132`) while preserving jump-count (`27`) and timeout (`0`) bounds.
+   - `physics11` now adds boundary discharge before shell entry on top of `physics10`, improving breadth and cyclic coverage again (`256` edges, `161` cyclic starts) while keeping jump-count (`27`) and timeout (`0`) bounds flat.
+   - `physics12` adds staged-shell boundary detours and improves breadth (`274` edges) while keeping constrained bounds flat, but does not increase depth (`longest_chain` stays `13`).
+   - `physics13` adds a targeted mid-contract detour and increases depth to `14` while preserving constrained bounds (`increases=27`, `timeouts=0`).
+   - `physics14` adds high-severity shell rearm and improves constrained recurrence strongly (`302` edges, `194` cyclic starts) while preserving depth `14` and constrained bounds (`increases=27`, `timeouts=0`).
+   - `physics15` adds a narrow boundary crossfeed detour and pushes depth to `22` while preserving constrained bounds (`303` edges, `194` cyclic starts, `increases=27`, `timeouts=0`).
+   - `physics16` adds high-severity boundary discharge and reduces terminal states to `502` while improving recurrence (`330` edges, `227` cyclic starts) under unchanged constrained bounds (`increases=27`, `timeouts=0`).
+   - `physics17` adds a narrow boundary handoff and pushes depth to `29` under unchanged constrained bounds (`331` edges, `227` cyclic starts, `increases=27`, `timeouts=0`).
+   - `physics18` adds mid-severity boundary discharge and reduces terminal states to `475` while improving recurrence (`358` edges, `254` cyclic starts) under unchanged constrained bounds (`longest_chain=29`, `increases=27`, `timeouts=0`).
+  - `physics20` now widens the deterministic recurrent graph to `301` deterministic edges and improves the corrected geometry/defect suite, but it still has `boundary_to_interior = 0`; the next narrow pass should therefore target direct re-entry rather than breadth alone.
+  - run `physics21` as a balanced re-entry attempt on the same carrier: preserve exact V1 laws, keep corrected geodesic-like flow `>= 0.90`, and only promote if the branch introduces a nonzero `boundary_to_interior` count alongside a richer deterministic recurrent graph than `physics20`.
+  - in parallel, start a physics-local 8-register carrier with explicit return-memory/debt registers so later experiments can separate boundary-return type from transport load instead of overloading the 6-register grammar.
 
 ## CPU To GPU Handoff Criteria
 

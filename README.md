@@ -46,6 +46,8 @@ The near-term questions are:
 - [`ROADMAP.md`](/home/c/Documents/code/FRACDASH/ROADMAP.md): phased implementation path
 - [`TODO.md`](/home/c/Documents/code/FRACDASH/TODO.md): active task queue and open decisions
 - [`CHANGELOG.md`](/home/c/Documents/code/FRACDASH/CHANGELOG.md): material repo changes
+- [`MONSTER10WALK_CANONICAL.md`](/home/c/Documents/code/FRACDASH/MONSTER10WALK_CANONICAL.md): frozen canonical semantics and lock criteria for the Monster 10-walk lane
+- [`MONSTERLEAN_INTAKE.md`](/home/c/Documents/code/FRACDASH/MONSTERLEAN_INTAKE.md): intake notes for the local `monster/MonsterLean` clone and proof-completeness caveats
 - [`benchmarks/`](/home/c/Documents/code/FRACDASH/benchmarks): benchmark runners, summaries, and result artifacts
 - [`fractran/`](/home/c/Documents/code/FRACDASH/fractran): local FRACTRAN baseline interpreter and benchmark binary
 
@@ -128,6 +130,70 @@ python3 scripts/check_timing_regression.py \
 ```
 
 It compares median `cpu_seconds` across the tracked `(scenario, engine)` pairs and exits non-zero if slowdowns exceed tolerance.
+
+### Physics Invariant Target Check
+
+Use the physics target gate after AGDAS/physics template or invariant-analysis changes:
+
+```sh
+python3 scripts/check_physics_invariant_targets.py
+```
+
+For CI-style output:
+
+```sh
+python3 scripts/check_physics_invariant_targets.py --json
+```
+
+This checks the current V1 physics target suite over the latest locked `physics2..physics8` artifacts:
+
+- exact source-charge conservation and source-parity preservation
+- exact locality and forward-cone bounds
+- exact cycle-distance nonincrease
+- perturbation-stability thresholds
+- geodesic-like and curvature-like geometry surrogates evaluated over cycle-reachable local neighborhoods
+- defect-attraction thresholds
+- the existing controlled-hybrid progression and `physics4` overconstraint signature
+
+The canonical target table lives in `PHYSICS_INVARIANT_TARGETS.md`.
+
+Each invariant artifact now also emits an `observable_surrogates` block with shell/interior occupancy, action-phase occupancy, re-entry flow, latch alignment, and source-defect coupling summaries for exploratory physics interpretation.
+
+The next physics split is now explicit. The narrow branch stays on the existing 6-register carrier and tries to produce the first direct `boundary -> interior` re-entry (`physics21`) without breaking the exact V1 laws. In parallel, FRACDASH is adding a separate physics-local 8-register carrier (`carrier8_physics1`) that preserves the current `R1..R6` semantics and adds `R7` boundary-return memory plus `R8` transport/debt memory so later experiments can measure return type and deferred transport load directly instead of overloading the 6-register grammar.
+
+That split is now implemented. `physics21` is the current best 6-register exploratory branch: it lifts deterministic edges from `301` to `310`, phase-graph edges from `386` to `395`, terminal states down from `428` to `419`, and introduces the first direct `boundary_to_interior = 9` witness while keeping the exact V1 laws intact. The 8-register branch now exists as `scripts/agdas_physics8_state.py` plus `scripts/agdas_physics8_experiments.py`, with artifacts at `benchmarks/results/2026-03-15-agdas-carrier8-physics1-phase2.json` and `benchmarks/results/2026-03-15-physics-invariants-carrier8_physics1.json`; its current job is to expose `boundary_return_profile` and `transport_debt_profile`, not to replace the 6-register lock.
+
+### MonsterLean Intake Check
+
+If you have the local `monster/` clone, run:
+
+```sh
+python3 scripts/check_monsterlean_intake.py
+```
+
+This writes a machine-readable intake summary and flags `axiom`/`sorry` usage in the shortlisted `MonsterLean` files so FRACDASH does not treat incomplete Lean claims as established results.
+
+To extract a constants-only 10-walk candidate from `BottPeriodicity.lean`:
+
+```sh
+python3 scripts/extract_monsterlean_10walk.py
+```
+
+This emits a diagnostic JSON with parsed group constants and monotone-chain summaries under multiple stability definitions.
+
+To freeze/lock the canonical 10-walk model and verify an independent FRACDASH transition-data derivation:
+
+```sh
+python3 scripts/freeze_monster10walk_canonical.py --strict-lock
+```
+
+Default lock mode requires transition-witness support from `physics8` and `physics9`. Use `--template-set <name>` only for one-off single-template checks.
+
+To generate file-by-file Lean claim quarantine status:
+
+```sh
+python3 scripts/quarantine_monsterlean_claims.py
+```
 
 ## Working Principles
 
@@ -231,6 +297,7 @@ The `physics5` hybrid is now implemented as the next recovery pass. It keeps the
 The `physics6` refinement is now implemented on top of `physics5`. It adds a narrow shell-refresh branch for latched shell states before cleared rearm. Its artifact is `benchmarks/results/2026-03-14-agdas-physics6-phase2.json`. This moves the ordered-hybrid line forward again: the graph grows to `198` edges, longest chain rises to `12`, cyclic starts rise to `115`, and action-rank increases stay flat at `27`. The canonical deterministic walk becomes a 6-step cycle with an explicit shell-refresh step. `physics3` still leads on overall richness, but `physics6` is now the best controlled hybrid. The earlier apparent timeout tail is now resolved inside the artifact: the one state that timed out at `--max-steps 12` becomes a cycle under the built-in diagnostic cap of `32`, so there is currently no evidence of a broader runaway tail.
 The `physics7` refinement is now implemented on top of `physics6`. It adds a very narrow shell-local latch-probe path from cleared shell states. Its artifact is `benchmarks/results/2026-03-14-agdas-physics7-phase2.json`. This gives another controlled gain: the graph rises to `204` edges, cyclic starts rise to `116`, and action-rank increases stay flat at `27`. Longest chain remains `12`, so the gain is mostly breadth via preserve edges, not deeper chains. `physics3` still leads on total richness, but `physics7` is now the best controlled hybrid and does not show the earlier timeout ambiguity at `--max-steps 12`.
 The `physics8` refinement is now implemented on top of `physics7`. It inserts a staged shell-release micro-step (`probe -> stage -> release -> refresh -> rearm`) while preserving the same action-rank jump surface. Its artifact is `benchmarks/results/2026-03-14-agdas-physics8-phase2.json`. This is the first constrained pass that improves both breadth and depth from the hybrid baseline: `222` edges, longest chain `13`, `132` cyclic starts, `0` timeouts at `max-steps 12`, and still `27` action-rank increases. `physics3` still leads on total richness, but `physics8` is now the strongest constrained hybrid path.
+The `physics9` refinement is now implemented on top of `physics8`. It adds shell-stage mid probes while preserving the same release/rearm chain. Its artifact is `benchmarks/results/2026-03-15-agdas-physics9-phase2.json`. This keeps the current constraints (`action-rank increases = 27`, `timeouts = 0`) and improves breadth to `228` edges, while keeping longest chain `13` and cyclic starts `132`.
 
 [`scripts/toy_dashi_transitions.py`](/home/c/Documents/code/FRACDASH/scripts/toy_dashi_transitions.py) is now wired to consume AGDAS candidates either from optional parsed source markers via `--agdas-path` or from the primary FRACDASH-side bridge templates via `--agdas-templates --agdas-template-set wave1|wave2|all`. This keeps the verifier and basin tooling usable without editing upstream AGDA sources.
 
@@ -263,6 +330,7 @@ python3 scripts/derive_rank4_dataset.py
 python3 scripts/run_rank4_diagnostics.py
 python3 scripts/run_rank4_discriminators.py
 python3 scripts/run_rank4_canonical_gpu_parity.py
+python3 scripts/ablate_prime_triplets.py --template-set physics8
 ```
 
 Strict-mode checks:
@@ -280,6 +348,7 @@ Current artifacts:
 - `benchmarks/results/2026-03-15-rank4-discriminators.json`
 - `benchmarks/results/2026-03-15-rank4-discriminators.md`
 - `benchmarks/results/2026-03-15-rank4-canonical-gpu-parity.json`
+- `benchmarks/results/2026-03-15-prime-triplet-ablation.json`
 
 Claim boundary remains strict:
 

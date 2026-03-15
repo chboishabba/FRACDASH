@@ -99,6 +99,39 @@ python3 scripts/check_timing_regression.py \
 
 The check compares median `cpu_seconds` for each tracked `(scenario, engine)` pair and fails when slowdown exceeds the configured tolerance. Use `--json` for CI-friendly output.
 
+## Physics invariant target check
+
+Use the physics gate after physics-template or invariant-analysis changes.
+
+Run:
+
+```bash
+python3 scripts/check_physics_invariant_targets.py
+```
+
+Or emit machine-readable output:
+
+```bash
+python3 scripts/check_physics_invariant_targets.py --json
+```
+
+The check validates canonical relationship targets over the latest `physics2..physics8` artifacts:
+
+- Lyapunov nonincrease (`nonincrease_ratio == 1.0`, no increase edges)
+- controlled-hybrid progression (`physics5..physics8` edge/cycle growth with fixed jump-count cap)
+- long-tail resolution (`still_timeout == 0` on `physics6..physics8`)
+- expected `physics4` overconstraint signature
+
+See `PHYSICS_INVARIANT_TARGETS.md` for the explicit target table and current baseline numbers.
+
+Invariant artifacts also now include `observable_surrogates` for non-gated exploratory measurements:
+
+- region occupancy across boundary/shell/interior
+- action-phase occupancy
+- shell and boundary re-entry flow
+- source-latch alignment
+- source-defect coupling
+
 ## Rank-4 Obstruction Reproduction
 
 Rank-4 diagnostics are now artifact-backed and reproducible from scripts.
@@ -110,6 +143,7 @@ python3 scripts/derive_rank4_dataset.py
 python3 scripts/run_rank4_diagnostics.py
 python3 scripts/run_rank4_discriminators.py
 python3 scripts/run_rank4_canonical_gpu_parity.py
+python3 scripts/ablate_prime_triplets.py --template-set physics8
 ```
 
 Strict checks:
@@ -127,5 +161,23 @@ Current artifacts:
 - `benchmarks/results/2026-03-15-rank4-discriminators.json`
 - `benchmarks/results/2026-03-15-rank4-discriminators.md`
 - `benchmarks/results/2026-03-15-rank4-canonical-gpu-parity.json`
+- `benchmarks/results/2026-03-15-prime-triplet-ablation.json`
 
 Default mode is report-only. Identity-level `B4`/`D4`/`F4` claims remain unproven.
+
+## Monster 10-Walk Canonical Lock
+
+Run:
+
+```bash
+python3 scripts/freeze_monster10walk_canonical.py --strict-lock
+python3 scripts/quarantine_monsterlean_claims.py
+```
+
+Default lock mode enforces transition-witness support from `physics8` and `physics9`.
+
+Current lock artifacts:
+
+- `benchmarks/results/2026-03-15-monster10walk-canonical.json`
+- `benchmarks/results/2026-03-15-monsterlean-claim-status.json`
+- `benchmarks/results/2026-03-15-monsterlean-claim-status.md`

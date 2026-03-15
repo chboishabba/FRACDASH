@@ -554,6 +554,285 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
         ),
         *physics7[13:],
     ]
+    physics9 = [
+        *physics7[:11],
+        TemplateRule(
+            name="physics9_shell_probe_left_high",
+            template_set="physics9",
+            module="DASHI.Algebra.PhysicsSignature.scan",
+            condition={"R1": "negative", "R3": "zero", "R4": "zero", "R5": "zero", "R6": "zero"},
+            action={"R1": "negative", "R3": "positive", "R5": "positive"},
+            description="Probe a left-high source from cleared shell and stage a latched shell marker.",
+        ),
+        TemplateRule(
+            name="physics9_shell_probe_right_high",
+            template_set="physics9",
+            module="DASHI.Algebra.PhysicsSignature.scan",
+            condition={"R2": "negative", "R3": "zero", "R4": "zero", "R5": "zero", "R6": "zero"},
+            action={"R2": "negative", "R3": "positive", "R5": "negative"},
+            description="Probe a right-high source from cleared shell and stage a latched shell marker.",
+        ),
+        TemplateRule(
+            name="physics9_shell_probe_left_mid",
+            template_set="physics9",
+            module="DASHI.Algebra.PhysicsSignature.scan",
+            condition={"R1": "positive", "R3": "zero", "R4": "zero", "R5": "zero", "R6": "zero"},
+            action={"R1": "positive", "R3": "positive", "R5": "positive"},
+            description="Probe a left-mid source from cleared shell and stage a latched shell marker.",
+        ),
+        TemplateRule(
+            name="physics9_shell_probe_right_mid",
+            template_set="physics9",
+            module="DASHI.Algebra.PhysicsSignature.scan",
+            condition={"R2": "positive", "R3": "zero", "R4": "zero", "R5": "zero", "R6": "zero"},
+            action={"R2": "positive", "R3": "positive", "R5": "negative"},
+            description="Probe a right-mid source from cleared shell and stage a latched shell marker.",
+        ),
+        TemplateRule(
+            name="physics9_shell_stage_release_left",
+            template_set="physics9",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R3": "positive", "R4": "zero", "R5": "positive", "R6": "zero"},
+            action={"R3": "zero", "R4": "zero", "R5": "positive", "R6": "zero"},
+            description="Release staged left shell marker into the normal latched-shell path.",
+        ),
+        TemplateRule(
+            name="physics9_shell_stage_release_right",
+            template_set="physics9",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R3": "positive", "R4": "zero", "R5": "negative", "R6": "zero"},
+            action={"R3": "zero", "R4": "zero", "R5": "negative", "R6": "zero"},
+            description="Release staged right shell marker into the normal latched-shell path.",
+        ),
+        *physics7[13:],
+    ]
+    physics10 = [
+        *physics9[:17],
+        TemplateRule(
+            name="physics10_shell_probe_neutral",
+            template_set="physics10",
+            module="DASHI.Algebra.PhysicsSignature.scan",
+            condition={"R1": "zero", "R2": "zero", "R3": "zero", "R4": "zero", "R5": "zero", "R6": "zero"},
+            action={"R1": "zero", "R2": "zero", "R3": "positive", "R5": "positive", "R6": "zero"},
+            description=(
+                "Probe neutral shell states before interior rearm by staging a shell marker; "
+                "this widens shell recurrence while preserving action-rank phase."
+            ),
+        ),
+        *physics9[17:],
+    ]
+    physics11 = [
+        *physics10[:10],
+        TemplateRule(
+            name="physics11_boundary_discharge",
+            template_set="physics11",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R3": "zero", "R4": "negative", "R6": "negative"},
+            action={"R3": "zero", "R4": "negative", "R6": "zero"},
+            description=(
+                "Discharge latent action phase at the boundary before shell entry; "
+                "this targets recurrent recovery without increasing action-rank jumps."
+            ),
+        ),
+        *physics10[10:],
+    ]
+    physics12 = [
+        *physics11[:17],
+        TemplateRule(
+            name="physics12_shell_stage_detour_left",
+            template_set="physics12",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R3": "positive", "R4": "zero", "R5": "positive", "R6": "zero"},
+            action={"R3": "zero", "R4": "negative", "R5": "positive", "R6": "zero"},
+            description=(
+                "Route staged left shell markers through a boundary detour before shell release "
+                "to increase controllable path depth without changing action-rank phase."
+            ),
+        ),
+        TemplateRule(
+            name="physics12_shell_stage_detour_right",
+            template_set="physics12",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R3": "positive", "R4": "zero", "R5": "negative", "R6": "zero"},
+            action={"R3": "zero", "R4": "negative", "R5": "negative", "R6": "zero"},
+            description=(
+                "Route staged right shell markers through a boundary detour before shell release "
+                "to increase controllable path depth without changing action-rank phase."
+            ),
+        ),
+        *physics11[17:],
+    ]
+    physics13 = [
+        *physics12,
+        TemplateRule(
+            name="physics13_contract_mid_detour_nn",
+            template_set="physics13",
+            module="Contraction.StrictContraction",
+            condition={"R1": "negative", "R2": "negative", "R3": "positive", "R4": "positive", "R5": "negative", "R6": "positive"},
+            action={"R1": "negative", "R2": "negative", "R3": "zero", "R4": "negative", "R5": "zero", "R6": "zero"},
+            description=(
+                "Targeted detour for the max-chain branch: discharge mid-contraction into a neutral latch "
+                "before shell routing to increase path depth without introducing action-rank increases."
+            ),
+        ),
+    ]
+    physics14 = [
+        *physics13,
+        TemplateRule(
+            name="physics14_shell_high_rearm",
+            template_set="physics14",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R3": "negative", "R4": "zero", "R6": "negative"},
+            action={"R3": "negative", "R4": "positive", "R6": "negative"},
+            description=(
+                "Re-arm interior contraction for stalled high-severity shell states to recycle them "
+                "into the controlled relaxation loop without increasing action-rank phase."
+            ),
+        ),
+    ]
+    physics15 = [
+        *physics14,
+        TemplateRule(
+            name="physics15_boundary_crossfeed_neutral",
+            template_set="physics15",
+            module="UFTC_Lattice.C_XOR",
+            condition={"R1": "negative", "R2": "negative", "R3": "zero", "R4": "negative", "R5": "zero", "R6": "zero"},
+            action={"R1": "negative", "R2": "positive", "R3": "zero", "R4": "negative", "R5": "zero", "R6": "zero"},
+            description=(
+                "Narrow boundary cross-feed detour on the max-chain bottleneck state; "
+                "adds a depth step while preserving action-rank phase."
+            ),
+        ),
+    ]
+    physics16 = [
+        *physics15,
+        TemplateRule(
+            name="physics16_boundary_discharge_high",
+            template_set="physics16",
+            module="Contraction.StrictContraction",
+            condition={"R3": "negative", "R4": "negative", "R6": "negative"},
+            action={"R3": "zero", "R4": "negative", "R6": "zero"},
+            description=(
+                "Discharge high-severity boundary states into the shell-entry lane to reduce terminal mass "
+                "while preserving action-rank monotonicity."
+            ),
+        ),
+    ]
+    physics17 = [
+        *physics16,
+        TemplateRule(
+            name="physics17_boundary_handoff_left_to_mid",
+            template_set="physics17",
+            module="UFTC_Lattice.C_XOR",
+            condition={"R1": "negative", "R2": "positive", "R3": "zero", "R4": "negative", "R5": "positive", "R6": "zero"},
+            action={"R1": "negative", "R2": "zero", "R3": "zero", "R4": "negative", "R5": "positive", "R6": "zero"},
+            description=(
+                "Narrow boundary handoff on the max-chain tail to open an extra acyclic segment "
+                "without changing action-rank phase."
+            ),
+        ),
+    ]
+    physics18 = [
+        *physics17,
+        TemplateRule(
+            name="physics18_boundary_discharge_mid",
+            template_set="physics18",
+            module="Contraction.StrictContraction",
+            condition={"R3": "positive", "R4": "negative", "R6": "negative"},
+            action={"R3": "zero", "R4": "negative", "R6": "zero"},
+            description=(
+                "Discharge mid-severity boundary states into the shell-entry lane to further reduce terminal mass "
+                "while preserving action-rank monotonicity."
+            ),
+        ),
+    ]
+    physics19 = [
+        *physics18,
+        TemplateRule(
+            name="physics19_tail_handoff_n0_to_nn",
+            template_set="physics19",
+            module="UFTC_Lattice.C_XOR",
+            condition={"R1": "negative", "R2": "zero", "R3": "positive", "R4": "positive", "R5": "positive", "R6": "positive"},
+            action={"R1": "negative", "R2": "negative", "R3": "positive", "R4": "positive", "R5": "positive", "R6": "positive"},
+            description=(
+                "Single-state tail handoff on the max-depth branch: insert one extra acyclic step before "
+                "the existing contract-mid discharge, preserving action-rank phase."
+            ),
+        ),
+    ]
+    physics20 = [
+        *physics19,
+        TemplateRule(
+            name="physics20_boundary_positive_discharge",
+            template_set="physics20",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R3": "zero", "R4": "negative", "R6": "positive"},
+            action={"R6": "zero"},
+            description=(
+                "Discharge positive action phase at the boundary into the shell-entry lane. "
+                "This widens deterministic recurrence from the physics18/19 baseline while "
+                "preserving source conservation and the current locality budget."
+            ),
+        ),
+    ]
+    physics21 = [
+        *physics20,
+        TemplateRule(
+            name="physics21_boundary_direct_reentry_mid",
+            template_set="physics21",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R3": "positive", "R4": "negative", "R5": "zero", "R6": "positive"},
+            action={"R4": "positive"},
+            description=(
+                "Directly re-enter the interior from a mid-severity boundary state once the "
+                "positive action phase is already active and the latch is cleared. This is the "
+                "first explicit boundary -> interior recovery rule on the 6-register carrier."
+            ),
+        ),
+    ]
+    carrier8_physics1: list[TemplateRule] = []
+    for rule in physics20:
+        action = dict(rule.action)
+        if (
+            rule.name.startswith("physics4_scan_")
+            or rule.name.startswith("physics2_join_")
+            or rule.name.startswith("physics9_shell_probe_")
+            or rule.name == "physics10_shell_probe_neutral"
+        ):
+            action["R8"] = "positive"
+        elif rule.name in {
+            "physics15_boundary_crossfeed_neutral",
+            "physics17_boundary_handoff_left_to_mid",
+            "physics19_tail_handoff_n0_to_nn",
+        }:
+            action["R8"] = "negative"
+        elif (
+            rule.name.startswith("physics2_contract_")
+            or "discharge" in rule.name
+            or rule.name.startswith("physics5_shell_to_interior_")
+            or rule.name.startswith("physics6_shell_refresh_")
+        ):
+            action["R8"] = "zero"
+
+        if rule.name in {"physics2_contract_mid", "physics13_contract_mid_detour_nn"}:
+            action["R7"] = "negative"
+        elif rule.name in {"physics12_shell_stage_detour_left", "physics12_shell_stage_detour_right"}:
+            action["R7"] = "zero"
+        elif "boundary_discharge" in rule.name or rule.name == "physics20_boundary_positive_discharge":
+            action["R7"] = "positive"
+        elif rule.name.startswith("physics5_shell_to_interior_"):
+            action["R7"] = "zero"
+
+        carrier8_physics1.append(
+            TemplateRule(
+                name=f"carrier8_{rule.name}",
+                template_set="carrier8_physics1",
+                module=rule.module,
+                condition=dict(rule.condition),
+                action=action,
+                description=f"8-register lift of {rule.name} with explicit return/debt tagging. {rule.description}",
+            )
+        )
     phase_cycle = [
         (("zero", "zero"), ("positive", "zero"), "00->10"),
         (("positive", "zero"), ("negative", "zero"), "10->20"),
@@ -613,10 +892,38 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
         return physics7
     if template_set == "physics8":
         return physics8
+    if template_set == "physics9":
+        return physics9
+    if template_set == "physics10":
+        return physics10
+    if template_set == "physics11":
+        return physics11
+    if template_set == "physics12":
+        return physics12
+    if template_set == "physics13":
+        return physics13
+    if template_set == "physics14":
+        return physics14
+    if template_set == "physics15":
+        return physics15
+    if template_set == "physics16":
+        return physics16
+    if template_set == "physics17":
+        return physics17
+    if template_set == "physics18":
+        return physics18
+    if template_set == "physics19":
+        return physics19
+    if template_set == "physics20":
+        return physics20
+    if template_set == "physics21":
+        return physics21
+    if template_set == "carrier8_physics1":
+        return carrier8_physics1
     if template_set == "wave3":
         return wave3
     if template_set == "all":
-        return wave1 + wave2 + physics1 + physics2 + physics3 + physics4 + physics5 + physics6 + physics7 + physics8 + wave3
+        return wave1 + wave2 + physics1 + physics2 + physics3 + physics4 + physics5 + physics6 + physics7 + physics8 + physics9 + physics10 + physics11 + physics12 + physics13 + physics14 + physics15 + physics16 + physics17 + physics18 + physics19 + physics20 + physics21 + carrier8_physics1 + wave3
     raise ValueError(f"unknown template set: {template_set}")
 
 
@@ -944,6 +1251,20 @@ def main() -> None:
             "physics6",
             "physics7",
             "physics8",
+            "physics9",
+            "physics10",
+            "physics11",
+            "physics12",
+            "physics13",
+            "physics14",
+            "physics15",
+            "physics16",
+            "physics17",
+            "physics18",
+            "physics19",
+            "physics20",
+            "physics21",
+            "carrier8_physics1",
             "all",
         ),
         help="Which FRACDASH-side template transition set to use.",

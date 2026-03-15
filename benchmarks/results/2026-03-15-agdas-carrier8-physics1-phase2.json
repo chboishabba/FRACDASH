@@ -1,0 +1,1004 @@
+{
+  "register_count": 8,
+  "state_space_size": 6561,
+  "transition_source": "agdas_templates",
+  "transition_source_summary": {
+    "source": "agdas_templates",
+    "template_set": "carrier8_physics1",
+    "template_count": 34,
+    "template_modules": [
+      "Contraction.StrictContraction",
+      "DASHI.Algebra.PhysicsSignature.scan",
+      "UFTC_Lattice.C_XOR",
+      "UFTC_Lattice.ConeInteriorPreserved"
+    ],
+    "carrier_family": "physics_local_8"
+  },
+  "transition_count": 34,
+  "transitions": [
+    {
+      "name": "carrier8_physics4_scan_left_high",
+      "condition": {
+        "R1": "negative",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R1": "negative",
+        "R5": "positive",
+        "R8": "positive"
+      },
+      "description": "8-register lift of physics4_scan_left_high with explicit return/debt tagging. Latch left-dominant scan only from an explicitly armed interior state."
+    },
+    {
+      "name": "carrier8_physics4_scan_left_mid",
+      "condition": {
+        "R1": "positive",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R1": "positive",
+        "R5": "positive",
+        "R8": "positive"
+      },
+      "description": "8-register lift of physics4_scan_left_mid with explicit return/debt tagging. Latch mid left scan only from an explicitly armed interior state."
+    },
+    {
+      "name": "carrier8_physics4_scan_right_high",
+      "condition": {
+        "R2": "negative",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R2": "negative",
+        "R5": "negative",
+        "R8": "positive"
+      },
+      "description": "8-register lift of physics4_scan_right_high with explicit return/debt tagging. Latch right-dominant scan only from an explicitly armed interior state."
+    },
+    {
+      "name": "carrier8_physics4_scan_right_mid",
+      "condition": {
+        "R2": "positive",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R2": "positive",
+        "R5": "negative",
+        "R8": "positive"
+      },
+      "description": "8-register lift of physics4_scan_right_mid with explicit return/debt tagging. Latch mid right scan only from an explicitly armed interior state."
+    },
+    {
+      "name": "carrier8_physics2_join_left_high",
+      "condition": {
+        "R1": "negative",
+        "R3": "zero",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "action": {
+        "R1": "negative",
+        "R3": "negative",
+        "R5": "positive",
+        "R6": "negative",
+        "R8": "positive"
+      },
+      "description": "8-register lift of physics2_join_left_high with explicit return/debt tagging. Materialize high severity from a latched left source."
+    },
+    {
+      "name": "carrier8_physics2_join_right_high",
+      "condition": {
+        "R2": "negative",
+        "R3": "zero",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "action": {
+        "R2": "negative",
+        "R3": "negative",
+        "R5": "negative",
+        "R6": "negative",
+        "R8": "positive"
+      },
+      "description": "8-register lift of physics2_join_right_high with explicit return/debt tagging. Materialize high severity from a latched right source."
+    },
+    {
+      "name": "carrier8_physics2_join_left_mid",
+      "condition": {
+        "R1": "positive",
+        "R3": "zero",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "action": {
+        "R1": "positive",
+        "R3": "positive",
+        "R5": "positive",
+        "R6": "positive",
+        "R8": "positive"
+      },
+      "description": "8-register lift of physics2_join_left_mid with explicit return/debt tagging. Materialize mid severity from a latched left source and advance the action phase."
+    },
+    {
+      "name": "carrier8_physics2_join_right_mid",
+      "condition": {
+        "R2": "positive",
+        "R3": "zero",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "action": {
+        "R2": "positive",
+        "R3": "positive",
+        "R5": "negative",
+        "R6": "positive",
+        "R8": "positive"
+      },
+      "description": "8-register lift of physics2_join_right_mid with explicit return/debt tagging. Materialize mid severity from a latched right source and advance the action phase."
+    },
+    {
+      "name": "carrier8_physics2_contract_high",
+      "condition": {
+        "R3": "negative",
+        "R4": "positive",
+        "R6": "negative"
+      },
+      "action": {
+        "R3": "positive",
+        "R4": "positive",
+        "R6": "positive",
+        "R8": "zero"
+      },
+      "description": "8-register lift of physics2_contract_high with explicit return/debt tagging. Interior contraction lowers high severity to mid."
+    },
+    {
+      "name": "carrier8_physics2_contract_mid",
+      "condition": {
+        "R3": "positive",
+        "R4": "positive",
+        "R6": "positive"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "zero",
+        "R8": "zero",
+        "R7": "negative"
+      },
+      "description": "8-register lift of physics2_contract_mid with explicit return/debt tagging. Interior contraction lowers mid severity to zero and drops to the boundary."
+    },
+    {
+      "name": "carrier8_physics11_boundary_discharge",
+      "condition": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "negative"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "zero",
+        "R8": "zero",
+        "R7": "positive"
+      },
+      "description": "8-register lift of physics11_boundary_discharge with explicit return/debt tagging. Discharge latent action phase at the boundary before shell entry; this targets recurrent recovery without increasing action-rank jumps."
+    },
+    {
+      "name": "carrier8_physics5_boundary_to_shell",
+      "condition": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "zero",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics5_boundary_to_shell with explicit return/debt tagging. Enter the latent shell only from a discharged boundary state."
+    },
+    {
+      "name": "carrier8_physics9_shell_probe_left_high",
+      "condition": {
+        "R1": "negative",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R1": "negative",
+        "R3": "positive",
+        "R5": "positive",
+        "R8": "positive"
+      },
+      "description": "8-register lift of physics9_shell_probe_left_high with explicit return/debt tagging. Probe a left-high source from cleared shell and stage a latched shell marker."
+    },
+    {
+      "name": "carrier8_physics9_shell_probe_right_high",
+      "condition": {
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R2": "negative",
+        "R3": "positive",
+        "R5": "negative",
+        "R8": "positive"
+      },
+      "description": "8-register lift of physics9_shell_probe_right_high with explicit return/debt tagging. Probe a right-high source from cleared shell and stage a latched shell marker."
+    },
+    {
+      "name": "carrier8_physics9_shell_probe_left_mid",
+      "condition": {
+        "R1": "positive",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R1": "positive",
+        "R3": "positive",
+        "R5": "positive",
+        "R8": "positive"
+      },
+      "description": "8-register lift of physics9_shell_probe_left_mid with explicit return/debt tagging. Probe a left-mid source from cleared shell and stage a latched shell marker."
+    },
+    {
+      "name": "carrier8_physics9_shell_probe_right_mid",
+      "condition": {
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R2": "positive",
+        "R3": "positive",
+        "R5": "negative",
+        "R8": "positive"
+      },
+      "description": "8-register lift of physics9_shell_probe_right_mid with explicit return/debt tagging. Probe a right-mid source from cleared shell and stage a latched shell marker."
+    },
+    {
+      "name": "carrier8_physics9_shell_stage_release_left",
+      "condition": {
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics9_shell_stage_release_left with explicit return/debt tagging. Release staged left shell marker into the normal latched-shell path."
+    },
+    {
+      "name": "carrier8_physics12_shell_stage_detour_left",
+      "condition": {
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "positive",
+        "R6": "zero",
+        "R7": "zero"
+      },
+      "description": "8-register lift of physics12_shell_stage_detour_left with explicit return/debt tagging. Route staged left shell markers through a boundary detour before shell release to increase controllable path depth without changing action-rank phase."
+    },
+    {
+      "name": "carrier8_physics12_shell_stage_detour_right",
+      "condition": {
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "negative",
+        "R6": "zero",
+        "R7": "zero"
+      },
+      "description": "8-register lift of physics12_shell_stage_detour_right with explicit return/debt tagging. Route staged right shell markers through a boundary detour before shell release to increase controllable path depth without changing action-rank phase."
+    },
+    {
+      "name": "carrier8_physics9_shell_stage_release_right",
+      "condition": {
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics9_shell_stage_release_right with explicit return/debt tagging. Release staged right shell marker into the normal latched-shell path."
+    },
+    {
+      "name": "carrier8_physics10_shell_probe_neutral",
+      "condition": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "positive",
+        "R5": "positive",
+        "R6": "zero",
+        "R8": "positive"
+      },
+      "description": "8-register lift of physics10_shell_probe_neutral with explicit return/debt tagging. Probe neutral shell states before interior rearm by staging a shell marker; this widens shell recurrence while preserving action-rank phase."
+    },
+    {
+      "name": "carrier8_physics6_shell_refresh_left",
+      "condition": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero",
+        "R8": "zero"
+      },
+      "description": "8-register lift of physics6_shell_refresh_left with explicit return/debt tagging. Refresh a left-latched shell state by clearing the latch before cleared rearm."
+    },
+    {
+      "name": "carrier8_physics6_shell_refresh_right",
+      "condition": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero",
+        "R8": "zero"
+      },
+      "description": "8-register lift of physics6_shell_refresh_right with explicit return/debt tagging. Refresh a right-latched shell state by clearing the latch before cleared rearm."
+    },
+    {
+      "name": "carrier8_physics5_shell_to_interior_cleared",
+      "condition": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative",
+        "R8": "zero",
+        "R7": "zero"
+      },
+      "description": "8-register lift of physics5_shell_to_interior_cleared with explicit return/debt tagging. Re-arm the interior from a cleared shell state."
+    },
+    {
+      "name": "carrier8_physics5_shell_to_interior_latched_left",
+      "condition": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "positive",
+        "R5": "positive",
+        "R6": "negative",
+        "R8": "zero",
+        "R7": "zero"
+      },
+      "description": "8-register lift of physics5_shell_to_interior_latched_left with explicit return/debt tagging. Re-arm the interior from a shell state that still carries a left scan latch."
+    },
+    {
+      "name": "carrier8_physics5_shell_to_interior_latched_right",
+      "condition": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "positive",
+        "R5": "negative",
+        "R6": "negative",
+        "R8": "zero",
+        "R7": "zero"
+      },
+      "description": "8-register lift of physics5_shell_to_interior_latched_right with explicit return/debt tagging. Re-arm the interior from a shell state that still carries a right scan latch."
+    },
+    {
+      "name": "carrier8_physics13_contract_mid_detour_nn",
+      "condition": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "negative",
+        "R6": "positive"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero",
+        "R7": "negative"
+      },
+      "description": "8-register lift of physics13_contract_mid_detour_nn with explicit return/debt tagging. Targeted detour for the max-chain branch: discharge mid-contraction into a neutral latch before shell routing to increase path depth without introducing action-rank increases."
+    },
+    {
+      "name": "carrier8_physics14_shell_high_rearm",
+      "condition": {
+        "R3": "negative",
+        "R4": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R3": "negative",
+        "R4": "positive",
+        "R6": "negative"
+      },
+      "description": "8-register lift of physics14_shell_high_rearm with explicit return/debt tagging. Re-arm interior contraction for stalled high-severity shell states to recycle them into the controlled relaxation loop without increasing action-rank phase."
+    },
+    {
+      "name": "carrier8_physics15_boundary_crossfeed_neutral",
+      "condition": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero",
+        "R8": "negative"
+      },
+      "description": "8-register lift of physics15_boundary_crossfeed_neutral with explicit return/debt tagging. Narrow boundary cross-feed detour on the max-chain bottleneck state; adds a depth step while preserving action-rank phase."
+    },
+    {
+      "name": "carrier8_physics16_boundary_discharge_high",
+      "condition": {
+        "R3": "negative",
+        "R4": "negative",
+        "R6": "negative"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "zero",
+        "R8": "zero",
+        "R7": "positive"
+      },
+      "description": "8-register lift of physics16_boundary_discharge_high with explicit return/debt tagging. Discharge high-severity boundary states into the shell-entry lane to reduce terminal mass while preserving action-rank monotonicity."
+    },
+    {
+      "name": "carrier8_physics17_boundary_handoff_left_to_mid",
+      "condition": {
+        "R1": "negative",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "positive",
+        "R6": "zero",
+        "R8": "negative"
+      },
+      "description": "8-register lift of physics17_boundary_handoff_left_to_mid with explicit return/debt tagging. Narrow boundary handoff on the max-chain tail to open an extra acyclic segment without changing action-rank phase."
+    },
+    {
+      "name": "carrier8_physics18_boundary_discharge_mid",
+      "condition": {
+        "R3": "positive",
+        "R4": "negative",
+        "R6": "negative"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "zero",
+        "R8": "zero",
+        "R7": "positive"
+      },
+      "description": "8-register lift of physics18_boundary_discharge_mid with explicit return/debt tagging. Discharge mid-severity boundary states into the shell-entry lane to further reduce terminal mass while preserving action-rank monotonicity."
+    },
+    {
+      "name": "carrier8_physics19_tail_handoff_n0_to_nn",
+      "condition": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "positive",
+        "R6": "positive"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "positive",
+        "R6": "positive",
+        "R8": "negative"
+      },
+      "description": "8-register lift of physics19_tail_handoff_n0_to_nn with explicit return/debt tagging. Single-state tail handoff on the max-depth branch: insert one extra acyclic step before the existing contract-mid discharge, preserving action-rank phase."
+    },
+    {
+      "name": "carrier8_physics20_boundary_positive_discharge",
+      "condition": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "positive"
+      },
+      "action": {
+        "R6": "zero",
+        "R8": "zero",
+        "R7": "positive"
+      },
+      "description": "8-register lift of physics20_boundary_positive_discharge with explicit return/debt tagging. Discharge positive action phase at the boundary into the shell-entry lane. This widens deterministic recurrence from the physics18/19 baseline while preserving source conservation and the current locality budget."
+    }
+  ],
+  "full_space_profile": {
+    "nodes": 6561,
+    "edges": 2709,
+    "terminal_states": 3852,
+    "longest_chain": 12,
+    "chain_length_histogram": {
+      "6": 579,
+      "0": 3852,
+      "5": 462,
+      "8": 396,
+      "9": 342,
+      "7": 261,
+      "4": 174,
+      "3": 54,
+      "1": 180,
+      "11": 117,
+      "12": 54,
+      "10": 90
+    },
+    "max_chain_start_states": [
+      "(0, -1, -1, 0, 0, -1, -1, -1)",
+      "(0, -1, -1, 0, 0, -1, -1, 0)",
+      "(0, -1, -1, 0, 0, -1, -1, 1)",
+      "(0, -1, -1, 0, 0, -1, 0, -1)",
+      "(0, -1, -1, 0, 0, -1, 0, 0)",
+      "(0, -1, -1, 0, 0, -1, 0, 1)",
+      "(0, -1, -1, 0, 0, -1, 1, -1)",
+      "(0, -1, -1, 0, 0, -1, 1, 0)",
+      "(0, -1, -1, 0, 0, -1, 1, 1)",
+      "(0, -1, 0, 0, -1, -1, -1, -1)"
+    ]
+  },
+  "action_monotonicity": {
+    "total_edges": 2709,
+    "decreases": 1440,
+    "preserves": 1269,
+    "increases": 0
+  },
+  "fixed_walk_summary": {
+    "state_count": 6561,
+    "terminal": 4032,
+    "cycle": 2475,
+    "timeout": 54,
+    "max_steps_observed": 12,
+    "longest_paths": [
+      [
+        "(0, -1, -1, 0, 0, -1, -1, -1)",
+        12,
+        "timeout"
+      ],
+      [
+        "(0, -1, -1, 0, 0, -1, -1, 0)",
+        12,
+        "timeout"
+      ],
+      [
+        "(0, -1, -1, 0, 0, -1, -1, 1)",
+        12,
+        "timeout"
+      ],
+      [
+        "(0, -1, -1, 0, 0, -1, 0, -1)",
+        12,
+        "timeout"
+      ],
+      [
+        "(0, -1, -1, 0, 0, -1, 0, 0)",
+        12,
+        "timeout"
+      ],
+      [
+        "(0, -1, -1, 0, 0, -1, 0, 1)",
+        12,
+        "timeout"
+      ],
+      [
+        "(0, -1, -1, 0, 0, -1, 1, -1)",
+        12,
+        "timeout"
+      ],
+      [
+        "(0, -1, -1, 0, 0, -1, 1, 0)",
+        12,
+        "timeout"
+      ],
+      [
+        "(0, -1, -1, 0, 0, -1, 1, 1)",
+        12,
+        "timeout"
+      ],
+      [
+        "(0, -1, 0, 0, -1, -1, -1, -1)",
+        12,
+        "timeout"
+      ]
+    ],
+    "timeout_states": [
+      "(0, -1, -1, 0, 0, -1, -1, -1)",
+      "(0, -1, -1, 0, 0, -1, -1, 0)",
+      "(0, -1, -1, 0, 0, -1, -1, 1)",
+      "(0, -1, -1, 0, 0, -1, 0, -1)",
+      "(0, -1, -1, 0, 0, -1, 0, 0)",
+      "(0, -1, -1, 0, 0, -1, 0, 1)",
+      "(0, -1, -1, 0, 0, -1, 1, -1)",
+      "(0, -1, -1, 0, 0, -1, 1, 0)",
+      "(0, -1, -1, 0, 0, -1, 1, 1)",
+      "(0, -1, 0, 0, -1, -1, -1, -1)",
+      "(0, -1, 0, 0, -1, -1, -1, 0)",
+      "(0, -1, 0, 0, -1, -1, -1, 1)",
+      "(0, -1, 0, 0, -1, -1, 0, -1)",
+      "(0, -1, 0, 0, -1, -1, 0, 0)",
+      "(0, -1, 0, 0, -1, -1, 0, 1)",
+      "(0, -1, 0, 0, -1, -1, 1, -1)",
+      "(0, -1, 0, 0, -1, -1, 1, 0)",
+      "(0, -1, 0, 0, -1, -1, 1, 1)",
+      "(0, -1, 0, 1, 0, -1, -1, -1)",
+      "(0, -1, 0, 1, 0, -1, -1, 0)"
+    ]
+  },
+  "deterministic_start": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    -1,
+    0,
+    0
+  ],
+  "deterministic_start_decoded": {
+    "R1": 1,
+    "R2": 0,
+    "R3": 0,
+    "R4": 1,
+    "R5": 0,
+    "R6": -1,
+    "R7": 0,
+    "R8": 0
+  },
+  "deterministic_walk": {
+    "status": "cycle",
+    "steps": 8,
+    "cycle_start": 5,
+    "final_state": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "path": [
+      {
+        "step": 1,
+        "state": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "transition": "carrier8_physics4_scan_left_mid",
+        "next_state": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          -1,
+          0,
+          1
+        ]
+      },
+      {
+        "step": 2,
+        "state": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          -1,
+          0,
+          1
+        ],
+        "transition": "carrier8_physics2_join_left_mid",
+        "next_state": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "step": 3,
+        "state": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        "transition": "carrier8_physics2_contract_mid",
+        "next_state": [
+          1,
+          0,
+          0,
+          -1,
+          1,
+          0,
+          -1,
+          0
+        ]
+      },
+      {
+        "step": 4,
+        "state": [
+          1,
+          0,
+          0,
+          -1,
+          1,
+          0,
+          -1,
+          0
+        ],
+        "transition": "carrier8_physics5_boundary_to_shell",
+        "next_state": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0
+        ]
+      },
+      {
+        "step": 5,
+        "state": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0
+        ],
+        "transition": "carrier8_physics6_shell_refresh_left",
+        "next_state": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ]
+      },
+      {
+        "step": 6,
+        "state": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ],
+        "transition": "carrier8_physics9_shell_probe_left_mid",
+        "next_state": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          1
+        ]
+      },
+      {
+        "step": 7,
+        "state": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          1
+        ],
+        "transition": "carrier8_physics9_shell_stage_release_left",
+        "next_state": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          1
+        ]
+      },
+      {
+        "step": 8,
+        "state": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          1
+        ],
+        "transition": "carrier8_physics6_shell_refresh_left",
+        "next_state": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ]
+      }
+    ]
+  },
+  "memory_observables": {
+    "boundary_return_profile": {
+      "all_states": {
+        "negative": 2187,
+        "zero": 2187,
+        "positive": 2187
+      },
+      "deterministic_sources": {
+        "negative": 903,
+        "zero": 903,
+        "positive": 903
+      }
+    },
+    "transport_debt_profile": {
+      "all_states": {
+        "negative": 2187,
+        "zero": 2187,
+        "positive": 2187
+      },
+      "deterministic_sources": {
+        "negative": 903,
+        "zero": 903,
+        "positive": 903
+      }
+    }
+  },
+  "physics20_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-agdas-physics20-phase2.json",
+    "physics20_full_space_profile": {
+      "nodes": 729,
+      "edges": 386,
+      "terminal_states": 428,
+      "longest_chain": 32,
+      "chain_length_histogram": {
+        "29": 22,
+        "0": 428,
+        "27": 30,
+        "28": 18,
+        "26": 16,
+        "30": 7,
+        "1": 14,
+        "31": 5,
+        "32": 1,
+        "8": 34,
+        "9": 46,
+        "10": 23,
+        "11": 12,
+        "12": 6,
+        "7": 37,
+        "6": 18,
+        "5": 7,
+        "4": 4,
+        "13": 1
+      },
+      "max_chain_start_states": [
+        "(-1, 1, -1, 0, 0, -1)"
+      ]
+    },
+    "physics20_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 448,
+      "cycle": 281,
+      "timeout": 0,
+      "max_steps_observed": 10
+    }
+  }
+}

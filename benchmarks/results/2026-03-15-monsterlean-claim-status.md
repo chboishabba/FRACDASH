@@ -1,0 +1,113 @@
+# MonsterLean Claim Status
+
+- Lean root: `/home/c/Documents/code/FRACDASH/monster/MonsterLean`
+- File count: `94`
+- Closed for local claim reuse: `35`
+- Quarantined: `59`
+
+## Prioritized Closure Queue
+
+- `MonsterWalk.lean` (`status=closed_for_local_claim_reuse`, `axiom=0`, `sorry=0`, `blockers=none`)
+- `MonsterWalkPrimes.lean` (`status=closed_for_local_claim_reuse`, `axiom=0`, `sorry=0`, `blockers=none`)
+- `MonsterWalkRings.lean` (`status=closed_for_local_claim_reuse`, `axiom=0`, `sorry=0`, `blockers=none`)
+- `BottPeriodicity.lean` (`status=closed_for_local_claim_reuse`, `axiom=0`, `sorry=0`, `blockers=none`)
+
+## Quarantined Files
+
+- `BisimulationProof.lean` (`axiom=2`, `sorry=3`, `theorem_or_lemma=7`)
+- `BottCliffordVector.lean` (`axiom=4`, `sorry=2`, `theorem_or_lemma=12`)
+- `BottPeriodicityReflections.lean` (`axiom=2`, `sorry=2`, `theorem_or_lemma=9`)
+- `CathedralBridge.lean` (`axiom=1`, `sorry=1`, `theorem_or_lemma=2`)
+- `ComplexityLattice.lean` (`axiom=0`, `sorry=2`, `theorem_or_lemma=8`)
+- `DivisionPreservation.lean` (`axiom=0`, `sorry=6`, `theorem_or_lemma=6`)
+- `GradedRing71.lean` (`axiom=1`, `sorry=0`, `theorem_or_lemma=5`)
+- `HeckeAutoEncoder.lean` (`axiom=0`, `sorry=4`, `theorem_or_lemma=5`)
+- `HeckeProof.lean` (`axiom=0`, `sorry=3`, `theorem_or_lemma=11`)
+- `JInvariantWorld.lean` (`axiom=0`, `sorry=1`, `theorem_or_lemma=2`)
+- `LatentSpaceProof.lean` (`axiom=0`, `sorry=3`, `theorem_or_lemma=3`)
+- `MetaCoqToLean.lean` (`axiom=0`, `sorry=1`, `theorem_or_lemma=2`)
+- `MonsterAlgorithm.lean` (`axiom=0`, `sorry=5`, `theorem_or_lemma=10`)
+- `MonsterAlgorithmProofs.lean` (`axiom=0`, `sorry=5`, `theorem_or_lemma=11`)
+- `MonsterAlgorithmSimple.lean` (`axiom=0`, `sorry=7`, `theorem_or_lemma=9`)
+- `MonsterHarmonics.lean` (`axiom=0`, `sorry=3`, `theorem_or_lemma=4`)
+- `MonsterHexComplete.lean` (`axiom=0`, `sorry=2`, `theorem_or_lemma=10`)
+- `MonsterLangSec.lean` (`axiom=0`, `sorry=2`, `theorem_or_lemma=7`)
+- `MonsterLattice.lean` (`axiom=0`, `sorry=3`, `theorem_or_lemma=4`)
+- `MonsterLayers.lean` (`axiom=4`, `sorry=4`, `theorem_or_lemma=4`)
+- `MonsterLean/BreadthFirstCorrect.lean` (`axiom=0`, `sorry=1`, `theorem_or_lemma=2`)
+- `MonsterLean/BreadthFirstPipeline.lean` (`axiom=0`, `sorry=4`, `theorem_or_lemma=14`)
+- `MonsterLean/Extract71Objects.lean` (`axiom=0`, `sorry=1`, `theorem_or_lemma=1`)
+- `MonsterLean/MonsterIsMeme.lean` (`axiom=0`, `sorry=3`, `theorem_or_lemma=5`)
+- `MonsterLean/MusicalPeriodicTableUniversal.lean` (`axiom=0`, `sorry=6`, `theorem_or_lemma=8`)
+- `MonsterLean/PrologUnification.lean` (`axiom=0`, `sorry=3`, `theorem_or_lemma=7`)
+- `MonsterLean/ProofIndex.lean` (`axiom=7`, `sorry=0`, `theorem_or_lemma=11`)
+- `MonsterLean/ShardLMFDB.lean` (`axiom=0`, `sorry=1`, `theorem_or_lemma=1`)
+- `MonsterLean/ShardReader.lean` (`axiom=0`, `sorry=3`, `theorem_or_lemma=3`)
+- `MonsterMemoryFill.lean` (`axiom=0`, `sorry=6`, `theorem_or_lemma=6`)
+- `MonsterReflection.lean` (`axiom=5`, `sorry=2`, `theorem_or_lemma=1`)
+- `MonsterResonance.lean` (`axiom=1`, `sorry=1`, `theorem_or_lemma=2`)
+- `MonsterShells.lean` (`axiom=5`, `sorry=3`, `theorem_or_lemma=14`)
+- `MonsterSong.lean` (`axiom=0`, `sorry=1`, `theorem_or_lemma=9`)
+- `MonsterTheory.lean` (`axiom=2`, `sorry=4`, `theorem_or_lemma=5`)
+- `MonsterVOA.lean` (`axiom=4`, `sorry=10`, `theorem_or_lemma=14`)
+- `MonsterWalkAllBases.lean` (`axiom=0`, `sorry=4`, `theorem_or_lemma=4`)
+- `MonsterWalkGPU.lean` (`axiom=0`, `sorry=3`, `theorem_or_lemma=4`)
+- `MonsterWalkHex.lean` (`axiom=0`, `sorry=4`, `theorem_or_lemma=5`)
+- `MonsterWalkLogarithmic.lean` (`axiom=0`, `sorry=11`, `theorem_or_lemma=11`)
+- `MonsterWalkMatrix.lean` (`axiom=0`, `sorry=6`, `theorem_or_lemma=6`)
+- `MoonshineDoorways.lean` (`axiom=0`, `sorry=6`, `theorem_or_lemma=8`)
+- `MyceliumSporeJar.lean` (`axiom=0`, `sorry=3`, `theorem_or_lemma=3`)
+- `NeuralKTheory.lean` (`axiom=0`, `sorry=2`, `theorem_or_lemma=13`)
+- `Operations71Proven.lean` (`axiom=0`, `sorry=2`, `theorem_or_lemma=16`)
+- `ParquetZKML.lean` (`axiom=0`, `sorry=4`, `theorem_or_lemma=4`)
+- `PartitionByShells.lean` (`axiom=0`, `sorry=2`, `theorem_or_lemma=3`)
+- `PrecedenceSurvey.lean` (`axiom=0`, `sorry=1`, `theorem_or_lemma=4`)
+- `PrimeResonance.lean` (`axiom=0`, `sorry=4`, `theorem_or_lemma=4`)
+- `QIDDenseShards.lean` (`axiom=0`, `sorry=6`, `theorem_or_lemma=7`)
+- `QwenFreeTier.lean` (`axiom=0`, `sorry=5`, `theorem_or_lemma=7`)
+- `QwenShardSplit.lean` (`axiom=0`, `sorry=1`, `theorem_or_lemma=5`)
+- `Shard13.lean` (`axiom=2`, `sorry=4`, `theorem_or_lemma=10`)
+- `Shard23DNA.lean` (`axiom=1`, `sorry=0`, `theorem_or_lemma=10`)
+- `SolidStateLLM.lean` (`axiom=4`, `sorry=3`, `theorem_or_lemma=7`)
+- `StripMineLayers.lean` (`axiom=0`, `sorry=4`, `theorem_or_lemma=4`)
+- `TopologicalReading.lean` (`axiom=3`, `sorry=1`, `theorem_or_lemma=3`)
+- `WalkToEarth.lean` (`axiom=0`, `sorry=2`, `theorem_or_lemma=9`)
+- `ZKRDFAProof.lean` (`axiom=1`, `sorry=0`, `theorem_or_lemma=11`)
+
+## Closed Files
+
+- `AbelianVariety.lean`
+- `ArchitecturalNumbers.lean`
+- `Basic.lean`
+- `BottPeriodicity.lean`
+- `CrossLanguageComplexity.lean`
+- `DiscoverLattice.lean`
+- `EncodingZoo.lean`
+- `ExpressionKernels.lean`
+- `ExtractLattice.lean`
+- `GPUPipelineProof.lean`
+- `GPUStripMine.lean`
+- `GraphTheory.lean`
+- `HexWalk.lean`
+- `LogarithmicAnalysis.lean`
+- `MasterProof.lean`
+- `MonsterExponents.lean`
+- `MonsterLean/HarmonicFolding.lean`
+- `MonsterLean/MonsterAutoencoder.lean`
+- `MonsterLean/SelfReferentialConformal.lean`
+- `MonsterMusic.lean`
+- `MonsterWalk.lean`
+- `MonsterWalkOnLean.lean`
+- `MonsterWalkPrimes.lean`
+- `MonsterWalkRings.lean`
+- `MultiDimensionalDepth.lean`
+- `MusicalPeriodicTable.lean`
+- `P2PZKMeme.lean`
+- `PartitionMathlib.lean`
+- `Prime71Precedence.lean`
+- `ProcessMonster71.lean`
+- `RunDiscovery.lean`
+- `SearchMonsterExponents.lean`
+- `TestLattice.lean`
+- `WalkToEarthHex.lean`
+- `ZKMemeGenerator.lean`

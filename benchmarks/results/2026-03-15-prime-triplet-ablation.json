@@ -1,0 +1,268 @@
+{
+  "template_set": "physics9",
+  "transition_source_summary": {
+    "source": "agdas_templates",
+    "template_set": "physics9",
+    "template_count": 22,
+    "template_modules": [
+      "Contraction.StrictContraction",
+      "DASHI.Algebra.PhysicsSignature.scan",
+      "UFTC_Lattice.C_XOR",
+      "UFTC_Lattice.ConeInteriorPreserved"
+    ]
+  },
+  "state_space_size": 729,
+  "triplet_count": 6,
+  "results": [
+    {
+      "triplet": [
+        37,
+        43,
+        79
+      ],
+      "label": "37-43-79",
+      "triplet_mod3": [
+        1,
+        1,
+        1
+      ],
+      "all_mod3_eq_2": false,
+      "occupied_sectors": 10,
+      "stability": [
+        80,
+        63,
+        70,
+        84,
+        73,
+        80,
+        66,
+        62,
+        75,
+        76
+      ],
+      "adjacency_edge_count": 69,
+      "descending_chain_height": 8,
+      "effective_dimension_997": 8,
+      "delta_vs_47_59_71": {
+        "effective_dimension_997": 0,
+        "descending_chain_height": -1,
+        "adjacency_edge_count": -6
+      }
+    },
+    {
+      "triplet": [
+        41,
+        61,
+        73
+      ],
+      "label": "41-61-73",
+      "triplet_mod3": [
+        2,
+        1,
+        1
+      ],
+      "all_mod3_eq_2": false,
+      "occupied_sectors": 10,
+      "stability": [
+        81,
+        89,
+        63,
+        73,
+        74,
+        55,
+        64,
+        79,
+        66,
+        85
+      ],
+      "adjacency_edge_count": 78,
+      "descending_chain_height": 9,
+      "effective_dimension_997": 8,
+      "delta_vs_47_59_71": {
+        "effective_dimension_997": 0,
+        "descending_chain_height": 0,
+        "adjacency_edge_count": 3
+      }
+    },
+    {
+      "triplet": [
+        23,
+        47,
+        83
+      ],
+      "label": "23-47-83",
+      "triplet_mod3": [
+        2,
+        2,
+        2
+      ],
+      "all_mod3_eq_2": true,
+      "occupied_sectors": 10,
+      "stability": [
+        77,
+        63,
+        68,
+        80,
+        70,
+        65,
+        81,
+        70,
+        82,
+        73
+      ],
+      "adjacency_edge_count": 76,
+      "descending_chain_height": 9,
+      "effective_dimension_997": 8,
+      "delta_vs_47_59_71": {
+        "effective_dimension_997": 0,
+        "descending_chain_height": 0,
+        "adjacency_edge_count": 1
+      }
+    },
+    {
+      "triplet": [
+        47,
+        59,
+        71
+      ],
+      "label": "47-59-71",
+      "triplet_mod3": [
+        2,
+        2,
+        2
+      ],
+      "all_mod3_eq_2": true,
+      "occupied_sectors": 10,
+      "stability": [
+        70,
+        72,
+        79,
+        90,
+        83,
+        53,
+        62,
+        75,
+        69,
+        76
+      ],
+      "adjacency_edge_count": 75,
+      "descending_chain_height": 9,
+      "effective_dimension_997": 8,
+      "delta_vs_47_59_71": {
+        "effective_dimension_997": 0,
+        "descending_chain_height": 0,
+        "adjacency_edge_count": 0
+      }
+    },
+    {
+      "triplet": [
+        29,
+        31,
+        37
+      ],
+      "label": "29-31-37",
+      "triplet_mod3": [
+        2,
+        1,
+        1
+      ],
+      "all_mod3_eq_2": false,
+      "occupied_sectors": 10,
+      "stability": [
+        82,
+        82,
+        65,
+        66,
+        63,
+        62,
+        84,
+        71,
+        73,
+        81
+      ],
+      "adjacency_edge_count": 71,
+      "descending_chain_height": 8,
+      "effective_dimension_997": 9,
+      "delta_vs_47_59_71": {
+        "effective_dimension_997": 1,
+        "descending_chain_height": -1,
+        "adjacency_edge_count": -4
+      }
+    },
+    {
+      "triplet": [
+        43,
+        53,
+        79
+      ],
+      "label": "43-53-79",
+      "triplet_mod3": [
+        1,
+        2,
+        1
+      ],
+      "all_mod3_eq_2": false,
+      "occupied_sectors": 10,
+      "stability": [
+        74,
+        70,
+        69,
+        90,
+        74,
+        71,
+        62,
+        84,
+        77,
+        58
+      ],
+      "adjacency_edge_count": 76,
+      "descending_chain_height": 9,
+      "effective_dimension_997": 9,
+      "delta_vs_47_59_71": {
+        "effective_dimension_997": 1,
+        "descending_chain_height": 0,
+        "adjacency_edge_count": 1
+      }
+    }
+  ],
+  "baseline_triplet": [
+    47,
+    59,
+    71
+  ],
+  "best_rank4_candidate": {
+    "triplet": [
+      37,
+      43,
+      79
+    ],
+    "label": "37-43-79",
+    "triplet_mod3": [
+      1,
+      1,
+      1
+    ],
+    "all_mod3_eq_2": false,
+    "occupied_sectors": 10,
+    "stability": [
+      80,
+      63,
+      70,
+      84,
+      73,
+      80,
+      66,
+      62,
+      75,
+      76
+    ],
+    "adjacency_edge_count": 69,
+    "descending_chain_height": 8,
+    "effective_dimension_997": 8,
+    "delta_vs_47_59_71": {
+      "effective_dimension_997": 0,
+      "descending_chain_height": -1,
+      "adjacency_edge_count": -6
+    }
+  }
+}

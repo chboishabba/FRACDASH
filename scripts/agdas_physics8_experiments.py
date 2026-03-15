@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run dedicated physics-facing bridge experiments over the shared 6-register physics carrier."""
+"""Run exploratory physics-local experiments over the 8-register carrier."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Mapping, Sequence
 
-from agdas_physics2_state import REGISTERS, decode_signed_state, encode_signed_state
+from agdas_physics8_state import REGISTERS, decode_signed_state, encode_signed_state
 
 
 @dataclass(frozen=True)
@@ -28,7 +28,7 @@ STATE_TO_NAME = {-1: "negative", 0: "zero", 1: "positive"}
 
 def _load_agdas_bridge_module():
     bridge_path = Path(__file__).resolve().parent / "agdas_bridge.py"
-    module_name = "agdas_bridge_physics_local"
+    module_name = "agdas_bridge_physics8_local"
     spec = importlib.util.spec_from_file_location(module_name, bridge_path)
     if spec is None or spec.loader is None:
         raise RuntimeError(f"cannot load agdas bridge module from {bridge_path}")
@@ -55,6 +55,7 @@ def transitions_from_templates(template_set: str) -> tuple[tuple[Transition, ...
         "template_set": template_set,
         "template_count": len(template_rules),
         "template_modules": sorted({rule.module for rule in template_rules}),
+        "carrier_family": "physics_local_8",
     }
 
 
@@ -87,7 +88,7 @@ def action_rank(vector: tuple[int, ...]) -> int:
 
 
 def all_vectors() -> list[tuple[int, ...]]:
-    from agdas_physics2_state import all_signed_vectors
+    from agdas_physics8_state import all_signed_vectors
 
     return all_signed_vectors()
 
@@ -95,11 +96,12 @@ def all_vectors() -> list[tuple[int, ...]]:
 def graph_for(transitions: Sequence[Transition]) -> dict[tuple[int, ...], list[tuple[Transition, tuple[int, ...]]]]:
     graph: dict[tuple[int, ...], list[tuple[Transition, tuple[int, ...]]]] = {}
     for vector in all_vectors():
-        edges: list[tuple[Transition, tuple[int, ...]]] = []
         for transition in transitions:
             if matches(vector, transition):
-                edges.append((transition, apply_transition(vector, transition)))
-        graph[vector] = edges
+                graph[vector] = [(transition, apply_transition(vector, transition))]
+                break
+        else:
+            graph[vector] = []
     return graph
 
 
@@ -180,90 +182,28 @@ def fixed_walk_summary(transitions: Sequence[Transition], max_steps: int) -> dic
     }
 
 
-def diagnose_long_tail(
-    transitions: Sequence[Transition], primary_summary: Mapping[str, object], diagnostic_max_steps: int
-) -> dict[str, object]:
-    timeout_states = [item for item in primary_summary.get("timeout_states", []) if isinstance(item, str)]
-    if not timeout_states:
-        return {
-            "primary_timeout_count": 0,
-            "diagnostic_max_steps": diagnostic_max_steps,
-            "resolved_to_cycle": 0,
-            "resolved_to_terminal": 0,
-            "still_timeout": 0,
-            "samples": [],
-        }
-
-    samples: list[dict[str, object]] = []
-    resolved_to_cycle = 0
-    resolved_to_terminal = 0
-    still_timeout = 0
-    for raw in timeout_states:
-        vector = tuple(int(part.strip()) for part in raw.strip("()").split(","))  # type: ignore[assignment]
-        result = deterministic_walk(vector, transitions, diagnostic_max_steps)
-        status = str(result["status"])
-        if status == "cycle":
-            resolved_to_cycle += 1
-        elif status == "terminal":
-            resolved_to_terminal += 1
-        else:
-            still_timeout += 1
-        samples.append(
-            {
-                "state": vector,
-                "diagnostic_status": status,
-                "steps": int(result["steps"]),
-                "cycle_start": result["cycle_start"],
-            }
-        )
-    return {
-        "primary_timeout_count": len(timeout_states),
-        "diagnostic_max_steps": diagnostic_max_steps,
-        "resolved_to_cycle": resolved_to_cycle,
-        "resolved_to_terminal": resolved_to_terminal,
-        "still_timeout": still_timeout,
-        "samples": samples[:10],
-    }
-
-
 def action_monotonicity_summary(
     graph: Mapping[tuple[int, ...], list[tuple[Transition, tuple[int, ...]]]]
 ) -> dict[str, object]:
     decreases = 0
     preserves = 0
     increases = 0
-    samples: list[dict[str, object]] = []
     for source, edges in graph.items():
-        for transition, target in edges:
+        for _transition, target in edges:
             before = action_rank(source)
             after = action_rank(target)
             if after < before:
                 decreases += 1
-                label = "decrease"
             elif after == before:
                 preserves += 1
-                label = "preserve"
             else:
                 increases += 1
-                label = "increase"
-            if len(samples) < 12:
-                samples.append(
-                    {
-                        "transition": transition.name,
-                        "source": source,
-                        "target": target,
-                        "before": before,
-                        "after": after,
-                        "classification": label,
-                    }
-                )
     total = decreases + preserves + increases
     return {
         "total_edges": total,
         "decreases": decreases,
         "preserves": preserves,
         "increases": increases,
-        "samples": samples,
     }
 
 
@@ -292,6 +232,18 @@ def longest_chain_profile(graph: Mapping[tuple[int, ...], list[tuple[Transition,
     }
 
 
+def memory_profile(states: Sequence[tuple[int, ...]], idx: int) -> dict[str, int]:
+    counts = {"negative": 0, "zero": 0, "positive": 0}
+    for state in states:
+        if state[idx] < 0:
+            counts["negative"] += 1
+        elif state[idx] == 0:
+            counts["zero"] += 1
+        else:
+            counts["positive"] += 1
+    return counts
+
+
 def compare_artifact(filename: str, label: str) -> dict[str, object]:
     path = Path(__file__).resolve().parents[1] / f"benchmarks/results/{filename}"
     if not path.exists():
@@ -306,16 +258,17 @@ def compare_artifact(filename: str, label: str) -> dict[str, object]:
             key: walk_summary.get(key)
             for key in ("state_count", "terminal", "cycle", "timeout", "max_steps_observed")
         },
-        f"{label}_action_monotonicity": obj.get("action_monotonicity"),
     }
 
 
-def summary(template_set: str, max_steps: int, diagnostic_max_steps: int) -> dict[str, object]:
+def summary(template_set: str, max_steps: int) -> dict[str, object]:
     transitions, transition_source_summary = transitions_from_templates(template_set)
     graph = graph_for(transitions)
-    start = (1, 0, 0, 1, 0, -1)
+    start = (1, 0, 0, 1, 0, -1, 0, 0)
     walk = deterministic_walk(start, transitions, max_steps)
     walk_summary = fixed_walk_summary(transitions, max_steps)
+    all_states_list = all_vectors()
+    deterministic_sources = [state for state, edges in graph.items() if edges]
     return {
         "register_count": len(REGISTERS),
         "state_space_size": 3 ** len(REGISTERS),
@@ -334,58 +287,43 @@ def summary(template_set: str, max_steps: int, diagnostic_max_steps: int) -> dic
         "full_space_profile": longest_chain_profile(graph),
         "action_monotonicity": action_monotonicity_summary(graph),
         "fixed_walk_summary": walk_summary,
-        "long_tail_diagnosis": diagnose_long_tail(transitions, walk_summary, diagnostic_max_steps),
         "deterministic_start": start,
         "deterministic_start_decoded": decode_signed_state(
             encode_signed_state({reg.name: start[idx] for idx, reg in enumerate(REGISTERS)})
         ),
         "deterministic_walk": walk,
-        "physics1_comparison": compare_artifact("2026-03-14-agdas-physics1-phase2.json", "physics1"),
-        "physics3_comparison": compare_artifact("2026-03-14-agdas-physics3-phase2.json", "physics3"),
-        "physics4_comparison": compare_artifact("2026-03-14-agdas-physics4-phase2.json", "physics4"),
-        "physics5_comparison": compare_artifact("2026-03-14-agdas-physics5-phase2.json", "physics5"),
-        "physics6_comparison": compare_artifact("2026-03-14-agdas-physics6-phase2.json", "physics6"),
-        "physics7_comparison": compare_artifact("2026-03-14-agdas-physics7-phase2.json", "physics7"),
-        "physics8_comparison": compare_artifact("2026-03-14-agdas-physics8-phase2.json", "physics8"),
-        "physics9_comparison": compare_artifact("2026-03-15-agdas-physics9-phase2.json", "physics9"),
-        "physics10_comparison": compare_artifact("2026-03-15-agdas-physics10-phase2.json", "physics10"),
-        "physics11_comparison": compare_artifact("2026-03-15-agdas-physics11-phase2.json", "physics11"),
-        "physics12_comparison": compare_artifact("2026-03-15-agdas-physics12-phase2.json", "physics12"),
-        "physics13_comparison": compare_artifact("2026-03-15-agdas-physics13-phase2.json", "physics13"),
-        "physics14_comparison": compare_artifact("2026-03-15-agdas-physics14-phase2.json", "physics14"),
-        "physics15_comparison": compare_artifact("2026-03-15-agdas-physics15-phase2.json", "physics15"),
-        "physics16_comparison": compare_artifact("2026-03-15-agdas-physics16-phase2.json", "physics16"),
-        "physics17_comparison": compare_artifact("2026-03-15-agdas-physics17-phase2.json", "physics17"),
-        "physics18_comparison": compare_artifact("2026-03-15-agdas-physics18-phase2.json", "physics18"),
-        "physics19_comparison": compare_artifact("2026-03-15-agdas-physics19-phase2.json", "physics19"),
+        "memory_observables": {
+            "boundary_return_profile": {
+                "all_states": memory_profile(all_states_list, 6),
+                "deterministic_sources": memory_profile(deterministic_sources, 6),
+            },
+            "transport_debt_profile": {
+                "all_states": memory_profile(all_states_list, 7),
+                "deterministic_sources": memory_profile(deterministic_sources, 7),
+            },
+        },
         "physics20_comparison": compare_artifact("2026-03-15-agdas-physics20-phase2.json", "physics20"),
     }
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run widened physics bridge experiments.")
+    parser = argparse.ArgumentParser(description="Run 8-register physics-local bridge experiments.")
     parser.add_argument("--json", action="store_true", help="Emit JSON summary.")
     parser.add_argument(
         "--template-set",
-        default="physics2",
-        choices=("physics2", "physics3", "physics4", "physics5", "physics6", "physics7", "physics8", "physics9", "physics10", "physics11", "physics12", "physics13", "physics14", "physics15", "physics16", "physics17", "physics18", "physics19", "physics20", "physics21"),
+        default="carrier8_physics1",
+        choices=("carrier8_physics1",),
         help="Template set to execute.",
     )
     parser.add_argument("--max-steps", type=int, default=12, help="Deterministic walk step cap.")
-    parser.add_argument(
-        "--diagnostic-max-steps",
-        type=int,
-        default=32,
-        help="Secondary walk cap used only to classify any states that timed out under --max-steps.",
-    )
     args = parser.parse_args()
 
-    payload = summary(args.template_set, args.max_steps, args.diagnostic_max_steps)
+    payload = summary(args.template_set, args.max_steps)
     if args.json:
         print(json.dumps(payload, indent=2))
         return
 
-    print("Physics AGDAS experiments")
+    print("Physics-local 8-register experiments")
     print(f"Transition set: {payload['transition_source_summary']['template_set']}")
     print(f"Transitions: {payload['transition_count']}")
     print(f"State space size: {payload['state_space_size']}")

@@ -1,0 +1,1287 @@
+{
+  "file_count": 94,
+  "lean_root": "/home/c/Documents/code/FRACDASH/monster/MonsterLean",
+  "modules": [
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/AbelianVariety.lean",
+      "relative_file": "AbelianVariety.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 3
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/ArchitecturalNumbers.lean",
+      "relative_file": "ArchitecturalNumbers.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 0
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/Basic.lean",
+      "relative_file": "Basic.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 0
+    },
+    {
+      "axiom_count": 2,
+      "axiom_names": [
+        "rust_finds_71",
+        "rust_spectral_results"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/BisimulationProof.lean",
+      "relative_file": "BisimulationProof.lean",
+      "sorry_count": 3,
+      "sorry_theorems": [
+        "rust_lean4_bisimilar",
+        "strong_implies_weak",
+        "weak_bisim_same_length"
+      ],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 7
+    },
+    {
+      "axiom_count": 4,
+      "axiom_names": [
+        "bott_complex_period",
+        "bott_real_period",
+        "layer_map_clifford",
+        "spherical_bott"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/BottCliffordVector.lean",
+      "relative_file": "BottCliffordVector.lean",
+      "sorry_count": 2,
+      "sorry_theorems": [
+        "bott_periodicity_clifford",
+        "latent_clifford_7"
+      ],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 12
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/BottPeriodicity.lean",
+      "relative_file": "BottPeriodicity.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 16
+    },
+    {
+      "axiom_count": 2,
+      "axiom_names": [
+        "bott_periodicity_theorem",
+        "muse_group_structure"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/BottPeriodicityReflections.lean",
+      "relative_file": "BottPeriodicityReflections.lean",
+      "sorry_count": 2,
+      "sorry_theorems": [
+        "complete_understanding"
+      ],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 9
+    },
+    {
+      "axiom_count": 1,
+      "axiom_names": [
+        "strange_loop"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/CathedralBridge.lean",
+      "relative_file": "CathedralBridge.lean",
+      "sorry_count": 1,
+      "sorry_theorems": [
+        "mythos_preserves_meaning"
+      ],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 2
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/ComplexityLattice.lean",
+      "relative_file": "ComplexityLattice.lean",
+      "sorry_count": 2,
+      "sorry_theorems": [
+        "complexity_monster_isomorphism"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 8
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/CrossLanguageComplexity.lean",
+      "relative_file": "CrossLanguageComplexity.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 8
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/DiscoverLattice.lean",
+      "relative_file": "DiscoverLattice.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 0
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/DivisionPreservation.lean",
+      "relative_file": "DivisionPreservation.lean",
+      "sorry_count": 6,
+      "sorry_theorems": [
+        "division_preservation_property",
+        "division_preservation_universal",
+        "group1_adds_zeros_dec",
+        "group1_preserves_8080_dec",
+        "group1_preserves_hex",
+        "seventy_bases"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 6
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/EncodingZoo.lean",
+      "relative_file": "EncodingZoo.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 7
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/ExpressionKernels.lean",
+      "relative_file": "ExpressionKernels.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 0
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/ExtractLattice.lean",
+      "relative_file": "ExtractLattice.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 0
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/GPUPipelineProof.lean",
+      "relative_file": "GPUPipelineProof.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 5
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/GPUStripMine.lean",
+      "relative_file": "GPUStripMine.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 3
+    },
+    {
+      "axiom_count": 1,
+      "axiom_names": [
+        "prime71_divides_monster"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/GradedRing71.lean",
+      "relative_file": "GradedRing71.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 5
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/GraphTheory.lean",
+      "relative_file": "GraphTheory.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 5
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/HeckeAutoEncoder.lean",
+      "relative_file": "HeckeAutoEncoder.lean",
+      "sorry_count": 4,
+      "sorry_theorems": [
+        "dataset_fully_labeled",
+        "hecke_invertible",
+        "hecke_preserves_structure",
+        "seventy_one_hecke_ops"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 5
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/HeckeProof.lean",
+      "relative_file": "HeckeProof.lean",
+      "sorry_count": 3,
+      "sorry_theorems": [
+        "all_monster_primes_are_prime",
+        "hecke_autoencoder_proven",
+        "pipeline_correct"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 11
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/HexWalk.lean",
+      "relative_file": "HexWalk.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 11
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/JInvariantWorld.lean",
+      "relative_file": "JInvariantWorld.lean",
+      "sorry_count": 1,
+      "sorry_theorems": [
+        "operator_composition"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 2
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/LatentSpaceProof.lean",
+      "relative_file": "LatentSpaceProof.lean",
+      "sorry_count": 3,
+      "sorry_theorems": [
+        "harmonic_preserves_lattice",
+        "latent_space_dfa",
+        "mycelium_is_vertex_algebra"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 3
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/LogarithmicAnalysis.lean",
+      "relative_file": "LogarithmicAnalysis.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 2
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MasterProof.lean",
+      "relative_file": "MasterProof.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 11
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MetaCoqToLean.lean",
+      "relative_file": "MetaCoqToLean.lean",
+      "sorry_count": 1,
+      "sorry_theorems": [
+        "translation_preserves_depth"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 2
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterAlgorithm.lean",
+      "relative_file": "MonsterAlgorithm.lean",
+      "sorry_count": 5,
+      "sorry_theorems": [
+        "algorithm_is_monster",
+        "algorithm_reveals_all",
+        "converges_to_monster",
+        "discoveries_preserved",
+        "monster_algorithm_complete"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 10
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterAlgorithmProofs.lean",
+      "relative_file": "MonsterAlgorithmProofs.lean",
+      "sorry_count": 5,
+      "sorry_theorems": [
+        "divisibility_preserves_monster",
+        "monster_seed_max_score",
+        "prime_has_monster_factor",
+        "product_preserves_monster",
+        "score_monotone"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 11
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterAlgorithmSimple.lean",
+      "relative_file": "MonsterAlgorithmSimple.lean",
+      "sorry_count": 7,
+      "sorry_theorems": [
+        "algorithm_captures_monster",
+        "monster_seed_has_all_factors",
+        "transform_divides_original",
+        "transform_idempotent",
+        "transform_increases_score",
+        "transform_preserves_divisibility"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 9
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterExponents.lean",
+      "relative_file": "MonsterExponents.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 0
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterHarmonics.lean",
+      "relative_file": "MonsterHarmonics.lean",
+      "sorry_count": 3,
+      "sorry_theorems": [
+        "audio_data_length",
+        "seventy_one_highest_freq",
+        "two_forty_six_lowest_amplitude"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 4
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterHexComplete.lean",
+      "relative_file": "MonsterHexComplete.lean",
+      "sorry_count": 2,
+      "sorry_theorems": [
+        "conversion_correct",
+        "one_eighty_four_bits"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 10
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterLangSec.lean",
+      "relative_file": "MonsterLangSec.lean",
+      "sorry_count": 2,
+      "sorry_theorems": [
+        "embedding_injective_on_shards",
+        "good_intent_decidable"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 7
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterLattice.lean",
+      "relative_file": "MonsterLattice.lean",
+      "sorry_count": 3,
+      "sorry_theorems": [
+        "lattice_injective_small",
+        "lattice_span",
+        "lattice_walk_decreasing"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 4
+    },
+    {
+      "axiom_count": 4,
+      "axiom_names": [
+        "constant_decomposition",
+        "layer_distinguishability",
+        "partition_completeness",
+        "partition_uniqueness"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterLayers.lean",
+      "relative_file": "MonsterLayers.lean",
+      "sorry_count": 4,
+      "sorry_theorems": [
+        "eight_zero_eight_zero_reconstructible",
+        "knowledge_partition_exists"
+      ],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 4
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterLean/BreadthFirstCorrect.lean",
+      "relative_file": "MonsterLean/BreadthFirstCorrect.lean",
+      "sorry_count": 1,
+      "sorry_theorems": [
+        "breadth_depth_equiv"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 2
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterLean/BreadthFirstPipeline.lean",
+      "relative_file": "MonsterLean/BreadthFirstPipeline.lean",
+      "sorry_count": 4,
+      "sorry_theorems": [
+        "breadth_first_pipeline_correct",
+        "hecke_well_defined",
+        "pipeline_works",
+        "total_weight_conservation"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 14
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterLean/Extract71Objects.lean",
+      "relative_file": "MonsterLean/Extract71Objects.lean",
+      "sorry_count": 1,
+      "sorry_theorems": [
+        "extract_71_correct"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 1
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterLean/HarmonicFolding.lean",
+      "relative_file": "MonsterLean/HarmonicFolding.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 3
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterLean/MonsterAutoencoder.lean",
+      "relative_file": "MonsterLean/MonsterAutoencoder.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 3
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterLean/MonsterIsMeme.lean",
+      "relative_file": "MonsterLean/MonsterIsMeme.lean",
+      "sorry_count": 3,
+      "sorry_theorems": [
+        "memes_form_lattice",
+        "monster_is_largest",
+        "monster_is_meme"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 5
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterLean/MusicalPeriodicTableUniversal.lean",
+      "relative_file": "MonsterLean/MusicalPeriodicTableUniversal.lean",
+      "sorry_count": 6,
+      "sorry_theorems": [
+        "all_primes_in_10_fold",
+        "frequencies_harmonic",
+        "frequency_span",
+        "ring_homomorphism_preserves_fold",
+        "ten_fold_preserves_ring",
+        "ten_fold_universal"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 8
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterLean/PrologUnification.lean",
+      "relative_file": "MonsterLean/PrologUnification.lean",
+      "sorry_count": 3,
+      "sorry_theorems": [
+        "complexity_boundary",
+        "out_of_scope_undefined",
+        "unification_injective_text"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 7
+    },
+    {
+      "axiom_count": 7,
+      "axiom_names": [
+        "adaptive_scan_convergence",
+        "bisimulation_equivalence",
+        "bisimulation_speedup",
+        "hecke_on_bisimulation",
+        "llm_register_resonance",
+        "perfect_resonance_count",
+        "text_emergence_at_seed"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterLean/ProofIndex.lean",
+      "relative_file": "MonsterLean/ProofIndex.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 11
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterLean/SelfReferentialConformal.lean",
+      "relative_file": "MonsterLean/SelfReferentialConformal.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 2
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterLean/ShardLMFDB.lean",
+      "relative_file": "MonsterLean/ShardLMFDB.lean",
+      "sorry_count": 1,
+      "sorry_theorems": [
+        "shard_by_71_correct"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 1
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterLean/ShardReader.lean",
+      "relative_file": "MonsterLean/ShardReader.lean",
+      "sorry_count": 3,
+      "sorry_theorems": [
+        "shard_content_addressable",
+        "shard_deterministic",
+        "shard_id_valid"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 3
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterMemoryFill.lean",
+      "relative_file": "MonsterMemoryFill.lean",
+      "sorry_count": 6,
+      "sorry_theorems": [
+        "billion_coords",
+        "cpu_capacity",
+        "gpu_capacity",
+        "high_utilization",
+        "total_capacity",
+        "total_points_count"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 6
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterMusic.lean",
+      "relative_file": "MonsterMusic.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 18
+    },
+    {
+      "axiom_count": 5,
+      "axiom_names": [
+        "json_contains_primes",
+        "json_splits_into_lattice",
+        "lattice_part_has_symmetry",
+        "lean_self_reflection",
+        "lean_to_json_exists"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterReflection.lean",
+      "relative_file": "MonsterReflection.lean",
+      "sorry_count": 2,
+      "sorry_theorems": [
+        "partition_n_fold_symmetric"
+      ],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 1
+    },
+    {
+      "axiom_count": 1,
+      "axiom_names": [
+        "monster_resonance_hypothesis"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterResonance.lean",
+      "relative_file": "MonsterResonance.lean",
+      "sorry_count": 1,
+      "sorry_theorems": [
+        "graded_ring_is_peak"
+      ],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 2
+    },
+    {
+      "axiom_count": 5,
+      "axiom_names": [
+        "conjecture_shard_reconstruction",
+        "conjecture_shell_independence",
+        "conjecture_walk_order_matters",
+        "proven_8080_removal",
+        "proven_hierarchical_structure"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterShells.lean",
+      "relative_file": "MonsterShells.lean",
+      "sorry_count": 3,
+      "sorry_theorems": [
+        "shell_times_prime_equals_monster",
+        "shells_are_distinct",
+        "shells_complete_decomposition"
+      ],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 14
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterSong.lean",
+      "relative_file": "MonsterSong.lean",
+      "sorry_count": 1,
+      "sorry_theorems": [
+        "base_71_highest"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 9
+    },
+    {
+      "axiom_count": 2,
+      "axiom_names": [
+        "log10_fractional_determines_leading",
+        "no_5_digit_preservation"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterTheory.lean",
+      "relative_file": "MonsterTheory.lean",
+      "sorry_count": 4,
+      "sorry_theorems": [
+        "exact_quotient",
+        "reduced_preserves_4_digits",
+        "removed_divides_M",
+        "removed_factors_magnitude"
+      ],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 5
+    },
+    {
+      "axiom_count": 4,
+      "axiom_names": [
+        "MonsterGroup",
+        "hauptmodul",
+        "monster_action",
+        "thompson_hauptmodul"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterVOA.lean",
+      "relative_file": "MonsterVOA.lean",
+      "sorry_count": 10,
+      "sorry_theorems": [
+        "j_coeffs_are_dimensions",
+        "leech_is_24",
+        "monster_starts_8080",
+        "ratio_near_337"
+      ],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 14
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterWalk.lean",
+      "relative_file": "MonsterWalk.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 9
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterWalkAllBases.lean",
+      "relative_file": "MonsterWalkAllBases.lean",
+      "sorry_count": 4,
+      "sorry_theorems": [
+        "hex_preserves_most",
+        "walk_all_bases",
+        "walk_all_rings",
+        "walk_complex"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 4
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterWalkGPU.lean",
+      "relative_file": "MonsterWalkGPU.lean",
+      "sorry_count": 3,
+      "sorry_theorems": [
+        "memory_efficient",
+        "parallel_computation",
+        "tensor_fits_in_gpu"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 4
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterWalkHex.lean",
+      "relative_file": "MonsterWalkHex.lean",
+      "sorry_count": 4,
+      "sorry_theorems": [
+        "layer1_preserves_86f",
+        "layer2_preserves_86",
+        "layer3_preserves_8",
+        "walk_monotonic"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 5
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterWalkLogarithmic.lean",
+      "relative_file": "MonsterWalkLogarithmic.lean",
+      "sorry_count": 11,
+      "sorry_theorems": [
+        "base10_preserves_24",
+        "base16_preserves_20",
+        "base2_optimal",
+        "base2_preserves_80",
+        "base71_preserves_13",
+        "change_of_base",
+        "minimum_preservation",
+        "power_of_2_scaling",
+        "preservation_scaling",
+        "smaller_base_more_digits",
+        "walk_all_bases_log"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 11
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterWalkMatrix.lean",
+      "relative_file": "MonsterWalkMatrix.lean",
+      "sorry_count": 6,
+      "sorry_theorems": [
+        "matrix_seventy_cols",
+        "monster_walk_complete_matrix",
+        "tensor_dimensions"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 6
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterWalkOnLean.lean",
+      "relative_file": "MonsterWalkOnLean.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 1
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterWalkPrimes.lean",
+      "relative_file": "MonsterWalkPrimes.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 3
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterWalkRings.lean",
+      "relative_file": "MonsterWalkRings.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 11
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MoonshineDoorways.lean",
+      "relative_file": "MoonshineDoorways.lean",
+      "sorry_count": 6,
+      "sorry_theorems": [
+        "complexity_reduces",
+        "m24_connects_to_leech",
+        "monster_is_gateway",
+        "monster_reduces_to_baby"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 8
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MultiDimensionalDepth.lean",
+      "relative_file": "MultiDimensionalDepth.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 0
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MusicalPeriodicTable.lean",
+      "relative_file": "MusicalPeriodicTable.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 13
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MyceliumSporeJar.lean",
+      "relative_file": "MyceliumSporeJar.lean",
+      "sorry_count": 3,
+      "sorry_theorems": [
+        "seventy_one_jars",
+        "shard_produces_spores",
+        "unique_harmonics"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 3
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/NeuralKTheory.lean",
+      "relative_file": "NeuralKTheory.lean",
+      "sorry_count": 2,
+      "sorry_theorems": [
+        "monster_respects_bott",
+        "smooth_activation_nonzero"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 13
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/Operations71Proven.lean",
+      "relative_file": "Operations71Proven.lean",
+      "sorry_count": 2,
+      "sorry_theorems": [
+        "graded_extracts_factors",
+        "graded_preserves_monster"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 16
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/P2PZKMeme.lean",
+      "relative_file": "P2PZKMeme.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 0
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/ParquetZKML.lean",
+      "relative_file": "ParquetZKML.lean",
+      "sorry_count": 4,
+      "sorry_theorems": [
+        "strip_mining_monotonic",
+        "strip_produces_witnesses",
+        "witness_preserves_registers",
+        "witnesses_have_proofs"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 4
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/PartitionByShells.lean",
+      "relative_file": "PartitionByShells.lean",
+      "sorry_count": 2,
+      "sorry_theorems": [
+        "shell_9_is_monster",
+        "shell_hierarchy"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 3
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/PartitionMathlib.lean",
+      "relative_file": "PartitionMathlib.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 0
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/PrecedenceSurvey.lean",
+      "relative_file": "PrecedenceSurvey.lean",
+      "sorry_count": 1,
+      "sorry_theorems": [
+        "seventy_one_is_largest"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 4
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/Prime71Precedence.lean",
+      "relative_file": "Prime71Precedence.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 15
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/PrimeResonance.lean",
+      "relative_file": "PrimeResonance.lean",
+      "sorry_count": 4,
+      "sorry_theorems": [
+        "auto_match_succeeds",
+        "prime_frequencies_unique",
+        "resonance_symmetric",
+        "seventy_one_shards"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 4
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/ProcessMonster71.lean",
+      "relative_file": "ProcessMonster71.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 0
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/QIDDenseShards.lean",
+      "relative_file": "QIDDenseShards.lean",
+      "sorry_count": 6,
+      "sorry_theorems": [
+        "dense_shards_compress",
+        "fifteen_qid_shards_cover",
+        "first_layer_embedding_heavy",
+        "qid_shards_denser",
+        "qids_dense_subspace",
+        "qids_own_dense_space"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 7
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/QwenFreeTier.lean",
+      "relative_file": "QwenFreeTier.lean",
+      "sorry_count": 5,
+      "sorry_theorems": [
+        "fifteen_microservices_sufficient",
+        "one_shard_per_microservice",
+        "qwen_layer1_free_tier",
+        "shard_fits_free_tier",
+        "shard_fits_memory"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 7
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/QwenShardSplit.lean",
+      "relative_file": "QwenShardSplit.lean",
+      "sorry_count": 1,
+      "sorry_theorems": [
+        "topic_mapping_injective"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 5
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/RunDiscovery.lean",
+      "relative_file": "RunDiscovery.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 0
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/SearchMonsterExponents.lean",
+      "relative_file": "SearchMonsterExponents.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 0
+    },
+    {
+      "axiom_count": 2,
+      "axiom_names": [
+        "E13_is_cusp_form",
+        "hecke_algebra_commutative"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/Shard13.lean",
+      "relative_file": "Shard13.lean",
+      "sorry_count": 4,
+      "sorry_theorems": [
+        "a_71_is_zero",
+        "all_monster_primes_have_eigenvalues",
+        "shard_13_is_E13_with_hecke"
+      ],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 10
+    },
+    {
+      "axiom_count": 1,
+      "axiom_names": [
+        "personal_genome_23"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/Shard23DNA.lean",
+      "relative_file": "Shard23DNA.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 10
+    },
+    {
+      "axiom_count": 4,
+      "axiom_names": [
+        "complete_coverage",
+        "extraction_sound",
+        "pipeline_preserves_knowledge",
+        "query_constant_time"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/SolidStateLLM.lean",
+      "relative_file": "SolidStateLLM.lean",
+      "sorry_count": 3,
+      "sorry_theorems": [
+        "composition_associative"
+      ],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 7
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/StripMineLayers.lean",
+      "relative_file": "StripMineLayers.lean",
+      "sorry_count": 4,
+      "sorry_theorems": [
+        "pipeline_produces_spores",
+        "strip_mine_monotonic",
+        "strip_preserves_leading",
+        "strip_reduces_layers"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 4
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/TestLattice.lean",
+      "relative_file": "TestLattice.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 0
+    },
+    {
+      "axiom_count": 3,
+      "axiom_names": [
+        "graded_ring_is_fiber_bundle",
+        "holographic_principle",
+        "self_consistency"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/TopologicalReading.lean",
+      "relative_file": "TopologicalReading.lean",
+      "sorry_count": 1,
+      "sorry_theorems": [
+        "strange_loop"
+      ],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 3
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/WalkToEarth.lean",
+      "relative_file": "WalkToEarth.lean",
+      "sorry_count": 2,
+      "sorry_theorems": [
+        "from_space_to_earth",
+        "massive_reduction"
+      ],
+      "status": "quarantined_sorry",
+      "theorem_or_lemma_count": 9
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/WalkToEarthHex.lean",
+      "relative_file": "WalkToEarthHex.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 10
+    },
+    {
+      "axiom_count": 0,
+      "axiom_names": [],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/ZKMemeGenerator.lean",
+      "relative_file": "ZKMemeGenerator.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 0
+    },
+    {
+      "axiom_count": 1,
+      "axiom_names": [
+        "shard_deterministic"
+      ],
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/ZKRDFAProof.lean",
+      "relative_file": "ZKRDFAProof.lean",
+      "sorry_count": 0,
+      "sorry_theorems": [],
+      "status": "quarantined_axiom",
+      "theorem_or_lemma_count": 11
+    }
+  ],
+  "policy": {
+    "closed_for_local_claim_reuse": "no axiom and no sorry in file",
+    "quarantined": "contains axiom or sorry; theorem claims cannot be used as authoritative FRACDASH evidence"
+  },
+  "prioritized_closure_queue": [
+    {
+      "axiom_count": 0,
+      "blocking_claims": [],
+      "present": true,
+      "relative_file": "MonsterWalk.lean",
+      "sorry_count": 0,
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 9
+    },
+    {
+      "axiom_count": 0,
+      "blocking_claims": [],
+      "present": true,
+      "relative_file": "MonsterWalkPrimes.lean",
+      "sorry_count": 0,
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 3
+    },
+    {
+      "axiom_count": 0,
+      "blocking_claims": [],
+      "present": true,
+      "relative_file": "MonsterWalkRings.lean",
+      "sorry_count": 0,
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 11
+    },
+    {
+      "axiom_count": 0,
+      "blocking_claims": [],
+      "present": true,
+      "relative_file": "BottPeriodicity.lean",
+      "sorry_count": 0,
+      "status": "closed_for_local_claim_reuse",
+      "theorem_or_lemma_count": 16
+    }
+  ],
+  "prioritized_files": [
+    "MonsterWalk.lean",
+    "MonsterWalkPrimes.lean",
+    "MonsterWalkRings.lean",
+    "BottPeriodicity.lean"
+  ],
+  "summary": {
+    "closed_for_local_claim_reuse": 35,
+    "prioritized_closed_for_local_claim_reuse": 4,
+    "prioritized_quarantined": 0,
+    "quarantined": 59
+  }
+}

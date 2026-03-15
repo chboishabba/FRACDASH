@@ -53,7 +53,7 @@ The conversation sharpened these decisions:
 - Active optimization pivot: LUT is now parked. The compiled evaluator has gained `frac-opt`-style rule-order narrowing, the active benchmark matrix no longer includes `lut`, and the current matrix summary routes to `continue compiled-path tuning`.
 - Latest compiled-path result: the benchmark harness now summarizes compiled runs directly from exponent vectors instead of decoding every state to `IntMap`. Parity still holds, and the current canonical matrix has `compiled` ahead of `frac-opt` on the sampled `primegame_*` scenarios.
 - Routing expansion: the GPU matrix now includes `primegame_small`, `mult_smoke`, `paper_smoke`, and `hamming_smoke` across `batch_size = 4, 16, 32, 64, 128` and `steps = 4, 8, 16`, which generated `benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json` and a deterministic CPU/GPU rule that will also trigger upstreaming the reusable helper plumbing.
-- Phase 2 launch: `scripts/toy_dashi_transitions.py` now encodes a toy `{-1,0,+1}^3` transition set, provides the FRACTRAN fractions that drive it, and decodes the signed state so the CORE experiments have a concrete artifact instead of a blank slate.
+- Phase 2 launch: `scripts/toy_dashi_transitions.py` now encodes a toy signed 4-register (`3^4 = 81`) transition set, provides the FRACTRAN fractions that drive it, and decodes the signed state so the CORE experiments have a concrete artifact instead of a blank slate.
 
 ## Repo State
 
@@ -75,6 +75,9 @@ The conversation sharpened these decisions:
   - a toy signed 4-register DASHI/FRACTRAN experiment harness
   - FRACDASH-side AGDAS bridge mappings and template execution paths
   - local formalism sketches and physics-facing bridge experiments (`physics1`, `physics2`)
+  - a local `monster/` clone with `MonsterLean/` reference material; current intake is documented in [`MONSTERLEAN_INTAKE.md`](/home/c/Documents/code/FRACDASH/MONSTERLEAN_INTAKE.md) and treated as external, non-authoritative until FRACDASH reproduces claims as artifacts
+  - a locked Monster 10-walk canonical artifact at `benchmarks/results/2026-03-15-monster10walk-canonical.json` backed by independent FRACDASH transition-data derivations (`physics8|physics9`) and strict lock checks
+  - file-by-file Lean claim quarantine artifacts at `benchmarks/results/2026-03-15-monsterlean-claim-status.{json,md}`
 - The full CPU comparison matrix and summary now live in:
   - corrected scenario set includes `mult_smoke` at exact logical-step target `2`
   - [`benchmarks/results/2026-03-13-cpu-matrix.jsonl`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-13-cpu-matrix.jsonl)

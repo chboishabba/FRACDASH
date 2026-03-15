@@ -1,0 +1,220 @@
+{
+  "source_file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/BottPeriodicity.lean",
+  "group_count": 10,
+  "groups": [
+    {
+      "idx": 0,
+      "position": 0,
+      "label": "8080",
+      "digits_preserved": 4,
+      "factors_removed": 8,
+      "symmetry_class": "A",
+      "james_degeneracy": 2
+    },
+    {
+      "idx": 1,
+      "position": 4,
+      "label": "1742",
+      "digits_preserved": 4,
+      "factors_removed": 4,
+      "symmetry_class": "AIII",
+      "james_degeneracy": 11
+    },
+    {
+      "idx": 2,
+      "position": 8,
+      "label": "479",
+      "digits_preserved": 3,
+      "factors_removed": 4,
+      "symmetry_class": "AI",
+      "james_degeneracy": 32
+    },
+    {
+      "idx": 3,
+      "position": 11,
+      "label": "451",
+      "digits_preserved": 3,
+      "factors_removed": 4,
+      "symmetry_class": "BDI",
+      "james_degeneracy": 27
+    },
+    {
+      "idx": 4,
+      "position": 14,
+      "label": "2875",
+      "digits_preserved": 4,
+      "factors_removed": 4,
+      "symmetry_class": "D",
+      "james_degeneracy": 7
+    },
+    {
+      "idx": 5,
+      "position": 18,
+      "label": "8864",
+      "digits_preserved": 4,
+      "factors_removed": 8,
+      "symmetry_class": "DIII",
+      "james_degeneracy": 2
+    },
+    {
+      "idx": 6,
+      "position": 22,
+      "label": "5990",
+      "digits_preserved": 4,
+      "factors_removed": 8,
+      "symmetry_class": "AII",
+      "james_degeneracy": 3
+    },
+    {
+      "idx": 7,
+      "position": 26,
+      "label": "496",
+      "digits_preserved": 3,
+      "factors_removed": 6,
+      "symmetry_class": "CII",
+      "james_degeneracy": 20
+    },
+    {
+      "idx": 8,
+      "position": 29,
+      "label": "1710",
+      "digits_preserved": 4,
+      "factors_removed": 3,
+      "symmetry_class": "C",
+      "james_degeneracy": 7
+    },
+    {
+      "idx": 9,
+      "position": 33,
+      "label": "7570",
+      "digits_preserved": 4,
+      "factors_removed": 8,
+      "symmetry_class": "CI",
+      "james_degeneracy": 2
+    }
+  ],
+  "edges": [
+    {
+      "from": 0,
+      "to": 1,
+      "kind": "index_sequence"
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "kind": "index_sequence"
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "kind": "index_sequence"
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "kind": "index_sequence"
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "kind": "index_sequence"
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "kind": "index_sequence"
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "kind": "index_sequence"
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "kind": "index_sequence"
+    },
+    {
+      "from": 8,
+      "to": 9,
+      "kind": "index_sequence"
+    },
+    {
+      "from": 8,
+      "to": 0,
+      "kind": "bott_periodic_relation"
+    },
+    {
+      "from": 9,
+      "to": 1,
+      "kind": "bott_periodic_relation"
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "kind": "reported_descending_chain"
+    },
+    {
+      "from": 3,
+      "to": 7,
+      "kind": "reported_descending_chain"
+    },
+    {
+      "from": 7,
+      "to": 1,
+      "kind": "reported_descending_chain"
+    }
+  ],
+  "diagnostics": {
+    "stability_digits_preserved": {
+      "values": [
+        4,
+        4,
+        3,
+        3,
+        4,
+        4,
+        4,
+        3,
+        4,
+        4
+      ],
+      "longest_desc_chain": 2
+    },
+    "stability_factors_removed": {
+      "values": [
+        8,
+        4,
+        4,
+        4,
+        4,
+        8,
+        8,
+        6,
+        3,
+        8
+      ],
+      "longest_desc_chain": 3
+    },
+    "stability_james_degeneracy": {
+      "values": [
+        2,
+        11,
+        32,
+        27,
+        7,
+        2,
+        3,
+        20,
+        7,
+        2
+      ],
+      "longest_desc_chain": 5
+    }
+  },
+  "notes": {
+    "status": "observed_extraction_only",
+    "claim_boundary": "constants parsed from Lean source; no Lean proof checking performed",
+    "warning": "edges are policy-derived (sequence/periodic/clue), not extracted transition semantics"
+  }
+}

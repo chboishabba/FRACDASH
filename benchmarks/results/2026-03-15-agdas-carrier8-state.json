@@ -1,0 +1,165 @@
+{
+  "register_count": 8,
+  "state_space_size": 6561,
+  "registers": [
+    {
+      "name": "R1",
+      "role": "left/source severity code",
+      "negative": 127,
+      "zero": 131,
+      "positive": 137
+    },
+    {
+      "name": "R2",
+      "role": "right/source severity code",
+      "negative": 139,
+      "zero": 149,
+      "positive": 151
+    },
+    {
+      "name": "R3",
+      "role": "effective joined severity",
+      "negative": 157,
+      "zero": 163,
+      "positive": 167
+    },
+    {
+      "name": "R4",
+      "role": "region flag",
+      "negative": 173,
+      "zero": 179,
+      "positive": 181
+    },
+    {
+      "name": "R5",
+      "role": "signature/scan latch",
+      "negative": 191,
+      "zero": 193,
+      "positive": 197
+    },
+    {
+      "name": "R6",
+      "role": "action/energy phase",
+      "negative": 199,
+      "zero": 211,
+      "positive": 223
+    },
+    {
+      "name": "R7",
+      "role": "boundary return memory",
+      "negative": 227,
+      "zero": 229,
+      "positive": 233
+    },
+    {
+      "name": "R8",
+      "role": "transport/debt memory",
+      "negative": 239,
+      "zero": 241,
+      "positive": 251
+    }
+  ],
+  "round_trip": {
+    "status": "ok",
+    "failure_count": 0,
+    "failures": []
+  },
+  "samples": [
+    {
+      "name": "carrier8_idle",
+      "state": {
+        "R1": 0,
+        "R2": 0,
+        "R3": 0,
+        "R4": 1,
+        "R5": 0,
+        "R6": -1,
+        "R7": 0,
+        "R8": 0
+      },
+      "encoded": 1220637347113790611,
+      "decoded": {
+        "R1": 0,
+        "R2": 0,
+        "R3": 0,
+        "R4": 1,
+        "R5": 0,
+        "R6": -1,
+        "R7": 0,
+        "R8": 0
+      }
+    },
+    {
+      "name": "carrier8_boundary_discharge_memory",
+      "state": {
+        "R1": 0,
+        "R2": 0,
+        "R3": 0,
+        "R4": -1,
+        "R5": 0,
+        "R6": 0,
+        "R7": 1,
+        "R8": 0
+      },
+      "encoded": 1258647157963435939,
+      "decoded": {
+        "R1": 0,
+        "R2": 0,
+        "R3": 0,
+        "R4": -1,
+        "R5": 0,
+        "R6": 0,
+        "R7": 1,
+        "R8": 0
+      }
+    },
+    {
+      "name": "carrier8_shell_debt",
+      "state": {
+        "R1": 1,
+        "R2": 0,
+        "R3": 1,
+        "R4": 0,
+        "R5": 1,
+        "R6": 0,
+        "R7": 0,
+        "R8": 1
+      },
+      "encoded": 1457921776683305737,
+      "decoded": {
+        "R1": 1,
+        "R2": 0,
+        "R3": 1,
+        "R4": 0,
+        "R5": 1,
+        "R6": 0,
+        "R7": 0,
+        "R8": 1
+      }
+    },
+    {
+      "name": "carrier8_transport_handoff",
+      "state": {
+        "R1": -1,
+        "R2": 1,
+        "R3": 0,
+        "R4": -1,
+        "R5": 0,
+        "R6": 0,
+        "R7": 1,
+        "R8": -1
+      },
+      "encoded": 1226331720839571323,
+      "decoded": {
+        "R1": -1,
+        "R2": 1,
+        "R3": 0,
+        "R4": -1,
+        "R5": 0,
+        "R6": 0,
+        "R7": 1,
+        "R8": -1
+      }
+    }
+  ]
+}

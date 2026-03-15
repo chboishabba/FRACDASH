@@ -1,0 +1,387 @@
+{
+  "canonical_semantics": {
+    "edge_rule": "index_sequence_transition_witnessed",
+    "edges": [
+      {
+        "from": 0,
+        "to": 1
+      },
+      {
+        "from": 1,
+        "to": 2
+      },
+      {
+        "from": 2,
+        "to": 3
+      },
+      {
+        "from": 3,
+        "to": 4
+      },
+      {
+        "from": 4,
+        "to": 5
+      },
+      {
+        "from": 5,
+        "to": 6
+      },
+      {
+        "from": 6,
+        "to": 7
+      },
+      {
+        "from": 7,
+        "to": 8
+      },
+      {
+        "from": 8,
+        "to": 9
+      }
+    ],
+    "required_template_sets": [
+      "physics8",
+      "physics9"
+    ],
+    "required_undirected_pairs": [
+      {
+        "a": 0,
+        "b": 1
+      },
+      {
+        "a": 1,
+        "b": 2
+      },
+      {
+        "a": 2,
+        "b": 3
+      },
+      {
+        "a": 3,
+        "b": 4
+      },
+      {
+        "a": 4,
+        "b": 5
+      },
+      {
+        "a": 5,
+        "b": 6
+      },
+      {
+        "a": 6,
+        "b": 7
+      },
+      {
+        "a": 7,
+        "b": 8
+      },
+      {
+        "a": 8,
+        "b": 9
+      }
+    ],
+    "vertex_order": "position_sequence",
+    "vertex_source": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/BottPeriodicity.lean"
+  },
+  "derivation_match": {
+    "criterion": "canonical_path plus per-template directed-path derivation with undirected canonical-edge match",
+    "pass": true
+  },
+  "fractran_transition_derivation": {
+    "per_template": {
+      "physics8": {
+        "canonical_edge_support_direct": 9,
+        "canonical_edge_support_direct_full": true,
+        "canonical_edge_support_path": 9,
+        "canonical_edge_support_path_full": true,
+        "canonical_edge_support_reachability": 9,
+        "canonical_edge_support_reachability_full": true,
+        "hamiltonian_path": [
+          9,
+          8,
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "hamiltonian_path_edge_count": 9,
+        "is_directed_path": true,
+        "path_edges": [
+          [
+            9,
+            8
+          ],
+          [
+            8,
+            7
+          ],
+          [
+            7,
+            6
+          ],
+          [
+            6,
+            5
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "path_undirected_matches_canonical": true,
+        "perfect_reachability_support_path": true,
+        "source_direct_edge_count": 75,
+        "source_reachability_edge_count": 90,
+        "source_summary": {
+          "source": "agdas_templates",
+          "template_count": 20,
+          "template_modules": [
+            "Contraction.StrictContraction",
+            "DASHI.Algebra.PhysicsSignature.scan",
+            "UFTC_Lattice.C_XOR",
+            "UFTC_Lattice.ConeInteriorPreserved"
+          ],
+          "template_set": "physics8"
+        },
+        "source_template_set": "physics8",
+        "supported_path_edges_direct": 9,
+        "supported_path_edges_reachability": 9
+      },
+      "physics9": {
+        "canonical_edge_support_direct": 9,
+        "canonical_edge_support_direct_full": true,
+        "canonical_edge_support_path": 9,
+        "canonical_edge_support_path_full": true,
+        "canonical_edge_support_reachability": 9,
+        "canonical_edge_support_reachability_full": true,
+        "hamiltonian_path": [
+          9,
+          8,
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "hamiltonian_path_edge_count": 9,
+        "is_directed_path": true,
+        "path_edges": [
+          [
+            9,
+            8
+          ],
+          [
+            8,
+            7
+          ],
+          [
+            7,
+            6
+          ],
+          [
+            6,
+            5
+          ],
+          [
+            5,
+            4
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "path_undirected_matches_canonical": true,
+        "perfect_reachability_support_path": true,
+        "source_direct_edge_count": 75,
+        "source_reachability_edge_count": 90,
+        "source_summary": {
+          "source": "agdas_templates",
+          "template_count": 22,
+          "template_modules": [
+            "Contraction.StrictContraction",
+            "DASHI.Algebra.PhysicsSignature.scan",
+            "UFTC_Lattice.C_XOR",
+            "UFTC_Lattice.ConeInteriorPreserved"
+          ],
+          "template_set": "physics9"
+        },
+        "source_template_set": "physics9",
+        "supported_path_edges_direct": 9,
+        "supported_path_edges_reachability": 9
+      }
+    },
+    "template_set_count": 2,
+    "template_sets": [
+      "physics8",
+      "physics9"
+    ]
+  },
+  "lean_constants_derivation": {
+    "chain_height_james_degeneracy": 4,
+    "edge_count": 9,
+    "groups": [
+      {
+        "digits_preserved": 4,
+        "factors_removed": 8,
+        "idx": 0,
+        "james_degeneracy": 2,
+        "label": "8080",
+        "position": 0,
+        "symmetry_class": "A"
+      },
+      {
+        "digits_preserved": 4,
+        "factors_removed": 4,
+        "idx": 1,
+        "james_degeneracy": 11,
+        "label": "1742",
+        "position": 4,
+        "symmetry_class": "AIII"
+      },
+      {
+        "digits_preserved": 3,
+        "factors_removed": 4,
+        "idx": 2,
+        "james_degeneracy": 32,
+        "label": "479",
+        "position": 8,
+        "symmetry_class": "AI"
+      },
+      {
+        "digits_preserved": 3,
+        "factors_removed": 4,
+        "idx": 3,
+        "james_degeneracy": 27,
+        "label": "451",
+        "position": 11,
+        "symmetry_class": "BDI"
+      },
+      {
+        "digits_preserved": 4,
+        "factors_removed": 4,
+        "idx": 4,
+        "james_degeneracy": 7,
+        "label": "2875",
+        "position": 14,
+        "symmetry_class": "D"
+      },
+      {
+        "digits_preserved": 4,
+        "factors_removed": 8,
+        "idx": 5,
+        "james_degeneracy": 2,
+        "label": "8864",
+        "position": 18,
+        "symmetry_class": "DIII"
+      },
+      {
+        "digits_preserved": 4,
+        "factors_removed": 8,
+        "idx": 6,
+        "james_degeneracy": 3,
+        "label": "5990",
+        "position": 22,
+        "symmetry_class": "AII"
+      },
+      {
+        "digits_preserved": 3,
+        "factors_removed": 6,
+        "idx": 7,
+        "james_degeneracy": 20,
+        "label": "496",
+        "position": 26,
+        "symmetry_class": "CII"
+      },
+      {
+        "digits_preserved": 4,
+        "factors_removed": 3,
+        "idx": 8,
+        "james_degeneracy": 7,
+        "label": "1710",
+        "position": 29,
+        "symmetry_class": "C"
+      },
+      {
+        "digits_preserved": 4,
+        "factors_removed": 8,
+        "idx": 9,
+        "james_degeneracy": 2,
+        "label": "7570",
+        "position": 33,
+        "symmetry_class": "CI"
+      }
+    ],
+    "is_directed_path": true,
+    "stability_order_rank_proxy": 4
+  },
+  "lock_gate": {
+    "checks": {
+      "all_templates_lock_pass": true,
+      "canonical_chain_height_james_is_4": true,
+      "canonical_edge_count_is_9": true,
+      "canonical_is_directed_path": true,
+      "canonical_rank_proxy_is_4": true,
+      "derivation_match_pass": true
+    },
+    "pass": true,
+    "per_template_checks": {
+      "physics8": {
+        "canonical_edge_support_direct_is_9": true,
+        "canonical_edge_support_reachability_is_9": true,
+        "derivation_is_directed_path": true,
+        "path_undirected_matches_canonical": true
+      },
+      "physics9": {
+        "canonical_edge_support_direct_is_9": true,
+        "canonical_edge_support_reachability_is_9": true,
+        "derivation_is_directed_path": true,
+        "path_undirected_matches_canonical": true
+      }
+    },
+    "per_template_pass": {
+      "physics8": true,
+      "physics9": true
+    }
+  },
+  "notes": {
+    "boundary": "freeze/lock applies to FRACDASH canonical reproduction model; not a Lean theorem closure",
+    "status": "observed_experimentally"
+  }
+}

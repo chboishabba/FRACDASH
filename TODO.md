@@ -68,15 +68,66 @@
   - [x] design a `physics8` refinement that increases chain depth from the `physics7` baseline without increasing the action-rank jump count
   - [x] implement `physics8` with shell-stage release transitions on top of `physics7`
   - [x] capture the first `physics8` artifact and compare it to `physics7`
-  - [ ] design a `physics9` refinement that improves richness from `physics8` without increasing action-rank jump count or timeout count
+  - [x] design a `physics9` refinement that improves richness from `physics8` without increasing action-rank jump count or timeout count
+  - [x] implement `physics9` with shell-stage mid probes on top of `physics8`
+  - [x] capture the first `physics9` artifact and compare it to `physics8`
+  - [x] design a `physics10` refinement that increases cyclic starts beyond `physics9` while keeping action-rank jump count and timeout count flat
+  - [x] implement `physics10` with a constrained neutral-shell probe on top of `physics9`
+  - [x] capture the first `physics10` artifact and compare it to `physics9`
+  - [x] design a `physics11` refinement that widens recurrence from `physics10` while keeping action-rank jump count and timeout count flat
+  - [x] implement `physics11` with boundary discharge before shell entry on top of `physics10`
+  - [x] capture the first `physics11` artifact and compare it to `physics10`
+  - [x] design a `physics12` refinement that increases chain depth beyond `13` while preserving `increases=27` and `timeouts=0`
+  - [x] implement `physics12` as staged-shell boundary detours on top of `physics11`
+  - [x] capture the first `physics12` artifact and compare it to `physics11`
+  - [x] implement `physics13` targeted mid-contract detour on top of `physics12` and capture first artifact
+  - [x] verify `physics13` reaches chain depth `14` while preserving `increases=27` and `timeouts=0`
+  - [x] design a `physics14` refinement that improves cyclic starts beyond `161` while preserving chain depth `14`, `increases=27`, and `timeouts=0`
+  - [x] implement `physics14` with high-severity shell rearm on top of `physics13`
+  - [x] capture the first `physics14` artifact and verify constrained gains
+  - [x] design a `physics15` refinement that keeps cyclic starts at or above `194` while attempting depth `15` without raising `increases` or `timeouts`
+  - [x] implement `physics15` with narrow boundary crossfeed detour on top of `physics14`
+  - [x] capture the first `physics15` artifact and verify constrained gains
+  - [x] design a `physics16` refinement that reduces terminal states below `535` while preserving `cycle>=194`, `longest_chain>=22`, `increases=27`, and `timeouts=0`
+  - [x] implement `physics16` with high-severity boundary discharge on top of `physics15`
+  - [x] capture the first `physics16` artifact and verify constrained gains
+  - [x] implement `physics17` narrow boundary handoff on top of `physics16` and capture first artifact
+  - [x] verify `physics17` raises depth while preserving constrained bounds
+  - [x] design a `physics18` refinement that reduces terminal states below `500` while preserving `cycle>=227`, `longest_chain>=29`, `increases=27`, and `timeouts=0`
+  - [x] implement `physics18` with mid-severity boundary discharge on top of `physics17`
+  - [x] capture the first `physics18` artifact and verify constrained gains
+  - [x] design a `physics19` refinement that keeps terminal states at or below `475` while attempting depth `>=30` without raising `increases` or `timeouts`
+  - [x] design and implement a `physics20` refinement that widens the deterministic recurrent graph beyond `274` edges while preserving the exact V1 laws and measuring the result against the corrected cycle-reachable geometry surrogate
+  - [x] design and implement a `physics21` refinement on the same 6-register carrier that produces the first direct `boundary -> interior` re-entry while preserving the exact V1 laws and keeping corrected geodesic-like flow at or above `0.90`
+  - [x] add a physics-local 8-register carrier branch with explicit boundary-return memory and transport/debt memory, then capture the first `carrier8_physics1` artifact with branch-local observable summaries
 - [ ] Introduce a prime-exponent-vector engine for batched runs and compare it against the bigint/cycle-detecting baseline.
 - [ ] Prototype LUT or divisibility-mask rule selection on CPU before any GPU port.
 
 ## Phase 3: Interpretation
 
 - [ ] Measure which invariants survive translation: locality, parity, reversibility, contraction, chamber structure.
+- [x] Define a canonical physics-invariant target table (numbers + relationships) for `physics2..physics8`.
+- [x] Add a physics-invariant regression checker that validates new artifacts against the canonical target table.
+- [x] Upgrade the physics target table to a V1 mixed exact/statistical suite with direct physics-facing surrogate laws.
+- [x] Extend invariant artifacts to emit `source_charge`, parity, locality, forward-cone, perturbation-stability, geodesic-like, curvature-like, and defect-attraction measurements.
+- [x] Add a first observable-surrogate block beyond the V1 law table so artifacts also report shell/interior occupancy, source-defect alignment, and re-entry flow statistics.
+- [x] Extend observable surrogates with branch-aware re-entry and 8-register memory profiles:
+  - [x] `boundary_return_profile` for return-memory-tagged 8-register states
+  - [x] `transport_debt_profile` for transport/debt occupancy splits on the 8-register branch
 - [ ] Decide whether the `113` total degeneracy has structural support or should be discarded as coincidence.
 - [ ] Write a short result note distinguishing observations from conjectures.
+- [ ] Intake `monster/MonsterLean` references into FRACDASH with proof-completeness filtering:
+  - [x] generate a machine-readable inventory for candidate modules (`MonsterWalk*`, `ComplexityLattice`) with `sorry`/`axiom` flags
+  - [x] extract only reusable definitions/constants into FRACDASH-side notes
+  - [x] reject or quarantine theorem claims that depend on `sorry`/`axiom` until reproduced experimentally in FRACDASH
+  - [x] add a first constants-only 10-walk extractor from `BottPeriodicity.lean` and capture a diagnostic artifact
+  - [x] freeze and lock canonical 10-walk semantics with strict-mode artifact gate
+  - [x] re-derive the same 10-node walk topology from FRACDASH transition data and verify derivation match
+  - [x] expand strict lock to required template set support (`physics8|physics9`) and transition-witnessed canonical edge semantics
+  - [x] use lock script defaults as a regression gate (`scripts/freeze_monster10walk_canonical.py --strict-lock`)
+  - [x] generate file-by-file Lean claim status (closed vs quarantined) for `monster/MonsterLean/*.lean`
+  - [x] add prioritized closure queue reporting for `MonsterWalk.lean`, `MonsterWalkPrimes.lean`, `MonsterWalkRings.lean`, and `BottPeriodicity.lean`
+  - [x] close prioritized Lean files by replacing `axiom`/`sorry` with narrowed, artifact-backed executable statements
 - [ ] Reproduce the rank-4 obstruction diagnostics locally as artifacts:
   - [x] PCA effective-dimension measurement on the basin-prime matrix
   - [x] independent monotone-chain height measurement
@@ -86,6 +137,7 @@
   - [x] orbit-multiplicity test
   - [x] Clifford reflection test
   - [x] stability-gradient chamber test
+- [x] Add a prime-triplet q-map ablation (`{47,59,71}` vs controls) to check whether obstruction diagnostics are specific or generic.
 
 ## Phase 4: GPU Reuse Path
 

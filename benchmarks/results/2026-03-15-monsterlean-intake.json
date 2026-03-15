@@ -1,0 +1,76 @@
+{
+  "lean_root": "/home/c/Documents/code/FRACDASH/monster/MonsterLean",
+  "module_count": 4,
+  "modules": [
+    {
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterWalkPrimes.lean",
+      "exists": true,
+      "counts": {
+        "def": 13,
+        "structure": 2,
+        "inductive": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom": 0,
+        "sorry": 2
+      },
+      "has_prime15_literal": false,
+      "classification": "incomplete_sorry_present"
+    },
+    {
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterWalk.lean",
+      "exists": true,
+      "counts": {
+        "def": 11,
+        "structure": 0,
+        "inductive": 0,
+        "theorem": 7,
+        "lemma": 0,
+        "axiom": 2,
+        "sorry": 0
+      },
+      "has_prime15_literal": false,
+      "classification": "conjectural_axiom_present"
+    },
+    {
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterWalkRings.lean",
+      "exists": true,
+      "counts": {
+        "def": 13,
+        "structure": 0,
+        "inductive": 0,
+        "theorem": 11,
+        "lemma": 0,
+        "axiom": 0,
+        "sorry": 4
+      },
+      "has_prime15_literal": true,
+      "classification": "incomplete_sorry_present"
+    },
+    {
+      "file": "/home/c/Documents/code/FRACDASH/monster/MonsterLean/ComplexityLattice.lean",
+      "exists": true,
+      "counts": {
+        "def": 9,
+        "structure": 3,
+        "inductive": 2,
+        "theorem": 8,
+        "lemma": 0,
+        "axiom": 0,
+        "sorry": 2
+      },
+      "has_prime15_literal": true,
+      "classification": "incomplete_sorry_present"
+    }
+  ],
+  "summary": {
+    "blocked_for_claim_reuse": [
+      "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterWalkPrimes.lean",
+      "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterWalk.lean",
+      "/home/c/Documents/code/FRACDASH/monster/MonsterLean/MonsterWalkRings.lean",
+      "/home/c/Documents/code/FRACDASH/monster/MonsterLean/ComplexityLattice.lean"
+    ],
+    "reusable_definition_only": [],
+    "intake_policy": "treat theorem claims with axiom/sorry as non-authoritative until reproduced in FRACDASH artifacts"
+  }
+}
