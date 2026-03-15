@@ -9,132 +9,123 @@
     "status": "not_available"
   },
   "dataset_path": "benchmarks/results/rank4-dataset-latest.json",
-  "dataset_sha256": "8fbafbfc40f6b068789a7f52b0668d2f696412d7ea6373c3d8fb5d76089b5e7f",
+  "dataset_sha256": "2c150004b423dd95c09cb1c9e0e3536aa7e0f865a0aaa828c426274fa2a37fb1",
   "embedding": {
     "dimensions": 4,
     "explained_variance_ratio": [
-      0.32421663371997406,
-      0.2021701096300401,
-      0.20199336058507486,
-      0.2014698761143258
+      0.3717376644476226,
+      0.29258051023911535,
+      0.15186701422755883,
+      0.07400913534763401
     ]
   },
   "orbit_multiplicity_test": {
     "reflection_orbit_sizes": [
       10
     ],
-    "repeated_stability_groups": [
-      {
-        "count": 4,
-        "stability": 17
-      },
-      {
-        "count": 4,
-        "stability": 16
-      }
-    ],
+    "repeated_stability_groups": [],
     "status": "ok",
-    "supports_repeated_orbit_hypothesis": true
+    "supports_repeated_orbit_hypothesis": false
   },
   "reflection_closure_test": {
     "axes": [
       {
-        "adjacency_preservation_ratio": 0.0,
+        "adjacency_preservation_ratio": 0.25,
         "axis": 0,
         "bijective_permutation": true,
         "gram_error": 0.0,
         "mapping": [
-          0,
-          6,
           2,
           1,
+          0,
+          3,
           4,
-          9,
-          7,
-          8,
           5,
-          3
+          6,
+          9,
+          8,
+          7
         ]
       },
       {
-        "adjacency_preservation_ratio": 0.0,
+        "adjacency_preservation_ratio": 0.375,
         "axis": 1,
         "bijective_permutation": true,
         "gram_error": 0.0,
         "mapping": [
           0,
           1,
-          4,
           8,
-          2,
-          5,
-          6,
-          7,
+          9,
           3,
-          9
+          6,
+          5,
+          7,
+          2,
+          4
         ]
       },
       {
-        "adjacency_preservation_ratio": 0.0,
+        "adjacency_preservation_ratio": 0.375,
         "axis": 2,
         "bijective_permutation": true,
         "gram_error": 0.0,
         "mapping": [
           0,
-          1,
-          2,
-          3,
-          7,
-          6,
-          5,
-          4,
           8,
-          9
+          3,
+          2,
+          4,
+          5,
+          6,
+          7,
+          9,
+          1
         ]
       },
       {
-        "adjacency_preservation_ratio": 0.0,
+        "adjacency_preservation_ratio": 0.5,
         "axis": 3,
         "bijective_permutation": true,
         "gram_error": 0.0,
         "mapping": [
-          2,
-          1,
           0,
-          3,
+          1,
+          2,
           5,
           4,
+          3,
+          8,
           7,
           6,
-          8,
           9
         ]
       }
     ],
-    "closure_score": 0.0,
+    "closure_score": 0.375,
     "status": "ok",
     "valid_axis_count": 4,
     "weyl_action_candidate": false
   },
   "root_length_test": {
     "candidate_hint": "F4/B4-like",
-    "coefficient_of_variation": 0.21434281672375938,
-    "distance_max": 2.3739055536568228,
-    "distance_min": 0.5561811913670681,
-    "distance_ratio": 4.268223360487741,
-    "distance_source": "all_pairs_fallback",
-    "edge_count": 45,
+    "coefficient_of_variation": 0.36557982202484823,
+    "distance_max": 0.6605567227555398,
+    "distance_min": 0.20962755504386235,
+    "distance_ratio": 3.151096823207833,
+    "distance_source": "adjacency_edges",
+    "edge_count": 8,
     "single_scale_signal": false,
     "status": "ok",
     "two_scale_signal": true
   },
   "selected_derivation": "scc_condensation",
   "stability_gradient_chamber_test": {
-    "cross_chamber_edges": 0,
-    "cross_monotone_ratio": null,
+    "cross_chamber_edges": 6,
+    "cross_monotone_ratio": 0.5,
     "status": "ok",
-    "supports_chamber_hypothesis": false,
-    "within_chamber_edges": 0,
-    "within_monotone_ratio": null
+    "supports_chamber_hypothesis": true,
+    "within_chamber_edges": 3,
+    "within_monotone_ratio": 0.6666666666666666
   }
 }

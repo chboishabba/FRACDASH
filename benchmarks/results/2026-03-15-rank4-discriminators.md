@@ -1,7 +1,7 @@
 # Rank-4 Discriminator Report
 
 - Dataset: `benchmarks/results/rank4-dataset-latest.json`
-- Dataset SHA: `8fbafbfc40f6b068789a7f52b0668d2f696412d7ea6373c3d8fb5d76089b5e7f`
+- Dataset SHA: `2c150004b423dd95c09cb1c9e0e3536aa7e0f865a0aaa828c426274fa2a37fb1`
 
 ## Root-Length Test
 - Status: `ok`
@@ -9,13 +9,13 @@
 
 ## Reflection Closure
 - Weyl action candidate: `False`
-- Closure score: `0.0`
+- Closure score: `0.375`
 
 ## Orbit Multiplicity
-- Supports repeated orbit hypothesis: `True`
+- Supports repeated orbit hypothesis: `False`
 
 ## Clifford Reflection
 - Status: `not_available`
 
 ## Stability Chamber Gradient
-- Supports chamber hypothesis: `False`
+- Supports chamber hypothesis: `True`

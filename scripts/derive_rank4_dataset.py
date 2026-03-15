@@ -196,15 +196,311 @@ def basin_key_for_outcome(outcome: dict[str, Any]) -> str:
     return f"timeout:{timeout_state}"
 
 
-def representative_from_basin_id(basin_id: str) -> tuple[int, ...]:
-    _, _, payload = basin_id.partition(":")
-    return parse_state_tuple(payload)
+def state_to_godel_value(state: tuple[int, ...], register_specs: list[dict[str, Any]]) -> int:
+    value = 1
+    for idx, entry in enumerate(register_specs):
+        signed = int(state[idx])
+        if signed == -1:
+            prime = int(entry["negative"])
+        elif signed == 0:
+            prime = int(entry["zero"])
+        else:
+            prime = int(entry["positive"])
+        value *= prime
+    return value
+
+
+def q_sector_id(n_value: int) -> int:
+    return ((n_value % 71) + (n_value % 59) + (n_value % 47)) % 10
+
+
+def build_atomic_sector_edges(
+    states: list[tuple[int, ...]],
+    transitions: list[dict[str, Any]],
+    register_count: int,
+    register_specs: list[dict[str, Any]],
+    edge_mode: str,
+) -> tuple[set[tuple[int, int]], list[dict[str, Any]], dict[tuple[int, int], list[dict[str, Any]]]]:
+    def parity_signature(state: tuple[int, ...]) -> int:
+        return sum(abs(int(v)) for v in state) % 2
+
+    def is_reflection_constrained(
+        state: tuple[int, ...], next_state: tuple[int, ...], transition_name: str
+    ) -> bool:
+        # Proxy for explicit reflection closure when Clifford backend is unavailable:
+        # accept only sign-flip-like or balanced exchange moves.
+        delta = [int(next_state[i]) - int(state[i]) for i in range(len(state))]
+        nonzero = [value for value in delta if value != 0]
+        if not nonzero:
+            return False
+        if all(value in (-2, 2) for value in nonzero):
+            return True
+        if sorted(nonzero) == [-1, 1]:
+            return True
+        if "reflect" in transition_name.lower():
+            return True
+        return False
+
+    edges: set[tuple[int, int]] = set()
+    trace_samples: list[dict[str, Any]] = []
+    edge_witnesses: dict[tuple[int, int], list[dict[str, Any]]] = defaultdict(list)
+    for state in states:
+        n_before = state_to_godel_value(state, register_specs)
+        sector_before = q_sector_id(n_before)
+        for transition in transitions:
+            if not _matches(state, transition, register_count):
+                continue
+            next_state = _apply(state, transition, register_count)
+            transition_name = str(transition["name"])
+            delta_l1 = sum(abs(int(next_state[i]) - int(state[i])) for i in range(len(state)))
+            if edge_mode == "atomic_local" and delta_l1 != 2:
+                continue
+            if edge_mode == "parity_preserving":
+                if delta_l1 != 2:
+                    continue
+                if parity_signature(state) != parity_signature(next_state):
+                    continue
+            if edge_mode == "reflection_constrained":
+                if delta_l1 != 2:
+                    continue
+                if parity_signature(state) != parity_signature(next_state):
+                    continue
+                if not is_reflection_constrained(state, next_state, transition_name):
+                    continue
+            if edge_mode in {
+                "reflection_rank4_projected_single_wall",
+                "reflection_rank4_projected_min_support",
+                "reflection_single_wall_min_support",
+                "reflection_rank4_projected_single_wall_orbit_consistent",
+            } and delta_l1 != 2:
+                continue
+            n_after = state_to_godel_value(next_state, register_specs)
+            sector_after = q_sector_id(n_after)
+            if sector_before != sector_after:
+                edges.add((sector_before, sector_after))
+                edge_witnesses[(sector_before, sector_after)].append(
+                    {
+                        "transition": transition_name,
+                        "delta_signed": [int(next_state[i]) - int(state[i]) for i in range(len(state))],
+                        "support": sum(1 for i in range(len(state)) if int(next_state[i]) != int(state[i])),
+                        "delta_l1": delta_l1,
+                        "state": list(state),
+                        "next_state": list(next_state),
+                        "godel_before": n_before,
+                        "godel_after": n_after,
+                    }
+                )
+                if len(trace_samples) < 24:
+                    trace_samples.append(
+                        {
+                            "transition": transition_name,
+                            "state": list(state),
+                            "next_state": list(next_state),
+                            "godel_before": n_before,
+                            "godel_after": n_after,
+                            "sector_before": sector_before,
+                            "sector_after": sector_after,
+                            "delta_l1": delta_l1,
+                            "edge_mode": edge_mode,
+                        }
+                    )
+    return edges, trace_samples, dict(edge_witnesses)
+
+
+def maybe_numpy() -> Any | None:
+    try:
+        import numpy as np
+    except ModuleNotFoundError:
+        return None
+    return np
+
+
+def single_wall_ok(x4: Any, y4: Any, roots4: Any, eps: float) -> bool:
+    wall_changes = 0
+    for root in roots4:
+        sx = 1 if float(x4 @ root) > eps else -1 if float(x4 @ root) < -eps else 0
+        sy = 1 if float(y4 @ root) > eps else -1 if float(y4 @ root) < -eps else 0
+        if sx != sy:
+            wall_changes += 1
+            if wall_changes > 1:
+                return False
+    return True
+
+
+def rank4_projected_ok(
+    x15: list[float],
+    y15: list[float],
+    x4: Any,
+    y4: Any,
+    roots4: Any,
+    proj_thresh: float,
+    align_thresh: float,
+) -> bool:
+    np = maybe_numpy()
+    if np is None:
+        return True
+    d15 = np.array(y15, dtype=float) - np.array(x15, dtype=float)
+    d4 = np.array(y4, dtype=float) - np.array(x4, dtype=float)
+    n15 = float(np.linalg.norm(d15))
+    n4 = float(np.linalg.norm(d4))
+    if n15 <= 1e-12 or n4 <= 1e-12:
+        return False
+    if (n4 * n4) / (n15 * n15) < proj_thresh:
+        return False
+    best_align = 0.0
+    for root in roots4:
+        nr = float(np.linalg.norm(root))
+        if nr <= 1e-12:
+            continue
+        align = abs(float(d4 @ root)) / (n4 * nr)
+        best_align = max(best_align, align)
+    return best_align >= align_thresh
+
+
+def min_support_ok(witnesses: list[dict[str, Any]], support_max: int, l1_max: int) -> bool:
+    for witness in witnesses:
+        if int(witness.get("support", 999)) <= support_max and int(witness.get("delta_l1", 999)) <= l1_max:
+            return True
+    return False
+
+
+def orbit_consistent_filter(
+    edges: set[tuple[int, int]],
+    stability: list[int],
+) -> set[tuple[int, int]]:
+    groups: dict[int, list[int]] = defaultdict(list)
+    for idx, value in enumerate(stability):
+        groups[int(value)].append(idx)
+    groups = {value: members for value, members in groups.items() if len(members) > 1}
+    if not groups:
+        return edges
+
+    out_by_src: dict[int, list[int]] = defaultdict(list)
+    in_by_dst: dict[int, list[int]] = defaultdict(list)
+    for src, dst in edges:
+        out_by_src[src].append(dst)
+        in_by_dst[dst].append(src)
+
+    keep: set[tuple[int, int]] = set()
+    for src, dst in edges:
+        src_stability = stability[src]
+        dst_stability = stability[dst]
+        src_group = groups.get(src_stability, [src])
+        dst_group = groups.get(dst_stability, [dst])
+        src_ok = all(
+            any(stability[neighbor] == dst_stability for neighbor in out_by_src.get(other_src, []))
+            for other_src in src_group
+        )
+        dst_ok = all(
+            any(stability[neighbor] == src_stability for neighbor in in_by_dst.get(other_dst, []))
+            for other_dst in dst_group
+        )
+        if src_ok and dst_ok:
+            keep.add((src, dst))
+    return keep if keep else edges
+
+
+def filter_sector_edges(
+    adjacency_pairs: set[tuple[int, int]],
+    matrix_rows: list[list[float]],
+    stability: list[int],
+    edge_witnesses: dict[tuple[int, int], list[dict[str, Any]]],
+    edge_mode: str,
+    *,
+    proj_thresh: float,
+    align_thresh: float,
+    support_max: int,
+    l1_max: int,
+    wall_eps: float,
+) -> set[tuple[int, int]]:
+    if edge_mode not in {
+        "reflection_rank4_projected_single_wall",
+        "reflection_rank4_projected_min_support",
+        "reflection_single_wall_min_support",
+        "reflection_rank4_projected_single_wall_orbit_consistent",
+    }:
+        return adjacency_pairs
+
+    np = maybe_numpy()
+    if np is None:
+        return adjacency_pairs
+    arr = np.array(matrix_rows, dtype=float)
+    centered = arr - np.mean(arr, axis=0, keepdims=True)
+    _u, _s, vh = np.linalg.svd(centered, full_matrices=False)
+    axes = vh[:4]
+    emb = centered @ axes.T
+    roots4 = np.eye(min(4, emb.shape[1]), dtype=float)
+
+    filtered: set[tuple[int, int]] = set()
+    for src, dst in adjacency_pairs:
+        x15 = matrix_rows[src]
+        y15 = matrix_rows[dst]
+        x4 = emb[src]
+        y4 = emb[dst]
+        witnesses = edge_witnesses.get((src, dst), [])
+        projected = rank4_projected_ok(x15, y15, x4, y4, roots4, proj_thresh, align_thresh)
+        single_wall = single_wall_ok(x4, y4, roots4, wall_eps)
+        min_support = min_support_ok(witnesses, support_max, l1_max)
+        keep = False
+        if edge_mode == "reflection_rank4_projected_single_wall":
+            keep = projected and single_wall
+        elif edge_mode == "reflection_rank4_projected_min_support":
+            keep = projected and min_support
+        elif edge_mode == "reflection_single_wall_min_support":
+            keep = single_wall and min_support
+        elif edge_mode == "reflection_rank4_projected_single_wall_orbit_consistent":
+            keep = projected and single_wall
+        if keep:
+            filtered.add((src, dst))
+
+    if edge_mode == "reflection_rank4_projected_single_wall_orbit_consistent":
+        filtered = orbit_consistent_filter(filtered, stability)
+    return filtered
+
+
+def quotient_raw_basins_to_sectors(
+    basin_members: dict[str, list[tuple[int, ...]]],
+    register_specs: list[dict[str, Any]],
+) -> tuple[dict[str, list[tuple[int, ...]]], dict[str, str], dict[str, Any]]:
+    raw_to_sector: dict[str, str] = {}
+    sector_members: dict[str, list[tuple[int, ...]]] = defaultdict(list)
+    q_rows: list[dict[str, Any]] = []
+    for raw_id, members in sorted(basin_members.items(), key=lambda item: item[0]):
+        representative = sorted(members)[0]
+        n_value = state_to_godel_value(representative, register_specs)
+        sector = q_sector_id(n_value)
+        sector_id = f"sector:{sector}"
+        raw_to_sector[raw_id] = sector_id
+        sector_members[sector_id].extend(members)
+        q_rows.append(
+            {
+                "raw_basin_id": raw_id,
+                "raw_basin_size": len(members),
+                "representative_state": list(representative),
+                "godel_value": n_value,
+                "sector_id": sector_id,
+            }
+        )
+    reduced = {sector: sorted(members) for sector, members in sorted(sector_members.items(), key=lambda item: item[0])}
+    q_artifact = {
+        "quotient_name": "rfc10006_sector_id",
+        "formula": "q(N)=((N mod 71)+(N mod 59)+(N mod 47)) mod 10",
+        "raw_basin_count": len(basin_members),
+        "sector_count_nonempty": len(reduced),
+        "rows": q_rows,
+    }
+    return reduced, raw_to_sector, q_artifact
 
 
 def build_common_basin_payload(
     basin_members: dict[str, list[tuple[int, ...]]],
     state_to_basin: dict[tuple[int, ...], str],
-    successor_map: dict[tuple[int, ...], tuple[int, ...] | None],
+    states: list[tuple[int, ...]],
+    transitions: list[dict[str, Any]],
+    register_count: int,
+    register_specs: list[dict[str, Any]],
+    edge_mode: str,
+    edge_params: dict[str, Any],
     *,
     top_k: int,
     register_limit: int,
@@ -212,10 +508,14 @@ def build_common_basin_payload(
     registers: list[dict[str, Any]],
     derivation_name: str,
 ) -> dict[str, Any]:
-    top_basins = sorted(
-        ((basin_id, len(members)) for basin_id, members in basin_members.items()),
-        key=lambda item: (-item[1], item[0]),
-    )[:top_k]
+    reduced_members, merge_map, q_map_artifact = quotient_raw_basins_to_sectors(basin_members, register_specs)
+    reduced_state_to_basin: dict[tuple[int, ...], str] = {
+        state: merge_map.get(raw_basin, raw_basin) for state, raw_basin in state_to_basin.items()
+    }
+
+    top_basins = sorted(((basin_id, len(members)) for basin_id, members in reduced_members.items()), key=lambda item: item[0])
+    if len(top_basins) > top_k:
+        top_basins = top_basins[:top_k]
     selected_basin_ids = [item[0] for item in top_basins]
     selected_index = {basin_id: idx for idx, basin_id in enumerate(selected_basin_ids)}
 
@@ -223,7 +523,7 @@ def build_common_basin_payload(
     matrix_rows: list[list[float]] = []
     stability: list[int] = []
     for basin_id, member_count in top_basins:
-        members = basin_members[basin_id]
+        members = reduced_members[basin_id]
         counts = [0.0] * (register_limit * len(STATE_ORDER))
         for state in members:
             for reg_idx in range(register_limit):
@@ -233,7 +533,7 @@ def build_common_basin_payload(
         normalized = [count / float(len(members)) for count in counts]
         matrix_rows.append(normalized)
         stability.append(member_count)
-        representative = members[0] if basin_id.startswith("scc:") else representative_from_basin_id(basin_id)
+        representative = members[0]
         basins.append(
             {
                 "id": basin_id,
@@ -243,20 +543,31 @@ def build_common_basin_payload(
             }
         )
 
+    sector_edges, transfer_samples, edge_witnesses = build_atomic_sector_edges(
+        states,
+        transitions,
+        register_count,
+        register_specs,
+        edge_mode=edge_mode,
+    )
     adjacency_pairs: set[tuple[int, int]] = set()
-    for source_state, source_basin in state_to_basin.items():
-        if source_basin not in selected_index:
-            continue
-        target_state = successor_map.get(source_state)
-        if target_state is None:
-            continue
-        target_basin = state_to_basin.get(target_state)
-        if target_basin is None or target_basin not in selected_index:
-            continue
-        src = selected_index[source_basin]
-        dst = selected_index[target_basin]
-        if src != dst:
-            adjacency_pairs.add((src, dst))
+    for src_sector, dst_sector in sector_edges:
+        src_id = f"sector:{src_sector}"
+        dst_id = f"sector:{dst_sector}"
+        if src_id in selected_index and dst_id in selected_index and src_id != dst_id:
+            adjacency_pairs.add((selected_index[src_id], selected_index[dst_id]))
+    adjacency_pairs = filter_sector_edges(
+        adjacency_pairs,
+        matrix_rows,
+        stability,
+        edge_witnesses,
+        edge_mode,
+        proj_thresh=float(edge_params.get("proj_thresh", 0.95)),
+        align_thresh=float(edge_params.get("align_thresh", 0.90)),
+        support_max=int(edge_params.get("support_max", 2)),
+        l1_max=int(edge_params.get("l1_max", 4)),
+        wall_eps=float(edge_params.get("wall_eps", 1e-8)),
+    )
 
     adjacency = sorted(
         [
@@ -293,13 +604,34 @@ def build_common_basin_payload(
             "register_limit": register_limit,
             "stability_definition": "basin degeneracy count",
             "matrix_encoding": "per-basin average one-hot occupancy over selected register-state primes",
+            "reduction": {
+                "mode": "quotient",
+                "raw_basin_count": len(basin_members),
+                "target_count": top_k,
+                "quotient_name": q_map_artifact["quotient_name"],
+            },
+            "edge_mode": edge_mode,
+            "edge_params": {
+                "proj_thresh": float(edge_params.get("proj_thresh", 0.95)),
+                "align_thresh": float(edge_params.get("align_thresh", 0.90)),
+                "support_max": int(edge_params.get("support_max", 2)),
+                "l1_max": int(edge_params.get("l1_max", 4)),
+                "wall_eps": float(edge_params.get("wall_eps", 1e-8)),
+            },
         },
+        "q_map_artifact": q_map_artifact,
+        "atomic_transfer_samples": transfer_samples,
     }
 
 
 def derive_walk_partition(
     fixed_walks: dict[str, dict[str, Any]],
-    successor_map: dict[tuple[int, ...], tuple[int, ...] | None],
+    states: list[tuple[int, ...]],
+    transitions: list[dict[str, Any]],
+    register_count: int,
+    register_specs: list[dict[str, Any]],
+    edge_mode: str,
+    edge_params: dict[str, Any],
     *,
     top_k: int,
     register_limit: int,
@@ -316,7 +648,12 @@ def derive_walk_partition(
     return build_common_basin_payload(
         basin_members,
         state_to_basin,
-        successor_map,
+        states,
+        transitions,
+        register_count,
+        register_specs,
+        edge_mode,
+        edge_params,
         top_k=top_k,
         register_limit=register_limit,
         prime_labels=prime_labels,
@@ -368,6 +705,12 @@ def tarjan_scc(nodes: list[tuple[int, ...]], successor_map: dict[tuple[int, ...]
 def derive_scc_condensation(
     nodes: list[tuple[int, ...]],
     successor_map: dict[tuple[int, ...], tuple[int, ...] | None],
+    states: list[tuple[int, ...]],
+    transitions: list[dict[str, Any]],
+    register_count: int,
+    register_specs: list[dict[str, Any]],
+    edge_mode: str,
+    edge_params: dict[str, Any],
     *,
     top_k: int,
     register_limit: int,
@@ -420,7 +763,12 @@ def derive_scc_condensation(
     return build_common_basin_payload(
         basin_members,
         state_to_basin,
-        successor_map,
+        states,
+        transitions,
+        register_count,
+        register_specs,
+        edge_mode,
+        edge_params,
         top_k=top_k,
         register_limit=register_limit,
         prime_labels=prime_labels,
@@ -555,6 +903,8 @@ def build_dataset(
     canonical_policy: str,
     tiebreak: str,
     previous_canonical: str | None,
+    edge_mode: str,
+    edge_params: dict[str, Any],
 ) -> dict[str, Any]:
     transitions, register_count = build_transition_list(physics_artifact)
     states = [tuple(int(v) for v in state) for state in product((-1, 0, 1), repeat=register_count)]
@@ -569,12 +919,20 @@ def build_dataset(
         fixed_walks_rebuilt = True
 
     prime_labels, registers = extract_prime_layout(state_artifact, register_limit=register_limit)
+    all_register_specs = state_artifact.get("registers")
+    if not isinstance(all_register_specs, list) or len(all_register_specs) < register_count:
+        raise ValueError("state artifact missing full register specs for q-map")
 
     derivations: dict[str, dict[str, Any]] = {}
     if derivation_mode in {"walk_partition", "both"}:
         derivations["walk_partition"] = derive_walk_partition(
             fixed_walks,
-            successor_map,
+            states,
+            transitions,
+            register_count,
+            all_register_specs,
+            edge_mode,
+            edge_params,
             top_k=top_k,
             register_limit=register_limit,
             prime_labels=prime_labels,
@@ -584,6 +942,12 @@ def build_dataset(
         derivations["scc_condensation"] = derive_scc_condensation(
             states,
             successor_map,
+            states,
+            transitions,
+            register_count,
+            all_register_specs,
+            edge_mode,
+            edge_params,
             top_k=top_k,
             register_limit=register_limit,
             prime_labels=prime_labels,
@@ -605,6 +969,14 @@ def build_dataset(
         previous_canonical=previous_canonical,
     )
     canonical_payload = derivations[canonical_derivation]
+    q_map_summary = {
+        name: {
+            "quotient_name": payload.get("q_map_artifact", {}).get("quotient_name"),
+            "raw_basin_count": payload.get("q_map_artifact", {}).get("raw_basin_count"),
+            "sector_count_nonempty": payload.get("q_map_artifact", {}).get("sector_count_nonempty"),
+        }
+        for name, payload in derivations.items()
+    }
     result = {
         "derivation_version": 2,
         "derivations": derivations,
@@ -615,6 +987,7 @@ def build_dataset(
             "reason": canonical_reason,
             "previous_canonical": previous_canonical,
             "lock_pass": lock_pass,
+            "edge_mode": edge_mode,
         },
         "shape": canonical_payload["shape"],
         "basins": canonical_payload["basins"],
@@ -625,10 +998,13 @@ def build_dataset(
         "adjacency": canonical_payload["adjacency"],
         "selection_policy": canonical_payload["selection_policy"],
         "source_artifacts": {},
+        "q_map_summary": q_map_summary,
         "notes": [
             "Derived deterministically from local artifacts; no external data fetch.",
             "Stability is basin degeneracy count.",
             "Canonical derivation is selected by best-of-two policy with configured tiebreak.",
+            "The 10-basin model is built via deterministic quotient q(N)=((N mod 71)+(N mod 59)+(N mod 47)) mod 10.",
+            f"Reduced edge relation uses mode: {edge_mode}.",
         ],
     }
     return result
@@ -691,6 +1067,26 @@ def main() -> None:
         help="Path to previous canonical dataset used for keep-previous tiebreak.",
     )
     parser.add_argument(
+        "--edge-mode",
+        choices=(
+            "all_atomic",
+            "atomic_local",
+            "parity_preserving",
+            "reflection_constrained",
+            "reflection_rank4_projected_single_wall",
+            "reflection_rank4_projected_min_support",
+            "reflection_single_wall_min_support",
+            "reflection_rank4_projected_single_wall_orbit_consistent",
+        ),
+        default="reflection_single_wall_min_support",
+        help="Reduced-edge construction mode for sector graph (default: reflection_single_wall_min_support).",
+    )
+    parser.add_argument("--proj-thresh", type=float, default=0.95, help="Projected-energy threshold.")
+    parser.add_argument("--align-thresh", type=float, default=0.90, help="Projected root-alignment threshold.")
+    parser.add_argument("--support-max", type=int, default=2, help="Max support size for witness delta.")
+    parser.add_argument("--l1-max", type=int, default=4, help="Max L1 size for witness delta.")
+    parser.add_argument("--wall-eps", type=float, default=1e-8, help="Tolerance for wall-sign checks.")
+    parser.add_argument(
         "--output",
         default=None,
         help="Output JSON path (default: benchmarks/results/<today>-rank4-dataset.json).",
@@ -728,6 +1124,14 @@ def main() -> None:
         canonical_policy=args.canonical_policy,
         tiebreak=args.tiebreak,
         previous_canonical=previous_canonical,
+        edge_mode=args.edge_mode,
+        edge_params={
+            "proj_thresh": args.proj_thresh,
+            "align_thresh": args.align_thresh,
+            "support_max": args.support_max,
+            "l1_max": args.l1_max,
+            "wall_eps": args.wall_eps,
+        },
     )
     payload["source_artifacts"] = {
         "physics_artifact": str(physics_path),

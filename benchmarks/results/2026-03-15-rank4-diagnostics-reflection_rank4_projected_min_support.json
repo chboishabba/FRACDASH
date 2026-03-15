@@ -1,7 +1,7 @@
 {
   "canonical_derivation": "scc_condensation",
   "canonical_selection": {
-    "edge_mode": "reflection_single_wall_min_support",
+    "edge_mode": "reflection_rank4_projected_min_support",
     "lock_pass": false,
     "policy": "best-of-two",
     "previous_canonical": "scc_condensation",
@@ -10,26 +10,26 @@
   },
   "comparison": {
     "scc_condensation": {
-      "chain_height": 3,
+      "chain_height": 2,
       "effective_dimension": 7,
       "lock_gate_pass": false,
       "stable_pass": true
     },
     "walk_partition": {
-      "chain_height": 3,
+      "chain_height": 2,
       "effective_dimension": 8,
       "lock_gate_pass": false,
       "stable_pass": true
     }
   },
-  "dataset_path": "benchmarks/results/rank4-dataset-latest.json",
-  "dataset_sha256": "2c150004b423dd95c09cb1c9e0e3536aa7e0f865a0aaa828c426274fa2a37fb1",
+  "dataset_path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-rank4-dataset-reflection_rank4_projected_min_support.json",
+  "dataset_sha256": "6c4192b11f2220cbbaf70ecb4dd47e0d9b9c7686f6039b0dc4d2a38c7cdc7027",
   "derivations": {
     "scc_condensation": {
       "chain": {
-        "descending_edge_count": 5,
-        "edge_count": 9,
-        "longest_monotone_chain_height": 3,
+        "descending_edge_count": 2,
+        "edge_count": 4,
+        "longest_monotone_chain_height": 2,
         "node_count": 10,
         "stability_distinct_values": [
           98,
@@ -132,9 +132,9 @@
     },
     "walk_partition": {
       "chain": {
-        "descending_edge_count": 4,
-        "edge_count": 7,
-        "longest_monotone_chain_height": 3,
+        "descending_edge_count": 1,
+        "edge_count": 1,
+        "longest_monotone_chain_height": 2,
         "node_count": 10,
         "stability_distinct_values": [
           96,
@@ -248,7 +248,7 @@
     "valid": true
   },
   "status_mode": {
-    "strict_lock": true,
+    "strict_lock": false,
     "strict_stable": false
   },
   "summary": {

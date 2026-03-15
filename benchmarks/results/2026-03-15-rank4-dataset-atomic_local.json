@@ -1,12 +1,24 @@
 {
   "adjacency": [
     {
+      "from": 0,
+      "from_basin_id": "sector:0",
+      "to": 7,
+      "to_basin_id": "sector:7"
+    },
+    {
       "from": 1,
       "from_basin_id": "sector:1",
       "to": 0,
       "to_basin_id": "sector:0"
     },
     {
+      "from": 1,
+      "from_basin_id": "sector:1",
+      "to": 7,
+      "to_basin_id": "sector:7"
+    },
+    {
       "from": 2,
       "from_basin_id": "sector:2",
       "to": 0,
@@ -15,8 +27,32 @@
     {
       "from": 2,
       "from_basin_id": "sector:2",
+      "to": 1,
+      "to_basin_id": "sector:1"
+    },
+    {
+      "from": 2,
+      "from_basin_id": "sector:2",
       "to": 3,
       "to_basin_id": "sector:3"
+    },
+    {
+      "from": 2,
+      "from_basin_id": "sector:2",
+      "to": 5,
+      "to_basin_id": "sector:5"
+    },
+    {
+      "from": 3,
+      "from_basin_id": "sector:3",
+      "to": 6,
+      "to_basin_id": "sector:6"
+    },
+    {
+      "from": 3,
+      "from_basin_id": "sector:3",
+      "to": 8,
+      "to_basin_id": "sector:8"
     },
     {
       "from": 4,
@@ -27,8 +63,32 @@
     {
       "from": 4,
       "from_basin_id": "sector:4",
+      "to": 7,
+      "to_basin_id": "sector:7"
+    },
+    {
+      "from": 4,
+      "from_basin_id": "sector:4",
       "to": 9,
       "to_basin_id": "sector:9"
+    },
+    {
+      "from": 5,
+      "from_basin_id": "sector:5",
+      "to": 4,
+      "to_basin_id": "sector:4"
+    },
+    {
+      "from": 5,
+      "from_basin_id": "sector:5",
+      "to": 9,
+      "to_basin_id": "sector:9"
+    },
+    {
+      "from": 6,
+      "from_basin_id": "sector:6",
+      "to": 1,
+      "to_basin_id": "sector:1"
     },
     {
       "from": 6,
@@ -37,10 +97,28 @@
       "to_basin_id": "sector:7"
     },
     {
+      "from": 6,
+      "from_basin_id": "sector:6",
+      "to": 8,
+      "to_basin_id": "sector:8"
+    },
+    {
+      "from": 7,
+      "from_basin_id": "sector:7",
+      "to": 4,
+      "to_basin_id": "sector:4"
+    },
+    {
       "from": 7,
       "from_basin_id": "sector:7",
       "to": 6,
       "to_basin_id": "sector:6"
+    },
+    {
+      "from": 7,
+      "from_basin_id": "sector:7",
+      "to": 9,
+      "to_basin_id": "sector:9"
     },
     {
       "from": 8,
@@ -53,6 +131,18 @@
       "from_basin_id": "sector:8",
       "to": 4,
       "to_basin_id": "sector:4"
+    },
+    {
+      "from": 9,
+      "from_basin_id": "sector:9",
+      "to": 2,
+      "to_basin_id": "sector:2"
+    },
+    {
+      "from": 9,
+      "from_basin_id": "sector:9",
+      "to": 5,
+      "to_basin_id": "sector:5"
     }
   ],
   "basins": [
@@ -839,7 +929,7 @@
   ],
   "canonical_derivation": "scc_condensation",
   "canonical_selection": {
-    "edge_mode": "reflection_single_wall_min_support",
+    "edge_mode": "atomic_local",
     "lock_pass": false,
     "policy": "best-of-two",
     "previous_canonical": "scc_condensation",
@@ -851,12 +941,24 @@
     "scc_condensation": {
       "adjacency": [
         {
+          "from": 0,
+          "from_basin_id": "sector:0",
+          "to": 7,
+          "to_basin_id": "sector:7"
+        },
+        {
           "from": 1,
           "from_basin_id": "sector:1",
           "to": 0,
           "to_basin_id": "sector:0"
         },
         {
+          "from": 1,
+          "from_basin_id": "sector:1",
+          "to": 7,
+          "to_basin_id": "sector:7"
+        },
+        {
           "from": 2,
           "from_basin_id": "sector:2",
           "to": 0,
@@ -865,8 +967,32 @@
         {
           "from": 2,
           "from_basin_id": "sector:2",
+          "to": 1,
+          "to_basin_id": "sector:1"
+        },
+        {
+          "from": 2,
+          "from_basin_id": "sector:2",
           "to": 3,
           "to_basin_id": "sector:3"
+        },
+        {
+          "from": 2,
+          "from_basin_id": "sector:2",
+          "to": 5,
+          "to_basin_id": "sector:5"
+        },
+        {
+          "from": 3,
+          "from_basin_id": "sector:3",
+          "to": 6,
+          "to_basin_id": "sector:6"
+        },
+        {
+          "from": 3,
+          "from_basin_id": "sector:3",
+          "to": 8,
+          "to_basin_id": "sector:8"
         },
         {
           "from": 4,
@@ -877,8 +1003,32 @@
         {
           "from": 4,
           "from_basin_id": "sector:4",
+          "to": 7,
+          "to_basin_id": "sector:7"
+        },
+        {
+          "from": 4,
+          "from_basin_id": "sector:4",
           "to": 9,
           "to_basin_id": "sector:9"
+        },
+        {
+          "from": 5,
+          "from_basin_id": "sector:5",
+          "to": 4,
+          "to_basin_id": "sector:4"
+        },
+        {
+          "from": 5,
+          "from_basin_id": "sector:5",
+          "to": 9,
+          "to_basin_id": "sector:9"
+        },
+        {
+          "from": 6,
+          "from_basin_id": "sector:6",
+          "to": 1,
+          "to_basin_id": "sector:1"
         },
         {
           "from": 6,
@@ -887,10 +1037,28 @@
           "to_basin_id": "sector:7"
         },
         {
+          "from": 6,
+          "from_basin_id": "sector:6",
+          "to": 8,
+          "to_basin_id": "sector:8"
+        },
+        {
+          "from": 7,
+          "from_basin_id": "sector:7",
+          "to": 4,
+          "to_basin_id": "sector:4"
+        },
+        {
           "from": 7,
           "from_basin_id": "sector:7",
           "to": 6,
           "to_basin_id": "sector:6"
+        },
+        {
+          "from": 7,
+          "from_basin_id": "sector:7",
+          "to": 9,
+          "to_basin_id": "sector:9"
         },
         {
           "from": 8,
@@ -903,12 +1071,24 @@
           "from_basin_id": "sector:8",
           "to": 4,
           "to_basin_id": "sector:4"
+        },
+        {
+          "from": 9,
+          "from_basin_id": "sector:9",
+          "to": 2,
+          "to_basin_id": "sector:2"
+        },
+        {
+          "from": 9,
+          "from_basin_id": "sector:9",
+          "to": 5,
+          "to_basin_id": "sector:5"
         }
       ],
       "atomic_transfer_samples": [
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 185565081293,
           "godel_before": 167244016651,
           "next_state": [
@@ -933,7 +1113,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 173787399421,
           "godel_before": 157501646749,
           "next_state": [
@@ -958,7 +1138,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 177228734063,
           "godel_before": 157501646749,
           "next_state": [
@@ -983,7 +1163,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 174755464907,
           "godel_before": 157501646749,
           "next_state": [
@@ -1008,7 +1188,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 181961875831,
           "godel_before": 163996560017,
           "next_state": [
@@ -1033,7 +1213,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 161228677189,
           "godel_before": 145310375123,
           "next_state": [
@@ -1058,7 +1238,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 150995609333,
           "godel_before": 136845693077,
           "next_state": [
@@ -1083,7 +1263,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 151836715411,
           "godel_before": 136845693077,
           "next_state": [
@@ -1108,7 +1288,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 158098023263,
           "godel_before": 142488814441,
           "next_state": [
@@ -1133,7 +1313,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 179480980267,
           "godel_before": 161760606269,
           "next_state": [
@@ -1158,7 +1338,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 161875921979,
           "godel_before": 145893716653,
           "next_state": [
@@ -1183,7 +1363,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 154603789289,
           "godel_before": 137395053547,
           "next_state": [
@@ -1208,7 +1388,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 152446256621,
           "godel_before": 137395053547,
           "next_state": [
@@ -1233,7 +1413,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 158732700193,
           "godel_before": 143060828951,
           "next_state": [
@@ -1258,7 +1438,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 140646292867,
           "godel_before": 126760114469,
           "next_state": [
@@ -1283,7 +1463,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 132453304933,
           "godel_before": 119376030131,
           "next_state": [
@@ -1308,7 +1488,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 137915296889,
           "godel_before": 124298753023,
           "next_state": [
@@ -1333,7 +1513,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 156568514701,
           "godel_before": 141110316107,
           "next_state": [
@@ -1358,7 +1538,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 147448018699,
           "godel_before": 132890297693,
           "next_state": [
@@ -1383,7 +1563,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 153528349367,
           "godel_before": 138370309969,
           "next_state": [
@@ -1408,7 +1588,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 169772308417,
           "godel_before": 153010483319,
           "next_state": [
@@ -1433,7 +1613,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 162145437547,
           "godel_before": 144097251281,
           "next_state": [
@@ -1458,7 +1638,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 159882659383,
           "godel_before": 144097251281,
           "next_state": [
@@ -1483,7 +1663,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 166475758739,
           "godel_before": 150039405973,
           "next_state": [
@@ -2465,7 +2645,7 @@
       "metrics": {
         "effective_dimension": 7,
         "lock_gate_pass": false,
-        "monotone_chain_height": 3,
+        "monotone_chain_height": 5,
         "shape_ok": true,
         "variance_threshold": 0.997
       },
@@ -10353,14 +10533,7 @@
         "sector_count_nonempty": 10
       },
       "selection_policy": {
-        "edge_mode": "reflection_single_wall_min_support",
-        "edge_params": {
-          "align_thresh": 0.9,
-          "l1_max": 4,
-          "proj_thresh": 0.95,
-          "support_max": 2,
-          "wall_eps": 1e-08
-        },
+        "edge_mode": "atomic_local",
         "fallback_max_steps": 32,
         "fixed_walks_rebuilt_from_transitions": true,
         "matrix_encoding": "per-basin average one-hot occupancy over selected register-state primes",
@@ -10394,6 +10567,24 @@
     "walk_partition": {
       "adjacency": [
         {
+          "from": 0,
+          "from_basin_id": "sector:0",
+          "to": 7,
+          "to_basin_id": "sector:7"
+        },
+        {
+          "from": 1,
+          "from_basin_id": "sector:1",
+          "to": 0,
+          "to_basin_id": "sector:0"
+        },
+        {
+          "from": 1,
+          "from_basin_id": "sector:1",
+          "to": 7,
+          "to_basin_id": "sector:7"
+        },
+        {
           "from": 2,
           "from_basin_id": "sector:2",
           "to": 0,
@@ -10406,6 +10597,54 @@
           "to_basin_id": "sector:1"
         },
         {
+          "from": 2,
+          "from_basin_id": "sector:2",
+          "to": 3,
+          "to_basin_id": "sector:3"
+        },
+        {
+          "from": 2,
+          "from_basin_id": "sector:2",
+          "to": 5,
+          "to_basin_id": "sector:5"
+        },
+        {
+          "from": 3,
+          "from_basin_id": "sector:3",
+          "to": 6,
+          "to_basin_id": "sector:6"
+        },
+        {
+          "from": 3,
+          "from_basin_id": "sector:3",
+          "to": 8,
+          "to_basin_id": "sector:8"
+        },
+        {
+          "from": 4,
+          "from_basin_id": "sector:4",
+          "to": 2,
+          "to_basin_id": "sector:2"
+        },
+        {
+          "from": 4,
+          "from_basin_id": "sector:4",
+          "to": 7,
+          "to_basin_id": "sector:7"
+        },
+        {
+          "from": 4,
+          "from_basin_id": "sector:4",
+          "to": 9,
+          "to_basin_id": "sector:9"
+        },
+        {
+          "from": 5,
+          "from_basin_id": "sector:5",
+          "to": 4,
+          "to_basin_id": "sector:4"
+        },
+        {
           "from": 5,
           "from_basin_id": "sector:5",
           "to": 9,
@@ -10414,8 +10653,26 @@
         {
           "from": 6,
           "from_basin_id": "sector:6",
+          "to": 1,
+          "to_basin_id": "sector:1"
+        },
+        {
+          "from": 6,
+          "from_basin_id": "sector:6",
           "to": 7,
           "to_basin_id": "sector:7"
+        },
+        {
+          "from": 6,
+          "from_basin_id": "sector:6",
+          "to": 8,
+          "to_basin_id": "sector:8"
+        },
+        {
+          "from": 7,
+          "from_basin_id": "sector:7",
+          "to": 4,
+          "to_basin_id": "sector:4"
         },
         {
           "from": 7,
@@ -10424,8 +10681,26 @@
           "to_basin_id": "sector:6"
         },
         {
+          "from": 7,
+          "from_basin_id": "sector:7",
+          "to": 9,
+          "to_basin_id": "sector:9"
+        },
+        {
           "from": 8,
           "from_basin_id": "sector:8",
+          "to": 2,
+          "to_basin_id": "sector:2"
+        },
+        {
+          "from": 8,
+          "from_basin_id": "sector:8",
+          "to": 4,
+          "to_basin_id": "sector:4"
+        },
+        {
+          "from": 9,
+          "from_basin_id": "sector:9",
           "to": 2,
           "to_basin_id": "sector:2"
         },
@@ -10439,7 +10714,7 @@
       "atomic_transfer_samples": [
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 185565081293,
           "godel_before": 167244016651,
           "next_state": [
@@ -10464,7 +10739,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 173787399421,
           "godel_before": 157501646749,
           "next_state": [
@@ -10489,7 +10764,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 177228734063,
           "godel_before": 157501646749,
           "next_state": [
@@ -10514,7 +10789,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 174755464907,
           "godel_before": 157501646749,
           "next_state": [
@@ -10539,7 +10814,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 181961875831,
           "godel_before": 163996560017,
           "next_state": [
@@ -10564,7 +10839,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 161228677189,
           "godel_before": 145310375123,
           "next_state": [
@@ -10589,7 +10864,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 150995609333,
           "godel_before": 136845693077,
           "next_state": [
@@ -10614,7 +10889,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 151836715411,
           "godel_before": 136845693077,
           "next_state": [
@@ -10639,7 +10914,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 158098023263,
           "godel_before": 142488814441,
           "next_state": [
@@ -10664,7 +10939,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 179480980267,
           "godel_before": 161760606269,
           "next_state": [
@@ -10689,7 +10964,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 161875921979,
           "godel_before": 145893716653,
           "next_state": [
@@ -10714,7 +10989,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 154603789289,
           "godel_before": 137395053547,
           "next_state": [
@@ -10739,7 +11014,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 152446256621,
           "godel_before": 137395053547,
           "next_state": [
@@ -10764,7 +11039,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 158732700193,
           "godel_before": 143060828951,
           "next_state": [
@@ -10789,7 +11064,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 140646292867,
           "godel_before": 126760114469,
           "next_state": [
@@ -10814,7 +11089,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 132453304933,
           "godel_before": 119376030131,
           "next_state": [
@@ -10839,7 +11114,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 137915296889,
           "godel_before": 124298753023,
           "next_state": [
@@ -10864,7 +11139,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 156568514701,
           "godel_before": 141110316107,
           "next_state": [
@@ -10889,7 +11164,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 147448018699,
           "godel_before": 132890297693,
           "next_state": [
@@ -10914,7 +11189,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 153528349367,
           "godel_before": 138370309969,
           "next_state": [
@@ -10939,7 +11214,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 169772308417,
           "godel_before": 153010483319,
           "next_state": [
@@ -10964,7 +11239,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 162145437547,
           "godel_before": 144097251281,
           "next_state": [
@@ -10989,7 +11264,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 159882659383,
           "godel_before": 144097251281,
           "next_state": [
@@ -11014,7 +11289,7 @@
         },
         {
           "delta_l1": 2,
-          "edge_mode": "reflection_single_wall_min_support",
+          "edge_mode": "atomic_local",
           "godel_after": 166475758739,
           "godel_before": 150039405973,
           "next_state": [
@@ -11996,7 +12271,7 @@
       "metrics": {
         "effective_dimension": 8,
         "lock_gate_pass": false,
-        "monotone_chain_height": 3,
+        "monotone_chain_height": 4,
         "shape_ok": true,
         "variance_threshold": 0.997
       },
@@ -20234,14 +20509,7 @@
         "sector_count_nonempty": 10
       },
       "selection_policy": {
-        "edge_mode": "reflection_single_wall_min_support",
-        "edge_params": {
-          "align_thresh": 0.9,
-          "l1_max": 4,
-          "proj_thresh": 0.95,
-          "support_max": 2,
-          "wall_eps": 1e-08
-        },
+        "edge_mode": "atomic_local",
         "fallback_max_steps": 32,
         "fixed_walks_rebuilt_from_transitions": true,
         "matrix_encoding": "per-basin average one-hot occupancy over selected register-state primes",
@@ -20450,7 +20718,7 @@
     "Stability is basin degeneracy count.",
     "Canonical derivation is selected by best-of-two policy with configured tiebreak.",
     "The 10-basin model is built via deterministic quotient q(N)=((N mod 71)+(N mod 59)+(N mod 47)) mod 10.",
-    "Reduced edge relation uses mode: reflection_single_wall_min_support."
+    "Reduced edge relation uses mode: atomic_local."
   ],
   "prime_labels": [
     "R1:negative:47",
@@ -20514,14 +20782,7 @@
     }
   },
   "selection_policy": {
-    "edge_mode": "reflection_single_wall_min_support",
-    "edge_params": {
-      "align_thresh": 0.9,
-      "l1_max": 4,
-      "proj_thresh": 0.95,
-      "support_max": 2,
-      "wall_eps": 1e-08
-    },
+    "edge_mode": "atomic_local",
     "fallback_max_steps": 32,
     "fixed_walks_rebuilt_from_transitions": true,
     "matrix_encoding": "per-basin average one-hot occupancy over selected register-state primes",
@@ -20535,7 +20796,7 @@
     "stability_definition": "basin degeneracy count",
     "top_k": 10
   },
-  "sha256": "2c150004b423dd95c09cb1c9e0e3536aa7e0f865a0aaa828c426274fa2a37fb1",
+  "sha256": "6183b9b8d23fb0ffb92ff6720a6afdccf92c49a78d865480938db4eb884b5325",
   "shape": {
     "basins": 10,
     "primes": 15
