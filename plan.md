@@ -116,11 +116,14 @@ Current direction:
 14. Treat the physics lane as a discrete-law measurement problem first: keep exact gates for source-charge conservation, source-parity preservation, locality bounds, forward-cone bounds, and cycle-distance nonincrease, then layer statistical geometry surrogates (perturbation stability, geodesic-like flow, curvature-like concentration, defect attraction) on top of the same artifacts.
 15. Continue the template lane only against the corrected cycle-reachable geometry surrogate, not the earlier `distance_to_cycle = -1` biased version.
 16. Widen the analyzer with explicit observable surrogates so the next phase can talk about shell/interior occupancy, re-entry, and source-defect coupling directly rather than only through candidate-law scores.
-17. Use `physics20` as the current exploratory recurrent-widening branch beyond `physics18/19`, but keep the hard lock anchored to `physics2..physics8` until a later branch is intentionally promoted.
-18. Split the next physics round into two explicit branches:
-   - `physics21` on the current 6-register carrier, targeting the first direct `boundary -> interior` re-entry without breaking the exact V1 laws.
-   - `carrier8_physics1` on a new physics-local 8-register carrier that preserves the first 6 registers and adds `R7` boundary-return memory plus `R8` transport/debt memory.
-19. Treat the 6-register `physics21` branch as the only near-term promotion candidate; keep the 8-register branch exploratory and excluded from the hard lock until it emits stable, branch-local observables.
+17. Keep the hard lock anchored to `physics2..physics8`; treat `physics22` as the active exploratory 6-register baseline (direct boundary→interior re-entry, V1 laws intact, strong geodesic-like signal).
+18. Split the physics lane explicitly:
+   - `physics22` line on the current 6-register carrier (active exploratory baseline).
+   - `carrier8_physics1` line on the 8-register physics-local carrier (R7 return memory, R8 transport/debt), still exploratory.
+19. Promote the 6-register branch for exploration and reporting; keep the 8-register branch excluded from the hard lock until it meets locality/forward-cone and geometry/perturbation targets under the wider carrier.
+20. Treat `../dashi_agda` as the authoritative formal source for the canonical physics-closure semantics, but keep FRACDASH claims bounded to the currently extracted/executable subset.
+21. Maintain an explicit AGDA closure intake artifact so future bridge work is driven by named upstream modules and audit surfaces instead of paraphrased memory.
+22. Use the refreshed formalism intake map to drive the next bulk wiring pass: Stage C/minimal-credible adapters, MDL/Fejér + seam certificates, observable boundary, and known-limits QFT bridge need explicit hooks in the invariant/observable reporters and template provenance.
 
 ## Phase 2 Experiment Work
 

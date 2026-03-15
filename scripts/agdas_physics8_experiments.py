@@ -41,6 +41,29 @@ def _load_agdas_bridge_module():
 def transitions_from_templates(template_set: str) -> tuple[tuple[Transition, ...], dict[str, object]]:
     bridge = _load_agdas_bridge_module()
     template_rules = bridge._template_rules(template_set)
+
+    def provenance_for_template_set(name: str) -> list[str]:
+        base = [
+            "UFTC_Lattice.agda",
+            "Contraction.agda",
+            "MaassRestoration.agda",
+            "MonsterState.agda",
+            "Monster/Step.agda",
+            "MonsterSpec.agda",
+            "Ontology/Hecke/Scan.agda",
+            "DASHI/Physics/LiftToFullState.agda",
+        ]
+        closure = [
+            "DASHI/Physics/Closure/CanonicalStageC.agda",
+            "DASHI/Physics/Closure/MinimalCrediblePhysicsClosure.agda",
+            "DASHI/Physics/Closure/MDLFejérAxiomsShift.agda",
+            "DASHI/Physics/Closure/ShiftSeamCertificates.agda",
+            "DASHI/Physics/Closure/ObservablePredictionPackage.agda",
+        ]
+        if name.startswith("carrier8_") or name.startswith("physics"):
+            return base + closure
+        return base
+
     transitions = tuple(
         Transition(
             name=rule.name,
@@ -56,6 +79,7 @@ def transitions_from_templates(template_set: str) -> tuple[tuple[Transition, ...
         "template_count": len(template_rules),
         "template_modules": sorted({rule.module for rule in template_rules}),
         "carrier_family": "physics_local_8",
+        "provenance_modules": provenance_for_template_set(template_set),
     }
 
 
@@ -312,7 +336,7 @@ def main() -> None:
     parser.add_argument(
         "--template-set",
         default="carrier8_physics1",
-        choices=("carrier8_physics1",),
+        choices=("carrier8_physics1", "carrier8_physics2"),
         help="Template set to execute.",
     )
     parser.add_argument("--max-steps", type=int, default=12, help="Deterministic walk step cap.")

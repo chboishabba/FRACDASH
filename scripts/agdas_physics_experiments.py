@@ -41,6 +41,29 @@ def _load_agdas_bridge_module():
 def transitions_from_templates(template_set: str) -> tuple[tuple[Transition, ...], dict[str, object]]:
     bridge = _load_agdas_bridge_module()
     template_rules = bridge._template_rules(template_set)
+
+    def provenance_for_template_set(name: str) -> list[str]:
+        base = [
+            "UFTC_Lattice.agda",
+            "Contraction.agda",
+            "MaassRestoration.agda",
+            "MonsterState.agda",
+            "Monster/Step.agda",
+            "MonsterSpec.agda",
+            "Ontology/Hecke/Scan.agda",
+            "DASHI/Physics/LiftToFullState.agda",
+        ]
+        closure = [
+            "DASHI/Physics/Closure/CanonicalStageC.agda",
+            "DASHI/Physics/Closure/MinimalCrediblePhysicsClosure.agda",
+            "DASHI/Physics/Closure/MDLFejerAxiomsShift.agda",
+            "DASHI/Physics/Closure/ShiftSeamCertificates.agda",
+            "DASHI/Physics/Closure/ObservablePredictionPackage.agda",
+        ]
+        if name.startswith("physics") or name.startswith("carrier8_"):
+            return base + closure
+        return base
+
     transitions = tuple(
         Transition(
             name=rule.name,
@@ -55,6 +78,7 @@ def transitions_from_templates(template_set: str) -> tuple[tuple[Transition, ...
         "template_set": template_set,
         "template_count": len(template_rules),
         "template_modules": sorted({rule.module for rule in template_rules}),
+        "provenance_modules": provenance_for_template_set(template_set),
     }
 
 
@@ -368,7 +392,7 @@ def main() -> None:
     parser.add_argument(
         "--template-set",
         default="physics2",
-        choices=("physics2", "physics3", "physics4", "physics5", "physics6", "physics7", "physics8", "physics9", "physics10", "physics11", "physics12", "physics13", "physics14", "physics15", "physics16", "physics17", "physics18", "physics19", "physics20", "physics21"),
+        choices=("physics2", "physics3", "physics4", "physics5", "physics6", "physics7", "physics8", "physics9", "physics10", "physics11", "physics12", "physics13", "physics14", "physics15", "physics16", "physics17", "physics18", "physics19", "physics20", "physics21", "physics22"),
         help="Template set to execute.",
     )
     parser.add_argument("--max-steps", type=int, default=12, help="Deterministic walk step cap.")

@@ -69,8 +69,17 @@
   - `physics21` will stay on the current 6-register carrier and target the first direct `boundary -> interior` re-entry without breaking the exact V1 laws.
   - `carrier8_physics1` will start a separate physics-local 8-register carrier with explicit boundary-return memory and transport/debt memory, and will remain exploratory until its branch-local observables stabilize.
 - That split is now implemented:
-  - `physics21` is the current best 6-register exploratory branch, with `310` deterministic edges, `395` phase edges, `419` terminal states, and the first direct `boundary_to_interior = 9` witness while preserving the exact V1 laws.
-  - `carrier8_physics1` now exists as a separate exploratory branch with explicit `boundary_return_profile` and `transport_debt_profile` outputs. Its first full artifact is structural rather than promotable: it exposes return/debt occupancy clearly, but it does not preserve the 6-register locality/forward-cone signature and therefore remains outside the lock path.
+  - `physics22` is the current active exploratory 6-register baseline: `364` deterministic edges, `boundary_to_interior = 63`, exact V1 laws intact, `geodesic_like_flow.near_min_ratio ~0.92`.
+  - `carrier8_physics1` remains exploratory; it exposes `boundary_return_profile` and `transport_debt_profile` and now passes locality/forward-cone under the widened bounds, but it is still outside the lock until its geometry/perturbation signatures improve.
+  - `carrier8_physics2` mirrors the `physics22` rules on the 8-register carrier (no return/debt tagging) and now includes interior reset/self-loop rules: locality/forward-cone pass under widened bounds, cycles exist, geodesic-like is strong, but curvature/perturbation metrics are still below target, so the branch stays exploratory.
+- `../dashi_agda` should now be treated as the authoritative formal source for the canonical physics-closure semantics; the local bridge remains a compressed executable subset until an explicit intake/check artifact says otherwise.
+- That intake/check artifact now exists:
+  - `scripts/check_dashi_agda_formalism.py`
+  - `benchmarks/results/2026-03-15-dashi-agda-formalism-check.json`
+  - `benchmarks/results/2026-03-15-dashi-agda-formalism-check.md`
+- Current result: `authoritative_formalism_detected=True`, meaning the expected upstream closure/audit modules are present and the local counterpart/gap mapping is now recorded explicitly.
+- Formalism intake was deepened: `AGDAS_FORMALISM_INTAKE.md` now lists Stage C/minimal-credible/seam/observable/known-limits surfaces and their FRACDASH hooks, and the checker now covers those modules (Stage C, minimal-credible adapter, MDL/Fejér, seam certificates, observable package, known-limits QFT bridge) in addition to the original closure/audit spine.
+- Carrier-aware locality/forward-cone bounds are now applied for the 8-register branch (`carrier8_*`), and `carrier8_physics1` now passes the exact locality/forward-cone laws under those bounds; the branch remains exploratory and outside the lock.
 - canonical rank-4 dataset derivation in `scripts/derive_rank4_dataset.py` with artifacts at `benchmarks/results/2026-03-15-rank4-dataset.json` and `benchmarks/results/rank4-dataset-latest.json`
 - rank-4 diagnostics runner in `scripts/run_rank4_diagnostics.py` with artifact `benchmarks/results/2026-03-15-rank4-diagnostics.json`
 - rank-4 discriminator runner in `scripts/run_rank4_discriminators.py` with artifacts `benchmarks/results/2026-03-15-rank4-discriminators.json` and `benchmarks/results/2026-03-15-rank4-discriminators.md`

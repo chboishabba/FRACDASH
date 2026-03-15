@@ -1,0 +1,379 @@
+{
+  "date": "2026-03-15",
+  "dashi_agda_root": "/home/c/Documents/code/dashi_agda",
+  "formalism_decision": {
+    "source_of_truth": "../dashi_agda",
+    "local_repo_status": "compressed_executable_subset",
+    "bridge_rule": "upstream formal closure is authoritative; FRACDASH claims stay bounded to extracted executable coverage"
+  },
+  "upstream_modules": [
+    {
+      "path": "/home/c/Documents/code/dashi_agda/UFTC_Lattice.agda",
+      "exists": true,
+      "role": "severity lattice and monotone local code propagation",
+      "required_patterns": [
+        "Severity : Set",
+        "C_XOR",
+        "record ConeInteriorPreserved"
+      ],
+      "matched_patterns": [
+        "Severity : Set",
+        "C_XOR",
+        "record ConeInteriorPreserved"
+      ],
+      "local_counterparts": [
+        "scripts/agdas_bridge.py",
+        "AGDAS_BRIDGE_MAPPING.md"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/Contraction.agda",
+      "exists": true,
+      "role": "contraction and unique fixed-point contract",
+      "required_patterns": [
+        "record Contractive",
+        "contraction",
+        "record StrictContraction",
+        "unique :"
+      ],
+      "matched_patterns": [
+        "record Contractive",
+        "contraction",
+        "record StrictContraction",
+        "unique :"
+      ],
+      "local_counterparts": [
+        "scripts/agdas_bridge.py",
+        "formalism/PhysicsBridgeRefreshSketch.agda"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/MaassRestoration.agda",
+      "exists": true,
+      "role": "stability restoration seam",
+      "required_patterns": [
+        "module MaassRestoration",
+        "Stability contracts"
+      ],
+      "matched_patterns": [
+        "module MaassRestoration",
+        "Stability contracts"
+      ],
+      "local_counterparts": [
+        "formalism/PhysicsBridgeRefreshSketch.agda"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/MonsterState.agda",
+      "exists": true,
+      "role": "canonical state/mask/admissibility seam",
+      "required_patterns": [
+        "record State",
+        "admissible"
+      ],
+      "matched_patterns": [
+        "record State",
+        "admissible"
+      ],
+      "local_counterparts": [
+        "scripts/agdas_bridge.py",
+        "scripts/agdas_wave3_state.py"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/Monster/Step.agda",
+      "exists": true,
+      "role": "canonical step/update seam",
+      "required_patterns": [
+        "choose",
+        "step :"
+      ],
+      "matched_patterns": [
+        "choose",
+        "step :"
+      ],
+      "local_counterparts": [
+        "scripts/agdas_bridge.py"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/MonsterSpec.agda",
+      "exists": true,
+      "role": "spec step plus encode/decode contract",
+      "required_patterns": [
+        "stepSpec",
+        "encode",
+        "decode"
+      ],
+      "matched_patterns": [
+        "stepSpec",
+        "encode",
+        "decode"
+      ],
+      "local_counterparts": [
+        "scripts/agdas_bridge.py",
+        "scripts/toy_dashi_transitions.py"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/Ontology/Hecke/Scan.agda",
+      "exists": true,
+      "role": "scan/compatibility/signature seam",
+      "required_patterns": [
+        "scan :",
+        "Sig15",
+        "Compat"
+      ],
+      "matched_patterns": [
+        "scan :",
+        "Sig15",
+        "Compat"
+      ],
+      "local_counterparts": [
+        "scripts/agdas_bridge.py",
+        "AGDAS_BRIDGE_MAPPING.md"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/DASHI/Physics/LiftToFullState.agda",
+      "exists": true,
+      "role": "lift seam from compressed state into full physics state",
+      "required_patterns": [
+        "module DASHI.Physics.LiftToFullState"
+      ],
+      "matched_patterns": [
+        "module DASHI.Physics.LiftToFullState"
+      ],
+      "local_counterparts": [
+        "scripts/agdas_physics8_state.py"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/DASHI/Physics/Closure/CanonicalPhysicsPathPostulateAudit.agda",
+      "exists": true,
+      "role": "canonical no-essential-postulates audit surface",
+      "required_patterns": [
+        "record KnownLimitsQFTFieldAudit",
+        "noEssentialPostulatesOnCanonicalPhysicsPath",
+        "canonicalNoEssentialPostulatesOnCanonicalPhysicsPath"
+      ],
+      "matched_patterns": [
+        "record KnownLimitsQFTFieldAudit",
+        "noEssentialPostulatesOnCanonicalPhysicsPath",
+        "canonicalNoEssentialPostulatesOnCanonicalPhysicsPath"
+      ],
+      "local_counterparts": [
+        "AGDAS_FORMALISM_INTAKE.md"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/DASHI/Physics/Closure/PhysicsClosureValidationSummary.agda",
+      "exists": true,
+      "role": "repo-facing Stage C validation summary surface",
+      "required_patterns": [
+        "module DASHI.Physics.Closure.PhysicsClosureValidationSummary",
+        "MinimalCrediblePhysicsClosureValidation",
+        "KnownLimitsQFTBridgeTheorem",
+        "ObservableCollapse",
+        "FejerOverChiSquared",
+        "SnapThresholdLaw"
+      ],
+      "matched_patterns": [
+        "module DASHI.Physics.Closure.PhysicsClosureValidationSummary",
+        "MinimalCrediblePhysicsClosureValidation",
+        "KnownLimitsQFTBridgeTheorem",
+        "ObservableCollapse",
+        "FejerOverChiSquared",
+        "SnapThresholdLaw"
+      ],
+      "local_counterparts": [
+        "AGDAS_FORMALISM_INTAKE.md",
+        "PHYSICS_INVARIANT_TARGETS.md"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/DASHI/Physics/Closure/MinimalCrediblePhysicsClosure.agda",
+      "exists": true,
+      "role": "minimum-credible closure adapter: full closure + observables with matching signature",
+      "required_patterns": [
+        "module DASHI.Physics.Closure.MinimalCrediblePhysicsClosure",
+        "record MinimalCrediblePhysicsClosure"
+      ],
+      "matched_patterns": [
+        "module DASHI.Physics.Closure.MinimalCrediblePhysicsClosure",
+        "record MinimalCrediblePhysicsClosure"
+      ],
+      "local_counterparts": [
+        "AGDAS_FORMALISM_INTAKE.md",
+        "scripts/physics_invariant_analysis.py"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/DASHI/Physics/Closure/CanonicalStageC.agda",
+      "exists": true,
+      "role": "authoritative Stage C closure surface with gauge/constraint bridge imports",
+      "required_patterns": [
+        "module DASHI.Physics.Closure.CanonicalStageC",
+        "Canonical Stage C entrypoint"
+      ],
+      "matched_patterns": [
+        "module DASHI.Physics.Closure.CanonicalStageC",
+        "Canonical Stage C entrypoint"
+      ],
+      "local_counterparts": [
+        "AGDAS_FORMALISM_INTAKE.md",
+        "AGDAS_BRIDGE_MAPPING.md",
+        "scripts/agdas_bridge.py",
+        "scripts/physics_invariant_analysis.py"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/DASHI/Physics/Closure/PhysicsClosureTheoremChecklist.agda",
+      "exists": true,
+      "role": "theorem checklist linking contraction \u2192 quadratic \u2192 signature \u2192 Clifford \u2192 spin/Dirac \u2192 closure",
+      "required_patterns": [
+        "module DASHI.Physics.Closure.PhysicsClosureTheoremChecklist",
+        "record PhysicsClosureTheoremChecklist"
+      ],
+      "matched_patterns": [
+        "module DASHI.Physics.Closure.PhysicsClosureTheoremChecklist",
+        "record PhysicsClosureTheoremChecklist"
+      ],
+      "local_counterparts": [
+        "AGDAS_FORMALISM_INTAKE.md",
+        "scripts/agdas_bridge.py"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/DASHI/Physics/Closure/MDLFejerAxiomsShift.agda",
+      "exists": true,
+      "role": "MDL/Fej\u00e9r monotonicity axioms for shift energy",
+      "required_patterns": [
+        "module DASHI.Physics.Closure.MDLFejerAxiomsShift",
+        "record MDLFejerAxiomsShift"
+      ],
+      "matched_patterns": [
+        "module DASHI.Physics.Closure.MDLFejerAxiomsShift",
+        "record MDLFejerAxiomsShift"
+      ],
+      "local_counterparts": [
+        "PHYSICS_INVARIANT_TARGETS.md",
+        "scripts/physics_invariant_analysis.py"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/DASHI/Physics/Closure/ShiftSeamCertificates.agda",
+      "exists": true,
+      "role": "closest-point / Fej\u00e9r / defect-collapse seam certificates for shift",
+      "required_patterns": [
+        "module DASHI.Physics.Closure.ShiftSeamCertificates",
+        "record ShiftSeams"
+      ],
+      "matched_patterns": [
+        "module DASHI.Physics.Closure.ShiftSeamCertificates",
+        "record ShiftSeams"
+      ],
+      "local_counterparts": [
+        "PHYSICS_INVARIANT_TARGETS.md",
+        "scripts/physics_invariant_analysis.py"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/DASHI/Physics/Closure/ObservablePredictionPackage.agda",
+      "exists": true,
+      "role": "observable boundary for current 4D shift framework: proved / excluded / forward claims",
+      "required_patterns": [
+        "module DASHI.Physics.Closure.ObservablePredictionPackage",
+        "record ObservablePredictionPackage"
+      ],
+      "matched_patterns": [
+        "module DASHI.Physics.Closure.ObservablePredictionPackage",
+        "record ObservablePredictionPackage"
+      ],
+      "local_counterparts": [
+        "PHYSICS_INVARIANT_TARGETS.md",
+        "AGDAS_FORMALISM_INTAKE.md"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/DASHI/Physics/Closure/KnownLimitsQFTBridgeTheorem.agda",
+      "exists": true,
+      "role": "known-limits QFT bridge theorem bundle with canonical wave-even witnesses",
+      "required_patterns": [
+        "module DASHI.Physics.Closure.KnownLimitsQFTBridgeTheorem",
+        "known-limits QFT bridge"
+      ],
+      "matched_patterns": [
+        "module DASHI.Physics.Closure.KnownLimitsQFTBridgeTheorem",
+        "known-limits QFT bridge"
+      ],
+      "local_counterparts": [
+        "AGDAS_FORMALISM_INTAKE.md",
+        "PHYSICS_INVARIANT_TARGETS.md"
+      ],
+      "coverage_status": "documented_local_subset",
+      "pattern_pass": true
+    }
+  ],
+  "checklist": {
+    "path": "/home/c/Documents/code/dashi_agda/Docs/PhysicsClosureImplementationChecklist.md",
+    "top_level_done": 14,
+    "top_level_pending": 0
+  },
+  "minimal_credible_closure_doc": {
+    "path": "/home/c/Documents/code/dashi_agda/Docs/MinimalCrediblePhysicsClosure.md",
+    "mentions_minimal_credible": true,
+    "mentions_known_open_gaps": true,
+    "mentions_qft_recovery_limit": true
+  },
+  "local_counterparts": {
+    "paths": {
+      "AGDAS_BRIDGE_MAPPING.md": true,
+      "AGDAS_FORMALISM_INTAKE.md": true,
+      "scripts/agdas_bridge.py": true,
+      "scripts/agdas_physics_experiments.py": true,
+      "scripts/agdas_physics8_state.py": true,
+      "scripts/agdas_physics8_experiments.py": true,
+      "scripts/toy_dashi_transitions.py": true,
+      "PHYSICS_INVARIANT_TARGETS.md": true
+    },
+    "all_present": true
+  },
+  "summary": {
+    "all_upstream_modules_present": true,
+    "all_required_patterns_present": true,
+    "authoritative_formalism_detected": true
+  }
+}

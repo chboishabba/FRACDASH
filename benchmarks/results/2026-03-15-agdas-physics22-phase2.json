@@ -1,0 +1,6761 @@
+{
+  "register_count": 6,
+  "state_space_size": 729,
+  "transition_source": "agdas_templates",
+  "transition_source_summary": {
+    "source": "agdas_templates",
+    "template_set": "physics22",
+    "template_count": 36,
+    "template_modules": [
+      "Contraction.StrictContraction",
+      "DASHI.Algebra.PhysicsSignature.scan",
+      "UFTC_Lattice.C_XOR",
+      "UFTC_Lattice.ConeInteriorPreserved"
+    ]
+  },
+  "transition_count": 36,
+  "transitions": [
+    {
+      "name": "physics4_scan_left_high",
+      "condition": {
+        "R1": "negative",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R1": "negative",
+        "R5": "positive"
+      },
+      "description": "Latch left-dominant scan only from an explicitly armed interior state."
+    },
+    {
+      "name": "physics4_scan_left_mid",
+      "condition": {
+        "R1": "positive",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R1": "positive",
+        "R5": "positive"
+      },
+      "description": "Latch mid left scan only from an explicitly armed interior state."
+    },
+    {
+      "name": "physics4_scan_right_high",
+      "condition": {
+        "R2": "negative",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R2": "negative",
+        "R5": "negative"
+      },
+      "description": "Latch right-dominant scan only from an explicitly armed interior state."
+    },
+    {
+      "name": "physics4_scan_right_mid",
+      "condition": {
+        "R2": "positive",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R2": "positive",
+        "R5": "negative"
+      },
+      "description": "Latch mid right scan only from an explicitly armed interior state."
+    },
+    {
+      "name": "physics2_join_left_high",
+      "condition": {
+        "R1": "negative",
+        "R3": "zero",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "action": {
+        "R1": "negative",
+        "R3": "negative",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "description": "Materialize high severity from a latched left source."
+    },
+    {
+      "name": "physics2_join_right_high",
+      "condition": {
+        "R2": "negative",
+        "R3": "zero",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "action": {
+        "R2": "negative",
+        "R3": "negative",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "description": "Materialize high severity from a latched right source."
+    },
+    {
+      "name": "physics2_join_left_mid",
+      "condition": {
+        "R1": "positive",
+        "R3": "zero",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "action": {
+        "R1": "positive",
+        "R3": "positive",
+        "R5": "positive",
+        "R6": "positive"
+      },
+      "description": "Materialize mid severity from a latched left source and advance the action phase."
+    },
+    {
+      "name": "physics2_join_right_mid",
+      "condition": {
+        "R2": "positive",
+        "R3": "zero",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "action": {
+        "R2": "positive",
+        "R3": "positive",
+        "R5": "negative",
+        "R6": "positive"
+      },
+      "description": "Materialize mid severity from a latched right source and advance the action phase."
+    },
+    {
+      "name": "physics2_contract_high",
+      "condition": {
+        "R3": "negative",
+        "R4": "positive",
+        "R6": "negative"
+      },
+      "action": {
+        "R3": "positive",
+        "R4": "positive",
+        "R6": "positive"
+      },
+      "description": "Interior contraction lowers high severity to mid."
+    },
+    {
+      "name": "physics2_contract_mid",
+      "condition": {
+        "R3": "positive",
+        "R4": "positive",
+        "R6": "positive"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "zero"
+      },
+      "description": "Interior contraction lowers mid severity to zero and drops to the boundary."
+    },
+    {
+      "name": "physics11_boundary_discharge",
+      "condition": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "negative"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "zero"
+      },
+      "description": "Discharge latent action phase at the boundary before shell entry; this targets recurrent recovery without increasing action-rank jumps."
+    },
+    {
+      "name": "physics5_boundary_to_shell",
+      "condition": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "zero",
+        "R6": "zero"
+      },
+      "description": "Enter the latent shell only from a discharged boundary state."
+    },
+    {
+      "name": "physics9_shell_probe_left_high",
+      "condition": {
+        "R1": "negative",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R1": "negative",
+        "R3": "positive",
+        "R5": "positive"
+      },
+      "description": "Probe a left-high source from cleared shell and stage a latched shell marker."
+    },
+    {
+      "name": "physics9_shell_probe_right_high",
+      "condition": {
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R2": "negative",
+        "R3": "positive",
+        "R5": "negative"
+      },
+      "description": "Probe a right-high source from cleared shell and stage a latched shell marker."
+    },
+    {
+      "name": "physics9_shell_probe_left_mid",
+      "condition": {
+        "R1": "positive",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R1": "positive",
+        "R3": "positive",
+        "R5": "positive"
+      },
+      "description": "Probe a left-mid source from cleared shell and stage a latched shell marker."
+    },
+    {
+      "name": "physics9_shell_probe_right_mid",
+      "condition": {
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R2": "positive",
+        "R3": "positive",
+        "R5": "negative"
+      },
+      "description": "Probe a right-mid source from cleared shell and stage a latched shell marker."
+    },
+    {
+      "name": "physics9_shell_stage_release_left",
+      "condition": {
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "description": "Release staged left shell marker into the normal latched-shell path."
+    },
+    {
+      "name": "physics12_shell_stage_detour_left",
+      "condition": {
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "description": "Route staged left shell markers through a boundary detour before shell release to increase controllable path depth without changing action-rank phase."
+    },
+    {
+      "name": "physics12_shell_stage_detour_right",
+      "condition": {
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "description": "Route staged right shell markers through a boundary detour before shell release to increase controllable path depth without changing action-rank phase."
+    },
+    {
+      "name": "physics9_shell_stage_release_right",
+      "condition": {
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "description": "Release staged right shell marker into the normal latched-shell path."
+    },
+    {
+      "name": "physics10_shell_probe_neutral",
+      "condition": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "positive",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "description": "Probe neutral shell states before interior rearm by staging a shell marker; this widens shell recurrence while preserving action-rank phase."
+    },
+    {
+      "name": "physics6_shell_refresh_left",
+      "condition": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "description": "Refresh a left-latched shell state by clearing the latch before cleared rearm."
+    },
+    {
+      "name": "physics6_shell_refresh_right",
+      "condition": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "description": "Refresh a right-latched shell state by clearing the latch before cleared rearm."
+    },
+    {
+      "name": "physics5_shell_to_interior_cleared",
+      "condition": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "description": "Re-arm the interior from a cleared shell state."
+    },
+    {
+      "name": "physics5_shell_to_interior_latched_left",
+      "condition": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "positive",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "description": "Re-arm the interior from a shell state that still carries a left scan latch."
+    },
+    {
+      "name": "physics5_shell_to_interior_latched_right",
+      "condition": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "positive",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "description": "Re-arm the interior from a shell state that still carries a right scan latch."
+    },
+    {
+      "name": "physics13_contract_mid_detour_nn",
+      "condition": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "negative",
+        "R6": "positive"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "description": "Targeted detour for the max-chain branch: discharge mid-contraction into a neutral latch before shell routing to increase path depth without introducing action-rank increases."
+    },
+    {
+      "name": "physics14_shell_high_rearm",
+      "condition": {
+        "R3": "negative",
+        "R4": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R3": "negative",
+        "R4": "positive",
+        "R6": "negative"
+      },
+      "description": "Re-arm interior contraction for stalled high-severity shell states to recycle them into the controlled relaxation loop without increasing action-rank phase."
+    },
+    {
+      "name": "physics15_boundary_crossfeed_neutral",
+      "condition": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "description": "Narrow boundary cross-feed detour on the max-chain bottleneck state; adds a depth step while preserving action-rank phase."
+    },
+    {
+      "name": "physics16_boundary_discharge_high",
+      "condition": {
+        "R3": "negative",
+        "R4": "negative",
+        "R6": "negative"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "zero"
+      },
+      "description": "Discharge high-severity boundary states into the shell-entry lane to reduce terminal mass while preserving action-rank monotonicity."
+    },
+    {
+      "name": "physics17_boundary_handoff_left_to_mid",
+      "condition": {
+        "R1": "negative",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "description": "Narrow boundary handoff on the max-chain tail to open an extra acyclic segment without changing action-rank phase."
+    },
+    {
+      "name": "physics18_boundary_discharge_mid",
+      "condition": {
+        "R3": "positive",
+        "R4": "negative",
+        "R6": "negative"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "zero"
+      },
+      "description": "Discharge mid-severity boundary states into the shell-entry lane to further reduce terminal mass while preserving action-rank monotonicity."
+    },
+    {
+      "name": "physics19_tail_handoff_n0_to_nn",
+      "condition": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "positive",
+        "R6": "positive"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "positive",
+        "R6": "positive"
+      },
+      "description": "Single-state tail handoff on the max-depth branch: insert one extra acyclic step before the existing contract-mid discharge, preserving action-rank phase."
+    },
+    {
+      "name": "physics20_boundary_positive_discharge",
+      "condition": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "positive"
+      },
+      "action": {
+        "R6": "zero"
+      },
+      "description": "Discharge positive action phase at the boundary into the shell-entry lane. This widens deterministic recurrence from the physics18/19 baseline while preserving source conservation and the current locality budget."
+    },
+    {
+      "name": "physics21_boundary_direct_reentry_mid",
+      "condition": {
+        "R3": "positive",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "positive"
+      },
+      "action": {
+        "R4": "positive"
+      },
+      "description": "Directly re-enter the interior from a mid-severity boundary state once the positive action phase is already active and the latch is cleared. This is the first explicit boundary -> interior recovery rule on the 6-register carrier."
+    },
+    {
+      "name": "physics22_boundary_direct_reentry_high",
+      "condition": {
+        "R3": "negative",
+        "R4": "negative"
+      },
+      "action": {
+        "R4": "positive"
+      },
+      "description": "Directly re-enter the interior from any high-severity boundary state (R3=high), leaving the action phase and latch untouched. This targets the remaining boundary terminal mass while keeping the exact V1 laws intact."
+    }
+  ],
+  "full_space_profile": {
+    "nodes": 729,
+    "edges": 476,
+    "terminal_states": 365,
+    "longest_chain": 32,
+    "chain_length_histogram": {
+      "29": 24,
+      "1": 68,
+      "28": 18,
+      "27": 26,
+      "0": 365,
+      "26": 16,
+      "30": 9,
+      "31": 7,
+      "32": 2,
+      "8": 34,
+      "11": 18,
+      "12": 10,
+      "7": 36,
+      "10": 24,
+      "9": 43,
+      "6": 17,
+      "5": 6,
+      "4": 4,
+      "13": 2
+    },
+    "max_chain_start_states": [
+      "(-1, 1, -1, -1, 0, -1)",
+      "(-1, 1, -1, 0, 0, -1)"
+    ]
+  },
+  "action_monotonicity": {
+    "total_edges": 476,
+    "decreases": 181,
+    "preserves": 268,
+    "increases": 27,
+    "samples": [
+      {
+        "transition": "physics16_boundary_discharge_high",
+        "source": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "target": [
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "before": 2,
+        "after": 0,
+        "classification": "decrease"
+      },
+      {
+        "transition": "physics22_boundary_direct_reentry_high",
+        "source": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "target": [
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          -1
+        ],
+        "before": 2,
+        "after": 2,
+        "classification": "preserve"
+      },
+      {
+        "transition": "physics22_boundary_direct_reentry_high",
+        "source": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0
+        ],
+        "target": [
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          0
+        ],
+        "before": 0,
+        "after": 0,
+        "classification": "preserve"
+      },
+      {
+        "transition": "physics22_boundary_direct_reentry_high",
+        "source": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1
+        ],
+        "target": [
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          1
+        ],
+        "before": 1,
+        "after": 1,
+        "classification": "preserve"
+      },
+      {
+        "transition": "physics16_boundary_discharge_high",
+        "source": [
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          -1
+        ],
+        "target": [
+          -1,
+          -1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "before": 2,
+        "after": 0,
+        "classification": "decrease"
+      },
+      {
+        "transition": "physics22_boundary_direct_reentry_high",
+        "source": [
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          -1
+        ],
+        "target": [
+          -1,
+          -1,
+          -1,
+          1,
+          0,
+          -1
+        ],
+        "before": 2,
+        "after": 2,
+        "classification": "preserve"
+      },
+      {
+        "transition": "physics22_boundary_direct_reentry_high",
+        "source": [
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          0
+        ],
+        "target": [
+          -1,
+          -1,
+          -1,
+          1,
+          0,
+          0
+        ],
+        "before": 0,
+        "after": 0,
+        "classification": "preserve"
+      },
+      {
+        "transition": "physics22_boundary_direct_reentry_high",
+        "source": [
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          1
+        ],
+        "target": [
+          -1,
+          -1,
+          -1,
+          1,
+          0,
+          1
+        ],
+        "before": 1,
+        "after": 1,
+        "classification": "preserve"
+      },
+      {
+        "transition": "physics16_boundary_discharge_high",
+        "source": [
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1
+        ],
+        "target": [
+          -1,
+          -1,
+          0,
+          -1,
+          1,
+          0
+        ],
+        "before": 2,
+        "after": 0,
+        "classification": "decrease"
+      },
+      {
+        "transition": "physics22_boundary_direct_reentry_high",
+        "source": [
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1
+        ],
+        "target": [
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          -1
+        ],
+        "before": 2,
+        "after": 2,
+        "classification": "preserve"
+      },
+      {
+        "transition": "physics22_boundary_direct_reentry_high",
+        "source": [
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          0
+        ],
+        "target": [
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          0
+        ],
+        "before": 0,
+        "after": 0,
+        "classification": "preserve"
+      },
+      {
+        "transition": "physics22_boundary_direct_reentry_high",
+        "source": [
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1
+        ],
+        "target": [
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1
+        ],
+        "before": 1,
+        "after": 1,
+        "classification": "preserve"
+      }
+    ]
+  },
+  "fixed_walk_summary": {
+    "state_count": 729,
+    "terminal": 439,
+    "cycle": 290,
+    "timeout": 0,
+    "max_steps_observed": 10,
+    "longest_paths": [
+      [
+        "(1, -1, -1, 0, 0, -1)",
+        10,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 0, 0, -1, -1)",
+        9,
+        "cycle"
+      ],
+      [
+        "(0, -1, -1, 0, 1, -1)",
+        9,
+        "cycle"
+      ],
+      [
+        "(0, 1, -1, 0, 1, -1)",
+        9,
+        "cycle"
+      ],
+      [
+        "(1, -1, -1, 0, 1, -1)",
+        9,
+        "cycle"
+      ],
+      [
+        "(1, -1, -1, 1, 0, -1)",
+        9,
+        "cycle"
+      ],
+      [
+        "(1, -1, 0, 1, 0, -1)",
+        9,
+        "cycle"
+      ],
+      [
+        "(-1, -1, -1, 0, -1, -1)",
+        8,
+        "cycle"
+      ],
+      [
+        "(-1, -1, -1, 0, 0, -1)",
+        8,
+        "cycle"
+      ],
+      [
+        "(-1, -1, 0, 0, 1, -1)",
+        8,
+        "cycle"
+      ]
+    ],
+    "timeout_states": []
+  },
+  "long_tail_diagnosis": {
+    "primary_timeout_count": 0,
+    "diagnostic_max_steps": 32,
+    "resolved_to_cycle": 0,
+    "resolved_to_terminal": 0,
+    "still_timeout": 0,
+    "samples": []
+  },
+  "deterministic_start": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    -1
+  ],
+  "deterministic_start_decoded": {
+    "R1": 1,
+    "R2": 0,
+    "R3": 0,
+    "R4": 1,
+    "R5": 0,
+    "R6": -1
+  },
+  "deterministic_walk": {
+    "status": "cycle",
+    "steps": 7,
+    "cycle_start": 4,
+    "final_state": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "path": [
+      {
+        "step": 1,
+        "state": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          -1
+        ],
+        "transition": "physics4_scan_left_mid",
+        "next_state": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          -1
+        ]
+      },
+      {
+        "step": 2,
+        "state": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          -1
+        ],
+        "transition": "physics2_join_left_mid",
+        "next_state": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "step": 3,
+        "state": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "transition": "physics2_contract_mid",
+        "next_state": [
+          1,
+          0,
+          0,
+          -1,
+          1,
+          0
+        ]
+      },
+      {
+        "step": 4,
+        "state": [
+          1,
+          0,
+          0,
+          -1,
+          1,
+          0
+        ],
+        "transition": "physics5_boundary_to_shell",
+        "next_state": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "step": 5,
+        "state": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "transition": "physics6_shell_refresh_left",
+        "next_state": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "step": 6,
+        "state": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "transition": "physics9_shell_probe_left_mid",
+        "next_state": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "step": 7,
+        "state": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "transition": "physics9_shell_stage_release_left",
+        "next_state": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      }
+    ]
+  },
+  "physics1_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-14-agdas-physics1-phase2.json",
+    "physics1_full_space_profile": {
+      "nodes": 81,
+      "edges": 81,
+      "terminal_states": 20,
+      "longest_chain": 5,
+      "chain_length_histogram": {
+        "0": 20,
+        "2": 1,
+        "1": 9,
+        "3": 8,
+        "4": 25,
+        "5": 18
+      },
+      "max_chain_start_states": [
+        "13702",
+        "17871",
+        "18278",
+        "18445",
+        "18722"
+      ]
+    },
+    "physics1_fixed_walk_summary": {
+      "state_count": 81,
+      "terminal": 33,
+      "cycle": 48,
+      "timeout": 0,
+      "max_steps_observed": 5
+    },
+    "physics1_action_monotonicity": null
+  },
+  "physics3_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-14-agdas-physics3-phase2.json",
+    "physics3_full_space_profile": {
+      "nodes": 729,
+      "edges": 900,
+      "terminal_states": 121,
+      "longest_chain": 15,
+      "chain_length_histogram": {
+        "13": 44,
+        "14": 18,
+        "12": 53,
+        "10": 28,
+        "0": 121,
+        "11": 41,
+        "1": 66,
+        "8": 39,
+        "15": 3,
+        "9": 25,
+        "7": 53,
+        "6": 50,
+        "3": 75,
+        "4": 27,
+        "2": 66,
+        "5": 20
+      },
+      "max_chain_start_states": [
+        "(-1, -1, 0, -1, 0, -1)",
+        "(-1, 1, 0, -1, 0, -1)",
+        "(1, -1, 0, -1, 0, -1)"
+      ]
+    },
+    "physics3_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 393,
+      "cycle": 336,
+      "timeout": 0,
+      "max_steps_observed": 11
+    },
+    "physics3_action_monotonicity": {
+      "total_edges": 900,
+      "decreases": 234,
+      "preserves": 504,
+      "increases": 162,
+      "samples": [
+        {
+          "transition": "physics3_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics3_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics3_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            0
+          ],
+          "before": 1,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics3_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            0,
+            0,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics3_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            1
+          ],
+          "before": 1,
+          "after": 1,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            1
+          ],
+          "before": 1,
+          "after": 1,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics3_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            0,
+            0,
+            0
+          ],
+          "before": 1,
+          "after": 0,
+          "classification": "decrease"
+        }
+      ]
+    }
+  },
+  "physics4_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-14-agdas-physics4-phase2.json",
+    "physics4_full_space_profile": {
+      "nodes": 729,
+      "edges": 162,
+      "terminal_states": 587,
+      "longest_chain": 9,
+      "chain_length_histogram": {
+        "0": 587,
+        "3": 25,
+        "9": 5,
+        "1": 51,
+        "7": 8,
+        "6": 8,
+        "4": 10,
+        "5": 8,
+        "2": 19,
+        "8": 8
+      },
+      "max_chain_start_states": [
+        "(-1, -1, -1, 1, 0, -1)",
+        "(-1, 0, -1, 1, 0, -1)",
+        "(-1, 1, -1, 1, 0, -1)",
+        "(0, -1, -1, 1, 0, -1)",
+        "(1, -1, -1, 1, 0, -1)"
+      ]
+    },
+    "physics4_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 729,
+      "cycle": 0,
+      "timeout": 0,
+      "max_steps_observed": 8
+    },
+    "physics4_action_monotonicity": {
+      "total_edges": 162,
+      "decreases": 72,
+      "preserves": 81,
+      "increases": 9,
+      "samples": [
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_left_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_shell_to_interior",
+          "source": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            1,
+            0,
+            -1
+          ],
+          "before": 0,
+          "after": 2,
+          "classification": "increase"
+        }
+      ]
+    }
+  },
+  "physics5_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-14-agdas-physics5-phase2.json",
+    "physics5_full_space_profile": {
+      "nodes": 729,
+      "edges": 180,
+      "terminal_states": 569,
+      "longest_chain": 10,
+      "chain_length_histogram": {
+        "0": 569,
+        "5": 39,
+        "10": 5,
+        "1": 39,
+        "8": 8,
+        "7": 8,
+        "6": 8,
+        "9": 8,
+        "4": 31,
+        "2": 7,
+        "3": 7
+      },
+      "max_chain_start_states": [
+        "(-1, -1, -1, 1, 0, -1)",
+        "(-1, 0, -1, 1, 0, -1)",
+        "(-1, 1, -1, 1, 0, -1)",
+        "(0, -1, -1, 1, 0, -1)",
+        "(1, -1, -1, 1, 0, -1)"
+      ]
+    },
+    "physics5_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 629,
+      "cycle": 100,
+      "timeout": 0,
+      "max_steps_observed": 9
+    },
+    "physics5_action_monotonicity": {
+      "total_edges": 180,
+      "decreases": 72,
+      "preserves": 81,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_left_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_shell_to_interior_latched_right",
+          "source": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            1,
+            -1,
+            -1
+          ],
+          "before": 0,
+          "after": 2,
+          "classification": "increase"
+        }
+      ]
+    }
+  },
+  "physics6_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-14-agdas-physics6-phase2.json",
+    "physics6_full_space_profile": {
+      "nodes": 729,
+      "edges": 198,
+      "terminal_states": 569,
+      "longest_chain": 12,
+      "chain_length_histogram": {
+        "0": 569,
+        "11": 11,
+        "12": 5,
+        "1": 33,
+        "9": 19,
+        "8": 20,
+        "7": 31,
+        "10": 16,
+        "5": 2,
+        "4": 3,
+        "3": 3,
+        "2": 3,
+        "6": 14
+      },
+      "max_chain_start_states": [
+        "(-1, -1, -1, 1, 0, -1)",
+        "(-1, -1, 0, 1, -1, -1)",
+        "(-1, -1, 0, 1, 1, -1)",
+        "(-1, 1, -1, 1, 0, -1)",
+        "(1, -1, -1, 1, 0, -1)"
+      ]
+    },
+    "physics6_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 613,
+      "cycle": 115,
+      "timeout": 1,
+      "max_steps_observed": 12
+    },
+    "physics6_action_monotonicity": {
+      "total_edges": 198,
+      "decreases": 72,
+      "preserves": 99,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_left_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics6_shell_refresh_right",
+          "source": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        }
+      ]
+    }
+  },
+  "physics7_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-14-agdas-physics7-phase2.json",
+    "physics7_full_space_profile": {
+      "nodes": 729,
+      "edges": 204,
+      "terminal_states": 569,
+      "longest_chain": 12,
+      "chain_length_histogram": {
+        "0": 569,
+        "11": 13,
+        "12": 6,
+        "1": 33,
+        "9": 19,
+        "8": 20,
+        "7": 28,
+        "10": 16,
+        "5": 2,
+        "4": 3,
+        "3": 3,
+        "2": 3,
+        "6": 14
+      },
+      "max_chain_start_states": [
+        "(-1, -1, -1, 1, 0, -1)",
+        "(-1, -1, 0, 1, -1, -1)",
+        "(-1, -1, 0, 1, 0, -1)",
+        "(-1, -1, 0, 1, 1, -1)",
+        "(-1, 1, -1, 1, 0, -1)",
+        "(1, -1, -1, 1, 0, -1)"
+      ]
+    },
+    "physics7_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 613,
+      "cycle": 116,
+      "timeout": 0,
+      "max_steps_observed": 10
+    },
+    "physics7_action_monotonicity": {
+      "total_edges": 204,
+      "decreases": 72,
+      "preserves": 105,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_left_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics6_shell_refresh_right",
+          "source": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        }
+      ]
+    }
+  },
+  "physics8_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-14-agdas-physics8-phase2.json",
+    "physics8_full_space_profile": {
+      "nodes": 729,
+      "edges": 222,
+      "terminal_states": 551,
+      "longest_chain": 13,
+      "chain_length_histogram": {
+        "0": 551,
+        "11": 11,
+        "12": 7,
+        "1": 33,
+        "9": 25,
+        "8": 30,
+        "7": 28,
+        "13": 1,
+        "10": 16,
+        "5": 2,
+        "4": 3,
+        "3": 5,
+        "2": 3,
+        "6": 14
+      },
+      "max_chain_start_states": [
+        "(-1, -1, 0, 1, 0, -1)"
+      ]
+    },
+    "physics8_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 597,
+      "cycle": 132,
+      "timeout": 0,
+      "max_steps_observed": 10
+    },
+    "physics8_action_monotonicity": {
+      "total_edges": 222,
+      "decreases": 72,
+      "preserves": 123,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_left_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics6_shell_refresh_right",
+          "source": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        }
+      ]
+    }
+  },
+  "physics9_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-agdas-physics9-phase2.json",
+    "physics9_full_space_profile": {
+      "nodes": 729,
+      "edges": 228,
+      "terminal_states": 551,
+      "longest_chain": 13,
+      "chain_length_histogram": {
+        "0": 551,
+        "11": 12,
+        "12": 7,
+        "1": 33,
+        "9": 25,
+        "8": 30,
+        "7": 30,
+        "13": 1,
+        "10": 16,
+        "5": 2,
+        "4": 3,
+        "3": 5,
+        "2": 3,
+        "6": 11
+      },
+      "max_chain_start_states": [
+        "(-1, -1, 0, 1, 0, -1)"
+      ]
+    },
+    "physics9_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 597,
+      "cycle": 132,
+      "timeout": 0,
+      "max_steps_observed": 8
+    },
+    "physics9_action_monotonicity": {
+      "total_edges": 228,
+      "decreases": 72,
+      "preserves": 129,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_left_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics6_shell_refresh_right",
+          "source": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        }
+      ]
+    }
+  },
+  "physics10_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-agdas-physics10-phase2.json",
+    "physics10_full_space_profile": {
+      "nodes": 729,
+      "edges": 229,
+      "terminal_states": 551,
+      "longest_chain": 13,
+      "chain_length_histogram": {
+        "0": 551,
+        "11": 12,
+        "12": 7,
+        "1": 32,
+        "9": 25,
+        "8": 30,
+        "7": 31,
+        "13": 1,
+        "10": 16,
+        "6": 14,
+        "5": 4,
+        "4": 3,
+        "3": 3
+      },
+      "max_chain_start_states": [
+        "(-1, -1, 0, 1, 0, -1)"
+      ]
+    },
+    "physics10_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 583,
+      "cycle": 146,
+      "timeout": 0,
+      "max_steps_observed": 8
+    },
+    "physics10_action_monotonicity": {
+      "total_edges": 229,
+      "decreases": 72,
+      "preserves": 130,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_left_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics6_shell_refresh_right",
+          "source": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        }
+      ]
+    }
+  },
+  "physics11_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-agdas-physics11-phase2.json",
+    "physics11_full_space_profile": {
+      "nodes": 729,
+      "edges": 256,
+      "terminal_states": 536,
+      "longest_chain": 13,
+      "chain_length_histogram": {
+        "0": 536,
+        "11": 12,
+        "12": 7,
+        "10": 22,
+        "9": 36,
+        "8": 35,
+        "1": 20,
+        "7": 33,
+        "13": 1,
+        "6": 15,
+        "5": 6,
+        "4": 3,
+        "3": 3
+      },
+      "max_chain_start_states": [
+        "(-1, -1, 0, 1, 0, -1)"
+      ]
+    },
+    "physics11_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 568,
+      "cycle": 161,
+      "timeout": 0,
+      "max_steps_observed": 8
+    },
+    "physics11_action_monotonicity": {
+      "total_edges": 256,
+      "decreases": 99,
+      "preserves": 130,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics11_boundary_discharge",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics11_boundary_discharge",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_left_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics11_boundary_discharge",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        }
+      ]
+    }
+  },
+  "physics12_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-agdas-physics12-phase2.json",
+    "physics12_full_space_profile": {
+      "nodes": 729,
+      "edges": 274,
+      "terminal_states": 536,
+      "longest_chain": 13,
+      "chain_length_histogram": {
+        "0": 536,
+        "11": 12,
+        "12": 7,
+        "10": 28,
+        "9": 36,
+        "8": 30,
+        "1": 20,
+        "7": 36,
+        "13": 1,
+        "6": 15,
+        "5": 4,
+        "4": 4
+      },
+      "max_chain_start_states": [
+        "(-1, -1, 0, 1, 0, -1)"
+      ]
+    },
+    "physics12_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 568,
+      "cycle": 161,
+      "timeout": 0,
+      "max_steps_observed": 9
+    },
+    "physics12_action_monotonicity": {
+      "total_edges": 274,
+      "decreases": 99,
+      "preserves": 148,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics11_boundary_discharge",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics11_boundary_discharge",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_left_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics11_boundary_discharge",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        }
+      ]
+    }
+  },
+  "physics13_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-agdas-physics13-phase2.json",
+    "physics13_full_space_profile": {
+      "nodes": 729,
+      "edges": 275,
+      "terminal_states": 536,
+      "longest_chain": 14,
+      "chain_length_histogram": {
+        "0": 536,
+        "11": 14,
+        "13": 3,
+        "12": 7,
+        "14": 3,
+        "9": 35,
+        "8": 29,
+        "10": 24,
+        "1": 20,
+        "7": 35,
+        "6": 15,
+        "5": 4,
+        "4": 4
+      },
+      "max_chain_start_states": [
+        "(-1, -1, 0, -1, -1, -1)",
+        "(-1, -1, 0, 1, 0, -1)",
+        "(-1, -1, 1, 0, -1, 0)"
+      ]
+    },
+    "physics13_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 568,
+      "cycle": 161,
+      "timeout": 0,
+      "max_steps_observed": 9
+    },
+    "physics13_action_monotonicity": {
+      "total_edges": 275,
+      "decreases": 100,
+      "preserves": 148,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics11_boundary_discharge",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics11_boundary_discharge",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_join_left_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics11_boundary_discharge",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        }
+      ]
+    }
+  },
+  "physics14_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-agdas-physics14-phase2.json",
+    "physics14_full_space_profile": {
+      "nodes": 729,
+      "edges": 302,
+      "terminal_states": 509,
+      "longest_chain": 14,
+      "chain_length_histogram": {
+        "0": 509,
+        "12": 15,
+        "14": 5,
+        "13": 7,
+        "11": 22,
+        "9": 38,
+        "8": 34,
+        "10": 26,
+        "1": 14,
+        "7": 36,
+        "6": 15,
+        "5": 4,
+        "4": 4
+      },
+      "max_chain_start_states": [
+        "(-1, -1, -1, 0, 0, -1)",
+        "(-1, -1, 0, -1, -1, -1)",
+        "(-1, -1, 0, 0, 1, -1)",
+        "(-1, -1, 0, 1, 0, -1)",
+        "(-1, -1, 1, 0, -1, 0)"
+      ]
+    },
+    "physics14_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 535,
+      "cycle": 194,
+      "timeout": 0,
+      "max_steps_observed": 10
+    },
+    "physics14_action_monotonicity": {
+      "total_edges": 302,
+      "decreases": 100,
+      "preserves": 175,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics11_boundary_discharge",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics11_boundary_discharge",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        }
+      ]
+    }
+  },
+  "physics15_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-agdas-physics15-phase2.json",
+    "physics15_full_space_profile": {
+      "nodes": 729,
+      "edges": 303,
+      "terminal_states": 509,
+      "longest_chain": 22,
+      "chain_length_histogram": {
+        "0": 509,
+        "12": 13,
+        "22": 3,
+        "21": 3,
+        "11": 19,
+        "20": 1,
+        "17": 3,
+        "16": 2,
+        "10": 27,
+        "9": 36,
+        "19": 3,
+        "18": 1,
+        "13": 3,
+        "15": 1,
+        "1": 14,
+        "8": 32,
+        "7": 36,
+        "6": 15,
+        "5": 4,
+        "4": 4
+      },
+      "max_chain_start_states": [
+        "(-1, -1, -1, 0, 0, -1)",
+        "(-1, -1, 0, 0, 1, -1)",
+        "(-1, -1, 0, 1, 0, -1)"
+      ]
+    },
+    "physics15_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 535,
+      "cycle": 194,
+      "timeout": 0,
+      "max_steps_observed": 10
+    },
+    "physics15_action_monotonicity": {
+      "total_edges": 303,
+      "decreases": 100,
+      "preserves": 176,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics11_boundary_discharge",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics5_boundary_to_shell",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          "before": 0,
+          "after": 0,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics11_boundary_discharge",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        }
+      ]
+    }
+  },
+  "physics16_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-agdas-physics16-phase2.json",
+    "physics16_full_space_profile": {
+      "nodes": 729,
+      "edges": 330,
+      "terminal_states": 482,
+      "longest_chain": 22,
+      "chain_length_histogram": {
+        "17": 3,
+        "0": 482,
+        "10": 34,
+        "19": 3,
+        "12": 13,
+        "22": 3,
+        "21": 3,
+        "11": 19,
+        "20": 2,
+        "18": 2,
+        "16": 2,
+        "9": 46,
+        "13": 3,
+        "15": 1,
+        "1": 14,
+        "8": 35,
+        "7": 39,
+        "6": 16,
+        "5": 5,
+        "4": 4
+      },
+      "max_chain_start_states": [
+        "(-1, -1, -1, 0, 0, -1)",
+        "(-1, -1, 0, 0, 1, -1)",
+        "(-1, -1, 0, 1, 0, -1)"
+      ]
+    },
+    "physics16_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 502,
+      "cycle": 227,
+      "timeout": 0,
+      "max_steps_observed": 10
+    },
+    "physics16_action_monotonicity": {
+      "total_edges": 330,
+      "decreases": 127,
+      "preserves": 176,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics16_boundary_discharge_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics16_boundary_discharge_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics16_boundary_discharge_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        }
+      ]
+    }
+  },
+  "physics17_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-agdas-physics17-phase2.json",
+    "physics17_full_space_profile": {
+      "nodes": 729,
+      "edges": 331,
+      "terminal_states": 482,
+      "longest_chain": 29,
+      "chain_length_histogram": {
+        "24": 3,
+        "0": 482,
+        "17": 8,
+        "26": 3,
+        "19": 5,
+        "29": 3,
+        "28": 3,
+        "18": 3,
+        "27": 2,
+        "25": 2,
+        "23": 2,
+        "16": 5,
+        "20": 2,
+        "22": 1,
+        "1": 14,
+        "10": 26,
+        "9": 40,
+        "8": 33,
+        "12": 8,
+        "11": 16,
+        "7": 37,
+        "15": 3,
+        "14": 2,
+        "6": 16,
+        "5": 5,
+        "4": 4,
+        "13": 1
+      },
+      "max_chain_start_states": [
+        "(-1, -1, -1, 0, 0, -1)",
+        "(-1, -1, 0, 0, 1, -1)",
+        "(-1, -1, 0, 1, 0, -1)"
+      ]
+    },
+    "physics17_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 502,
+      "cycle": 227,
+      "timeout": 0,
+      "max_steps_observed": 10
+    },
+    "physics17_action_monotonicity": {
+      "total_edges": 331,
+      "decreases": 127,
+      "preserves": 177,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics16_boundary_discharge_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics16_boundary_discharge_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics16_boundary_discharge_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        }
+      ]
+    }
+  },
+  "physics18_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-agdas-physics18-phase2.json",
+    "physics18_full_space_profile": {
+      "nodes": 729,
+      "edges": 358,
+      "terminal_states": 455,
+      "longest_chain": 29,
+      "chain_length_histogram": {
+        "24": 4,
+        "0": 455,
+        "17": 10,
+        "26": 4,
+        "19": 5,
+        "29": 3,
+        "28": 3,
+        "18": 3,
+        "27": 2,
+        "25": 2,
+        "23": 2,
+        "16": 6,
+        "20": 2,
+        "22": 1,
+        "1": 14,
+        "10": 29,
+        "9": 49,
+        "8": 38,
+        "12": 8,
+        "11": 16,
+        "7": 40,
+        "15": 3,
+        "14": 2,
+        "6": 17,
+        "5": 6,
+        "4": 4,
+        "13": 1
+      },
+      "max_chain_start_states": [
+        "(-1, -1, -1, 0, 0, -1)",
+        "(-1, -1, 0, 0, 1, -1)",
+        "(-1, -1, 0, 1, 0, -1)"
+      ]
+    },
+    "physics18_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 475,
+      "cycle": 254,
+      "timeout": 0,
+      "max_steps_observed": 10
+    },
+    "physics18_action_monotonicity": {
+      "total_edges": 358,
+      "decreases": 154,
+      "preserves": 177,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics16_boundary_discharge_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics16_boundary_discharge_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics16_boundary_discharge_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        }
+      ]
+    }
+  },
+  "physics19_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-agdas-physics19-phase2.json",
+    "physics19_full_space_profile": {
+      "nodes": 729,
+      "edges": 359,
+      "terminal_states": 455,
+      "longest_chain": 32,
+      "chain_length_histogram": {
+        "29": 19,
+        "0": 455,
+        "27": 25,
+        "28": 17,
+        "26": 16,
+        "30": 7,
+        "1": 14,
+        "31": 5,
+        "32": 1,
+        "8": 30,
+        "9": 39,
+        "10": 21,
+        "11": 12,
+        "12": 6,
+        "7": 34,
+        "6": 17,
+        "5": 6,
+        "4": 4,
+        "13": 1
+      },
+      "max_chain_start_states": [
+        "(-1, 1, -1, 0, 0, -1)"
+      ]
+    },
+    "physics19_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 475,
+      "cycle": 254,
+      "timeout": 0,
+      "max_steps_observed": 10
+    },
+    "physics19_action_monotonicity": {
+      "total_edges": 359,
+      "decreases": 154,
+      "preserves": 178,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics16_boundary_discharge_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics16_boundary_discharge_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics16_boundary_discharge_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        }
+      ]
+    }
+  },
+  "physics20_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-agdas-physics20-phase2.json",
+    "physics20_full_space_profile": {
+      "nodes": 729,
+      "edges": 386,
+      "terminal_states": 428,
+      "longest_chain": 32,
+      "chain_length_histogram": {
+        "29": 22,
+        "0": 428,
+        "27": 30,
+        "28": 18,
+        "26": 16,
+        "30": 7,
+        "1": 14,
+        "31": 5,
+        "32": 1,
+        "8": 34,
+        "9": 46,
+        "10": 23,
+        "11": 12,
+        "12": 6,
+        "7": 37,
+        "6": 18,
+        "5": 7,
+        "4": 4,
+        "13": 1
+      },
+      "max_chain_start_states": [
+        "(-1, 1, -1, 0, 0, -1)"
+      ]
+    },
+    "physics20_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 448,
+      "cycle": 281,
+      "timeout": 0,
+      "max_steps_observed": 10
+    },
+    "physics20_action_monotonicity": {
+      "total_edges": 386,
+      "decreases": 181,
+      "preserves": 178,
+      "increases": 27,
+      "samples": [
+        {
+          "transition": "physics16_boundary_discharge_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics16_boundary_discharge_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            0,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics16_boundary_discharge_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            0,
+            -1,
+            1,
+            0
+          ],
+          "before": 2,
+          "after": 0,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics14_shell_high_rearm",
+          "source": [
+            -1,
+            -1,
+            -1,
+            0,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics4_scan_left_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics4_scan_right_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            0,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            0,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_contract_high",
+          "source": [
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "before": 2,
+          "after": 1,
+          "classification": "decrease"
+        },
+        {
+          "transition": "physics2_join_right_high",
+          "source": [
+            -1,
+            -1,
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "target": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "before": 2,
+          "after": 2,
+          "classification": "preserve"
+        }
+      ]
+    }
+  }
+}

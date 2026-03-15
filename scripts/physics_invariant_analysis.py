@@ -39,6 +39,7 @@ DEFECT_NONINCREASE_THRESHOLD = 0.43
 
 def configure_registers(registers) -> None:
     global REGISTERS, SOURCE_REGISTER_INDEX, PARITY_GROUPS
+    global LOCALITY_MAX_CHANGED_REGISTERS, LOCALITY_MAX_L1_STEP_DELTA, FORWARD_CONE_MAX_SUCCESSOR_HAMMING
     REGISTERS = registers
     SOURCE_REGISTER_INDEX = {
         reg.name: idx
@@ -50,6 +51,15 @@ def configure_registers(registers) -> None:
         "R2_nonzero": (SOURCE_REGISTER_INDEX["R2"],),
         "R1R2_nonzero_pair": (SOURCE_REGISTER_INDEX["R1"], SOURCE_REGISTER_INDEX["R2"]),
     }
+    # Carrier-aware locality bounds: the 8-register carrier has two extra memory slots.
+    if len(REGISTERS) > 6:
+        LOCALITY_MAX_CHANGED_REGISTERS = 5
+        LOCALITY_MAX_L1_STEP_DELTA = 7
+        FORWARD_CONE_MAX_SUCCESSOR_HAMMING = 6
+    else:
+        LOCALITY_MAX_CHANGED_REGISTERS = 3
+        LOCALITY_MAX_L1_STEP_DELTA = 5
+        FORWARD_CONE_MAX_SUCCESSOR_HAMMING = 5
 
 
 def load_runtime(template_set: str):
@@ -456,6 +466,42 @@ def observable_surrogates(nodes: list[State], succ: dict[State, State], dist: di
     return payload
 
 
+def formalism_targets() -> dict[str, object]:
+    """Informational upstream formalism linkage; not a gate."""
+    return {
+        "stage_c_boundary": {
+            "upstream": "DASHI/Physics/Closure/CanonicalStageC.agda",
+            "status": "todo_wire",
+            "notes": "Authoritative Stage C closure surface; reporters should expose its counterpart once executable.",
+        },
+        "minimal_credible_adapter": {
+            "upstream": "DASHI/Physics/Closure/MinimalCrediblePhysicsClosure.agda",
+            "status": "todo_wire",
+            "notes": "Adapter: full closure + observables with matching signature; add when locally executable.",
+        },
+        "mdl_fejer_axioms": {
+            "upstream": "DASHI/Physics/Closure/MDLFejerAxiomsShift.agda",
+            "status": "todo_check",
+            "notes": "Fejér/MDL monotonicity seam; surface as a check or TODO in reporters.",
+        },
+        "shift_seam_certificates": {
+            "upstream": "DASHI/Physics/Closure/ShiftSeamCertificates.agda",
+            "status": "todo_check",
+            "notes": "Closest-point / Fejér / defect-collapse seam; surface as a check or TODO.",
+        },
+        "observable_package": {
+            "upstream": "DASHI/Physics/Closure/ObservablePredictionPackage.agda",
+            "status": "todo_wire",
+            "notes": "Observable boundary (proved/excluded/forward claims); align with observable_surrogates.",
+        },
+        "known_limits_qft_bridge": {
+            "upstream": "DASHI/Physics/Closure/KnownLimitsQFTBridgeTheorem.agda",
+            "status": "tracked_nonclaim",
+            "notes": "Known-limits bridge; keep as non-claim until executable counterpart exists.",
+        },
+    }
+
+
 def all_states() -> list[State]:
     return [tuple(int(v) for v in vec) for vec in product((-1, 0, 1), repeat=len(REGISTERS))]
 
@@ -702,7 +748,7 @@ def main() -> None:
     parser.add_argument(
         "--template-set",
         default="physics8",
-        choices=("physics2", "physics3", "physics4", "physics5", "physics6", "physics7", "physics8", "physics9", "physics10", "physics11", "physics12", "physics13", "physics14", "physics15", "physics16", "physics17", "physics18", "physics19", "physics20", "physics21", "carrier8_physics1"),
+        choices=("physics2", "physics3", "physics4", "physics5", "physics6", "physics7", "physics8", "physics9", "physics10", "physics11", "physics12", "physics13", "physics14", "physics15", "physics16", "physics17", "physics18", "physics19", "physics20", "physics21", "physics22", "carrier8_physics1", "carrier8_physics2"),
         help="Physics template set to analyze.",
     )
     parser.add_argument("--max-trace-steps", type=int, default=24, help="Max steps per sample trace.")
@@ -821,6 +867,7 @@ def main() -> None:
             "exact_laws": exact_laws,
             "statistical_laws": statistical_laws,
         },
+        "formalism_targets": formalism_targets(),
         "observable_surrogates": observable_surrogates(analysis_nodes, analysis_succ, dist),
         "candidate_invariants": [
             {

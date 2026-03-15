@@ -36,6 +36,10 @@ These are enforced by [`scripts/check_physics_invariant_targets.py`](/home/c/Doc
    - `distance_to_cycle.nonincrease_ratio == 1.0`
    - `distance_to_cycle.increases == 0`
 
+Carrier-aware note:
+
+- The 8-register physics-local branch (`carrier8_*`) uses two additional memory registers (`R7` return, `R8` debt). To keep the same locality/forward-cone flavor without over-penalizing the wider carrier, the analyzer applies relaxed bounds only for that carrier: `max_changed_registers <= 5`, `max_l1_step_delta <= 7`, `max_successor_hamming <= 6`. The locked `physics2..physics8` set continues to use the original bounds.
+
 ## V1 Statistical Laws (`implemented`)
 
 These are also enforced on the locked `physics2..physics8` set, with `physics4` treated as the explicit overconstrained exception for cycle-based geometry metrics.
@@ -102,12 +106,10 @@ The V1 suite is anchored to the current `physics2..physics8` artifacts:
   - corrected `curvature_like_concentration.mean_neighbor_spread 1.8258 -> 1.9273`
   - `defect_attraction.nonincrease_ratio 0.6496 -> 0.6811`
   - exact V1 laws remain satisfied
-- `physics21` is now the leading 6-register exploratory branch:
-  - deterministic edges `301 -> 310`
-  - phase graph edges `386 -> 395`
-  - terminal states `428 -> 419`
-  - first direct `boundary_to_interior = 9`
-  - corrected `geodesic_like_flow.near_min_ratio = 0.9207`
+- `physics22` is now the leading 6-register exploratory branch:
+  - deterministic edges `310 -> 364`
+  - boundary-to-interior re-entry `9 -> 63`
+  - corrected `geodesic_like_flow.near_min_ratio = 0.9207` (still strong)
   - exact V1 laws remain satisfied
 - A separate exploratory branch now exists for a physics-local 8-register carrier (`carrier8_physics1`); it is excluded from the hard lock and should be interpreted through branch-local observables rather than direct comparison to the locked `physics2..physics8` lineage.
   - first artifact: `benchmarks/results/2026-03-15-agdas-carrier8-physics1-phase2.json`

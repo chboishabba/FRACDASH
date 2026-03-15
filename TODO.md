@@ -100,6 +100,16 @@
   - [x] design and implement a `physics20` refinement that widens the deterministic recurrent graph beyond `274` edges while preserving the exact V1 laws and measuring the result against the corrected cycle-reachable geometry surrogate
   - [x] design and implement a `physics21` refinement on the same 6-register carrier that produces the first direct `boundary -> interior` re-entry while preserving the exact V1 laws and keeping corrected geodesic-like flow at or above `0.90`
   - [x] add a physics-local 8-register carrier branch with explicit boundary-return memory and transport/debt memory, then capture the first `carrier8_physics1` artifact with branch-local observable summaries
+  - [x] add an authoritative AGDA closure intake/check artifact against `../dashi_agda`:
+    - [x] verify the canonical closure/audit modules exist and are readable
+    - [x] record their local FRACDASH executable counterparts or current gaps
+    - [x] treat that artifact as the source-of-truth bridge status for future physics work
+  - [x] document upstream Stage C / minimal-credible / seam / observable surfaces and their FRACDASH wiring map in `AGDAS_FORMALISM_INTAKE.md`
+  - [x] extend the formalism checker to cover Stage C, MDL/Fejér/seam, observable, and known-limits QFT bridge modules
+  - [x] bulk-wire upstream surfaces into FRACDASH execution and reporting:
+    - [x] add Stage C / minimal-credible targets to the invariant/observable reporters
+    - [x] surface MDL/Fejér and seam certificate checks (or TODO stubs) in the physics target suite
+    - [x] emit lift/scan/Monster provenance on generated templates for debugging and regression
 - [ ] Introduce a prime-exponent-vector engine for batched runs and compare it against the bigint/cycle-detecting baseline.
 - [ ] Prototype LUT or divisibility-mask rule selection on CPU before any GPU port.
 
@@ -114,6 +124,7 @@
 - [x] Extend observable surrogates with branch-aware re-entry and 8-register memory profiles:
   - [x] `boundary_return_profile` for return-memory-tagged 8-register states
   - [x] `transport_debt_profile` for transport/debt occupancy splits on the 8-register branch
+- [ ] Decide whether to promote `physics22` as the active exploratory 6-register baseline for future invariant work (it is the first branch with strong direct re-entry).
 - [ ] Decide whether the `113` total degeneracy has structural support or should be discarded as coincidence.
 - [ ] Write a short result note distinguishing observations from conjectures.
 - [ ] Intake `monster/MonsterLean` references into FRACDASH with proof-completeness filtering:

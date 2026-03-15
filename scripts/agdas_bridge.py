@@ -790,6 +790,533 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
             ),
         ),
     ]
+    physics22 = [
+        *physics21,
+        TemplateRule(
+            name="physics22_boundary_direct_reentry_high",
+            template_set="physics22",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R3": "negative", "R4": "negative"},
+            action={"R4": "positive"},
+            description=(
+                "Directly re-enter the interior from any high-severity boundary state (R3=high), "
+                "leaving the action phase and latch untouched. This targets the remaining boundary "
+                "terminal mass while keeping the exact V1 laws intact."
+            ),
+        ),
+    ]
+    carrier8_physics2 = [
+        TemplateRule(
+            name=f"carrier8_{rule.name}",
+            template_set="carrier8_physics2",
+            module=rule.module,
+            condition=dict(rule.condition),
+            action=dict(rule.action),
+            description=f"8-register lift of {rule.name} (no return/debt tagging). {rule.description}",
+        )
+        for rule in physics22
+    ]
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_action_reset_interior_pos",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R6": "positive"},
+            action={"R6": "zero"},
+            description="8-register: interior state may reset positive action phase to neutral, adding recurrence without breaking locality.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_action_reset_interior_neg",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R6": "negative"},
+            action={"R6": "zero"},
+            description="8-register: interior state may reset negative action phase to neutral, adding recurrence without breaking locality.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_latch_clear_interior",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R5": "positive"},
+            action={"R5": "zero"},
+            description="8-register: clear positive latch inside interior to promote cycles without touching sources.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_latch_clear_interior_neg",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R5": "negative"},
+            action={"R5": "zero"},
+            description="8-register: clear negative latch inside interior to promote cycles without touching sources.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_interior_self_loop",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R5": "zero", "R6": "zero"},
+            action={},
+            description="8-register: leave interior state unchanged (explicit self-loop) to seed recurrence without altering sources or memory.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_defect_pulse_return",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R3": "positive", "R7": "zero"},
+            action={"R7": "positive"},
+            description="8-register: mark return-memory when interior carries positive severity; nudges curvature/perturbation structure while keeping sources fixed.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_defect_relax_transport",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R3": "negative", "R8": "zero"},
+            action={"R8": "negative"},
+            description="8-register: tag transport/debt when interior holds negative severity; encourages divergent neighbor structure without source change.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_shell_latch_toggle",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R5": "zero"},
+            action={"R5": "positive"},
+            description="8-register: toggle latch in shell to increase neighborhood spread without touching sources/action.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_boundary_relax",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "negative", "R3": "negative", "R8": "negative"},
+            action={"R3": "zero"},
+            description="8-register: relax negative severity at boundary when transport debt is tagged; promotes curvature/perturbation diversity within locality bounds.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_shell_shuffle_left",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R5": "positive", "R7": "positive"},
+            action={"R4": "positive", "R5": "zero", "R7": "zero", "R8": "zero"},
+            description="8-register: shell state with positive latch and return memory steps into interior and clears memory; adds a small cycle to lift curvature/perturbation without touching sources/action.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_shell_shuffle_right",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R5": "negative", "R7": "positive"},
+            action={"R4": "positive", "R5": "zero", "R7": "zero", "R8": "zero"},
+            description="8-register: shell state with negative latch and return memory steps into interior and clears memory; symmetric shuffle to broaden neighbor spread.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_interior_severity_pulse_pos_to_neg",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R3": "positive", "R7": "zero", "R8": "zero"},
+            action={"R3": "negative"},
+            description="8-register: interior severity flips pos→neg when memory is neutral; injects small curvature without touching sources/action.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_interior_severity_pulse_neg_to_pos",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R3": "negative", "R7": "zero", "R8": "zero"},
+            action={"R3": "positive"},
+            description="8-register: interior severity flips neg→pos when memory is neutral; symmetric curvature pulse.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_interior_shell_oscillate_left",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R5": "positive", "R7": "positive"},
+            action={"R4": "zero", "R5": "zero", "R7": "zero"},
+            description="8-register: small interior→shell oscillation with memory clear to widen neighbor spread (left/positive latch).",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_interior_shell_oscillate_right",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R5": "negative", "R7": "positive"},
+            action={"R4": "zero", "R5": "zero", "R7": "zero"},
+            description="8-register: small interior→shell oscillation with memory clear to widen neighbor spread (right/negative latch).",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_interior_action_toggle_pos",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R6": "zero", "R7": "zero"},
+            action={"R6": "positive"},
+            description="8-register: toggle action phase inside interior when memory neutral to increase neighbor variety (pos).",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_interior_action_toggle_neg",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R6": "zero", "R7": "zero"},
+            action={"R6": "negative"},
+            description="8-register: toggle action phase inside interior when memory neutral to increase neighbor variety (neg).",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_interior_shell_oscillate_action_pos",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R3": "positive", "R6": "positive", "R7": "zero"},
+            action={"R4": "zero", "R6": "zero", "R7": "positive"},
+            description="8-register: oscillate interior→shell while dropping action to neutral and tagging return; couples severity+action change to widen curvature.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_interior_shell_oscillate_action_neg",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R3": "negative", "R6": "negative", "R7": "zero"},
+            action={"R4": "zero", "R6": "zero", "R7": "positive"},
+            description="8-register: oscillate interior→shell for negative severity/action, neutralize action, tag return; increases neighbor spread.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_shell_return_to_interior_with_debt",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R7": "positive"},
+            action={"R4": "positive", "R8": "positive"},
+            description="8-register: return from shell to interior while tagging transport/debt; creates distinct successors for curvature/perturbation while respecting locality.",
+        )
+    )
+    # Two-step oscillation motif to widen neighbor spread.
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_shell_memory_split_pos",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R7": "positive", "R5": "zero"},
+            action={"R5": "positive", "R8": "positive"},
+            description="8-register: split shell memory path (pos latch) with transport tag; sets up distinct successor paths.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_shell_memory_split_neg",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R7": "positive", "R5": "zero"},
+            action={"R5": "negative", "R8": "negative"},
+            description="8-register: split shell memory path (neg latch) with opposite transport tag; complementary successor path.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_shell_return_split_pos",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R5": "positive", "R7": "positive"},
+            action={"R4": "positive", "R5": "zero", "R7": "zero"},
+            description="8-register: return from shell with pos latch to interior; clears memory to keep locality bounded.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_shell_return_split_neg",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R5": "negative", "R7": "positive"},
+            action={"R4": "positive", "R5": "zero", "R7": "zero"},
+            description="8-register: return from shell with neg latch to interior; clears memory to keep locality bounded.",
+        )
+    )
+    # Bounded 3-step motif for curvature/perturbation spread:
+    # step A: boundary debt injects shell detour with action flip
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_curv_motif_a_boundary_detour",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "negative", "R3": "positive", "R6": "zero"},
+            action={"R4": "zero", "R6": "positive", "R7": "positive"},
+            description="Curv motif A: boundary with pos severity detours to shell, flips action to +, tags return.",
+        )
+    )
+    # step B: shell branches to two interior outcomes with opposite transport tags
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_curv_motif_b_shell_branch_pos",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R6": "positive", "R7": "positive"},
+            action={"R4": "positive", "R6": "zero", "R7": "zero", "R8": "positive"},
+            description="Curv motif B: branch 1 — return to interior, drop action, tag transport positive.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_curv_motif_b_shell_branch_neg",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R6": "positive", "R7": "positive"},
+            action={"R4": "positive", "R6": "zero", "R7": "zero", "R8": "negative"},
+            description="Curv motif B: branch 2 — return to interior, drop action, tag transport negative.",
+        )
+    )
+    # step C: interior resolves transport tag back to neutral severity to close the cycle
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_curv_motif_c_transport_relax_pos",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R8": "positive", "R3": "positive"},
+            action={"R3": "zero", "R8": "zero"},
+            description="Curv motif C: resolve positive transport tag, neutralize severity to close branch 1.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_curv_motif_c_transport_relax_neg",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R8": "negative", "R3": "positive"},
+            action={"R3": "zero", "R8": "zero"},
+            description="Curv motif C: resolve negative transport tag, neutralize severity to close branch 2.",
+        )
+    )
+    # Divergent boundary detour to increase neighbor spread (still within locality: R4/R6 change).
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_boundary_detour_pos_action",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "negative", "R6": "zero"},
+            action={"R4": "zero", "R6": "positive", "R7": "positive", "R8": "positive"},
+            description="Detour boundary -> shell with positive action and tagged return/transport (divergent branch 1).",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_boundary_detour_neg_action",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "negative", "R6": "zero"},
+            action={"R4": "zero", "R6": "negative", "R7": "negative", "R8": "zero"},
+            description="Detour boundary -> shell with negative action and return tag; no transport tag to reduce perturbation inflation (branch 2).",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_shell_detour_resolve_pos",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R6": "positive"},
+            action={"R4": "positive", "R6": "zero", "R7": "zero", "R8": "zero"},
+            description="Resolve positive detour back to interior, clearing memory/transport (closes branch 1).",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_shell_detour_resolve_neg",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R6": "negative"},
+            action={"R4": "positive", "R6": "zero", "R7": "zero", "R8": "zero"},
+            description="Resolve negative detour back to interior, clearing memory/transport to damp perturbation.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_interior_transport_damp",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R8": "positive"},
+            action={"R8": "zero"},
+            description="Damp positive transport tag in interior without changing severity/action to improve perturbation nonexpansion.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_shell_transport_damp",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R8": "positive"},
+            action={"R8": "zero"},
+            description="Damp positive transport tag in shell to reduce perturbation distance before interior return.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_interior_zero_toggle_guard",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R3": "zero"},
+            action={"R3": "zero", "R6": "zero", "R7": "zero", "R8": "zero"},
+            description="Guard: when severity is neutral in interior, zero action/memory/transport to reduce perturbation spread.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_shell_zero_toggle_guard",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R3": "zero"},
+            action={"R6": "zero", "R7": "zero", "R8": "zero"},
+            description="Guard: when severity is neutral in shell, clear action/memory/transport to narrow neighbor distances.",
+        )
+    )
+    # Perturbation-focused: nearest-cycle damp when return tag is set.
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_cycle_damp_return_pos",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R7": "positive"},
+            action={"R3": "zero", "R6": "zero", "R7": "zero", "R8": "zero"},
+            description="Cycle-damp: when return memory is set, snap severity/action/memory/transport to neutral to reduce perturbation distance.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_cycle_damp_return_neg",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R7": "negative"},
+            action={"R3": "zero", "R6": "zero", "R7": "zero", "R8": "zero"},
+            description="Cycle-damp: symmetric damp for negative return memory.",
+        )
+    )
+    # Nearest-neighbor contraction: push severity toward zero when transport is tagged, keeping locality.
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_contraction_transport_pos",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R8": "positive", "R3": "positive"},
+            action={"R3": "zero", "R8": "zero"},
+            description="Contract positive severity toward zero when transport is positive; aims to improve perturbation nonexpansion.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_contraction_transport_neg",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R8": "negative", "R3": "negative"},
+            action={"R3": "zero", "R8": "zero"},
+            description="Contract negative severity toward zero when transport is negative; symmetric perturbation contraction.",
+        )
+    )
+    # Neighbor-averaging surrogate: map +/- severity to 0 in shell with neutral action to reduce perturbation distance.
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_shell_neighbor_average_pos",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R3": "positive"},
+            action={"R3": "zero", "R6": "zero", "R7": "zero", "R8": "zero"},
+            description="Shell averaging: positive severity relaxes to neutral with cleared action/memory/transport.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_shell_neighbor_average_neg",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "zero", "R3": "negative"},
+            action={"R3": "zero", "R6": "zero", "R7": "zero", "R8": "zero"},
+            description="Shell averaging: negative severity relaxes to neutral with cleared action/memory/transport.",
+        )
+    )
+    # Snap-to-cycle contraction when action is zero and severity nonzero: approximate nearest cycle.
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_snap_to_cycle_pos",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R6": "zero", "R3": "positive"},
+            action={"R3": "zero", "R7": "zero", "R8": "zero"},
+            description="Snap contraction: zero action, positive severity -> neutral; clears memory/transport.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_snap_to_cycle_neg",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R6": "zero", "R3": "negative"},
+            action={"R3": "zero", "R7": "zero", "R8": "zero"},
+            description="Snap contraction: zero action, negative severity -> neutral; clears memory/transport.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_boundary_signflip_branch",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "negative", "R3": "positive"},
+            action={"R3": "negative", "R6": "zero", "R7": "zero", "R8": "zero"},
+            description="Boundary sign-flip branch with zeroed action/memory/transport; targets perturbation nonexpansion without adding distance via transport.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_interior_signflip_branch",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R3": "positive", "R8": "zero"},
+            action={"R3": "negative", "R6": "zero", "R7": "zero"},
+            description="Interior sign-flip branch with neutral transport; paired with boundary flip to reduce perturbation deltas while keeping curvature branches.",
+        )
+    )
+    # Two-branch interior oscillator to force multiple deterministic successors per state.
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_interior_action_flip_pos_to_neg",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R6": "positive"},
+            action={"R6": "negative", "R7": "positive"},
+            description="8-register: interior action flips pos→neg and tags return memory; injects branching while sources stay fixed.",
+        )
+    )
+    carrier8_physics2.append(
+        TemplateRule(
+            name="carrier8_interior_action_flip_neg_to_pos",
+            template_set="carrier8_physics2",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R6": "negative"},
+            action={"R6": "positive", "R7": "negative"},
+            description="8-register: interior action flips neg→pos with opposite memory tag; complementary branch for spread.",
+        )
+    )
     carrier8_physics1: list[TemplateRule] = []
     for rule in physics20:
         action = dict(rule.action)
@@ -918,12 +1445,16 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
         return physics20
     if template_set == "physics21":
         return physics21
+    if template_set == "physics22":
+        return physics22
     if template_set == "carrier8_physics1":
         return carrier8_physics1
+    if template_set == "carrier8_physics2":
+        return carrier8_physics2
     if template_set == "wave3":
         return wave3
     if template_set == "all":
-        return wave1 + wave2 + physics1 + physics2 + physics3 + physics4 + physics5 + physics6 + physics7 + physics8 + physics9 + physics10 + physics11 + physics12 + physics13 + physics14 + physics15 + physics16 + physics17 + physics18 + physics19 + physics20 + physics21 + carrier8_physics1 + wave3
+        return wave1 + wave2 + physics1 + physics2 + physics3 + physics4 + physics5 + physics6 + physics7 + physics8 + physics9 + physics10 + physics11 + physics12 + physics13 + physics14 + physics15 + physics16 + physics17 + physics18 + physics19 + physics20 + physics21 + physics22 + carrier8_physics1 + carrier8_physics2 + wave3
     raise ValueError(f"unknown template set: {template_set}")
 
 
@@ -1264,6 +1795,7 @@ def main() -> None:
             "physics19",
             "physics20",
             "physics21",
+            "physics22",
             "carrier8_physics1",
             "all",
         ),

@@ -1,0 +1,1594 @@
+{
+  "register_count": 8,
+  "state_space_size": 6561,
+  "transition_source": "agdas_templates",
+  "transition_source_summary": {
+    "source": "agdas_templates",
+    "template_set": "carrier8_physics2",
+    "template_count": 85,
+    "template_modules": [
+      "Contraction.StrictContraction",
+      "DASHI.Algebra.PhysicsSignature.scan",
+      "UFTC_Lattice.C_XOR",
+      "UFTC_Lattice.ConeInteriorPreserved"
+    ],
+    "carrier_family": "physics_local_8",
+    "provenance_modules": [
+      "UFTC_Lattice.agda",
+      "Contraction.agda",
+      "MaassRestoration.agda",
+      "MonsterState.agda",
+      "Monster/Step.agda",
+      "MonsterSpec.agda",
+      "Ontology/Hecke/Scan.agda",
+      "DASHI/Physics/LiftToFullState.agda",
+      "DASHI/Physics/Closure/CanonicalStageC.agda",
+      "DASHI/Physics/Closure/MinimalCrediblePhysicsClosure.agda",
+      "DASHI/Physics/Closure/MDLFej\u00e9rAxiomsShift.agda",
+      "DASHI/Physics/Closure/ShiftSeamCertificates.agda",
+      "DASHI/Physics/Closure/ObservablePredictionPackage.agda"
+    ]
+  },
+  "transition_count": 85,
+  "transitions": [
+    {
+      "name": "carrier8_physics4_scan_left_high",
+      "condition": {
+        "R1": "negative",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R1": "negative",
+        "R5": "positive"
+      },
+      "description": "8-register lift of physics4_scan_left_high (no return/debt tagging). Latch left-dominant scan only from an explicitly armed interior state."
+    },
+    {
+      "name": "carrier8_physics4_scan_left_mid",
+      "condition": {
+        "R1": "positive",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R1": "positive",
+        "R5": "positive"
+      },
+      "description": "8-register lift of physics4_scan_left_mid (no return/debt tagging). Latch mid left scan only from an explicitly armed interior state."
+    },
+    {
+      "name": "carrier8_physics4_scan_right_high",
+      "condition": {
+        "R2": "negative",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R2": "negative",
+        "R5": "negative"
+      },
+      "description": "8-register lift of physics4_scan_right_high (no return/debt tagging). Latch right-dominant scan only from an explicitly armed interior state."
+    },
+    {
+      "name": "carrier8_physics4_scan_right_mid",
+      "condition": {
+        "R2": "positive",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R2": "positive",
+        "R5": "negative"
+      },
+      "description": "8-register lift of physics4_scan_right_mid (no return/debt tagging). Latch mid right scan only from an explicitly armed interior state."
+    },
+    {
+      "name": "carrier8_physics2_join_left_high",
+      "condition": {
+        "R1": "negative",
+        "R3": "zero",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "action": {
+        "R1": "negative",
+        "R3": "negative",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "description": "8-register lift of physics2_join_left_high (no return/debt tagging). Materialize high severity from a latched left source."
+    },
+    {
+      "name": "carrier8_physics2_join_right_high",
+      "condition": {
+        "R2": "negative",
+        "R3": "zero",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "action": {
+        "R2": "negative",
+        "R3": "negative",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "description": "8-register lift of physics2_join_right_high (no return/debt tagging). Materialize high severity from a latched right source."
+    },
+    {
+      "name": "carrier8_physics2_join_left_mid",
+      "condition": {
+        "R1": "positive",
+        "R3": "zero",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "action": {
+        "R1": "positive",
+        "R3": "positive",
+        "R5": "positive",
+        "R6": "positive"
+      },
+      "description": "8-register lift of physics2_join_left_mid (no return/debt tagging). Materialize mid severity from a latched left source and advance the action phase."
+    },
+    {
+      "name": "carrier8_physics2_join_right_mid",
+      "condition": {
+        "R2": "positive",
+        "R3": "zero",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "action": {
+        "R2": "positive",
+        "R3": "positive",
+        "R5": "negative",
+        "R6": "positive"
+      },
+      "description": "8-register lift of physics2_join_right_mid (no return/debt tagging). Materialize mid severity from a latched right source and advance the action phase."
+    },
+    {
+      "name": "carrier8_physics2_contract_high",
+      "condition": {
+        "R3": "negative",
+        "R4": "positive",
+        "R6": "negative"
+      },
+      "action": {
+        "R3": "positive",
+        "R4": "positive",
+        "R6": "positive"
+      },
+      "description": "8-register lift of physics2_contract_high (no return/debt tagging). Interior contraction lowers high severity to mid."
+    },
+    {
+      "name": "carrier8_physics2_contract_mid",
+      "condition": {
+        "R3": "positive",
+        "R4": "positive",
+        "R6": "positive"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics2_contract_mid (no return/debt tagging). Interior contraction lowers mid severity to zero and drops to the boundary."
+    },
+    {
+      "name": "carrier8_physics11_boundary_discharge",
+      "condition": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "negative"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics11_boundary_discharge (no return/debt tagging). Discharge latent action phase at the boundary before shell entry; this targets recurrent recovery without increasing action-rank jumps."
+    },
+    {
+      "name": "carrier8_physics5_boundary_to_shell",
+      "condition": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "zero",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics5_boundary_to_shell (no return/debt tagging). Enter the latent shell only from a discharged boundary state."
+    },
+    {
+      "name": "carrier8_physics9_shell_probe_left_high",
+      "condition": {
+        "R1": "negative",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R1": "negative",
+        "R3": "positive",
+        "R5": "positive"
+      },
+      "description": "8-register lift of physics9_shell_probe_left_high (no return/debt tagging). Probe a left-high source from cleared shell and stage a latched shell marker."
+    },
+    {
+      "name": "carrier8_physics9_shell_probe_right_high",
+      "condition": {
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R2": "negative",
+        "R3": "positive",
+        "R5": "negative"
+      },
+      "description": "8-register lift of physics9_shell_probe_right_high (no return/debt tagging). Probe a right-high source from cleared shell and stage a latched shell marker."
+    },
+    {
+      "name": "carrier8_physics9_shell_probe_left_mid",
+      "condition": {
+        "R1": "positive",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R1": "positive",
+        "R3": "positive",
+        "R5": "positive"
+      },
+      "description": "8-register lift of physics9_shell_probe_left_mid (no return/debt tagging). Probe a left-mid source from cleared shell and stage a latched shell marker."
+    },
+    {
+      "name": "carrier8_physics9_shell_probe_right_mid",
+      "condition": {
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R2": "positive",
+        "R3": "positive",
+        "R5": "negative"
+      },
+      "description": "8-register lift of physics9_shell_probe_right_mid (no return/debt tagging). Probe a right-mid source from cleared shell and stage a latched shell marker."
+    },
+    {
+      "name": "carrier8_physics9_shell_stage_release_left",
+      "condition": {
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics9_shell_stage_release_left (no return/debt tagging). Release staged left shell marker into the normal latched-shell path."
+    },
+    {
+      "name": "carrier8_physics12_shell_stage_detour_left",
+      "condition": {
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics12_shell_stage_detour_left (no return/debt tagging). Route staged left shell markers through a boundary detour before shell release to increase controllable path depth without changing action-rank phase."
+    },
+    {
+      "name": "carrier8_physics12_shell_stage_detour_right",
+      "condition": {
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics12_shell_stage_detour_right (no return/debt tagging). Route staged right shell markers through a boundary detour before shell release to increase controllable path depth without changing action-rank phase."
+    },
+    {
+      "name": "carrier8_physics9_shell_stage_release_right",
+      "condition": {
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics9_shell_stage_release_right (no return/debt tagging). Release staged right shell marker into the normal latched-shell path."
+    },
+    {
+      "name": "carrier8_physics10_shell_probe_neutral",
+      "condition": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "positive",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics10_shell_probe_neutral (no return/debt tagging). Probe neutral shell states before interior rearm by staging a shell marker; this widens shell recurrence while preserving action-rank phase."
+    },
+    {
+      "name": "carrier8_physics6_shell_refresh_left",
+      "condition": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics6_shell_refresh_left (no return/debt tagging). Refresh a left-latched shell state by clearing the latch before cleared rearm."
+    },
+    {
+      "name": "carrier8_physics6_shell_refresh_right",
+      "condition": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics6_shell_refresh_right (no return/debt tagging). Refresh a right-latched shell state by clearing the latch before cleared rearm."
+    },
+    {
+      "name": "carrier8_physics5_shell_to_interior_cleared",
+      "condition": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "description": "8-register lift of physics5_shell_to_interior_cleared (no return/debt tagging). Re-arm the interior from a cleared shell state."
+    },
+    {
+      "name": "carrier8_physics5_shell_to_interior_latched_left",
+      "condition": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "positive",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "description": "8-register lift of physics5_shell_to_interior_latched_left (no return/debt tagging). Re-arm the interior from a shell state that still carries a left scan latch."
+    },
+    {
+      "name": "carrier8_physics5_shell_to_interior_latched_right",
+      "condition": {
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "positive",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "description": "8-register lift of physics5_shell_to_interior_latched_right (no return/debt tagging). Re-arm the interior from a shell state that still carries a right scan latch."
+    },
+    {
+      "name": "carrier8_physics13_contract_mid_detour_nn",
+      "condition": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "negative",
+        "R6": "positive"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics13_contract_mid_detour_nn (no return/debt tagging). Targeted detour for the max-chain branch: discharge mid-contraction into a neutral latch before shell routing to increase path depth without introducing action-rank increases."
+    },
+    {
+      "name": "carrier8_physics14_shell_high_rearm",
+      "condition": {
+        "R3": "negative",
+        "R4": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R3": "negative",
+        "R4": "positive",
+        "R6": "negative"
+      },
+      "description": "8-register lift of physics14_shell_high_rearm (no return/debt tagging). Re-arm interior contraction for stalled high-severity shell states to recycle them into the controlled relaxation loop without increasing action-rank phase."
+    },
+    {
+      "name": "carrier8_physics15_boundary_crossfeed_neutral",
+      "condition": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics15_boundary_crossfeed_neutral (no return/debt tagging). Narrow boundary cross-feed detour on the max-chain bottleneck state; adds a depth step while preserving action-rank phase."
+    },
+    {
+      "name": "carrier8_physics16_boundary_discharge_high",
+      "condition": {
+        "R3": "negative",
+        "R4": "negative",
+        "R6": "negative"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics16_boundary_discharge_high (no return/debt tagging). Discharge high-severity boundary states into the shell-entry lane to reduce terminal mass while preserving action-rank monotonicity."
+    },
+    {
+      "name": "carrier8_physics17_boundary_handoff_left_to_mid",
+      "condition": {
+        "R1": "negative",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics17_boundary_handoff_left_to_mid (no return/debt tagging). Narrow boundary handoff on the max-chain tail to open an extra acyclic segment without changing action-rank phase."
+    },
+    {
+      "name": "carrier8_physics18_boundary_discharge_mid",
+      "condition": {
+        "R3": "positive",
+        "R4": "negative",
+        "R6": "negative"
+      },
+      "action": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics18_boundary_discharge_mid (no return/debt tagging). Discharge mid-severity boundary states into the shell-entry lane to further reduce terminal mass while preserving action-rank monotonicity."
+    },
+    {
+      "name": "carrier8_physics19_tail_handoff_n0_to_nn",
+      "condition": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "positive",
+        "R6": "positive"
+      },
+      "action": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "positive",
+        "R6": "positive"
+      },
+      "description": "8-register lift of physics19_tail_handoff_n0_to_nn (no return/debt tagging). Single-state tail handoff on the max-depth branch: insert one extra acyclic step before the existing contract-mid discharge, preserving action-rank phase."
+    },
+    {
+      "name": "carrier8_physics20_boundary_positive_discharge",
+      "condition": {
+        "R3": "zero",
+        "R4": "negative",
+        "R6": "positive"
+      },
+      "action": {
+        "R6": "zero"
+      },
+      "description": "8-register lift of physics20_boundary_positive_discharge (no return/debt tagging). Discharge positive action phase at the boundary into the shell-entry lane. This widens deterministic recurrence from the physics18/19 baseline while preserving source conservation and the current locality budget."
+    },
+    {
+      "name": "carrier8_physics21_boundary_direct_reentry_mid",
+      "condition": {
+        "R3": "positive",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "positive"
+      },
+      "action": {
+        "R4": "positive"
+      },
+      "description": "8-register lift of physics21_boundary_direct_reentry_mid (no return/debt tagging). Directly re-enter the interior from a mid-severity boundary state once the positive action phase is already active and the latch is cleared. This is the first explicit boundary -> interior recovery rule on the 6-register carrier."
+    },
+    {
+      "name": "carrier8_physics22_boundary_direct_reentry_high",
+      "condition": {
+        "R3": "negative",
+        "R4": "negative"
+      },
+      "action": {
+        "R4": "positive"
+      },
+      "description": "8-register lift of physics22_boundary_direct_reentry_high (no return/debt tagging). Directly re-enter the interior from any high-severity boundary state (R3=high), leaving the action phase and latch untouched. This targets the remaining boundary terminal mass while keeping the exact V1 laws intact."
+    },
+    {
+      "name": "carrier8_action_reset_interior_pos",
+      "condition": {
+        "R4": "positive",
+        "R6": "positive"
+      },
+      "action": {
+        "R6": "zero"
+      },
+      "description": "8-register: interior state may reset positive action phase to neutral, adding recurrence without breaking locality."
+    },
+    {
+      "name": "carrier8_action_reset_interior_neg",
+      "condition": {
+        "R4": "positive",
+        "R6": "negative"
+      },
+      "action": {
+        "R6": "zero"
+      },
+      "description": "8-register: interior state may reset negative action phase to neutral, adding recurrence without breaking locality."
+    },
+    {
+      "name": "carrier8_latch_clear_interior",
+      "condition": {
+        "R4": "positive",
+        "R5": "positive"
+      },
+      "action": {
+        "R5": "zero"
+      },
+      "description": "8-register: clear positive latch inside interior to promote cycles without touching sources."
+    },
+    {
+      "name": "carrier8_latch_clear_interior_neg",
+      "condition": {
+        "R4": "positive",
+        "R5": "negative"
+      },
+      "action": {
+        "R5": "zero"
+      },
+      "description": "8-register: clear negative latch inside interior to promote cycles without touching sources."
+    },
+    {
+      "name": "carrier8_interior_self_loop",
+      "condition": {
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "action": {},
+      "description": "8-register: leave interior state unchanged (explicit self-loop) to seed recurrence without altering sources or memory."
+    },
+    {
+      "name": "carrier8_defect_pulse_return",
+      "condition": {
+        "R4": "positive",
+        "R3": "positive",
+        "R7": "zero"
+      },
+      "action": {
+        "R7": "positive"
+      },
+      "description": "8-register: mark return-memory when interior carries positive severity; nudges curvature/perturbation structure while keeping sources fixed."
+    },
+    {
+      "name": "carrier8_defect_relax_transport",
+      "condition": {
+        "R4": "positive",
+        "R3": "negative",
+        "R8": "zero"
+      },
+      "action": {
+        "R8": "negative"
+      },
+      "description": "8-register: tag transport/debt when interior holds negative severity; encourages divergent neighbor structure without source change."
+    },
+    {
+      "name": "carrier8_shell_latch_toggle",
+      "condition": {
+        "R4": "zero",
+        "R5": "zero"
+      },
+      "action": {
+        "R5": "positive"
+      },
+      "description": "8-register: toggle latch in shell to increase neighborhood spread without touching sources/action."
+    },
+    {
+      "name": "carrier8_boundary_relax",
+      "condition": {
+        "R4": "negative",
+        "R3": "negative",
+        "R8": "negative"
+      },
+      "action": {
+        "R3": "zero"
+      },
+      "description": "8-register: relax negative severity at boundary when transport debt is tagged; promotes curvature/perturbation diversity within locality bounds."
+    },
+    {
+      "name": "carrier8_shell_shuffle_left",
+      "condition": {
+        "R4": "zero",
+        "R5": "positive",
+        "R7": "positive"
+      },
+      "action": {
+        "R4": "positive",
+        "R5": "zero",
+        "R7": "zero",
+        "R8": "zero"
+      },
+      "description": "8-register: shell state with positive latch and return memory steps into interior and clears memory; adds a small cycle to lift curvature/perturbation without touching sources/action."
+    },
+    {
+      "name": "carrier8_shell_shuffle_right",
+      "condition": {
+        "R4": "zero",
+        "R5": "negative",
+        "R7": "positive"
+      },
+      "action": {
+        "R4": "positive",
+        "R5": "zero",
+        "R7": "zero",
+        "R8": "zero"
+      },
+      "description": "8-register: shell state with negative latch and return memory steps into interior and clears memory; symmetric shuffle to broaden neighbor spread."
+    },
+    {
+      "name": "carrier8_interior_severity_pulse_pos_to_neg",
+      "condition": {
+        "R4": "positive",
+        "R3": "positive",
+        "R7": "zero",
+        "R8": "zero"
+      },
+      "action": {
+        "R3": "negative"
+      },
+      "description": "8-register: interior severity flips pos\u2192neg when memory is neutral; injects small curvature without touching sources/action."
+    },
+    {
+      "name": "carrier8_interior_severity_pulse_neg_to_pos",
+      "condition": {
+        "R4": "positive",
+        "R3": "negative",
+        "R7": "zero",
+        "R8": "zero"
+      },
+      "action": {
+        "R3": "positive"
+      },
+      "description": "8-register: interior severity flips neg\u2192pos when memory is neutral; symmetric curvature pulse."
+    },
+    {
+      "name": "carrier8_interior_shell_oscillate_left",
+      "condition": {
+        "R4": "positive",
+        "R5": "positive",
+        "R7": "positive"
+      },
+      "action": {
+        "R4": "zero",
+        "R5": "zero",
+        "R7": "zero"
+      },
+      "description": "8-register: small interior\u2192shell oscillation with memory clear to widen neighbor spread (left/positive latch)."
+    },
+    {
+      "name": "carrier8_interior_shell_oscillate_right",
+      "condition": {
+        "R4": "positive",
+        "R5": "negative",
+        "R7": "positive"
+      },
+      "action": {
+        "R4": "zero",
+        "R5": "zero",
+        "R7": "zero"
+      },
+      "description": "8-register: small interior\u2192shell oscillation with memory clear to widen neighbor spread (right/negative latch)."
+    },
+    {
+      "name": "carrier8_interior_action_toggle_pos",
+      "condition": {
+        "R4": "positive",
+        "R6": "zero",
+        "R7": "zero"
+      },
+      "action": {
+        "R6": "positive"
+      },
+      "description": "8-register: toggle action phase inside interior when memory neutral to increase neighbor variety (pos)."
+    },
+    {
+      "name": "carrier8_interior_action_toggle_neg",
+      "condition": {
+        "R4": "positive",
+        "R6": "zero",
+        "R7": "zero"
+      },
+      "action": {
+        "R6": "negative"
+      },
+      "description": "8-register: toggle action phase inside interior when memory neutral to increase neighbor variety (neg)."
+    },
+    {
+      "name": "carrier8_interior_shell_oscillate_action_pos",
+      "condition": {
+        "R4": "positive",
+        "R3": "positive",
+        "R6": "positive",
+        "R7": "zero"
+      },
+      "action": {
+        "R4": "zero",
+        "R6": "zero",
+        "R7": "positive"
+      },
+      "description": "8-register: oscillate interior\u2192shell while dropping action to neutral and tagging return; couples severity+action change to widen curvature."
+    },
+    {
+      "name": "carrier8_interior_shell_oscillate_action_neg",
+      "condition": {
+        "R4": "positive",
+        "R3": "negative",
+        "R6": "negative",
+        "R7": "zero"
+      },
+      "action": {
+        "R4": "zero",
+        "R6": "zero",
+        "R7": "positive"
+      },
+      "description": "8-register: oscillate interior\u2192shell for negative severity/action, neutralize action, tag return; increases neighbor spread."
+    },
+    {
+      "name": "carrier8_shell_return_to_interior_with_debt",
+      "condition": {
+        "R4": "zero",
+        "R7": "positive"
+      },
+      "action": {
+        "R4": "positive",
+        "R8": "positive"
+      },
+      "description": "8-register: return from shell to interior while tagging transport/debt; creates distinct successors for curvature/perturbation while respecting locality."
+    },
+    {
+      "name": "carrier8_shell_memory_split_pos",
+      "condition": {
+        "R4": "zero",
+        "R7": "positive",
+        "R5": "zero"
+      },
+      "action": {
+        "R5": "positive",
+        "R8": "positive"
+      },
+      "description": "8-register: split shell memory path (pos latch) with transport tag; sets up distinct successor paths."
+    },
+    {
+      "name": "carrier8_shell_memory_split_neg",
+      "condition": {
+        "R4": "zero",
+        "R7": "positive",
+        "R5": "zero"
+      },
+      "action": {
+        "R5": "negative",
+        "R8": "negative"
+      },
+      "description": "8-register: split shell memory path (neg latch) with opposite transport tag; complementary successor path."
+    },
+    {
+      "name": "carrier8_shell_return_split_pos",
+      "condition": {
+        "R4": "zero",
+        "R5": "positive",
+        "R7": "positive"
+      },
+      "action": {
+        "R4": "positive",
+        "R5": "zero",
+        "R7": "zero"
+      },
+      "description": "8-register: return from shell with pos latch to interior; clears memory to keep locality bounded."
+    },
+    {
+      "name": "carrier8_shell_return_split_neg",
+      "condition": {
+        "R4": "zero",
+        "R5": "negative",
+        "R7": "positive"
+      },
+      "action": {
+        "R4": "positive",
+        "R5": "zero",
+        "R7": "zero"
+      },
+      "description": "8-register: return from shell with neg latch to interior; clears memory to keep locality bounded."
+    },
+    {
+      "name": "carrier8_curv_motif_a_boundary_detour",
+      "condition": {
+        "R4": "negative",
+        "R3": "positive",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "zero",
+        "R6": "positive",
+        "R7": "positive"
+      },
+      "description": "Curv motif A: boundary with pos severity detours to shell, flips action to +, tags return."
+    },
+    {
+      "name": "carrier8_curv_motif_b_shell_branch_pos",
+      "condition": {
+        "R4": "zero",
+        "R6": "positive",
+        "R7": "positive"
+      },
+      "action": {
+        "R4": "positive",
+        "R6": "zero",
+        "R7": "zero",
+        "R8": "positive"
+      },
+      "description": "Curv motif B: branch 1 \u2014 return to interior, drop action, tag transport positive."
+    },
+    {
+      "name": "carrier8_curv_motif_b_shell_branch_neg",
+      "condition": {
+        "R4": "zero",
+        "R6": "positive",
+        "R7": "positive"
+      },
+      "action": {
+        "R4": "positive",
+        "R6": "zero",
+        "R7": "zero",
+        "R8": "negative"
+      },
+      "description": "Curv motif B: branch 2 \u2014 return to interior, drop action, tag transport negative."
+    },
+    {
+      "name": "carrier8_curv_motif_c_transport_relax_pos",
+      "condition": {
+        "R4": "positive",
+        "R8": "positive",
+        "R3": "positive"
+      },
+      "action": {
+        "R3": "zero",
+        "R8": "zero"
+      },
+      "description": "Curv motif C: resolve positive transport tag, neutralize severity to close branch 1."
+    },
+    {
+      "name": "carrier8_curv_motif_c_transport_relax_neg",
+      "condition": {
+        "R4": "positive",
+        "R8": "negative",
+        "R3": "positive"
+      },
+      "action": {
+        "R3": "zero",
+        "R8": "zero"
+      },
+      "description": "Curv motif C: resolve negative transport tag, neutralize severity to close branch 2."
+    },
+    {
+      "name": "carrier8_boundary_detour_pos_action",
+      "condition": {
+        "R4": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "zero",
+        "R6": "positive",
+        "R7": "positive",
+        "R8": "positive"
+      },
+      "description": "Detour boundary -> shell with positive action and tagged return/transport (divergent branch 1)."
+    },
+    {
+      "name": "carrier8_boundary_detour_neg_action",
+      "condition": {
+        "R4": "negative",
+        "R6": "zero"
+      },
+      "action": {
+        "R4": "zero",
+        "R6": "negative",
+        "R7": "negative",
+        "R8": "zero"
+      },
+      "description": "Detour boundary -> shell with negative action and return tag; no transport tag to reduce perturbation inflation (branch 2)."
+    },
+    {
+      "name": "carrier8_shell_detour_resolve_pos",
+      "condition": {
+        "R4": "zero",
+        "R6": "positive"
+      },
+      "action": {
+        "R4": "positive",
+        "R6": "zero",
+        "R7": "zero",
+        "R8": "zero"
+      },
+      "description": "Resolve positive detour back to interior, clearing memory/transport (closes branch 1)."
+    },
+    {
+      "name": "carrier8_shell_detour_resolve_neg",
+      "condition": {
+        "R4": "zero",
+        "R6": "negative"
+      },
+      "action": {
+        "R4": "positive",
+        "R6": "zero",
+        "R7": "zero",
+        "R8": "zero"
+      },
+      "description": "Resolve negative detour back to interior, clearing memory/transport to damp perturbation."
+    },
+    {
+      "name": "carrier8_interior_transport_damp",
+      "condition": {
+        "R4": "positive",
+        "R8": "positive"
+      },
+      "action": {
+        "R8": "zero"
+      },
+      "description": "Damp positive transport tag in interior without changing severity/action to improve perturbation nonexpansion."
+    },
+    {
+      "name": "carrier8_shell_transport_damp",
+      "condition": {
+        "R4": "zero",
+        "R8": "positive"
+      },
+      "action": {
+        "R8": "zero"
+      },
+      "description": "Damp positive transport tag in shell to reduce perturbation distance before interior return."
+    },
+    {
+      "name": "carrier8_interior_zero_toggle_guard",
+      "condition": {
+        "R4": "positive",
+        "R3": "zero"
+      },
+      "action": {
+        "R3": "zero",
+        "R6": "zero",
+        "R7": "zero",
+        "R8": "zero"
+      },
+      "description": "Guard: when severity is neutral in interior, zero action/memory/transport to reduce perturbation spread."
+    },
+    {
+      "name": "carrier8_shell_zero_toggle_guard",
+      "condition": {
+        "R4": "zero",
+        "R3": "zero"
+      },
+      "action": {
+        "R6": "zero",
+        "R7": "zero",
+        "R8": "zero"
+      },
+      "description": "Guard: when severity is neutral in shell, clear action/memory/transport to narrow neighbor distances."
+    },
+    {
+      "name": "carrier8_cycle_damp_return_pos",
+      "condition": {
+        "R7": "positive"
+      },
+      "action": {
+        "R3": "zero",
+        "R6": "zero",
+        "R7": "zero",
+        "R8": "zero"
+      },
+      "description": "Cycle-damp: when return memory is set, snap severity/action/memory/transport to neutral to reduce perturbation distance."
+    },
+    {
+      "name": "carrier8_cycle_damp_return_neg",
+      "condition": {
+        "R7": "negative"
+      },
+      "action": {
+        "R3": "zero",
+        "R6": "zero",
+        "R7": "zero",
+        "R8": "zero"
+      },
+      "description": "Cycle-damp: symmetric damp for negative return memory."
+    },
+    {
+      "name": "carrier8_contraction_transport_pos",
+      "condition": {
+        "R8": "positive",
+        "R3": "positive"
+      },
+      "action": {
+        "R3": "zero",
+        "R8": "zero"
+      },
+      "description": "Contract positive severity toward zero when transport is positive; aims to improve perturbation nonexpansion."
+    },
+    {
+      "name": "carrier8_contraction_transport_neg",
+      "condition": {
+        "R8": "negative",
+        "R3": "negative"
+      },
+      "action": {
+        "R3": "zero",
+        "R8": "zero"
+      },
+      "description": "Contract negative severity toward zero when transport is negative; symmetric perturbation contraction."
+    },
+    {
+      "name": "carrier8_shell_neighbor_average_pos",
+      "condition": {
+        "R4": "zero",
+        "R3": "positive"
+      },
+      "action": {
+        "R3": "zero",
+        "R6": "zero",
+        "R7": "zero",
+        "R8": "zero"
+      },
+      "description": "Shell averaging: positive severity relaxes to neutral with cleared action/memory/transport."
+    },
+    {
+      "name": "carrier8_shell_neighbor_average_neg",
+      "condition": {
+        "R4": "zero",
+        "R3": "negative"
+      },
+      "action": {
+        "R3": "zero",
+        "R6": "zero",
+        "R7": "zero",
+        "R8": "zero"
+      },
+      "description": "Shell averaging: negative severity relaxes to neutral with cleared action/memory/transport."
+    },
+    {
+      "name": "carrier8_snap_to_cycle_pos",
+      "condition": {
+        "R6": "zero",
+        "R3": "positive"
+      },
+      "action": {
+        "R3": "zero",
+        "R7": "zero",
+        "R8": "zero"
+      },
+      "description": "Snap contraction: zero action, positive severity -> neutral; clears memory/transport."
+    },
+    {
+      "name": "carrier8_snap_to_cycle_neg",
+      "condition": {
+        "R6": "zero",
+        "R3": "negative"
+      },
+      "action": {
+        "R3": "zero",
+        "R7": "zero",
+        "R8": "zero"
+      },
+      "description": "Snap contraction: zero action, negative severity -> neutral; clears memory/transport."
+    },
+    {
+      "name": "carrier8_boundary_signflip_branch",
+      "condition": {
+        "R4": "negative",
+        "R3": "positive"
+      },
+      "action": {
+        "R3": "negative",
+        "R6": "zero",
+        "R7": "zero",
+        "R8": "zero"
+      },
+      "description": "Boundary sign-flip branch with zeroed action/memory/transport; targets perturbation nonexpansion without adding distance via transport."
+    },
+    {
+      "name": "carrier8_interior_signflip_branch",
+      "condition": {
+        "R4": "positive",
+        "R3": "positive",
+        "R8": "zero"
+      },
+      "action": {
+        "R3": "negative",
+        "R6": "zero",
+        "R7": "zero"
+      },
+      "description": "Interior sign-flip branch with neutral transport; paired with boundary flip to reduce perturbation deltas while keeping curvature branches."
+    },
+    {
+      "name": "carrier8_interior_action_flip_pos_to_neg",
+      "condition": {
+        "R4": "positive",
+        "R6": "positive"
+      },
+      "action": {
+        "R6": "negative",
+        "R7": "positive"
+      },
+      "description": "8-register: interior action flips pos\u2192neg and tags return memory; injects branching while sources stay fixed."
+    },
+    {
+      "name": "carrier8_interior_action_flip_neg_to_pos",
+      "condition": {
+        "R4": "positive",
+        "R6": "negative"
+      },
+      "action": {
+        "R6": "positive",
+        "R7": "negative"
+      },
+      "description": "8-register: interior action flips neg\u2192pos with opposite memory tag; complementary branch for spread."
+    }
+  ],
+  "full_space_profile": {
+    "nodes": 6561,
+    "edges": 6561,
+    "terminal_states": 0,
+    "longest_chain": 10,
+    "chain_length_histogram": {
+      "6": 867,
+      "3": 1560,
+      "4": 948,
+      "5": 915,
+      "2": 801,
+      "8": 395,
+      "7": 699,
+      "1": 243,
+      "9": 121,
+      "10": 12
+    },
+    "max_chain_start_states": [
+      "(0, -1, 0, 0, 0, -1, 1, -1)",
+      "(0, -1, 0, 0, 0, -1, 1, 0)",
+      "(0, -1, 0, 0, 0, -1, 1, 1)",
+      "(1, -1, -1, 0, 0, -1, -1, -1)",
+      "(1, -1, -1, 0, 0, -1, -1, 0)",
+      "(1, -1, -1, 0, 0, -1, -1, 1)",
+      "(1, -1, -1, 0, 0, -1, 0, -1)",
+      "(1, -1, -1, 0, 0, -1, 0, 0)",
+      "(1, -1, -1, 0, 0, -1, 0, 1)",
+      "(1, -1, -1, 0, 0, -1, 1, -1)"
+    ]
+  },
+  "action_monotonicity": {
+    "total_edges": 6561,
+    "decreases": 2772,
+    "preserves": 3546,
+    "increases": 243
+  },
+  "fixed_walk_summary": {
+    "state_count": 6561,
+    "terminal": 0,
+    "cycle": 6561,
+    "timeout": 0,
+    "max_steps_observed": 10,
+    "longest_paths": [
+      [
+        "(0, -1, 0, 0, 0, -1, 1, -1)",
+        10,
+        "cycle"
+      ],
+      [
+        "(0, -1, 0, 0, 0, -1, 1, 0)",
+        10,
+        "cycle"
+      ],
+      [
+        "(0, -1, 0, 0, 0, -1, 1, 1)",
+        10,
+        "cycle"
+      ],
+      [
+        "(1, -1, -1, 0, 0, -1, -1, -1)",
+        10,
+        "cycle"
+      ],
+      [
+        "(1, -1, -1, 0, 0, -1, -1, 0)",
+        10,
+        "cycle"
+      ],
+      [
+        "(1, -1, -1, 0, 0, -1, -1, 1)",
+        10,
+        "cycle"
+      ],
+      [
+        "(1, -1, -1, 0, 0, -1, 0, -1)",
+        10,
+        "cycle"
+      ],
+      [
+        "(1, -1, -1, 0, 0, -1, 0, 0)",
+        10,
+        "cycle"
+      ],
+      [
+        "(1, -1, -1, 0, 0, -1, 0, 1)",
+        10,
+        "cycle"
+      ],
+      [
+        "(1, -1, -1, 0, 0, -1, 1, -1)",
+        10,
+        "cycle"
+      ]
+    ],
+    "timeout_states": []
+  },
+  "deterministic_start": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    -1,
+    0,
+    0
+  ],
+  "deterministic_start_decoded": {
+    "R1": 1,
+    "R2": 0,
+    "R3": 0,
+    "R4": 1,
+    "R5": 0,
+    "R6": -1,
+    "R7": 0,
+    "R8": 0
+  },
+  "deterministic_walk": {
+    "status": "cycle",
+    "steps": 7,
+    "cycle_start": 4,
+    "final_state": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "path": [
+      {
+        "step": 1,
+        "state": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "transition": "carrier8_physics4_scan_left_mid",
+        "next_state": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          -1,
+          0,
+          0
+        ]
+      },
+      {
+        "step": 2,
+        "state": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          -1,
+          0,
+          0
+        ],
+        "transition": "carrier8_physics2_join_left_mid",
+        "next_state": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "step": 3,
+        "state": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "transition": "carrier8_physics2_contract_mid",
+        "next_state": [
+          1,
+          0,
+          0,
+          -1,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "step": 4,
+        "state": [
+          1,
+          0,
+          0,
+          -1,
+          1,
+          0,
+          0,
+          0
+        ],
+        "transition": "carrier8_physics5_boundary_to_shell",
+        "next_state": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "step": 5,
+        "state": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "transition": "carrier8_physics6_shell_refresh_left",
+        "next_state": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "step": 6,
+        "state": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "transition": "carrier8_physics9_shell_probe_left_mid",
+        "next_state": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "step": 7,
+        "state": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "transition": "carrier8_physics9_shell_stage_release_left",
+        "next_state": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "memory_observables": {
+    "boundary_return_profile": {
+      "all_states": {
+        "negative": 2187,
+        "zero": 2187,
+        "positive": 2187
+      },
+      "deterministic_sources": {
+        "negative": 2187,
+        "zero": 2187,
+        "positive": 2187
+      }
+    },
+    "transport_debt_profile": {
+      "all_states": {
+        "negative": 2187,
+        "zero": 2187,
+        "positive": 2187
+      },
+      "deterministic_sources": {
+        "negative": 2187,
+        "zero": 2187,
+        "positive": 2187
+      }
+    }
+  },
+  "physics20_comparison": {
+    "status": "ok",
+    "path": "/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-agdas-physics20-phase2.json",
+    "physics20_full_space_profile": {
+      "nodes": 729,
+      "edges": 386,
+      "terminal_states": 428,
+      "longest_chain": 32,
+      "chain_length_histogram": {
+        "29": 22,
+        "0": 428,
+        "27": 30,
+        "28": 18,
+        "26": 16,
+        "30": 7,
+        "1": 14,
+        "31": 5,
+        "32": 1,
+        "8": 34,
+        "9": 46,
+        "10": 23,
+        "11": 12,
+        "12": 6,
+        "7": 37,
+        "6": 18,
+        "5": 7,
+        "4": 4,
+        "13": 1
+      },
+      "max_chain_start_states": [
+        "(-1, 1, -1, 0, 0, -1)"
+      ]
+    },
+    "physics20_fixed_walk_summary": {
+      "state_count": 729,
+      "terminal": 448,
+      "cycle": 281,
+      "timeout": 0,
+      "max_steps_observed": 10
+    }
+  }
+}

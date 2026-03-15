@@ -38,6 +38,7 @@ The conversation sharpened these decisions:
 - FRACTRAN was treated as motion on prime exponent lattices.
 - The likely translation problem is not just "encode transitions", but "encode signed transitions without losing the geometry."
 - Refreshed thread signal on `2026-03-14`: the basin-side story is now framed around two independent rank-4 diagnostics, namely longest monotone chain `4` and PCA effective dimension `4` on the `10 x 15` basin-prime matrix. For FRACDASH this strengthens one practical requirement: richer AGDAS/Monster bridge encodings should preserve nontrivial low-dimensional structure, not collapse into a nearly terminal toy compression.
+- Upstream-formalism decision on `2026-03-15`: `../dashi_agda` should now be treated as the authoritative formal source for the canonical physics-closure semantics, especially the closure/audit surfaces under `DASHI/Physics/Closure/`. FRACDASH still executes only a compressed subset of that formalism, so local docs and artifacts must distinguish upstream formal closure from local executable coverage explicitly.
 - A suggested experiment path was:
   - build a basin graph
   - encode DASHI transitions as FRACTRAN rules

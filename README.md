@@ -48,6 +48,7 @@ The near-term questions are:
 - [`CHANGELOG.md`](/home/c/Documents/code/FRACDASH/CHANGELOG.md): material repo changes
 - [`MONSTER10WALK_CANONICAL.md`](/home/c/Documents/code/FRACDASH/MONSTER10WALK_CANONICAL.md): frozen canonical semantics and lock criteria for the Monster 10-walk lane
 - [`MONSTERLEAN_INTAKE.md`](/home/c/Documents/code/FRACDASH/MONSTERLEAN_INTAKE.md): intake notes for the local `monster/MonsterLean` clone and proof-completeness caveats
+- [`AGDAS_FORMALISM_INTAKE.md`](/home/c/Documents/code/FRACDASH/AGDAS_FORMALISM_INTAKE.md): authoritative intake note for the upstream `../dashi_agda` physics/closure formalism
 - [`benchmarks/`](/home/c/Documents/code/FRACDASH/benchmarks): benchmark runners, summaries, and result artifacts
 - [`fractran/`](/home/c/Documents/code/FRACDASH/fractran): local FRACTRAN baseline interpreter and benchmark binary
 
@@ -159,9 +160,24 @@ The canonical target table lives in `PHYSICS_INVARIANT_TARGETS.md`.
 
 Each invariant artifact now also emits an `observable_surrogates` block with shell/interior occupancy, action-phase occupancy, re-entry flow, latch alignment, and source-defect coupling summaries for exploratory physics interpretation.
 
+### AGDA Formalism Check
+
+Use the upstream formalism intake check when `../dashi_agda` semantics or the local bridge assumptions change:
+
+```sh
+python3 scripts/check_dashi_agda_formalism.py
+```
+
+This writes:
+
+- [`benchmarks/results/2026-03-15-dashi-agda-formalism-check.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-dashi-agda-formalism-check.json)
+- [`benchmarks/results/2026-03-15-dashi-agda-formalism-check.md`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-15-dashi-agda-formalism-check.md)
+
+The checker now covers the canonical closure/audit spine plus Stage C, minimal-credible adapter, MDL/Fejér, seam certificates, observable package, and known-limits QFT bridge modules, and records their local counterparts or gaps. The current result is `authoritative_formalism_detected=True`.
+
 The next physics split is now explicit. The narrow branch stays on the existing 6-register carrier and tries to produce the first direct `boundary -> interior` re-entry (`physics21`) without breaking the exact V1 laws. In parallel, FRACDASH is adding a separate physics-local 8-register carrier (`carrier8_physics1`) that preserves the current `R1..R6` semantics and adds `R7` boundary-return memory plus `R8` transport/debt memory so later experiments can measure return type and deferred transport load directly instead of overloading the 6-register grammar.
 
-That split is now implemented. `physics21` is the current best 6-register exploratory branch: it lifts deterministic edges from `301` to `310`, phase-graph edges from `386` to `395`, terminal states down from `428` to `419`, and introduces the first direct `boundary_to_interior = 9` witness while keeping the exact V1 laws intact. The 8-register branch now exists as `scripts/agdas_physics8_state.py` plus `scripts/agdas_physics8_experiments.py`, with artifacts at `benchmarks/results/2026-03-15-agdas-carrier8-physics1-phase2.json` and `benchmarks/results/2026-03-15-physics-invariants-carrier8_physics1.json`; its current job is to expose `boundary_return_profile` and `transport_debt_profile`, not to replace the 6-register lock.
+That split is now implemented. `physics22` is the current best 6-register exploratory branch: it lifts deterministic edges to `364` and raises direct `boundary_to_interior` re-entry to `63` while keeping the exact V1 laws intact and keeping corrected `geodesic_like_flow.near_min_ratio` at `~0.92`. The 8-register branch now exists as `scripts/agdas_physics8_state.py` plus `scripts/agdas_physics8_experiments.py`, with artifacts at `benchmarks/results/2026-03-15-agdas-carrier8-physics1-phase2.json` and `benchmarks/results/2026-03-15-physics-invariants-carrier8_physics1.json`; its current job is to expose `boundary_return_profile` and `transport_debt_profile`, not to replace the 6-register lock.
 
 ### MonsterLean Intake Check
 
@@ -284,7 +300,7 @@ The deterministic routing rule also serves as the gatekeeper for elevating reusa
 
 A new experimental entrypoint, [`scripts/toy_dashi_transitions.py`](/home/c/Documents/code/FRACDASH/scripts/toy_dashi_transitions.py), defines a minimal FRACTRAN program for a signed 4-register ternary state space (`3^4 = 81` encodings). Each register state is encoded by one of three dedicated primes, and the script prints the FRACTRAN fractions plus a reference encoding and decoder. This gives us a concrete starting point for the Phase 2 CORE experiments (toy transitions, decoder, basin traversal) before we bring GPU scheduling into the mix. The script also explores the basin graph from a selected start value, reports monotone-chain statistics, compares fixed-prime and explicit-prime stepping across all states, and can emit a deterministic JSON artifact for reproducible basin and walk data.
 
-[`scripts/agdas_bridge.py`](/home/c/Documents/code/FRACDASH/scripts/agdas_bridge.py) is now the first executable AGDAS bridge stage. The AGDA code in `../dashi_agda` is treated as the semantic reference, but the active executable bridge is maintained in FRACDASH via `AGDAS_BRIDGE_MAPPING.md` and a wave-1 template transition set. The parser for source-coupled transition markers still exists, but it is now optional rather than the main path.
+[`scripts/agdas_bridge.py`](/home/c/Documents/code/FRACDASH/scripts/agdas_bridge.py) is now the first executable AGDAS bridge stage. The AGDA code in `../dashi_agda` should now be treated as the authoritative formal source for the canonical closure semantics, especially the closure/audit surfaces under `DASHI/Physics/Closure/`. FRACDASH still executes only a compressed subset of that formalism, maintained locally via `AGDAS_BRIDGE_MAPPING.md`, `AGDAS_FORMALISM_INTAKE.md`, and the carrier/template experiments. The parser for source-coupled transition markers still exists, but it remains optional rather than the main path.
 The current primary bridge baseline is the template transition set exposed by `scripts/agdas_bridge.py --emit-templates --template-set wave1`, and the Phase 2 runner can exercise template sets with `scripts/run_agdas_template_phase2.sh`. The template runner defaults to disabling the chain bound (set `FRACDASH_TOY_CHAIN_BOUND_TEMPLATE=2` to re-enable it) and selects the template set via `FRACDASH_AGDAS_TEMPLATE_SET=wave1|wave2|all`.
 The wave-2 `MonsterState` / `Monster.Step` probe now runs as `FRACDASH_AGDAS_TEMPLATE_SET=wave2`, but its artifact is mostly terminal under the current 4-register encoding, which is evidence that richer Monster-style dynamics likely need a larger encoded state model.
 That larger carrier prototype now exists in `scripts/agdas_wave3_state.py`: it expands the bridge carrier from `3^4 = 81` to `3^6 = 729` states so mask summary, candidate/admissibility, and a 2-trit window can live on distinct registers before we attempt the next Monster-facing experiment pass.
