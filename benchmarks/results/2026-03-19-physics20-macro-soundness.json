@@ -1,0 +1,1764 @@
+{
+  "summary": {
+    "template_set": "physics20",
+    "checked_rules": 34,
+    "passed_rules": 34,
+    "macro_soundness": true,
+    "macro_encoding": "three-state-prime swap per register",
+    "macro_ordering": "register order R1,R2,R3,R4,R5,R6 with repeated unit steps in that order",
+    "signed_state_primes": {
+      "R1": {
+        "negative": 127,
+        "zero": 131,
+        "positive": 137
+      },
+      "R2": {
+        "negative": 139,
+        "zero": 149,
+        "positive": 151
+      },
+      "R3": {
+        "negative": 157,
+        "zero": 163,
+        "positive": 167
+      },
+      "R4": {
+        "negative": 173,
+        "zero": 179,
+        "positive": 181
+      },
+      "R5": {
+        "negative": 191,
+        "zero": 193,
+        "positive": 197
+      },
+      "R6": {
+        "negative": 199,
+        "zero": 211,
+        "positive": 223
+      }
+    },
+    "exclusivity_invariant": "exactly one state-prime per register divides the encoded integer",
+    "soundness_statement": "standard ordered FRACTRAN execution of the exported macro fractions matches the normalized signed-IR action on the physics20 slice"
+  },
+  "records": [
+    {
+      "name": "physics4_scan_left_high",
+      "source_integer": 21442062326483,
+      "target_integer": 21886457400607,
+      "macro_fraction_strings": [
+        "197/193"
+      ],
+      "applied_fraction_strings": [
+        "197/193"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        21442062326483,
+        21886457400607
+      ],
+      "intermediate_states": [
+        {
+          "R1": "negative",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "zero",
+          "R6": "negative"
+        },
+        {
+          "R1": "negative",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "positive",
+          "R6": "negative"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics4_scan_left_mid",
+      "source_integer": 23130413690773,
+      "target_integer": 23609800503017,
+      "macro_fraction_strings": [
+        "197/193"
+      ],
+      "applied_fraction_strings": [
+        "197/193"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        23130413690773,
+        23609800503017
+      ],
+      "intermediate_states": [
+        {
+          "R1": "positive",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "zero",
+          "R6": "negative"
+        },
+        {
+          "R1": "positive",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "positive",
+          "R6": "negative"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics4_scan_right_high",
+      "source_integer": 20633013417689,
+      "target_integer": 20419199807143,
+      "macro_fraction_strings": [
+        "191/193"
+      ],
+      "applied_fraction_strings": [
+        "191/193"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        20633013417689,
+        20419199807143
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "negative",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "zero",
+          "R6": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "negative",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "negative",
+          "R6": "negative"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics4_scan_right_mid",
+      "source_integer": 22414280763101,
+      "target_integer": 22182008423587,
+      "macro_fraction_strings": [
+        "191/193"
+      ],
+      "applied_fraction_strings": [
+        "191/193"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        22414280763101,
+        22182008423587
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "positive",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "zero",
+          "R6": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "positive",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "negative",
+          "R6": "negative"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics2_join_left_high",
+      "source_integer": 21644618092313,
+      "target_integer": 20847883684007,
+      "macro_fraction_strings": [
+        "157/163"
+      ],
+      "applied_fraction_strings": [
+        "157/163"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        21644618092313,
+        20847883684007
+      ],
+      "intermediate_states": [
+        {
+          "R1": "negative",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "positive",
+          "R6": "negative"
+        },
+        {
+          "R1": "negative",
+          "R2": "zero",
+          "R3": "negative",
+          "R4": "zero",
+          "R5": "positive",
+          "R6": "negative"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics2_join_right_high",
+      "source_integer": 20193573289937,
+      "target_integer": 19450251573743,
+      "macro_fraction_strings": [
+        "157/163"
+      ],
+      "applied_fraction_strings": [
+        "157/163"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        20193573289937,
+        19450251573743
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "negative",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "negative",
+          "R6": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "negative",
+          "R3": "negative",
+          "R4": "zero",
+          "R5": "negative",
+          "R6": "negative"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics2_join_left_mid",
+      "source_integer": 23348918729503,
+      "target_integer": 26806951395179,
+      "macro_fraction_strings": [
+        "167/163",
+        "211/199",
+        "223/211"
+      ],
+      "applied_fraction_strings": [
+        "167/163",
+        "211/199",
+        "223/211"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1,
+        2
+      ],
+      "intermediate_integers": [
+        23348918729503,
+        23921898330227,
+        25364424862703,
+        26806951395179
+      ],
+      "intermediate_states": [
+        {
+          "R1": "positive",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "positive",
+          "R6": "negative"
+        },
+        {
+          "R1": "positive",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "positive",
+          "R6": "negative"
+        },
+        {
+          "R1": "positive",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "positive",
+          "R6": "zero"
+        },
+        {
+          "R1": "positive",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "positive",
+          "R6": "positive"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics2_join_right_mid",
+      "source_integer": 21936903358133,
+      "target_integer": 25185813051769,
+      "macro_fraction_strings": [
+        "167/163",
+        "211/199",
+        "223/211"
+      ],
+      "applied_fraction_strings": [
+        "167/163",
+        "211/199",
+        "223/211"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1,
+        2
+      ],
+      "intermediate_integers": [
+        21936903358133,
+        22475232274897,
+        23830522663333,
+        25185813051769
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "positive",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "negative",
+          "R6": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "positive",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "negative",
+          "R6": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "positive",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "negative",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "positive",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "negative",
+          "R6": "positive"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics2_contract_high",
+      "source_integer": 21303265343161,
+      "target_integer": 25393044990707,
+      "macro_fraction_strings": [
+        "163/157",
+        "167/163",
+        "211/199",
+        "223/211"
+      ],
+      "applied_fraction_strings": [
+        "163/157",
+        "167/163",
+        "211/199",
+        "223/211"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "intermediate_integers": [
+        21303265343161,
+        22117402872199,
+        22660161224891,
+        24026603107799,
+        25393044990707
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "negative",
+          "R4": "positive",
+          "R5": "zero",
+          "R6": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "zero",
+          "R6": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "positive",
+          "R5": "zero",
+          "R6": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "positive",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "positive",
+          "R5": "zero",
+          "R6": "positive"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics2_contract_mid",
+      "source_integer": 25393044990707,
+      "target_integer": 22414602211163,
+      "macro_fraction_strings": [
+        "163/167",
+        "179/181",
+        "173/179",
+        "211/223"
+      ],
+      "applied_fraction_strings": [
+        "163/167",
+        "179/181",
+        "173/179",
+        "211/223"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "intermediate_integers": [
+        25393044990707,
+        24784828344223,
+        24510962837657,
+        23689366317959,
+        22414602211163
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "positive",
+          "R5": "zero",
+          "R6": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "zero",
+          "R6": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics11_boundary_discharge",
+      "source_integer": 21139838104367,
+      "target_integer": 22414602211163,
+      "macro_fraction_strings": [
+        "211/199"
+      ],
+      "applied_fraction_strings": [
+        "211/199"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        21139838104367,
+        22414602211163
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics5_boundary_to_shell",
+      "source_integer": 22414602211163,
+      "target_integer": 23191987258949,
+      "macro_fraction_strings": [
+        "179/173"
+      ],
+      "applied_fraction_strings": [
+        "179/173"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        22414602211163,
+        23191987258949
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics9_shell_probe_left_high",
+      "source_integer": 22483834976233,
+      "target_integer": 23513006989513,
+      "macro_fraction_strings": [
+        "167/163",
+        "197/193"
+      ],
+      "applied_fraction_strings": [
+        "167/163",
+        "197/193"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1
+      ],
+      "intermediate_integers": [
+        22483834976233,
+        23035585527797,
+        23513006989513
+      ],
+      "intermediate_states": [
+        {
+          "R1": "negative",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "negative",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "negative",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "positive",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics9_shell_probe_right_high",
+      "source_integer": 21635478046939,
+      "target_integer": 21936706292737,
+      "macro_fraction_strings": [
+        "167/163",
+        "191/193"
+      ],
+      "applied_fraction_strings": [
+        "167/163",
+        "191/193"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1
+      ],
+      "intermediate_integers": [
+        21635478046939,
+        22166410023551,
+        21936706292737
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "negative",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "negative",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "negative",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "negative",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics9_shell_probe_left_mid",
+      "source_integer": 24254215683023,
+      "target_integer": 25364424862703,
+      "macro_fraction_strings": [
+        "167/163",
+        "197/193"
+      ],
+      "applied_fraction_strings": [
+        "167/163",
+        "197/193"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1
+      ],
+      "intermediate_integers": [
+        24254215683023,
+        24849411159907,
+        25364424862703
+      ],
+      "intermediate_states": [
+        {
+          "R1": "positive",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "positive",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "positive",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "positive",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics9_shell_probe_right_mid",
+      "source_integer": 23503289101351,
+      "target_integer": 23830522663333,
+      "macro_fraction_strings": [
+        "167/163",
+        "191/193"
+      ],
+      "applied_fraction_strings": [
+        "167/163",
+        "191/193"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1
+      ],
+      "intermediate_integers": [
+        23503289101351,
+        24080056932059,
+        23830522663333
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "positive",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "positive",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "positive",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "negative",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics9_shell_stage_release_left",
+      "source_integer": 24253574138789,
+      "target_integer": 23672650207321,
+      "macro_fraction_strings": [
+        "163/167"
+      ],
+      "applied_fraction_strings": [
+        "163/167"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        24253574138789,
+        23672650207321
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "positive",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "positive",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics12_shell_stage_detour_left",
+      "source_integer": 24253574138789,
+      "target_integer": 22879153552327,
+      "macro_fraction_strings": [
+        "163/167",
+        "173/179"
+      ],
+      "applied_fraction_strings": [
+        "163/167",
+        "173/179"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1
+      ],
+      "intermediate_integers": [
+        24253574138789,
+        23672650207321,
+        22879153552327
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "positive",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "positive",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "positive",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics12_shell_stage_detour_right",
+      "source_integer": 23514886601567,
+      "target_integer": 22182326540581,
+      "macro_fraction_strings": [
+        "163/167",
+        "173/179"
+      ],
+      "applied_fraction_strings": [
+        "163/167",
+        "173/179"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1
+      ],
+      "intermediate_integers": [
+        23514886601567,
+        22951655784763,
+        22182326540581
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "negative",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "negative",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "negative",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics9_shell_stage_release_right",
+      "source_integer": 23514886601567,
+      "target_integer": 22951655784763,
+      "macro_fraction_strings": [
+        "163/167"
+      ],
+      "applied_fraction_strings": [
+        "163/167"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        23514886601567,
+        22951655784763
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "negative",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "negative",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics10_shell_probe_neutral",
+      "source_integer": 23191987258949,
+      "target_integer": 24253574138789,
+      "macro_fraction_strings": [
+        "167/163",
+        "197/193"
+      ],
+      "applied_fraction_strings": [
+        "167/163",
+        "197/193"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1
+      ],
+      "intermediate_integers": [
+        23191987258949,
+        23761115780641,
+        24253574138789
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "zero",
+          "R5": "positive",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics6_shell_refresh_left",
+      "source_integer": 23672650207321,
+      "target_integer": 23191987258949,
+      "macro_fraction_strings": [
+        "193/197"
+      ],
+      "applied_fraction_strings": [
+        "193/197"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        23672650207321,
+        23191987258949
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "positive",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics6_shell_refresh_right",
+      "source_integer": 22951655784763,
+      "target_integer": 23191987258949,
+      "macro_fraction_strings": [
+        "193/191"
+      ],
+      "applied_fraction_strings": [
+        "193/191"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        22951655784763,
+        23191987258949
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "negative",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics5_shell_to_interior_cleared",
+      "source_integer": 23191987258949,
+      "target_integer": 22117402872199,
+      "macro_fraction_strings": [
+        "181/179",
+        "199/211"
+      ],
+      "applied_fraction_strings": [
+        "181/179",
+        "199/211"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1
+      ],
+      "intermediate_integers": [
+        23191987258949,
+        23451115608211,
+        22117402872199
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "zero",
+          "R6": "negative"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics5_shell_to_interior_latched_left",
+      "source_integer": 23672650207321,
+      "target_integer": 22575794641571,
+      "macro_fraction_strings": [
+        "181/179",
+        "199/211"
+      ],
+      "applied_fraction_strings": [
+        "181/179",
+        "199/211"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1
+      ],
+      "intermediate_integers": [
+        23672650207321,
+        23937149092319,
+        22575794641571
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "positive",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "positive",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "positive",
+          "R6": "negative"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics5_shell_to_interior_latched_right",
+      "source_integer": 22951655784763,
+      "target_integer": 21888206987513,
+      "macro_fraction_strings": [
+        "181/179",
+        "199/211"
+      ],
+      "applied_fraction_strings": [
+        "181/179",
+        "199/211"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1
+      ],
+      "intermediate_integers": [
+        22951655784763,
+        23208098866157,
+        21888206987513
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "negative",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "negative",
+          "R6": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "negative",
+          "R6": "negative"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics13_contract_mid_detour_nn",
+      "source_integer": 22727506859983,
+      "target_integer": 20271785072681,
+      "macro_fraction_strings": [
+        "163/167",
+        "179/181",
+        "173/179",
+        "193/191",
+        "211/223"
+      ],
+      "applied_fraction_strings": [
+        "163/167",
+        "179/181",
+        "173/179",
+        "193/191",
+        "211/223"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "intermediate_integers": [
+        22727506859983,
+        22183135438187,
+        21938017919533,
+        21202665363571,
+        21424682801933,
+        20271785072681
+      ],
+      "intermediate_states": [
+        {
+          "R1": "negative",
+          "R2": "negative",
+          "R3": "positive",
+          "R4": "positive",
+          "R5": "negative",
+          "R6": "positive"
+        },
+        {
+          "R1": "negative",
+          "R2": "negative",
+          "R3": "zero",
+          "R4": "positive",
+          "R5": "negative",
+          "R6": "positive"
+        },
+        {
+          "R1": "negative",
+          "R2": "negative",
+          "R3": "zero",
+          "R4": "zero",
+          "R5": "negative",
+          "R6": "positive"
+        },
+        {
+          "R1": "negative",
+          "R2": "negative",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "negative",
+          "R6": "positive"
+        },
+        {
+          "R1": "negative",
+          "R2": "negative",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "positive"
+        },
+        {
+          "R1": "negative",
+          "R2": "negative",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics14_shell_high_rearm",
+      "source_integer": 21067870145999,
+      "target_integer": 21303265343161,
+      "macro_fraction_strings": [
+        "181/179"
+      ],
+      "applied_fraction_strings": [
+        "181/179"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        21067870145999,
+        21303265343161
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "negative",
+          "R4": "zero",
+          "R5": "zero",
+          "R6": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "negative",
+          "R4": "positive",
+          "R5": "zero",
+          "R6": "negative"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics15_boundary_crossfeed_neutral",
+      "source_integer": 20271785072681,
+      "target_integer": 22021867237229,
+      "macro_fraction_strings": [
+        "149/139",
+        "151/149"
+      ],
+      "applied_fraction_strings": [
+        "149/139",
+        "151/149"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1
+      ],
+      "intermediate_integers": [
+        20271785072681,
+        21730186876471,
+        22021867237229
+      ],
+      "intermediate_states": [
+        {
+          "R1": "negative",
+          "R2": "negative",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "negative",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "zero"
+        },
+        {
+          "R1": "negative",
+          "R2": "positive",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics16_boundary_discharge_high",
+      "source_integer": 20361684554513,
+      "target_integer": 22414602211163,
+      "macro_fraction_strings": [
+        "163/157",
+        "211/199"
+      ],
+      "applied_fraction_strings": [
+        "163/157",
+        "211/199"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1
+      ],
+      "intermediate_integers": [
+        20361684554513,
+        21139838104367,
+        22414602211163
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "negative",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics17_boundary_handoff_left_to_mid",
+      "source_integer": 22478278993441,
+      "target_integer": 22180553443859,
+      "macro_fraction_strings": [
+        "149/151"
+      ],
+      "applied_fraction_strings": [
+        "149/151"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        22478278993441,
+        22180553443859
+      ],
+      "intermediate_states": [
+        {
+          "R1": "negative",
+          "R2": "positive",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "positive",
+          "R6": "zero"
+        },
+        {
+          "R1": "negative",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "positive",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics18_boundary_discharge_mid",
+      "source_integer": 21658607137603,
+      "target_integer": 22414602211163,
+      "macro_fraction_strings": [
+        "163/167",
+        "211/199"
+      ],
+      "applied_fraction_strings": [
+        "163/167",
+        "211/199"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1
+      ],
+      "intermediate_integers": [
+        21658607137603,
+        21139838104367,
+        22414602211163
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics19_tail_handoff_n0_to_nn",
+      "source_integer": 25127895923051,
+      "target_integer": 23441459955061,
+      "macro_fraction_strings": [
+        "139/149"
+      ],
+      "applied_fraction_strings": [
+        "139/149"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        25127895923051,
+        23441459955061
+      ],
+      "intermediate_states": [
+        {
+          "R1": "negative",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "positive",
+          "R5": "positive",
+          "R6": "positive"
+        },
+        {
+          "R1": "negative",
+          "R2": "negative",
+          "R3": "positive",
+          "R4": "positive",
+          "R5": "positive",
+          "R6": "positive"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "physics20_boundary_positive_discharge",
+      "source_integer": 23689366317959,
+      "target_integer": 22414602211163,
+      "macro_fraction_strings": [
+        "211/223"
+      ],
+      "applied_fraction_strings": [
+        "211/223"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        23689366317959,
+        22414602211163
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative",
+          "R5": "zero",
+          "R6": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "classification": "mismatch_requires_fallback",
+  "correlation": 0.3382888652420203,
+  "dashi_energy_end": 8388676.0,
+  "dashi_energy_start": 131072.0,
+  "dashi_histogram": {
+    "-1": 58,
+    "0": 140,
+    "1": 58
+  },
+  "dashi_method": "quantized_position_velocity_probe",
+  "dashi_nonzero_fraction": 0.453125,
+  "dashi_runtime_seconds": 0.003576267001335509,
+  "decision": "fallback_to_heat",
+  "dt": 0.0015625,
+  "dx": 0.00390625,
+  "family": "wave",
+  "grid_size": 256,
+  "normalized_l2_error": 1.9278086513292931,
+  "normalized_linf_error": 2.5090312338476264,
+  "notes": [
+    "wave probe looks structurally mismatched to the current dissipative/quantized local dynamics",
+    "wave benchmark uses a transparent NumPy reference and a balanced-ternary position/velocity probe, not a theorem-grade matched solver"
+  ],
+  "recommended_next_family": "heat",
+  "reference_energy_end": 2981.787168760846,
+  "reference_energy_start": 2980.2370626801717,
+  "reference_runtime_seconds": 0.0025423110055271536,
+  "runtime_ratio_dashi_over_reference": 1.4066992565270207,
+  "steps": 96,
+  "threshold": 0.2
+}

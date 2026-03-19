@@ -4,6 +4,10 @@
 
 Build an executable bridge from DASHI-style balanced ternary dynamics to FRACTRAN, then use that bridge to run controlled experiments about reachability, basin structure, and translation invariants.
 
+In parallel, run a separate solver-oriented probe lane that tests whether
+DASHI-style local dynamics can compete with a named-equation reference solver on
+a matched discrete problem.
+
 ## Problem Statement
 
 The project is not to "argue that DASHI resembles FRACTRAN." It is to encode a concrete subset of DASHI behavior into FRACTRAN-compatible state transitions, then measure what survives and what fails.
@@ -16,6 +20,7 @@ In scope:
 - explicit signed-state encodings suitable for balanced ternary behavior
 - parity checks between baseline FRACTRAN execution and alternative exponent-vector execution paths
 - experiments on fixed-prime reachability and the 10-basin obstruction
+- named-equation probe comparisons between transparent NumPy references and DASHI-style local dynamics
 - reuse of external GPU infrastructure from `../dashiCORE` once CPU baselines are stable
 
 Out of scope for the current phase:
@@ -38,6 +43,7 @@ Out of scope for the current phase:
 3. CPU benchmark artifacts are reproducible and stored in-repo.
 4. The exponent-vector engine matches baseline outputs on selected workloads.
 5. The next CPU optimization target is chosen using measured results, not guesswork.
+6. The repo reaches a decision-quality answer about whether its strongest near-term value is solver speed, qualitative dynamics, or proof-carrying execution.
 
 ## Non-Goals
 

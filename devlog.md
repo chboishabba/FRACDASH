@@ -1,5 +1,118 @@
 # FRACDASH Devlog
 
+## 2026-03-20
+
+- Added `scripts/named_equation_probe.py` as the first solver-oriented decision harness. The repo now explicitly splits into:
+  - a solver lane, where Python DASHI-style local dynamics are compared to a transparent named-equation reference implementation
+  - a guarantee lane, where signed IR plus paired-prime FRACTRAN realization carries the deterministic/auditable execution story
+- Ran the first `wave` / Schrödinger-like stress test. Result: structural mismatch. The current balanced-ternary local dynamics are too dissipative/quantized to look like a good direct solver path for an oscillatory target.
+- Fell back to `heat` / diffusion and took one extra solver-speed shot.
+- Improved the `heat` path by replacing the earlier saturating sign-of-laplacian rule with a quantized explicit diffusion step. This materially improved the fit:
+  - `classification = qualitative_only`
+  - `normalized_l2_error ~ 0.456`
+  - `correlation ~ 0.917`
+  - runtime is still at parity/slightly slower than the transparent NumPy reference rather than clearly better
+- Captured the new solver artifacts:
+  - `benchmarks/results/2026-03-20-equation-probe-wave.json`
+  - `benchmarks/results/2026-03-20-equation-probe-heat.json`
+  - `benchmarks/results/2026-03-20-equation-probe-summary.md`
+- Decision: the extra solver shot was worth taking, but it still does not justify a same-accuracy speed claim. The near-term project win remains proof-carrying / auditable execution, with `heat` retained only as the least-bad named-equation comparison family if the solver lane is revisited later.
+- Tightened `formalism/GenericMacroBridge.agda` slightly further by exposing class-indexed numeric bound extractors (`bridgeStrictContractionStep`, `bridgeTransmutationBound`) without forcing the full residual theorem surface out of `formalism/BridgeInstances.agda`.
+
+## 2026-03-19
+
+- Reframed the bridge explicitly as a three-layer compiler problem: source DASHI / AGDA semantics -> signed exponent IR -> FRACTRAN realization.
+- Added `formalism/AgdaToFracdashBridge.agda` as the local scaffold for `TransitionSystem`, `Compiler`, `Refinement`, `ForwardSimulation`, `StepDelta`, and `FractranRealization`.
+- Added `formalism/Physics1StepDelta.agda` as the first concrete gold slice over `physics1`; it now proves exact signed deltas, deterministic `Delta -> List UnitDelta` normalization, and a symbolic paired-prime macro realization.
+- The `physics1` proof surface already exposed a real IR fact: the bridge needs genuine magnitude-2 deltas (for example the `contract-mid` and `boundary-reset` moves), so the semantic target is a signed `Z^n` lattice action rather than a unit-step-only register machine.
+- Added `scripts/export_physics1_deltas.py` and captured `benchmarks/results/2026-03-19-physics1-deltas.json` as the first reproducible Python-oracle artifact for the Agda bridge proofs.
+- Extended `scripts/export_physics1_deltas.py` so the oracle artifact now records the fixed prime basis, source/target encoded integers, and the ordered FRACTRAN macro fractions implied by normalization.
+- Added `scripts/check_physics1_macro_soundness.py` and captured `benchmarks/results/2026-03-19-physics1-macro-soundness.json`; standard ordered FRACTRAN execution now matches the normalized signed-IR action on all seven `physics1` rules.
+- Added `scripts/check_physics1_bridge_invariants.py` and captured `benchmarks/results/2026-03-19-physics1-bridge-invariants.json`; the first bridge-local invariant pass now holds on all seven `physics1` rules.
+- The checked quantities are intentionally bridge-local rather than interpretive:
+  - conserved: `R1/R2` source signature and paired-prime product remain fixed through all macro intermediates
+  - monotone: decoded residual signed-IR `L1` distance to the target state decreases by exactly `1` at each macro step
+- Tightened `formalism/AgdaToFracdashBridge.agda` so the FRACTRAN-realization surface now states a real macro-execution soundness theorem shape instead of a placeholder.
+- Extended `formalism/Physics1StepDelta.agda` with an explicit paired-prime `Y` state and an exact decode-back theorem, so `physics1` is now an explicit `X -> Z -> Y` gold slice rather than only an `X -> Z` one.
+- Started that `physics3` port on the 6-register carrier:
+  - added `scripts/export_physics3_deltas.py`
+  - added `scripts/check_physics3_macro_soundness.py`
+  - added `scripts/check_physics3_bridge_invariants.py`
+  - captured `benchmarks/results/2026-03-19-physics3-deltas.json`
+  - captured `benchmarks/results/2026-03-19-physics3-macro-soundness.json`
+- captured `benchmarks/results/2026-03-19-physics3-bridge-invariants.json`
+- Result: the `physics3` slice still supports direct exact delta extraction and ordered numeric macro realization on the Python side, and the same first bridge-local invariants now hold there too. The next hard gap is the formal Agda slice.
+- Added `formalism/Physics3StepDelta.agda` as the second concrete bridge slice over the 6-register `physics3` carrier; it now proves exact signed deltas, deterministic normalization, explicit paired-prime `Y` states, and exact decode-back after macro execution.
+- Verified `agda formalism/Physics3StepDelta.agda`, so `physics3` now matches `physics1` as a closed local `X -> Z -> Y` bridge slice rather than only a Python-validated candidate.
+- Promoted the duplicated Python execution path into a shared numeric macro layer:
+  - added `scripts/bridge_macro_common.py`
+  - added `scripts/bridge_macro_soundness.py`
+  - refactored the `physics1` and `physics3` delta-export and macro-soundness scripts onto those helpers
+- Added the first canonical bridge-core validator package:
+  - added `scripts/bridge_core_validators.py`
+  - added `scripts/check_bridge_core_validators.py`
+  - captured `benchmarks/results/2026-03-19-physics1-bridge-core-validators.json`
+  - captured `benchmarks/results/2026-03-19-physics3-bridge-core-validators.json`
+- Result: both closed slices now share one Python execution/validation layer, and the emitted FRACTRAN traces are checked by the same three bridge-core validators: conservation, L1/Lyapunov descent, and reversibility/irreversibility classification.
+- Added `formalism/GenericMacroBridge.agda` as the reusable Agda execution layer above the shared Python macro path.
+- Refactored `formalism/Physics1StepDelta.agda` and `formalism/Physics3StepDelta.agda` to instantiate that generic Agda layer instead of duplicating normalization and macro-realization scaffolding locally.
+- Verified that the Agda refactor did not change behavior: both slice modules still compile, and all Python macro-soundness / invariant / bridge-core validator checks still pass.
+- Strengthened the generic `Y` layer from a structural `WellFormedY` hook into a substantive paired-prime exclusivity invariant on both closed slices: per-coordinate prime-family membership is now explicit and preserved by realized unit execution.
+- Extended the shared bridge-core validator artifacts with terminal-basin counts and macro/execution/contraction histograms; the closed slices still classify exactly as `strictly_contracting`, but now expose a first bridge-local cost surface as well.
+- Strategic adjustment after that result: Python is now explicitly frozen as oracle/export/regression infrastructure unless a change directly reduces uncertainty in `X -> Z` or `Z -> Y`.
+- The main line is now:
+  - keep the generic Agda macro layer stable while adding cost/basin summaries
+  - only then widen the remaining families in batches
+- Started that widening on `physics15`:
+  - added `scripts/export_physics15_deltas.py`
+  - added `scripts/check_physics15_macro_soundness.py`
+  - added `scripts/check_physics15_bridge_invariants.py`
+  - extended `scripts/check_bridge_core_validators.py` to load `physics15`
+  - captured `benchmarks/results/2026-03-19-physics15-deltas.json`
+  - captured `benchmarks/results/2026-03-19-physics15-macro-soundness.json`
+  - captured `benchmarks/results/2026-03-19-physics15-bridge-invariants.json`
+  - captured `benchmarks/results/2026-03-19-physics15-bridge-core-validators.json`
+- Result: `physics15` keeps exact numeric macro soundness (`29/29`) and remains uniformly `strictly_contracting`, but the old `R1/R2` conservation package breaks on exactly one rule, `physics15_boundary_crossfeed_neutral`, which flips `R2 : negative -> positive`.
+- Added a bridge-wide contracting/transmuting classifier to the shared validator layer and regenerated the current artifacts:
+  - `physics1`: `7/7 conservative_contracting`
+  - `physics3`: `12/12 conservative_contracting`
+  - `physics15`: `28 conservative_contracting + 1 transmuting_contracting`
+  - all three current slices remain `regime-valid` under strict contraction plus bounded transmutation
+- Widened that same classifier pipeline through Batch C with shared family scripts:
+  - added `scripts/export_physics_family_deltas.py`
+  - added `scripts/check_physics_family_macro_soundness.py`
+  - added `scripts/check_physics_family_bridge_invariants.py`
+  - added `scripts/build_bridge_regime_summary.py`
+- Captured the full Batch C artifact stack for `physics19`, `physics20`, `physics21`, and `physics22`, including delta exports, macro-soundness reports, bridge-invariant reports, and bridge-core validator reports.
+- Captured the canonical cross-slice regime summaries at:
+  - `benchmarks/results/2026-03-19-bridge-regime-summary.json`
+  - `benchmarks/results/2026-03-19-bridge-regime-summary.md`
+- Result: `physics15_boundary_crossfeed_neutral` is not a one-off anomaly. Batch C now stabilizes a widened but still regime-valid bridge class:
+  - `physics15`: `28 conservative_contracting + 1 transmuting_contracting`
+  - `physics19`: `30 conservative_contracting + 3 transmuting_contracting`
+  - `physics20`: `31 conservative_contracting + 3 transmuting_contracting`
+  - `physics21`: `32 conservative_contracting + 3 transmuting_contracting`
+  - `physics22`: `33 conservative_contracting + 3 transmuting_contracting`
+- The stable widened transmuting rules are currently:
+  - `physics15_boundary_crossfeed_neutral`
+  - `physics17_boundary_handoff_left_to_mid`
+  - `physics19_tail_handoff_n0_to_nn`
+- Every widened Batch C slice remains uniformly `strictly_contracting`, preserves exact decode-back and paired-prime exclusivity, and stays `regime-valid` under bounded transmutation, so the next hard move is formalizing `physics15` as the first widened Agda slice rather than doing more Python widening.
+- Added `formalism/Physics15StepDelta.agda` as that first widened Agda slice. It mirrors the `physics3` closure pattern over the full 29-rule `physics15` export surface:
+  - exact source-step constructors and literal `deltaOf`
+  - exact `delta-correct`
+  - deterministic unit-step normalization
+  - paired-prime `Y` realization with exact decode-back
+  - a first local conservative/transmuting regime witness on top of the closed slice
+- Verified `agda formalism/Physics15StepDelta.agda`, so the remaining hard bridge gap is no longer the first widened slice itself; it is the generic bounded-transmutation / regime-valid theorem above `physics1`, `physics3`, and `physics15`.
+- Added that generic theorem surface to `formalism/GenericMacroBridge.agda` as `RegimeValidBridge`, then re-verified the generic bridge layer plus all three closed slices. The remaining hard work is now instantiation/proof, not interface design.
+- Added `formalism/BridgeInstances.agda` as the thin master instantiation layer. It keeps the three slice files separate as concrete witnesses and states the current bridge family once, which is the right amount of unification at this stage.
+- Tightened that master layer further so it now carries exact per-slice `slice-regime-valid` witnesses over source-step constructors rather than relying only on the weaker shared `δ`-level bridge instances.
+- Tightened the shared theorem surface one step further: `RegimeValidBridge` now uses explicit class-indexed contraction/transmutation witness types instead of raw `⊤`, and `BridgeInstances.agda` instantiates those witnesses concretely for the current three-slice family.
+- Tightened the master theorem layer numerically: `formalism/BridgeInstances.agda` now proves slice-dispatched target-relative residual decrease and bounded `R1/R2` transmutation over `physics1`, `physics3`, and `physics15`, while keeping the concrete slice files separate.
+- Froze the current layering decision: keep `formalism/GenericMacroBridge.agda` as the structural/class-indexed contract and keep the stronger numeric residual/transmutation inequalities in `formalism/BridgeInstances.agda` until one more widened Batch C Agda slice confirms the same numeric package unchanged.
+- Pushed easier bridge support work out of the critical path; another agent can handle artifact hygiene, status tables, and similar support tasks while the main line stays on the hard proof/realization work.
+
 ## 2026-03-15
 
 - Decided to upgrade the physics lane from generic graph-dynamical diagnostics to a V1 mixed exact/statistical target suite with direct physics-facing surrogate laws.

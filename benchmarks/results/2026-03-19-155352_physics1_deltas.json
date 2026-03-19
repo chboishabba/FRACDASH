@@ -1,0 +1,431 @@
+{
+  "summary": {
+    "template_set": "physics1",
+    "registers": [
+      "R1",
+      "R2",
+      "R3",
+      "R4"
+    ],
+    "record_count": 7,
+    "role": "python_oracle_for_delta_extraction",
+    "signed_state_primes": {
+      "R1": {
+        "negative": 5,
+        "zero": 2,
+        "positive": 3
+      },
+      "R2": {
+        "negative": 13,
+        "zero": 7,
+        "positive": 11
+      },
+      "R3": {
+        "negative": 23,
+        "zero": 17,
+        "positive": 19
+      },
+      "R4": {
+        "negative": 37,
+        "zero": 29,
+        "positive": 31
+      }
+    },
+    "macro_encoding": "three-state-prime swap per register",
+    "macro_ordering": "register order R1,R2,R3,R4 with repeated unit steps in that order"
+  },
+  "records": [
+    {
+      "name": "physics_join_from_left_high",
+      "module": "UFTC_Lattice.C_XOR",
+      "description": "Materialize high effective severity from the left code.",
+      "source_state": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero"
+      },
+      "target_state": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "negative",
+        "R4": "zero"
+      },
+      "source_vector": [
+        -1,
+        0,
+        0,
+        0
+      ],
+      "target_vector": [
+        -1,
+        0,
+        -1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        -1,
+        0
+      ],
+      "fraction": "23/17",
+      "source_integer": 17255,
+      "target_integer": 23345,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          -1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "23/17"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics_join_from_right_high",
+      "module": "UFTC_Lattice.C_XOR",
+      "description": "Materialize high effective severity from the right code.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "negative",
+        "R4": "zero"
+      },
+      "source_vector": [
+        0,
+        -1,
+        0,
+        0
+      ],
+      "target_vector": [
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        -1,
+        0
+      ],
+      "fraction": "23/17",
+      "source_integer": 12818,
+      "target_integer": 17342,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          -1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "23/17"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics_join_from_left_mid",
+      "module": "UFTC_Lattice.C_XOR",
+      "description": "Materialize mid effective severity from the left code.",
+      "source_state": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero"
+      },
+      "target_state": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "zero"
+      },
+      "source_vector": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "target_vector": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "fraction": "19/17",
+      "source_integer": 10353,
+      "target_integer": 11571,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "19/17"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics_join_from_right_mid",
+      "module": "UFTC_Lattice.C_XOR",
+      "description": "Materialize mid effective severity from the right code.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "positive",
+        "R4": "zero"
+      },
+      "source_vector": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "target_vector": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "fraction": "19/17",
+      "source_integer": 10846,
+      "target_integer": 12122,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "19/17"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics_contract_high",
+      "module": "Contraction.StrictContraction",
+      "description": "Interior contraction lowers high severity to mid.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "negative",
+        "R4": "positive"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "positive"
+      },
+      "source_vector": [
+        0,
+        0,
+        -1,
+        1
+      ],
+      "target_vector": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "fraction": "19/23",
+      "source_integer": 9982,
+      "target_integer": 8246,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 2,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "17/23",
+        "19/17"
+      ],
+      "macro_length": 2
+    },
+    {
+      "name": "physics_contract_mid",
+      "module": "Contraction.StrictContraction",
+      "description": "Interior contraction lowers mid severity to zero and reaches boundary.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "positive"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative"
+      },
+      "source_vector": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        -1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        -1,
+        -2
+      ],
+      "fraction": "629/589",
+      "source_integer": 8246,
+      "target_integer": 8806,
+      "delta_norm_1": 3,
+      "delta_norm_inf": 2,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          0,
+          -1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "17/19",
+        "29/31",
+        "37/29"
+      ],
+      "macro_length": 3
+    },
+    {
+      "name": "physics_boundary_reset",
+      "module": "UFTC_Lattice.ConeInteriorPreserved",
+      "description": "Boundary reset re-arms the local interior for another relaxation pass.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "positive"
+      },
+      "source_vector": [
+        0,
+        0,
+        0,
+        -1
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "fraction": "31/37",
+      "source_integer": 8806,
+      "target_integer": 7378,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 2,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "29/37",
+        "31/29"
+      ],
+      "macro_length": 2
+    }
+  ]
+}

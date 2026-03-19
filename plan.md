@@ -98,32 +98,120 @@ Current direction:
 - the broader routing matrix now supports a first conservative rule: CPU for `batch_size <= 4`, GPU for `batch_size >= 128`, with a measured middle region that already favors GPU for `primegame_small` at `batch_size = 32`, `steps >= 8`
 - the `paper_smoke` matrix matches the same threshold pattern (GPU at `batch_size = 32`, `steps >= 8`) with a narrow `measure-more` band
 
+### Milestone G: Bridge correctness formalization
+
+Status: active
+
+- state the AGDAS -> FRACDASH bridge as a source/target semantics problem
+- define compile / decode / abstraction maps explicitly
+- record the simulation/refinement obligation actually being claimed
+- record quotient assumptions for reduced carriers and template families
+- separate bridge-correctness obligations from downstream physics interpretation
+
+Current direction:
+
+- treat the remaining math as structured compiler-correctness math, not as
+  moonshine/QFT interpretation work
+- keep prime-exponent reachability, Lyapunov descent, contraction preservation,
+  decoder validity, and robustness in the core bridge package
+- keep root-system / curvature / QFT language downstream until the bridge
+  package is tighter
+
+### Milestone H: Physics1 Numeric Macro Realization
+
+Status: active
+
+- complete the first real `X -> Z -> Y` bridge slice on `physics1`
+- keep the signed exponent-vector IR as the semantic surface
+- turn the symbolic paired-prime macro layer into a concrete numeric FRACTRAN program
+- state and check the first real signed-IR -> FRACTRAN soundness law
+
+Current direction:
+
+- treat `physics1` as the gold slice for hard bridge work before widening to later template families
+- keep the exact `StepDelta` proof fixed and build the numeric realization beneath it
+- preserve macro-step execution as the soundness target; do not collapse back to single-fraction semantics
+- use the saved Python oracle artifact as regression input, but keep Agda / bridge semantics as the certification surface
+- defer `physics3`, `physics15`, `physics19`, `physics20`, `physics21`, and `physics22` bridge-proof expansion until `physics1` has a checked numeric realization
+
+### Milestone I: Physics3 Formal Closure
+
+Status: complete
+
+- close `physics3` as the second full bridge slice
+- keep Python limited to delta export, macro checks, and regression fixtures
+- prove the bridge generalizes beyond `physics1` before widening further
+
+Current direction:
+
+- `physics3` now has exact delta export, numeric macro soundness, bridge-local invariants, and a compiled formal `StepDelta` / explicit `X -> Z -> Y` package
+- the bridge has now been closed on two concrete slices, which is enough to move the hard path into generic macro realization work rather than more slice-local proving first
+- the next success condition is a reusable macro FRACTRAN contract shared cleanly by both `physics1` and `physics3`
+
+### Milestone J: Generic Macro FRACTRAN Layer
+
+Status: complete
+
+- promote macro realization from slice-local code into bridge-generic machinery
+- add a reusable Agda execution contract above the now-shared Python macro layer
+- fix the reusable execution contract for `UnitDelta`, normalization, exclusivity, and `realizeUnit`
+- benchmark the FRACTRAN-side cost surface once the generic path is stable
+
 ## Immediate Next Actions
 
-1. Keep the `compiled` engine as the stable exact-step CPU baseline while monitoring parity/artifacts.
-2. Record the deterministic GPU routing rule derived from `benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json` and use it as the gating condition for future host/GPU work.
-3. Once the routing policy is locked, upstream any reusable helper/adapter plumbing back into `../dashiCORE` while keeping the FRACTRAN-specific state layout and parity logic local to FRACDASH.
-4. Continue referencing the `../dashiCORE` Vulkan helpers via `gpu/dashicore_bridge.py` and the adapter passthrough smoke path.
-5. Preserve the exact vs. at-least checkpoint semantics and keep the `cycle` engine pegged as the at-least sentinel.
-6. Implement the full AGDAS-to-FRACTRAN physics bridge from the AGDA semantics in `../dashi_agda` into a typed transition IR before broader CORE integration work. The primary route is now FRACDASH-side mapping/templates, not edits to the `.agda` sources: `scripts/agdas_bridge.py` emits the wave-1 templates, and `scripts/toy_dashi_transitions.py` can execute them via `--agdas-templates`.
-7. Resume Phase 2 CORE experiments with that bridge and keep the toy transition set as the deterministic safety gate. The parser remains available in `scripts/agdas_bridge.py` for optional source-coupled extraction, but the main execution path no longer depends on marker availability in the `.agda` tree.
-8. Prioritize the physics-facing bridge over deeper Monster compression unless the Monster path starts producing equally strong structure. `physics1` and `physics2` now provide the most relevant James-facing signal.
-9. Run timing regression checks between matrix runs with `scripts/check_timing_regression.py` after material CPU changes.
-10. Keep the Monster 10-walk lane on locked canonical semantics (`MONSTER10WALK_CANONICAL.md`) and run `scripts/freeze_monster10walk_canonical.py --strict-lock` as a regression gate whenever physics templates change.
-11. Keep canonical edge semantics transition-witnessed by the required template set (`physics8|physics9`) instead of sequence policy alone.
-12. Treat `monster/MonsterLean` theorem claims file-by-file by quarantine status; only `closed_for_local_claim_reuse` files may be cited as local proof support.
-13. Prioritize closure tracking for `MonsterWalk.lean`, `MonsterWalkPrimes.lean`, `MonsterWalkRings.lean`, and `BottPeriodicity.lean` via the quarantine report queue.
-14. Treat the physics lane as a discrete-law measurement problem first: keep exact gates for source-charge conservation, source-parity preservation, locality bounds, forward-cone bounds, and cycle-distance nonincrease, then layer statistical geometry surrogates (perturbation stability, geodesic-like flow, curvature-like concentration, defect attraction) on top of the same artifacts.
-15. Continue the template lane only against the corrected cycle-reachable geometry surrogate, not the earlier `distance_to_cycle = -1` biased version.
-16. Widen the analyzer with explicit observable surrogates so the next phase can talk about shell/interior occupancy, re-entry, and source-defect coupling directly rather than only through candidate-law scores.
-17. Keep the hard lock anchored to `physics2..physics8`; treat `physics22` as the active exploratory 6-register baseline (direct boundary→interior re-entry, V1 laws intact, strong geodesic-like signal).
-18. Split the physics lane explicitly:
-   - `physics22` line on the current 6-register carrier (active exploratory baseline).
-   - `carrier8_physics1` line on the 8-register physics-local carrier (R7 return memory, R8 transport/debt), still exploratory.
-19. Promote the 6-register branch for exploration and reporting; keep the 8-register branch excluded from the hard lock until it meets locality/forward-cone and geometry/perturbation targets under the wider carrier.
-20. Treat `../dashi_agda` as the authoritative formal source for the canonical physics-closure semantics, but keep FRACDASH claims bounded to the currently extracted/executable subset.
-21. Maintain an explicit AGDA closure intake artifact so future bridge work is driven by named upstream modules and audit surfaces instead of paraphrased memory.
-22. Use the refreshed formalism intake map to drive the next bulk wiring pass: Stage C/minimal-credible adapters, MDL/Fejér + seam certificates, observable boundary, and known-limits QFT bridge need explicit hooks in the invariant/observable reporters and template provenance.
+### Hard Track
+
+1. Keep Python frozen at oracle/export/regression scope unless a change directly reduces uncertainty in `X -> Z` or `Z -> Y`.
+2. Treat the widened Batch C bridge family as the current stable local claim:
+   - `physics15..physics22` remain `regime-valid`
+   - the transmuting subregime is stable rather than a one-off
+   - the canonical summary artifact is `benchmarks/results/2026-03-19-bridge-regime-summary.{json,md}`
+3. Keep `formalism/BridgeInstances.agda` as the stronger numeric theorem layer for now, but preserve the partial generic lift already landed in `formalism/GenericMacroBridge.agda`:
+   - class-indexed contraction/transmutation witness types stay generic
+   - class-indexed numeric bound extractors now also stay generic
+   - slice-relative residual theorems stay at the master layer unless another family proves they are truly generic
+4. Promote the stable bridge claim consistently across repo summaries and downstream notes:
+   - exact paired-prime macro realization
+   - well-formedness preservation
+   - strict contraction
+   - bounded transmutation on widened slices
+5. Shift the main engineering line toward proof-carrying consolidation:
+   - source/target semantics packaging
+   - named refinement obligations
+   - decoder-validity / robustness statements
+   - bridge-family theorem wording suitable for reuse
+6. Keep the bridge-core validator package fixed as the shared observational layer:
+   - conservation where applicable
+   - L1 / Lyapunov descent
+   - reversibility / irreversibility classification
+   - terminal-basin and contraction-profile summaries
+7. Treat the solver lane as decision-complete for now:
+   - `wave` is structurally mismatched
+   - `heat` is the least-bad fallback and only `qualitative_only`
+   - do not spend more main-line effort on solver-speed claims unless a later matched-grid heat comparison is explicitly resumed
+8. Use interpretation work downstream of the stable bridge claim rather than as a replacement for it.
+
+### Delegated Support Track
+
+1. Add normalization and macro metadata to the saved `physics1` oracle artifact so macro length and unit-step ordering are reproducible.
+2. Keep the `compiled` engine as the stable exact-step CPU baseline while monitoring parity/artifacts.
+3. Record the deterministic GPU routing rule derived from `benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json` and use it as the gating condition for future host/GPU work.
+4. Once the routing policy is locked, upstream any reusable helper/adapter plumbing back into `../dashiCORE` while keeping the FRACTRAN-specific state layout and parity logic local to FRACDASH.
+5. Continue referencing the `../dashiCORE` Vulkan helpers via `gpu/dashicore_bridge.py` and the adapter passthrough smoke path.
+6. Preserve the exact vs. at-least checkpoint semantics and keep the `cycle` engine pegged as the at-least sentinel.
+7. Keep bridge-oriented summaries, artifact tables, solver-probe notes, and status docs synchronized while the hard track lands.
+
+### Bridge Expansion Order
+
+1. `physics1`
+2. `physics3`
+3. Batch A: `physics4..physics8`
+4. Batch B: `physics9..physics13`
+5. Batch C: `physics15`, `physics19`, `physics20`, `physics21`, `physics22`
+6. Batch D: `carrier8_physics1`, `carrier8_physics2`
+
+Hard-track rule:
+- do not widen beyond the current item until the previous family or batch has exact `StepDelta`, numeric macro realization, and checked invariant coverage
 
 ## Phase 2 Experiment Work
 

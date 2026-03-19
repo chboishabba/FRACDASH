@@ -1,0 +1,918 @@
+{
+  "summary": {
+    "template_set": "physics3",
+    "registers": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "record_count": 12,
+    "role": "python_oracle_for_delta_extraction",
+    "signed_state_primes": {
+      "R1": {
+        "negative": 127,
+        "zero": 131,
+        "positive": 137
+      },
+      "R2": {
+        "negative": 139,
+        "zero": 149,
+        "positive": 151
+      },
+      "R3": {
+        "negative": 157,
+        "zero": 163,
+        "positive": 167
+      },
+      "R4": {
+        "negative": 173,
+        "zero": 179,
+        "positive": 181
+      },
+      "R5": {
+        "negative": 191,
+        "zero": 193,
+        "positive": 197
+      },
+      "R6": {
+        "negative": 199,
+        "zero": 211,
+        "positive": 223
+      }
+    },
+    "macro_encoding": "three-state-prime swap per register",
+    "macro_ordering": "register order R1,R2,R3,R4,R5,R6 with repeated unit steps in that order"
+  },
+  "records": [
+    {
+      "name": "physics2_scan_left_high",
+      "module": "DASHI.Algebra.PhysicsSignature.scan",
+      "description": "Latch left-dominant scan from a high left source.",
+      "source_state": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "source_vector": [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "target_vector": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "fraction": "197/193",
+      "source_integer": 22483834976233,
+      "target_integer": 22949821193357,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "197/193"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics2_scan_left_mid",
+      "module": "DASHI.Algebra.PhysicsSignature.scan",
+      "description": "Latch left-dominant scan from a mid left source.",
+      "source_state": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "source_vector": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "target_vector": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "fraction": "197/193",
+      "source_integer": 24254215683023,
+      "target_integer": 24756893728267,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "197/193"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics2_scan_right_high",
+      "module": "DASHI.Algebra.PhysicsSignature.scan",
+      "description": "Latch right-dominant scan from a high right source.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "target_vector": [
+        0,
+        -1,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "fraction": "191/193",
+      "source_integer": 21635478046939,
+      "target_integer": 21411276201893,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "191/193"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics2_scan_right_mid",
+      "module": "DASHI.Algebra.PhysicsSignature.scan",
+      "description": "Latch right-dominant scan from a mid right source.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "target_vector": [
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "fraction": "191/193",
+      "source_integer": 23503289101351,
+      "target_integer": 23259731701337,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "191/193"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics2_join_left_high",
+      "module": "UFTC_Lattice.C_XOR",
+      "description": "Materialize high severity from a latched left source.",
+      "source_state": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "negative",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "source_vector": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        -1
+      ],
+      "target_vector": [
+        -1,
+        0,
+        -1,
+        0,
+        1,
+        -1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ],
+      "fraction": "157/163",
+      "source_integer": 21644618092313,
+      "target_integer": 20847883684007,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "157/163"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics2_join_right_high",
+      "module": "UFTC_Lattice.C_XOR",
+      "description": "Materialize high severity from a latched right source.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "negative",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "source_vector": [
+        0,
+        -1,
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "target_vector": [
+        0,
+        -1,
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ],
+      "fraction": "157/163",
+      "source_integer": 20193573289937,
+      "target_integer": 19450251573743,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "157/163"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics2_join_left_mid",
+      "module": "UFTC_Lattice.C_XOR",
+      "description": "Materialize mid severity from a latched left source and advance the action phase.",
+      "source_state": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "positive"
+      },
+      "source_vector": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        -1
+      ],
+      "target_vector": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        2
+      ],
+      "fraction": "37241/32437",
+      "source_integer": 23348918729503,
+      "target_integer": 26806951395179,
+      "delta_norm_1": 3,
+      "delta_norm_inf": 2,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "167/163",
+        "211/199",
+        "223/211"
+      ],
+      "macro_length": 3
+    },
+    {
+      "name": "physics2_join_right_mid",
+      "module": "UFTC_Lattice.C_XOR",
+      "description": "Materialize mid severity from a latched right source and advance the action phase.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "positive"
+      },
+      "source_vector": [
+        0,
+        1,
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "target_vector": [
+        0,
+        1,
+        1,
+        0,
+        -1,
+        1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        2
+      ],
+      "fraction": "37241/32437",
+      "source_integer": 21936903358133,
+      "target_integer": 25185813051769,
+      "delta_norm_1": 3,
+      "delta_norm_inf": 2,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "167/163",
+        "211/199",
+        "223/211"
+      ],
+      "macro_length": 3
+    },
+    {
+      "name": "physics2_contract_high",
+      "module": "Contraction.StrictContraction",
+      "description": "Interior contraction lowers high severity to mid.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "negative",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "positive"
+      },
+      "source_vector": [
+        0,
+        0,
+        -1,
+        1,
+        0,
+        -1
+      ],
+      "target_vector": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        2
+      ],
+      "fraction": "37241/31243",
+      "source_integer": 21303265343161,
+      "target_integer": 25393044990707,
+      "delta_norm_1": 4,
+      "delta_norm_inf": 2,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "163/157",
+        "167/163",
+        "211/199",
+        "223/211"
+      ],
+      "macro_length": 4
+    },
+    {
+      "name": "physics2_contract_mid",
+      "module": "Contraction.StrictContraction",
+      "description": "Interior contraction lowers mid severity to zero and drops to the boundary.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "positive"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        -1,
+        -2,
+        0,
+        -1
+      ],
+      "fraction": "5949989/6740621",
+      "source_integer": 25393044990707,
+      "target_integer": 22414602211163,
+      "delta_norm_1": 4,
+      "delta_norm_inf": 2,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "163/167",
+        "179/181",
+        "173/179",
+        "211/223"
+      ],
+      "macro_length": 4
+    },
+    {
+      "name": "physics3_boundary_to_shell",
+      "module": "UFTC_Lattice.ConeInteriorPreserved",
+      "description": "Refine the coarse boundary reset into a latent shell step.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "fraction": "179/173",
+      "source_integer": 22414602211163,
+      "target_integer": 23191987258949,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "179/173"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics3_shell_to_interior",
+      "module": "UFTC_Lattice.ConeInteriorPreserved",
+      "description": "Re-arm the interior from the latent shell and clear the scan latch.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "source_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "fraction": "36019/37769",
+      "source_integer": 23191987258949,
+      "target_integer": 22117402872199,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "181/179",
+        "199/211"
+      ],
+      "macro_length": 2
+    }
+  ]
+}

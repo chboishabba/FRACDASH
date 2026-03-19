@@ -17,6 +17,47 @@ Secondary resolved conversation:
 - Resolution date: `2026-03-13`
 - Note: web view succeeded, but persistence back into `~/chat_archive.sqlite` timed out during the download step, so the archive copy may still lag the live thread.
 
+Supplemental resolved conversations on `2026-03-19`:
+
+- Title: `Quantum Computer in DASHI`
+- Online UUID: `69b8ae74-0628-839f-ba14-0693459f6f83`
+- Canonical thread ID: `65bba843349f781d7867537ceb18a65ced25d4c1`
+- Source used: `db`
+- Relevance: `adjacent, not canonical`
+- Main topics:
+  - treats DASHI as a contraction layer beneath a reversible or quantum-style shell
+  - sketches hybrid DASHI/quantum execution and wave-lift style semantics
+  - remains interpretive for FRACDASH until executable invariants or compiled transition data are attached
+
+- Title: `DASHI vs QFT`
+- Online UUID: `69bab071-8ddc-83a0-812d-5e14ed2485ca`
+- Canonical thread ID: `7803b5747fd32ec453c8142f21a960e31c84e90d`
+- Source used: `db`
+- Relevance: `adjacent, not canonical`
+- Main topics:
+  - frames RG flow and fixed-point language around DASHI contraction semantics
+  - proposes a `FixedPointCFT`-style module shape for perturbations near contractive fixed points
+  - is useful only as downstream interpretation scaffolding unless FRACDASH reproduces the structure as artifacts
+
+- Title: `ZKP/DASHI Formalism Sharing`
+- Online UUID: `69bab0b8-062c-839c-85b9-9d4dcdae7ee3`
+- Canonical thread ID: `1001eb5fde69406569a83e3def6552b1c2c649b1`
+- Source used: `db`
+- Relevance: `adjacent, not canonical`
+- Main topics:
+  - analyzes an external content-addressed semantic decomposition stack against DASHI-style formalism
+  - suggests possible ingest/provenance or multi-scale text analogies
+  - does not currently define FRACDASH experiment obligations
+
+Out-of-scope fetched conversations on `2026-03-19`:
+
+- `Stego with DCT and ECC` (`69b8b6d2-95e0-839f-a0e4-ad557778be5c`, canonical `73007c8071901b60eba4ec53a4ea6223bb048d43`)
+- `Branch · Stego with DCT and ECC` (`69b8c284-8b04-83a1-a85e-8853bc796f88`, canonical `124bb1a5e69f7846fac3d61bb3107c1b5ec26f43`)
+- `Embedding design for MDL` (`69baab50-cda4-839c-b7db-70b2d1b59f31`, canonical `11d8b420a1c60cc95c94b5006476e4ed9efc6de1`)
+- `Gödel-style Factorisation` (`69babc4d-0ce4-83a0-899a-674b5c2b4ce5`, canonical `ef37214f136b8494fca5f1143b99f4c9fea6c800`)
+
+These were fetched into the canonical archive for traceability but should not drive FRACDASH implementation or claims unless they later connect to a documented executable experiment.
+
 ## Current Project Truth
 
 FRACDASH is a fresh repo whose immediate purpose is to reimplement DASHI-style dynamics in FRACTRAN and evaluate the mathematical behavior experimentally.
@@ -31,6 +72,7 @@ The conversation sharpened these decisions:
 6. For execution speed, the current working assumption should be CPU-first. The fetched implementation thread did not identify a standard GPU FRACTRAN engine and instead pointed toward algorithmic acceleration such as cycle detection and fast-forwarding.
 7. The local repo now contains `fractran/`, which should be treated as the initial benchmark baseline and correctness reference for execution behavior.
 8. FRACDASH should reuse `../dashiCORE` Vulkan and GEMV infrastructure by reference where possible instead of cloning or copying those files into this repo.
+9. The missing formal math is now framed as bridge-correctness math for a structured dynamical-system compiler: source/target transition semantics, compile/decode maps, quotient obligations, invariant preservation, Lyapunov preservation, contraction preservation, decoder validity, and artifact-independence.
 
 ## High-Signal Notes From The Conversation
 
@@ -39,6 +81,10 @@ The conversation sharpened these decisions:
 - The likely translation problem is not just "encode transitions", but "encode signed transitions without losing the geometry."
 - Refreshed thread signal on `2026-03-14`: the basin-side story is now framed around two independent rank-4 diagnostics, namely longest monotone chain `4` and PCA effective dimension `4` on the `10 x 15` basin-prime matrix. For FRACDASH this strengthens one practical requirement: richer AGDAS/Monster bridge encodings should preserve nontrivial low-dimensional structure, not collapse into a nearly terminal toy compression.
 - Upstream-formalism decision on `2026-03-15`: `../dashi_agda` should now be treated as the authoritative formal source for the canonical physics-closure semantics, especially the closure/audit surfaces under `DASHI/Physics/Closure/`. FRACDASH still executes only a compressed subset of that formalism, so local docs and artifacts must distinguish upstream formal closure from local executable coverage explicitly.
+- Supplemental-thread triage on `2026-03-19`: quantum/QFT/CFT-style threads are now recorded as adjacent interpretation sources only. They can inform wording around fixed points, perturbations, or shell semantics, but they do not alter the FRACDASH canonical task list until translated into executable invariants, decode maps, or benchmarked transition systems.
+- Bridge-correctness reframing on `2026-03-19`: the core open question is no longer best stated as "does the physics interpretation look right?" but as "does the executable quotient/compilation preserve the intended semantics?" The required obligations are now explicitly split into source/target semantics, simulation/refinement, quotient invariants, prime-exponent transition geometry, Lyapunov/MDL monotonicity, ultrametric/contraction preservation, decoder correctness, and robustness under implementation-preserving perturbations.
+- Batch C bridge result on `2026-03-19`: the widened bridge pipeline now covers `physics15`, `physics19`, `physics20`, `physics21`, and `physics22` with saved delta, macro-soundness, invariant, and validator artifacts plus a canonical cross-slice regime summary at `benchmarks/results/2026-03-19-bridge-regime-summary.{json,md}`. The stable current class is no longer "strictly contracting and conservative" but "strictly contracting and regime-valid, with conservative and bounded-transmuting subregimes." The stable widened transmuting rules are currently `physics15_boundary_crossfeed_neutral`, `physics17_boundary_handoff_left_to_mid`, and `physics19_tail_handoff_n0_to_nn`. `formalism/Physics15StepDelta.agda`, `formalism/Physics19StepDelta.agda`, `formalism/Physics20StepDelta.agda`, `formalism/Physics21StepDelta.agda`, and `formalism/Physics22StepDelta.agda` now close the current widened Agda family, while `formalism/BridgeInstances.agda` carries the shared numeric theorem layer across `physics1`, `physics3`, `physics15`, `physics19`, `physics20`, `physics21`, and `physics22` unchanged. The next hard formal decision is no longer Batch C closure; it is whether to freeze that master-layer numeric contract as the stable bridge-family theorem or lift parts of it upward into `formalism/GenericMacroBridge.agda`.
+- Solver-track decision on `2026-03-20`: the repo now explicitly runs a dual track. Python remains the equation-probe/benchmark layer; FRACTRAN remains the deterministic/auditable bridge-execution layer. The first named-equation stress test lives in `scripts/named_equation_probe.py` with saved artifacts at `benchmarks/results/2026-03-20-equation-probe-{wave,heat}.json`. Result: `wave` is structurally mismatched and falls back to `heat`; one extra `heat` shot using a quantized explicit diffusion step improves the fit to `qualitative_only` (`normalized_l2_error ~ 0.456`, `correlation ~ 0.917`) but still does not justify a same-accuracy speed claim. The near-term project win should therefore be treated as proof-carrying / auditable execution first, with `heat` retained only as the least-bad named-equation comparison family if the solver lane is revisited.
 - A suggested experiment path was:
   - build a basin graph
   - encode DASHI transitions as FRACTRAN rules

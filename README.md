@@ -9,6 +9,11 @@ The current project stance is strict:
 - keep claims about basin structure, geometry, and degeneracy at the level the repo can actually support
 - prefer CPU-first measurement and reproducible artifacts before any GPU work
 
+The repo is now running two coordinated tracks:
+
+- a **solver track**, where Python DASHI-style local dynamics are compared against named-equation reference implementations
+- a **guarantee track**, where signed IR plus paired-prime FRACTRAN realization provides deterministic, auditable, proof-carrying execution claims
+
 ## Current Status
 
 The repo already contains a checked-out FRACTRAN baseline in [`fractran/`](/home/c/Documents/code/FRACDASH/fractran) plus a benchmark harness and recorded CPU matrix artifacts under [`benchmarks/results/`](/home/c/Documents/code/FRACDASH/benchmarks/results).
@@ -20,12 +25,20 @@ What exists now:
 - a compiled exponent-vector execution path for comparison against the baseline
 - benchmark summaries showing the current optimization focus is still CPU work, specifically compiled-path tuning
 - an expanded GPU routing matrix that now includes `primegame_small`, `mult_smoke`, `paper_smoke`, and the new `hamming_smoke` headless program across the batch_size `16..64` / steps `4..16` band
+- three closed local bridge slices:
+  - [`formalism/Physics1StepDelta.agda`](/home/c/Documents/code/FRACDASH/formalism/Physics1StepDelta.agda)
+  - [`formalism/Physics3StepDelta.agda`](/home/c/Documents/code/FRACDASH/formalism/Physics3StepDelta.agda)
+  - [`formalism/Physics15StepDelta.agda`](/home/c/Documents/code/FRACDASH/formalism/Physics15StepDelta.agda)
+- one thin master instantiation layer over those witnesses:
+  - [`formalism/BridgeInstances.agda`](/home/c/Documents/code/FRACDASH/formalism/BridgeInstances.agda)
+- a stable cross-slice bridge regime summary at [`benchmarks/results/2026-03-19-bridge-regime-summary.md`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-19-bridge-regime-summary.md)
 
 What does not exist yet:
 
-- the DASHI-to-FRACTRAN compiler or interpreter layer
 - the executable 10-basin obstruction experiments
 - the canonical Phase 2 AGDAS bridge path from `all_dashi_agdas.txt` into executable FRACTRAN physics
+- a fully numeric generic Agda theorem built directly into `RegimeValidBridge`; the current numeric layer is master-level and slice-dispatched in `formalism/BridgeInstances.agda`
+- a confirmed runtime win over a standard named-equation reference solver
 
 ## Research Goals
 
@@ -49,6 +62,7 @@ The near-term questions are:
 - [`MONSTER10WALK_CANONICAL.md`](/home/c/Documents/code/FRACDASH/MONSTER10WALK_CANONICAL.md): frozen canonical semantics and lock criteria for the Monster 10-walk lane
 - [`MONSTERLEAN_INTAKE.md`](/home/c/Documents/code/FRACDASH/MONSTERLEAN_INTAKE.md): intake notes for the local `monster/MonsterLean` clone and proof-completeness caveats
 - [`AGDAS_FORMALISM_INTAKE.md`](/home/c/Documents/code/FRACDASH/AGDAS_FORMALISM_INTAKE.md): authoritative intake note for the upstream `../dashi_agda` physics/closure formalism
+- [`BRIDGE_CORRECTNESS.md`](/home/c/Documents/code/FRACDASH/BRIDGE_CORRECTNESS.md): formal target note for semantics-preserving compilation, quotient validity, decoder correctness, and robustness
 - [`benchmarks/`](/home/c/Documents/code/FRACDASH/benchmarks): benchmark runners, summaries, and result artifacts
 - [`fractran/`](/home/c/Documents/code/FRACDASH/fractran): local FRACTRAN baseline interpreter and benchmark binary
 
@@ -178,6 +192,81 @@ The checker now covers the canonical closure/audit spine plus Stage C, minimal-c
 The next physics split is now explicit. The narrow branch stays on the existing 6-register carrier and tries to produce the first direct `boundary -> interior` re-entry (`physics21`) without breaking the exact V1 laws. In parallel, FRACDASH is adding a separate physics-local 8-register carrier (`carrier8_physics1`) that preserves the current `R1..R6` semantics and adds `R7` boundary-return memory plus `R8` transport/debt memory so later experiments can measure return type and deferred transport load directly instead of overloading the 6-register grammar.
 
 That split is now implemented. `physics22` is the current best 6-register exploratory branch: it lifts deterministic edges to `364` and raises direct `boundary_to_interior` re-entry to `63` while keeping the exact V1 laws intact and keeping corrected `geodesic_like_flow.near_min_ratio` at `~0.92`. The 8-register branch now exists as `scripts/agdas_physics8_state.py` plus `scripts/agdas_physics8_experiments.py`, with artifacts at `benchmarks/results/2026-03-15-agdas-carrier8-physics1-phase2.json` and `benchmarks/results/2026-03-15-physics-invariants-carrier8_physics1.json`; its current job is to expose `boundary_return_profile` and `transport_debt_profile`, not to replace the 6-register lock.
+
+### Bridge Correctness Framing
+
+The main open math problem is now stated as bridge correctness, not just
+interpretation.
+
+FRACDASH needs to make explicit:
+
+- the source DASHI / AGDA transition semantics,
+- the signed exponent-vector IR used as the compiled semantics,
+- the final FRACTRAN realization layer for that signed IR,
+- the compile and decode maps,
+- the refinement relation used for exact or weak simulation,
+- the quotient assumptions behind the reduced carriers,
+- the simulation or refinement obligation actually claimed,
+- the Lyapunov / contraction / decoder-validity / robustness obligations.
+
+See [`BRIDGE_CORRECTNESS.md`](/home/c/Documents/code/FRACDASH/BRIDGE_CORRECTNESS.md).
+
+The first concrete oracle/proof loop now exists for `physics1`:
+
+- Python delta extractor: [`scripts/export_physics1_deltas.py`](/home/c/Documents/code/FRACDASH/scripts/export_physics1_deltas.py)
+- Agda signed-IR proof scaffold: [`formalism/Physics1StepDelta.agda`](/home/c/Documents/code/FRACDASH/formalism/Physics1StepDelta.agda)
+
+In this workflow, Python exposes `source -> target -> delta` records, Agda
+certifies the signed-IR step law, and FRACTRAN remains the later nonnegative
+realization target rather than the immediate semantic surface.
+
+The current stable bridge claim is narrower and stronger than the earlier conservative-only reading:
+
+- `physics1` and `physics3` are `conservative_contracting`
+- the currently formalized Batch C family (`physics15`, `physics19`, `physics20`, `physics21`, `physics22`) now shows a stable mixed regime rather than a one-off anomaly
+- `physics15` is the first formal widened slice, and the same master-layer bridge contract now survives through `physics22` without introducing a new regime class or bound shape
+
+So the current bridge target is:
+
+> exact paired-prime macro realization with well-formedness preservation, strict contraction, and bounded transmutation, where conservative slices are the zero-transmutation special case
+
+The current guarantee story should be read as:
+
+- FRACTRAN is presently the best **auditable execution target**
+- Python is presently the best **equation-probe and benchmark layer**
+- if solver-style wins appear, they should be measured first on the Python side and only then used to motivate deeper FRACTRAN execution work for that family
+
+### Named-Equation Probe
+
+The first solver-oriented harness now lives at:
+
+- [`scripts/named_equation_probe.py`](/home/c/Documents/code/FRACDASH/scripts/named_equation_probe.py)
+
+It compares a transparent NumPy reference implementation against a DASHI-style
+balanced-ternary local update path for:
+
+- `wave` as the first stress-test probe
+- `heat` as the planned fallback family if the current dissipative bridge makes the wave probe structurally mismatched
+
+The intent is decision-quality, not hype:
+
+- if the probe aligns numerically and economically, the solver track gets promoted
+- if it only aligns qualitatively, it stays interpretation-facing
+- if it mismatches structurally, the repo records that the stronger win is currently proof-carrying execution rather than speed
+
+Current recorded outcome:
+
+- `wave` probe: structural mismatch, fallback to `heat`
+- `heat` second shot: qualitatively aligned after switching to a quantized explicit diffusion update, but still not competitive enough for a same-accuracy speed claim
+
+See:
+
+- [`benchmarks/results/2026-03-20-equation-probe-summary.md`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-20-equation-probe-summary.md)
+
+Current practical conclusion:
+
+- keep `heat` as the least-bad named-equation baseline if the solver lane is revisited
+- treat the near-term project win as **proof-carrying / auditable execution**, not solver speed
 
 ### MonsterLean Intake Check
 

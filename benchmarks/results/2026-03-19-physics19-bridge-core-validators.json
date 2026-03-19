@@ -1,0 +1,2413 @@
+{
+  "summary": {
+    "template_set": "physics19",
+    "checked_rules": 33,
+    "passed_rules": 30,
+    "bridge_core_validators_pass": false,
+    "regime_valid_rules": 33,
+    "regime_validator_pass": true,
+    "conservation_validator": "R1/R2 source signature and paired-prime product stay fixed across all macro intermediates",
+    "lyapunov_validator": "decoded signed-IR residual L1 distance to the target state decreases by exactly 1 at each macro step",
+    "transmutation_validator": "signed-mass change per realized unit step stays bounded while the overall trajectory still contracts to target",
+    "directionality_validator": "macro traces are classified from emitted FRACTRAN execution alone as strictly contracting, contracting_nonunit, revisiting_or_cyclic, or noncontracting_or_invalid",
+    "trajectory_kind_counts": {
+      "strictly_contracting": 33
+    },
+    "dynamical_class_counts": {
+      "conservative_contracting": 30,
+      "transmuting_contracting": 3
+    },
+    "terminal_basin_counts": {
+      "negative|zero|zero|positive|positive|negative": 1,
+      "positive|zero|zero|positive|positive|negative": 1,
+      "zero|negative|zero|positive|negative|negative": 1,
+      "zero|positive|zero|positive|negative|negative": 1,
+      "negative|zero|negative|zero|positive|negative": 1,
+      "zero|negative|negative|zero|negative|negative": 1,
+      "positive|zero|positive|zero|positive|positive": 1,
+      "zero|positive|positive|zero|negative|positive": 1,
+      "zero|zero|positive|positive|zero|positive": 1,
+      "zero|zero|zero|negative|zero|zero": 4,
+      "zero|zero|zero|zero|zero|zero": 3,
+      "negative|zero|positive|zero|positive|zero": 1,
+      "zero|negative|positive|zero|negative|zero": 1,
+      "positive|zero|positive|zero|positive|zero": 1,
+      "zero|positive|positive|zero|negative|zero": 1,
+      "zero|zero|zero|zero|positive|zero": 1,
+      "zero|zero|zero|negative|positive|zero": 1,
+      "zero|zero|zero|negative|negative|zero": 1,
+      "zero|zero|zero|zero|negative|zero": 1,
+      "zero|zero|positive|zero|positive|zero": 1,
+      "zero|zero|zero|positive|zero|negative": 1,
+      "zero|zero|zero|positive|positive|negative": 1,
+      "zero|zero|zero|positive|negative|negative": 1,
+      "negative|negative|zero|negative|zero|zero": 1,
+      "zero|zero|negative|positive|zero|negative": 1,
+      "negative|positive|zero|negative|zero|zero": 1,
+      "negative|zero|zero|negative|positive|zero": 1,
+      "negative|negative|positive|positive|positive|positive": 1
+    },
+    "macro_length_histogram": {
+      "1": 15,
+      "3": 2,
+      "4": 2,
+      "2": 13,
+      "5": 1
+    },
+    "execution_length_histogram": {
+      "1": 15,
+      "3": 2,
+      "4": 2,
+      "2": 13,
+      "5": 1
+    },
+    "contraction_step_histogram": {
+      "1": 15,
+      "3": 2,
+      "4": 2,
+      "2": 13,
+      "5": 1
+    },
+    "max_macro_length": 5,
+    "max_execution_length": 5,
+    "cost_surface_statement": "macro length, executed fraction count, and contraction-step count are reported as bridge-local execution-cost summaries",
+    "basin_surface_statement": "terminal basin counts group traces by final decoded target state over the closed slice",
+    "scope": "bridge-core observational validators on the physics19 slice"
+  },
+  "records": [
+    {
+      "name": "physics4_scan_left_high",
+      "source_signature": {
+        "R1": "negative",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "negative",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "negative",
+          "R2": "zero"
+        },
+        {
+          "R1": "negative",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 18923,
+      "intermediate_prime_products": [
+        18923,
+        18923
+      ],
+      "target_prime_product": 18923,
+      "source_signed_mass": -1,
+      "intermediate_signed_mass": [
+        -1,
+        0
+      ],
+      "target_signed_mass": 0,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "negative",
+        "zero",
+        "zero",
+        "positive",
+        "positive",
+        "negative"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics4_scan_left_mid",
+      "source_signature": {
+        "R1": "positive",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "positive",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "positive",
+          "R2": "zero"
+        },
+        {
+          "R1": "positive",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 20413,
+      "intermediate_prime_products": [
+        20413,
+        20413
+      ],
+      "target_prime_product": 20413,
+      "source_signed_mass": 1,
+      "intermediate_signed_mass": [
+        1,
+        2
+      ],
+      "target_signed_mass": 2,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "positive",
+        "zero",
+        "zero",
+        "positive",
+        "positive",
+        "negative"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics4_scan_right_high",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "negative"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "negative"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "negative"
+        }
+      ],
+      "source_prime_product": 18209,
+      "intermediate_prime_products": [
+        18209,
+        18209
+      ],
+      "target_prime_product": 18209,
+      "source_signed_mass": -1,
+      "intermediate_signed_mass": [
+        -1,
+        -2
+      ],
+      "target_signed_mass": -2,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": -1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "zero",
+        "negative",
+        "zero",
+        "positive",
+        "negative",
+        "negative"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics4_scan_right_mid",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "positive"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "positive"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "positive"
+        }
+      ],
+      "source_prime_product": 19781,
+      "intermediate_prime_products": [
+        19781,
+        19781
+      ],
+      "target_prime_product": 19781,
+      "source_signed_mass": 1,
+      "intermediate_signed_mass": [
+        1,
+        0
+      ],
+      "target_signed_mass": 0,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": -1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "zero",
+        "positive",
+        "zero",
+        "positive",
+        "negative",
+        "negative"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics2_join_left_high",
+      "source_signature": {
+        "R1": "negative",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "negative",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "negative",
+          "R2": "zero"
+        },
+        {
+          "R1": "negative",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 18923,
+      "intermediate_prime_products": [
+        18923,
+        18923
+      ],
+      "target_prime_product": 18923,
+      "source_signed_mass": -1,
+      "intermediate_signed_mass": [
+        -1,
+        -2
+      ],
+      "target_signed_mass": -2,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": -1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "negative",
+        "zero",
+        "negative",
+        "zero",
+        "positive",
+        "negative"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics2_join_right_high",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "negative"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "negative"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "negative"
+        }
+      ],
+      "source_prime_product": 18209,
+      "intermediate_prime_products": [
+        18209,
+        18209
+      ],
+      "target_prime_product": 18209,
+      "source_signed_mass": -3,
+      "intermediate_signed_mass": [
+        -3,
+        -4
+      ],
+      "target_signed_mass": -4,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": -1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "zero",
+        "negative",
+        "negative",
+        "zero",
+        "negative",
+        "negative"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics2_join_left_mid",
+      "source_signature": {
+        "R1": "positive",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "positive",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "positive",
+          "R2": "zero"
+        },
+        {
+          "R1": "positive",
+          "R2": "zero"
+        },
+        {
+          "R1": "positive",
+          "R2": "zero"
+        },
+        {
+          "R1": "positive",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 20413,
+      "intermediate_prime_products": [
+        20413,
+        20413,
+        20413,
+        20413
+      ],
+      "target_prime_product": 20413,
+      "source_signed_mass": 1,
+      "intermediate_signed_mass": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "target_signed_mass": 4,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 3,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        3,
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 3,
+      "execution_length": 3,
+      "terminal_state_key": [
+        "positive",
+        "zero",
+        "positive",
+        "zero",
+        "positive",
+        "positive"
+      ],
+      "contraction_steps": 3,
+      "contraction_drop": 3,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics2_join_right_mid",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "positive"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "positive"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "positive"
+        }
+      ],
+      "source_prime_product": 19781,
+      "intermediate_prime_products": [
+        19781,
+        19781,
+        19781,
+        19781
+      ],
+      "target_prime_product": 19781,
+      "source_signed_mass": -1,
+      "intermediate_signed_mass": [
+        -1,
+        0,
+        1,
+        2
+      ],
+      "target_signed_mass": 2,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 3,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        3,
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 3,
+      "execution_length": 3,
+      "terminal_state_key": [
+        "zero",
+        "positive",
+        "positive",
+        "zero",
+        "negative",
+        "positive"
+      ],
+      "contraction_steps": 3,
+      "contraction_drop": 3,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics2_contract_high",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519,
+        19519,
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": -1,
+      "intermediate_signed_mass": [
+        -1,
+        0,
+        1,
+        2,
+        3
+      ],
+      "target_signed_mass": 3,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 4,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 4,
+      "execution_length": 4,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "positive",
+        "positive",
+        "zero",
+        "positive"
+      ],
+      "contraction_steps": 4,
+      "contraction_drop": 4,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics2_contract_mid",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519,
+        19519,
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": 3,
+      "intermediate_signed_mass": [
+        3,
+        2,
+        1,
+        0,
+        -1
+      ],
+      "target_signed_mass": -1,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": -4,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 4,
+      "execution_length": 4,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "negative",
+        "zero",
+        "zero"
+      ],
+      "contraction_steps": 4,
+      "contraction_drop": 4,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics11_boundary_discharge",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": -2,
+      "intermediate_signed_mass": [
+        -2,
+        -1
+      ],
+      "target_signed_mass": -1,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "negative",
+        "zero",
+        "zero"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics5_boundary_to_shell",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": -1,
+      "intermediate_signed_mass": [
+        -1,
+        0
+      ],
+      "target_signed_mass": 0,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "zero",
+        "zero",
+        "zero"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics9_shell_probe_left_high",
+      "source_signature": {
+        "R1": "negative",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "negative",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "negative",
+          "R2": "zero"
+        },
+        {
+          "R1": "negative",
+          "R2": "zero"
+        },
+        {
+          "R1": "negative",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 18923,
+      "intermediate_prime_products": [
+        18923,
+        18923,
+        18923
+      ],
+      "target_prime_product": 18923,
+      "source_signed_mass": -1,
+      "intermediate_signed_mass": [
+        -1,
+        0,
+        1
+      ],
+      "target_signed_mass": 1,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 2,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 2,
+      "execution_length": 2,
+      "terminal_state_key": [
+        "negative",
+        "zero",
+        "positive",
+        "zero",
+        "positive",
+        "zero"
+      ],
+      "contraction_steps": 2,
+      "contraction_drop": 2,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics9_shell_probe_right_high",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "negative"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "negative"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "negative"
+        }
+      ],
+      "source_prime_product": 18209,
+      "intermediate_prime_products": [
+        18209,
+        18209,
+        18209
+      ],
+      "target_prime_product": 18209,
+      "source_signed_mass": -1,
+      "intermediate_signed_mass": [
+        -1,
+        0,
+        -1
+      ],
+      "target_signed_mass": -1,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 0,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 2,
+      "execution_length": 2,
+      "terminal_state_key": [
+        "zero",
+        "negative",
+        "positive",
+        "zero",
+        "negative",
+        "zero"
+      ],
+      "contraction_steps": 2,
+      "contraction_drop": 2,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics9_shell_probe_left_mid",
+      "source_signature": {
+        "R1": "positive",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "positive",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "positive",
+          "R2": "zero"
+        },
+        {
+          "R1": "positive",
+          "R2": "zero"
+        },
+        {
+          "R1": "positive",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 20413,
+      "intermediate_prime_products": [
+        20413,
+        20413,
+        20413
+      ],
+      "target_prime_product": 20413,
+      "source_signed_mass": 1,
+      "intermediate_signed_mass": [
+        1,
+        2,
+        3
+      ],
+      "target_signed_mass": 3,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 2,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 2,
+      "execution_length": 2,
+      "terminal_state_key": [
+        "positive",
+        "zero",
+        "positive",
+        "zero",
+        "positive",
+        "zero"
+      ],
+      "contraction_steps": 2,
+      "contraction_drop": 2,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics9_shell_probe_right_mid",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "positive"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "positive"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "positive"
+        }
+      ],
+      "source_prime_product": 19781,
+      "intermediate_prime_products": [
+        19781,
+        19781,
+        19781
+      ],
+      "target_prime_product": 19781,
+      "source_signed_mass": 1,
+      "intermediate_signed_mass": [
+        1,
+        2,
+        1
+      ],
+      "target_signed_mass": 1,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 0,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 2,
+      "execution_length": 2,
+      "terminal_state_key": [
+        "zero",
+        "positive",
+        "positive",
+        "zero",
+        "negative",
+        "zero"
+      ],
+      "contraction_steps": 2,
+      "contraction_drop": 2,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics9_shell_stage_release_left",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": 2,
+      "intermediate_signed_mass": [
+        2,
+        1
+      ],
+      "target_signed_mass": 1,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": -1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "zero",
+        "positive",
+        "zero"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics12_shell_stage_detour_left",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": 2,
+      "intermediate_signed_mass": [
+        2,
+        1,
+        0
+      ],
+      "target_signed_mass": 0,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": -2,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 2,
+      "execution_length": 2,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "negative",
+        "positive",
+        "zero"
+      ],
+      "contraction_steps": 2,
+      "contraction_drop": 2,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics12_shell_stage_detour_right",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": 0,
+      "intermediate_signed_mass": [
+        0,
+        -1,
+        -2
+      ],
+      "target_signed_mass": -2,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": -2,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 2,
+      "execution_length": 2,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "negative",
+        "negative",
+        "zero"
+      ],
+      "contraction_steps": 2,
+      "contraction_drop": 2,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics9_shell_stage_release_right",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": 0,
+      "intermediate_signed_mass": [
+        0,
+        -1
+      ],
+      "target_signed_mass": -1,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": -1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "zero",
+        "negative",
+        "zero"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics10_shell_probe_neutral",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": 0,
+      "intermediate_signed_mass": [
+        0,
+        1,
+        2
+      ],
+      "target_signed_mass": 2,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 2,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 2,
+      "execution_length": 2,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "positive",
+        "zero",
+        "positive",
+        "zero"
+      ],
+      "contraction_steps": 2,
+      "contraction_drop": 2,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics6_shell_refresh_left",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": 1,
+      "intermediate_signed_mass": [
+        1,
+        0
+      ],
+      "target_signed_mass": 0,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": -1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "zero",
+        "zero",
+        "zero"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics6_shell_refresh_right",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": -1,
+      "intermediate_signed_mass": [
+        -1,
+        0
+      ],
+      "target_signed_mass": 0,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "zero",
+        "zero",
+        "zero"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics5_shell_to_interior_cleared",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": 0,
+      "intermediate_signed_mass": [
+        0,
+        1,
+        0
+      ],
+      "target_signed_mass": 0,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 0,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 2,
+      "execution_length": 2,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "positive",
+        "zero",
+        "negative"
+      ],
+      "contraction_steps": 2,
+      "contraction_drop": 2,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics5_shell_to_interior_latched_left",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": 1,
+      "intermediate_signed_mass": [
+        1,
+        2,
+        1
+      ],
+      "target_signed_mass": 1,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 0,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 2,
+      "execution_length": 2,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "positive",
+        "positive",
+        "negative"
+      ],
+      "contraction_steps": 2,
+      "contraction_drop": 2,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics5_shell_to_interior_latched_right",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": -1,
+      "intermediate_signed_mass": [
+        -1,
+        0,
+        -1
+      ],
+      "target_signed_mass": -1,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 0,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 2,
+      "execution_length": 2,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "positive",
+        "negative",
+        "negative"
+      ],
+      "contraction_steps": 2,
+      "contraction_drop": 2,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics13_contract_mid_detour_nn",
+      "source_signature": {
+        "R1": "negative",
+        "R2": "negative"
+      },
+      "target_signature": {
+        "R1": "negative",
+        "R2": "negative"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "negative",
+          "R2": "negative"
+        },
+        {
+          "R1": "negative",
+          "R2": "negative"
+        },
+        {
+          "R1": "negative",
+          "R2": "negative"
+        },
+        {
+          "R1": "negative",
+          "R2": "negative"
+        },
+        {
+          "R1": "negative",
+          "R2": "negative"
+        },
+        {
+          "R1": "negative",
+          "R2": "negative"
+        }
+      ],
+      "source_prime_product": 17653,
+      "intermediate_prime_products": [
+        17653,
+        17653,
+        17653,
+        17653,
+        17653,
+        17653
+      ],
+      "target_prime_product": 17653,
+      "source_signed_mass": 0,
+      "intermediate_signed_mass": [
+        0,
+        -1,
+        -2,
+        -3,
+        -2,
+        -3
+      ],
+      "target_signed_mass": -3,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": -3,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 5,
+      "execution_length": 5,
+      "terminal_state_key": [
+        "negative",
+        "negative",
+        "zero",
+        "negative",
+        "zero",
+        "zero"
+      ],
+      "contraction_steps": 5,
+      "contraction_drop": 5,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics14_shell_high_rearm",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": -2,
+      "intermediate_signed_mass": [
+        -2,
+        -1
+      ],
+      "target_signed_mass": -1,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "negative",
+        "positive",
+        "zero",
+        "negative"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics15_boundary_crossfeed_neutral",
+      "source_signature": {
+        "R1": "negative",
+        "R2": "negative"
+      },
+      "target_signature": {
+        "R1": "negative",
+        "R2": "positive"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "negative",
+          "R2": "negative"
+        },
+        {
+          "R1": "negative",
+          "R2": "zero"
+        },
+        {
+          "R1": "negative",
+          "R2": "positive"
+        }
+      ],
+      "source_prime_product": 17653,
+      "intermediate_prime_products": [
+        17653,
+        18923,
+        19177
+      ],
+      "target_prime_product": 19177,
+      "source_signed_mass": -3,
+      "intermediate_signed_mass": [
+        -3,
+        -2,
+        -1
+      ],
+      "target_signed_mass": -1,
+      "signature_signed_mass_delta": 2,
+      "total_signed_mass_delta": 2,
+      "source_signature_conserved": false,
+      "source_prime_product_conserved": false,
+      "bounded_transmutation": true,
+      "transmutation_detected": true,
+      "residual_l1_sequence": [
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 2,
+      "execution_length": 2,
+      "terminal_state_key": [
+        "negative",
+        "positive",
+        "zero",
+        "negative",
+        "zero",
+        "zero"
+      ],
+      "contraction_steps": 2,
+      "contraction_drop": 2,
+      "dynamical_class": "transmuting_contracting",
+      "regime_valid": true,
+      "passed": false
+    },
+    {
+      "name": "physics16_boundary_discharge_high",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": -3,
+      "intermediate_signed_mass": [
+        -3,
+        -2,
+        -1
+      ],
+      "target_signed_mass": -1,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 2,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 2,
+      "execution_length": 2,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "negative",
+        "zero",
+        "zero"
+      ],
+      "contraction_steps": 2,
+      "contraction_drop": 2,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics17_boundary_handoff_left_to_mid",
+      "source_signature": {
+        "R1": "negative",
+        "R2": "positive"
+      },
+      "target_signature": {
+        "R1": "negative",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "negative",
+          "R2": "positive"
+        },
+        {
+          "R1": "negative",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19177,
+      "intermediate_prime_products": [
+        19177,
+        18923
+      ],
+      "target_prime_product": 18923,
+      "source_signed_mass": 0,
+      "intermediate_signed_mass": [
+        0,
+        -1
+      ],
+      "target_signed_mass": -1,
+      "signature_signed_mass_delta": -1,
+      "total_signed_mass_delta": -1,
+      "source_signature_conserved": false,
+      "source_prime_product_conserved": false,
+      "bounded_transmutation": true,
+      "transmutation_detected": true,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "negative",
+        "zero",
+        "zero",
+        "negative",
+        "positive",
+        "zero"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "transmuting_contracting",
+      "regime_valid": true,
+      "passed": false
+    },
+    {
+      "name": "physics18_boundary_discharge_mid",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 19519,
+      "intermediate_prime_products": [
+        19519,
+        19519,
+        19519
+      ],
+      "target_prime_product": 19519,
+      "source_signed_mass": -1,
+      "intermediate_signed_mass": [
+        -1,
+        -2,
+        -1
+      ],
+      "target_signed_mass": -1,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 0,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 2,
+      "execution_length": 2,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "negative",
+        "zero",
+        "zero"
+      ],
+      "contraction_steps": 2,
+      "contraction_drop": 2,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "physics19_tail_handoff_n0_to_nn",
+      "source_signature": {
+        "R1": "negative",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "negative",
+        "R2": "negative"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "negative",
+          "R2": "zero"
+        },
+        {
+          "R1": "negative",
+          "R2": "negative"
+        }
+      ],
+      "source_prime_product": 18923,
+      "intermediate_prime_products": [
+        18923,
+        17653
+      ],
+      "target_prime_product": 17653,
+      "source_signed_mass": 3,
+      "intermediate_signed_mass": [
+        3,
+        2
+      ],
+      "target_signed_mass": 2,
+      "signature_signed_mass_delta": -1,
+      "total_signed_mass_delta": -1,
+      "source_signature_conserved": false,
+      "source_prime_product_conserved": false,
+      "bounded_transmutation": true,
+      "transmutation_detected": true,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "negative",
+        "negative",
+        "positive",
+        "positive",
+        "positive",
+        "positive"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "transmuting_contracting",
+      "regime_valid": true,
+      "passed": false
+    }
+  ]
+}

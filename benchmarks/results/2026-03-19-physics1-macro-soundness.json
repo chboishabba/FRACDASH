@@ -1,0 +1,335 @@
+{
+  "summary": {
+    "template_set": "physics1",
+    "checked_rules": 7,
+    "passed_rules": 7,
+    "macro_soundness": true,
+    "macro_encoding": "three-state-prime swap per register",
+    "macro_ordering": "register order R1,R2,R3,R4 with repeated unit steps in that order",
+    "signed_state_primes": {
+      "R1": {
+        "negative": 5,
+        "zero": 2,
+        "positive": 3
+      },
+      "R2": {
+        "negative": 13,
+        "zero": 7,
+        "positive": 11
+      },
+      "R3": {
+        "negative": 23,
+        "zero": 17,
+        "positive": 19
+      },
+      "R4": {
+        "negative": 37,
+        "zero": 29,
+        "positive": 31
+      }
+    },
+    "exclusivity_invariant": "exactly one state-prime per register divides the encoded integer",
+    "soundness_statement": "standard ordered FRACTRAN execution of the exported macro fractions matches the normalized signed-IR action on the physics1 slice"
+  },
+  "records": [
+    {
+      "name": "join-left-high",
+      "source_integer": 17255,
+      "target_integer": 23345,
+      "macro_fraction_strings": [
+        "23/17"
+      ],
+      "applied_fraction_strings": [
+        "23/17"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        17255,
+        23345
+      ],
+      "intermediate_states": [
+        {
+          "R1": "negative",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero"
+        },
+        {
+          "R1": "negative",
+          "R2": "zero",
+          "R3": "negative",
+          "R4": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "join-right-high",
+      "source_integer": 12818,
+      "target_integer": 17342,
+      "macro_fraction_strings": [
+        "23/17"
+      ],
+      "applied_fraction_strings": [
+        "23/17"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        12818,
+        17342
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "negative",
+          "R3": "zero",
+          "R4": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "negative",
+          "R3": "negative",
+          "R4": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "join-left-mid",
+      "source_integer": 10353,
+      "target_integer": 11571,
+      "macro_fraction_strings": [
+        "19/17"
+      ],
+      "applied_fraction_strings": [
+        "19/17"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        10353,
+        11571
+      ],
+      "intermediate_states": [
+        {
+          "R1": "positive",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero"
+        },
+        {
+          "R1": "positive",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "join-right-mid",
+      "source_integer": 10846,
+      "target_integer": 12122,
+      "macro_fraction_strings": [
+        "19/17"
+      ],
+      "applied_fraction_strings": [
+        "19/17"
+      ],
+      "applied_fraction_indices": [
+        0
+      ],
+      "intermediate_integers": [
+        10846,
+        12122
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "positive",
+          "R3": "zero",
+          "R4": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "positive",
+          "R3": "positive",
+          "R4": "zero"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "contract-high",
+      "source_integer": 9982,
+      "target_integer": 8246,
+      "macro_fraction_strings": [
+        "17/23",
+        "19/17"
+      ],
+      "applied_fraction_strings": [
+        "17/23",
+        "19/17"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1
+      ],
+      "intermediate_integers": [
+        9982,
+        7378,
+        8246
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "negative",
+          "R4": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "positive"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "contract-mid",
+      "source_integer": 8246,
+      "target_integer": 8806,
+      "macro_fraction_strings": [
+        "17/19",
+        "29/31",
+        "37/29"
+      ],
+      "applied_fraction_strings": [
+        "17/19",
+        "29/31",
+        "37/29"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1,
+        2
+      ],
+      "intermediate_integers": [
+        8246,
+        7378,
+        6902,
+        8806
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "positive",
+          "R4": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    },
+    {
+      "name": "boundary-reset",
+      "source_integer": 8806,
+      "target_integer": 7378,
+      "macro_fraction_strings": [
+        "29/37",
+        "31/29"
+      ],
+      "applied_fraction_strings": [
+        "29/37",
+        "31/29"
+      ],
+      "applied_fraction_indices": [
+        0,
+        1
+      ],
+      "intermediate_integers": [
+        8806,
+        6902,
+        7378
+      ],
+      "intermediate_states": [
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero",
+          "R3": "zero",
+          "R4": "positive"
+        }
+      ],
+      "exact_order_preserved": true,
+      "halted_after_macro": true,
+      "final_matches_target": true,
+      "exclusivity_preserved": true,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "templates": [
+    "physics1",
+    "physics3",
+    "physics15",
+    "physics19",
+    "physics20",
+    "physics21",
+    "physics22"
+  ],
+  "rows": [
+    {
+      "template_set": "physics1",
+      "rule_count": 7,
+      "macro_length_histogram": {
+        "1": 4,
+        "2": 2,
+        "3": 1
+      },
+      "max_macro_length": 3,
+      "terminal_basin_count": 7,
+      "conservative_contracting": 7,
+      "transmuting_contracting": 0,
+      "transmuting_contracting_nonunit": 0,
+      "regime_valid_rules": 7,
+      "bridge_core_validators_pass": true,
+      "notable_broken_old_invariants": []
+    },
+    {
+      "template_set": "physics3",
+      "rule_count": 12,
+      "macro_length_histogram": {
+        "1": 7,
+        "3": 2,
+        "4": 2,
+        "2": 1
+      },
+      "max_macro_length": 4,
+      "terminal_basin_count": 12,
+      "conservative_contracting": 12,
+      "transmuting_contracting": 0,
+      "transmuting_contracting_nonunit": 0,
+      "regime_valid_rules": 12,
+      "bridge_core_validators_pass": true,
+      "notable_broken_old_invariants": []
+    },
+    {
+      "template_set": "physics15",
+      "rule_count": 29,
+      "macro_length_histogram": {
+        "1": 13,
+        "3": 2,
+        "4": 2,
+        "2": 11,
+        "5": 1
+      },
+      "max_macro_length": 5,
+      "terminal_basin_count": 26,
+      "conservative_contracting": 28,
+      "transmuting_contracting": 1,
+      "transmuting_contracting_nonunit": 0,
+      "regime_valid_rules": 29,
+      "bridge_core_validators_pass": false,
+      "notable_broken_old_invariants": [
+        "physics15_boundary_crossfeed_neutral"
+      ]
+    },
+    {
+      "template_set": "physics19",
+      "rule_count": 33,
+      "macro_length_histogram": {
+        "1": 15,
+        "3": 2,
+        "4": 2,
+        "2": 13,
+        "5": 1
+      },
+      "max_macro_length": 5,
+      "terminal_basin_count": 28,
+      "conservative_contracting": 30,
+      "transmuting_contracting": 3,
+      "transmuting_contracting_nonunit": 0,
+      "regime_valid_rules": 33,
+      "bridge_core_validators_pass": false,
+      "notable_broken_old_invariants": [
+        "physics15_boundary_crossfeed_neutral",
+        "physics17_boundary_handoff_left_to_mid",
+        "physics19_tail_handoff_n0_to_nn"
+      ]
+    },
+    {
+      "template_set": "physics20",
+      "rule_count": 34,
+      "macro_length_histogram": {
+        "1": 16,
+        "3": 2,
+        "4": 2,
+        "2": 13,
+        "5": 1
+      },
+      "max_macro_length": 5,
+      "terminal_basin_count": 28,
+      "conservative_contracting": 31,
+      "transmuting_contracting": 3,
+      "transmuting_contracting_nonunit": 0,
+      "regime_valid_rules": 34,
+      "bridge_core_validators_pass": false,
+      "notable_broken_old_invariants": [
+        "physics15_boundary_crossfeed_neutral",
+        "physics17_boundary_handoff_left_to_mid",
+        "physics19_tail_handoff_n0_to_nn"
+      ]
+    },
+    {
+      "template_set": "physics21",
+      "rule_count": 35,
+      "macro_length_histogram": {
+        "1": 16,
+        "3": 2,
+        "4": 2,
+        "2": 14,
+        "5": 1
+      },
+      "max_macro_length": 5,
+      "terminal_basin_count": 28,
+      "conservative_contracting": 32,
+      "transmuting_contracting": 3,
+      "transmuting_contracting_nonunit": 0,
+      "regime_valid_rules": 35,
+      "bridge_core_validators_pass": false,
+      "notable_broken_old_invariants": [
+        "physics15_boundary_crossfeed_neutral",
+        "physics17_boundary_handoff_left_to_mid",
+        "physics19_tail_handoff_n0_to_nn"
+      ]
+    },
+    {
+      "template_set": "physics22",
+      "rule_count": 36,
+      "macro_length_histogram": {
+        "1": 16,
+        "3": 2,
+        "4": 2,
+        "2": 15,
+        "5": 1
+      },
+      "max_macro_length": 5,
+      "terminal_basin_count": 29,
+      "conservative_contracting": 33,
+      "transmuting_contracting": 3,
+      "transmuting_contracting_nonunit": 0,
+      "regime_valid_rules": 36,
+      "bridge_core_validators_pass": false,
+      "notable_broken_old_invariants": [
+        "physics15_boundary_crossfeed_neutral",
+        "physics17_boundary_handoff_left_to_mid",
+        "physics19_tail_handoff_n0_to_nn"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "classification": "qualitative_only",
+  "correlation": 0.9169086329142468,
+  "dashi_energy_end": 43.0,
+  "dashi_energy_start": 32.084841915276805,
+  "dashi_histogram": {
+    "-1": 0,
+    "0": 213,
+    "1": 43
+  },
+  "dashi_method": "quantized_explicit_diffusion",
+  "dashi_nonzero_fraction": 0.16796875,
+  "dashi_runtime_seconds": 0.0032561569969402626,
+  "decision": "keep_heat_as_interpretation_and_baseline_probe",
+  "dt": 2.0345052083333336e-05,
+  "dx": 0.00390625,
+  "family": "heat",
+  "grid_size": 256,
+  "normalized_l2_error": 0.4555439565383708,
+  "normalized_linf_error": 0.5163125741939395,
+  "notes": [
+    "heat probe is qualitatively aligned but not yet competitive as a same-accuracy solver path",
+    "heat benchmark uses a quantized explicit diffusion step rather than the earlier saturating sign-of-laplacian update"
+  ],
+  "recommended_next_family": "heat",
+  "reference_energy_end": 30.35535489947102,
+  "reference_energy_start": 32.084841915276805,
+  "reference_runtime_seconds": 0.0021774130000267178,
+  "runtime_ratio_dashi_over_reference": 1.4954246148527213,
+  "steps": 96,
+  "threshold": 0.5
+}

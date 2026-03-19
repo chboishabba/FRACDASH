@@ -226,7 +226,7 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
     ]
     physics1 = [
         TemplateRule(
-            name="physics_join_from_left_high",
+            name="join-left-high",
             template_set="physics1",
             module="UFTC_Lattice.C_XOR",
             condition={"R1": "negative", "R3": "zero"},
@@ -234,7 +234,7 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
             description="Materialize high effective severity from the left code.",
         ),
         TemplateRule(
-            name="physics_join_from_right_high",
+            name="join-right-high",
             template_set="physics1",
             module="UFTC_Lattice.C_XOR",
             condition={"R2": "negative", "R3": "zero"},
@@ -242,7 +242,7 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
             description="Materialize high effective severity from the right code.",
         ),
         TemplateRule(
-            name="physics_join_from_left_mid",
+            name="join-left-mid",
             template_set="physics1",
             module="UFTC_Lattice.C_XOR",
             condition={"R1": "positive", "R3": "zero"},
@@ -250,7 +250,7 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
             description="Materialize mid effective severity from the left code.",
         ),
         TemplateRule(
-            name="physics_join_from_right_mid",
+            name="join-right-mid",
             template_set="physics1",
             module="UFTC_Lattice.C_XOR",
             condition={"R2": "positive", "R3": "zero"},
@@ -258,7 +258,7 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
             description="Materialize mid effective severity from the right code.",
         ),
         TemplateRule(
-            name="physics_contract_high",
+            name="contract-high",
             template_set="physics1",
             module="Contraction.StrictContraction",
             condition={"R3": "negative", "R4": "positive"},
@@ -266,7 +266,7 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
             description="Interior contraction lowers high severity to mid.",
         ),
         TemplateRule(
-            name="physics_contract_mid",
+            name="contract-mid",
             template_set="physics1",
             module="Contraction.StrictContraction",
             condition={"R3": "positive", "R4": "positive"},
@@ -274,7 +274,7 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
             description="Interior contraction lowers mid severity to zero and reaches boundary.",
         ),
         TemplateRule(
-            name="physics_boundary_reset",
+            name="boundary-reset",
             template_set="physics1",
             module="UFTC_Lattice.ConeInteriorPreserved",
             condition={"R4": "negative"},

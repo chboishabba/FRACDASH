@@ -79,3 +79,28 @@ FRACDASH should not move into `../dashiCORE` integration just because a GPU path
 - Signed-state behavior must be explicit, never implied.
 - Experimental outputs must be reproducible and stored.
 - GPU code stays behind a clear adapter boundary.
+
+## Bridge Correctness Layer
+
+FRACDASH also has a cross-cutting architecture obligation beyond raw execution:
+the bridge from upstream AGDA semantics into local executable carriers must be
+stated as a semantics-preserving compilation problem.
+
+That layer has three parts:
+
+1. source semantics
+   - canonical DASHI / AGDA state and step objects
+2. target semantics
+   - FRACDASH carrier/template or FRACTRAN/register execution objects
+3. bridge obligations
+   - compile map
+   - decode/readout map
+   - quotient assumptions
+   - simulation/refinement condition
+   - invariant/Lyapunov/contraction preservation
+   - observable validity
+   - robustness against implementation-preserving perturbations
+
+The current repo has executable pieces of that story, but not yet a fully
+formalized end-to-end bridge contract. See
+[`BRIDGE_CORRECTNESS.md`](/home/c/Documents/code/FRACDASH/BRIDGE_CORRECTNESS.md).

@@ -1,0 +1,2406 @@
+{
+  "summary": {
+    "template_set": "physics19",
+    "registers": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "record_count": 33,
+    "role": "python_oracle_for_delta_extraction",
+    "signed_state_primes": {
+      "R1": {
+        "negative": 127,
+        "zero": 131,
+        "positive": 137
+      },
+      "R2": {
+        "negative": 139,
+        "zero": 149,
+        "positive": 151
+      },
+      "R3": {
+        "negative": 157,
+        "zero": 163,
+        "positive": 167
+      },
+      "R4": {
+        "negative": 173,
+        "zero": 179,
+        "positive": 181
+      },
+      "R5": {
+        "negative": 191,
+        "zero": 193,
+        "positive": 197
+      },
+      "R6": {
+        "negative": 199,
+        "zero": 211,
+        "positive": 223
+      }
+    },
+    "macro_encoding": "three-state-prime swap per register",
+    "macro_ordering": "register order R1,R2,R3,R4,R5,R6 with repeated unit steps in that order"
+  },
+  "records": [
+    {
+      "name": "physics4_scan_left_high",
+      "module": "DASHI.Algebra.PhysicsSignature.scan",
+      "description": "Latch left-dominant scan only from an explicitly armed interior state.",
+      "source_state": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "source_vector": [
+        -1,
+        0,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "target_vector": [
+        -1,
+        0,
+        0,
+        1,
+        1,
+        -1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "fraction": "197/193",
+      "source_integer": 21442062326483,
+      "target_integer": 21886457400607,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "197/193"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics4_scan_left_mid",
+      "module": "DASHI.Algebra.PhysicsSignature.scan",
+      "description": "Latch mid left scan only from an explicitly armed interior state.",
+      "source_state": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "source_vector": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "target_vector": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        -1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "fraction": "197/193",
+      "source_integer": 23130413690773,
+      "target_integer": 23609800503017,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "197/193"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics4_scan_right_high",
+      "module": "DASHI.Algebra.PhysicsSignature.scan",
+      "description": "Latch right-dominant scan only from an explicitly armed interior state.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "source_vector": [
+        0,
+        -1,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "target_vector": [
+        0,
+        -1,
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "fraction": "191/193",
+      "source_integer": 20633013417689,
+      "target_integer": 20419199807143,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "191/193"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics4_scan_right_mid",
+      "module": "DASHI.Algebra.PhysicsSignature.scan",
+      "description": "Latch mid right scan only from an explicitly armed interior state.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "source_vector": [
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "target_vector": [
+        0,
+        1,
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "fraction": "191/193",
+      "source_integer": 22414280763101,
+      "target_integer": 22182008423587,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "191/193"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics2_join_left_high",
+      "module": "UFTC_Lattice.C_XOR",
+      "description": "Materialize high severity from a latched left source.",
+      "source_state": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "negative",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "source_vector": [
+        -1,
+        0,
+        0,
+        0,
+        1,
+        -1
+      ],
+      "target_vector": [
+        -1,
+        0,
+        -1,
+        0,
+        1,
+        -1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ],
+      "fraction": "157/163",
+      "source_integer": 21644618092313,
+      "target_integer": 20847883684007,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "157/163"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics2_join_right_high",
+      "module": "UFTC_Lattice.C_XOR",
+      "description": "Materialize high severity from a latched right source.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "negative",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "source_vector": [
+        0,
+        -1,
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "target_vector": [
+        0,
+        -1,
+        -1,
+        0,
+        -1,
+        -1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ],
+      "fraction": "157/163",
+      "source_integer": 20193573289937,
+      "target_integer": 19450251573743,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "157/163"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics2_join_left_mid",
+      "module": "UFTC_Lattice.C_XOR",
+      "description": "Materialize mid severity from a latched left source and advance the action phase.",
+      "source_state": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "positive"
+      },
+      "source_vector": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        -1
+      ],
+      "target_vector": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        2
+      ],
+      "fraction": "37241/32437",
+      "source_integer": 23348918729503,
+      "target_integer": 26806951395179,
+      "delta_norm_1": 3,
+      "delta_norm_inf": 2,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "167/163",
+        "211/199",
+        "223/211"
+      ],
+      "macro_length": 3
+    },
+    {
+      "name": "physics2_join_right_mid",
+      "module": "UFTC_Lattice.C_XOR",
+      "description": "Materialize mid severity from a latched right source and advance the action phase.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "positive"
+      },
+      "source_vector": [
+        0,
+        1,
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "target_vector": [
+        0,
+        1,
+        1,
+        0,
+        -1,
+        1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        2
+      ],
+      "fraction": "37241/32437",
+      "source_integer": 21936903358133,
+      "target_integer": 25185813051769,
+      "delta_norm_1": 3,
+      "delta_norm_inf": 2,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "167/163",
+        "211/199",
+        "223/211"
+      ],
+      "macro_length": 3
+    },
+    {
+      "name": "physics2_contract_high",
+      "module": "Contraction.StrictContraction",
+      "description": "Interior contraction lowers high severity to mid.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "negative",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "positive"
+      },
+      "source_vector": [
+        0,
+        0,
+        -1,
+        1,
+        0,
+        -1
+      ],
+      "target_vector": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        2
+      ],
+      "fraction": "37241/31243",
+      "source_integer": 21303265343161,
+      "target_integer": 25393044990707,
+      "delta_norm_1": 4,
+      "delta_norm_inf": 2,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "163/157",
+        "167/163",
+        "211/199",
+        "223/211"
+      ],
+      "macro_length": 4
+    },
+    {
+      "name": "physics2_contract_mid",
+      "module": "Contraction.StrictContraction",
+      "description": "Interior contraction lowers mid severity to zero and drops to the boundary.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "positive"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        -1,
+        -2,
+        0,
+        -1
+      ],
+      "fraction": "5949989/6740621",
+      "source_integer": 25393044990707,
+      "target_integer": 22414602211163,
+      "delta_norm_1": 4,
+      "delta_norm_inf": 2,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "163/167",
+        "179/181",
+        "173/179",
+        "211/223"
+      ],
+      "macro_length": 4
+    },
+    {
+      "name": "physics11_boundary_discharge",
+      "module": "UFTC_Lattice.ConeInteriorPreserved",
+      "description": "Discharge latent action phase at the boundary before shell entry; this targets recurrent recovery without increasing action-rank jumps.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        -1
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "fraction": "211/199",
+      "source_integer": 21139838104367,
+      "target_integer": 22414602211163,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "211/199"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics5_boundary_to_shell",
+      "module": "UFTC_Lattice.ConeInteriorPreserved",
+      "description": "Enter the latent shell only from a discharged boundary state.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "fraction": "179/173",
+      "source_integer": 22414602211163,
+      "target_integer": 23191987258949,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "179/173"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics9_shell_probe_left_high",
+      "module": "DASHI.Algebra.PhysicsSignature.scan",
+      "description": "Probe a left-high source from cleared shell and stage a latched shell marker.",
+      "source_state": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "source_vector": [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "target_vector": [
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "fraction": "32899/31459",
+      "source_integer": 22483834976233,
+      "target_integer": 23513006989513,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "167/163",
+        "197/193"
+      ],
+      "macro_length": 2
+    },
+    {
+      "name": "physics9_shell_probe_right_high",
+      "module": "DASHI.Algebra.PhysicsSignature.scan",
+      "description": "Probe a right-high source from cleared shell and stage a latched shell marker.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "negative",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "target_vector": [
+        0,
+        -1,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "fraction": "31897/31459",
+      "source_integer": 21635478046939,
+      "target_integer": 21936706292737,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "167/163",
+        "191/193"
+      ],
+      "macro_length": 2
+    },
+    {
+      "name": "physics9_shell_probe_left_mid",
+      "module": "DASHI.Algebra.PhysicsSignature.scan",
+      "description": "Probe a left-mid source from cleared shell and stage a latched shell marker.",
+      "source_state": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "positive",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "source_vector": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "target_vector": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "fraction": "32899/31459",
+      "source_integer": 24254215683023,
+      "target_integer": 25364424862703,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "167/163",
+        "197/193"
+      ],
+      "macro_length": 2
+    },
+    {
+      "name": "physics9_shell_probe_right_mid",
+      "module": "DASHI.Algebra.PhysicsSignature.scan",
+      "description": "Probe a right-mid source from cleared shell and stage a latched shell marker.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "positive",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "target_vector": [
+        0,
+        1,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "fraction": "31897/31459",
+      "source_integer": 23503289101351,
+      "target_integer": 23830522663333,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "167/163",
+        "191/193"
+      ],
+      "macro_length": 2
+    },
+    {
+      "name": "physics9_shell_stage_release_left",
+      "module": "UFTC_Lattice.ConeInteriorPreserved",
+      "description": "Release staged left shell marker into the normal latched-shell path.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ],
+      "fraction": "163/167",
+      "source_integer": 24253574138789,
+      "target_integer": 23672650207321,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "163/167"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics12_shell_stage_detour_left",
+      "module": "UFTC_Lattice.ConeInteriorPreserved",
+      "description": "Route staged left shell markers through a boundary detour before shell release to increase controllable path depth without changing action-rank phase.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "fraction": "28199/29893",
+      "source_integer": 24253574138789,
+      "target_integer": 22879153552327,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "163/167",
+        "173/179"
+      ],
+      "macro_length": 2
+    },
+    {
+      "name": "physics12_shell_stage_detour_right",
+      "module": "UFTC_Lattice.ConeInteriorPreserved",
+      "description": "Route staged right shell markers through a boundary detour before shell release to increase controllable path depth without changing action-rank phase.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        0,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        0
+      ],
+      "fraction": "28199/29893",
+      "source_integer": 23514886601567,
+      "target_integer": 22182326540581,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "163/167",
+        "173/179"
+      ],
+      "macro_length": 2
+    },
+    {
+      "name": "physics9_shell_stage_release_right",
+      "module": "UFTC_Lattice.ConeInteriorPreserved",
+      "description": "Release staged right shell marker into the normal latched-shell path.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        0,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ],
+      "fraction": "163/167",
+      "source_integer": 23514886601567,
+      "target_integer": 22951655784763,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "163/167"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics10_shell_probe_neutral",
+      "module": "DASHI.Algebra.PhysicsSignature.scan",
+      "description": "Probe neutral shell states before interior rearm by staging a shell marker; this widens shell recurrence while preserving action-rank phase.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "target_vector": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "fraction": "32899/31459",
+      "source_integer": 23191987258949,
+      "target_integer": 24253574138789,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "167/163",
+        "197/193"
+      ],
+      "macro_length": 2
+    },
+    {
+      "name": "physics6_shell_refresh_left",
+      "module": "UFTC_Lattice.ConeInteriorPreserved",
+      "description": "Refresh a left-latched shell state by clearing the latch before cleared rearm.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "fraction": "193/197",
+      "source_integer": 23672650207321,
+      "target_integer": 23191987258949,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "193/197"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics6_shell_refresh_right",
+      "module": "UFTC_Lattice.ConeInteriorPreserved",
+      "description": "Refresh a right-latched shell state by clearing the latch before cleared rearm.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "fraction": "193/191",
+      "source_integer": 22951655784763,
+      "target_integer": 23191987258949,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "193/191"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics5_shell_to_interior_cleared",
+      "module": "UFTC_Lattice.ConeInteriorPreserved",
+      "description": "Re-arm the interior from a cleared shell state.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "source_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "fraction": "36019/37769",
+      "source_integer": 23191987258949,
+      "target_integer": 22117402872199,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "181/179",
+        "199/211"
+      ],
+      "macro_length": 2
+    },
+    {
+      "name": "physics5_shell_to_interior_latched_left",
+      "module": "UFTC_Lattice.ConeInteriorPreserved",
+      "description": "Re-arm the interior from a shell state that still carries a left scan latch.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "positive",
+        "R6": "negative"
+      },
+      "source_vector": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        -1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "fraction": "36019/37769",
+      "source_integer": 23672650207321,
+      "target_integer": 22575794641571,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "181/179",
+        "199/211"
+      ],
+      "macro_length": 2
+    },
+    {
+      "name": "physics5_shell_to_interior_latched_right",
+      "module": "UFTC_Lattice.ConeInteriorPreserved",
+      "description": "Re-arm the interior from a shell state that still carries a right scan latch.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "zero",
+        "R5": "negative",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "positive",
+        "R5": "negative",
+        "R6": "negative"
+      },
+      "source_vector": [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        1,
+        -1,
+        -1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "fraction": "36019/37769",
+      "source_integer": 22951655784763,
+      "target_integer": 21888206987513,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "181/179",
+        "199/211"
+      ],
+      "macro_length": 2
+    },
+    {
+      "name": "physics13_contract_mid_detour_nn",
+      "module": "Contraction.StrictContraction",
+      "description": "Targeted detour for the max-chain branch: discharge mid-contraction into a neutral latch before shell routing to increase path depth without introducing action-rank increases.",
+      "source_state": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "negative",
+        "R6": "positive"
+      },
+      "target_state": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "source_vector": [
+        -1,
+        -1,
+        1,
+        1,
+        -1,
+        1
+      ],
+      "target_vector": [
+        -1,
+        -1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        -1,
+        -2,
+        1,
+        -1
+      ],
+      "fraction": "1148347877/1287458611",
+      "source_integer": 22727506859983,
+      "target_integer": 20271785072681,
+      "delta_norm_1": 5,
+      "delta_norm_inf": 2,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "163/167",
+        "179/181",
+        "173/179",
+        "193/191",
+        "211/223"
+      ],
+      "macro_length": 5
+    },
+    {
+      "name": "physics14_shell_high_rearm",
+      "module": "UFTC_Lattice.ConeInteriorPreserved",
+      "description": "Re-arm interior contraction for stalled high-severity shell states to recycle them into the controlled relaxation loop without increasing action-rank phase.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "negative",
+        "R4": "zero",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "negative",
+        "R4": "positive",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "source_vector": [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        -1
+      ],
+      "target_vector": [
+        0,
+        0,
+        -1,
+        1,
+        0,
+        -1
+      ],
+      "delta_vector": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "fraction": "181/179",
+      "source_integer": 21067870145999,
+      "target_integer": 21303265343161,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "181/179"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics15_boundary_crossfeed_neutral",
+      "module": "UFTC_Lattice.C_XOR",
+      "description": "Narrow boundary cross-feed detour on the max-chain bottleneck state; adds a depth step while preserving action-rank phase.",
+      "source_state": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "negative",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "source_vector": [
+        -1,
+        -1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "target_vector": [
+        -1,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "delta_vector": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "fraction": "151/139",
+      "source_integer": 20271785072681,
+      "target_integer": 22021867237229,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 2,
+      "normalized_unit_steps": [
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "149/139",
+        "151/149"
+      ],
+      "macro_length": 2
+    },
+    {
+      "name": "physics16_boundary_discharge_high",
+      "module": "Contraction.StrictContraction",
+      "description": "Discharge high-severity boundary states into the shell-entry lane to reduce terminal mass while preserving action-rank monotonicity.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "negative",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        -1
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "fraction": "34393/31243",
+      "source_integer": 20361684554513,
+      "target_integer": 22414602211163,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "163/157",
+        "211/199"
+      ],
+      "macro_length": 2
+    },
+    {
+      "name": "physics17_boundary_handoff_left_to_mid",
+      "module": "UFTC_Lattice.C_XOR",
+      "description": "Narrow boundary handoff on the max-chain tail to open an extra acyclic segment without changing action-rank phase.",
+      "source_state": {
+        "R1": "negative",
+        "R2": "positive",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "target_state": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "positive",
+        "R6": "zero"
+      },
+      "source_vector": [
+        -1,
+        1,
+        0,
+        -1,
+        1,
+        0
+      ],
+      "target_vector": [
+        -1,
+        0,
+        0,
+        -1,
+        1,
+        0
+      ],
+      "delta_vector": [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "fraction": "149/151",
+      "source_integer": 22478278993441,
+      "target_integer": 22180553443859,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "149/151"
+      ],
+      "macro_length": 1
+    },
+    {
+      "name": "physics18_boundary_discharge_mid",
+      "module": "Contraction.StrictContraction",
+      "description": "Discharge mid-severity boundary states into the shell-entry lane to further reduce terminal mass while preserving action-rank monotonicity.",
+      "source_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "negative"
+      },
+      "target_state": {
+        "R1": "zero",
+        "R2": "zero",
+        "R3": "zero",
+        "R4": "negative",
+        "R5": "zero",
+        "R6": "zero"
+      },
+      "source_vector": [
+        0,
+        0,
+        1,
+        -1,
+        0,
+        -1
+      ],
+      "target_vector": [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "delta_vector": [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        1
+      ],
+      "fraction": "34393/33233",
+      "source_integer": 21658607137603,
+      "target_integer": 22414602211163,
+      "delta_norm_1": 2,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "macro_fraction_strings": [
+        "163/167",
+        "211/199"
+      ],
+      "macro_length": 2
+    },
+    {
+      "name": "physics19_tail_handoff_n0_to_nn",
+      "module": "UFTC_Lattice.C_XOR",
+      "description": "Single-state tail handoff on the max-depth branch: insert one extra acyclic step before the existing contract-mid discharge, preserving action-rank phase.",
+      "source_state": {
+        "R1": "negative",
+        "R2": "zero",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "positive",
+        "R6": "positive"
+      },
+      "target_state": {
+        "R1": "negative",
+        "R2": "negative",
+        "R3": "positive",
+        "R4": "positive",
+        "R5": "positive",
+        "R6": "positive"
+      },
+      "source_vector": [
+        -1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "target_vector": [
+        -1,
+        -1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "delta_vector": [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "fraction": "139/149",
+      "source_integer": 25127895923051,
+      "target_integer": 23441459955061,
+      "delta_norm_1": 1,
+      "delta_norm_inf": 1,
+      "normalized_unit_steps": [
+        [
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "macro_fraction_strings": [
+        "139/149"
+      ],
+      "macro_length": 1
+    }
+  ]
+}

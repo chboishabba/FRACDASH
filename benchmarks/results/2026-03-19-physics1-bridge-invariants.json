@@ -1,0 +1,491 @@
+{
+  "summary": {
+    "template_set": "physics1",
+    "checked_rules": 7,
+    "passed_rules": 7,
+    "bridge_invariants_pass": true,
+    "regime_valid_rules": 7,
+    "regime_validator_pass": true,
+    "conserved_quantity": "R1/R2 source signature and paired-prime product stay fixed across all macro intermediates",
+    "monotone_quantity": "decoded signed-IR residual L1 distance to the target state decreases by exactly 1 at each macro step",
+    "transmutation_quantity": "signed-mass change per realized unit step stays bounded while the overall trajectory still contracts to target",
+    "trajectory_kind_counts": {
+      "strictly_contracting": 7
+    },
+    "dynamical_class_counts": {
+      "conservative_contracting": 7
+    },
+    "scope": "bridge-local compiler correctness on the physics1 gold slice"
+  },
+  "records": [
+    {
+      "name": "join-left-high",
+      "source_signature": {
+        "R1": "negative",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "negative",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "negative",
+          "R2": "zero"
+        },
+        {
+          "R1": "negative",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 35,
+      "intermediate_prime_products": [
+        35,
+        35
+      ],
+      "target_prime_product": 35,
+      "source_signed_mass": -1,
+      "intermediate_signed_mass": [
+        -1,
+        -2
+      ],
+      "target_signed_mass": -2,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": -1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "negative",
+        "zero",
+        "negative",
+        "zero"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "join-right-high",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "negative"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "negative"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "negative"
+        },
+        {
+          "R1": "zero",
+          "R2": "negative"
+        }
+      ],
+      "source_prime_product": 26,
+      "intermediate_prime_products": [
+        26,
+        26
+      ],
+      "target_prime_product": 26,
+      "source_signed_mass": -1,
+      "intermediate_signed_mass": [
+        -1,
+        -2
+      ],
+      "target_signed_mass": -2,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": -1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "zero",
+        "negative",
+        "negative",
+        "zero"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "join-left-mid",
+      "source_signature": {
+        "R1": "positive",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "positive",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "positive",
+          "R2": "zero"
+        },
+        {
+          "R1": "positive",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 21,
+      "intermediate_prime_products": [
+        21,
+        21
+      ],
+      "target_prime_product": 21,
+      "source_signed_mass": 1,
+      "intermediate_signed_mass": [
+        1,
+        2
+      ],
+      "target_signed_mass": 2,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "positive",
+        "zero",
+        "positive",
+        "zero"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "join-right-mid",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "positive"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "positive"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "positive"
+        },
+        {
+          "R1": "zero",
+          "R2": "positive"
+        }
+      ],
+      "source_prime_product": 22,
+      "intermediate_prime_products": [
+        22,
+        22
+      ],
+      "target_prime_product": 22,
+      "source_signed_mass": 1,
+      "intermediate_signed_mass": [
+        1,
+        2
+      ],
+      "target_signed_mass": 2,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 1,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 1,
+      "execution_length": 1,
+      "terminal_state_key": [
+        "zero",
+        "positive",
+        "positive",
+        "zero"
+      ],
+      "contraction_steps": 1,
+      "contraction_drop": 1,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "contract-high",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 14,
+      "intermediate_prime_products": [
+        14,
+        14,
+        14
+      ],
+      "target_prime_product": 14,
+      "source_signed_mass": 0,
+      "intermediate_signed_mass": [
+        0,
+        1,
+        2
+      ],
+      "target_signed_mass": 2,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 2,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 2,
+      "execution_length": 2,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "positive",
+        "positive"
+      ],
+      "contraction_steps": 2,
+      "contraction_drop": 2,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "contract-mid",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 14,
+      "intermediate_prime_products": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "target_prime_product": 14,
+      "source_signed_mass": 2,
+      "intermediate_signed_mass": [
+        2,
+        1,
+        0,
+        -1
+      ],
+      "target_signed_mass": -1,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": -3,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        3,
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 3,
+      "execution_length": 3,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "negative"
+      ],
+      "contraction_steps": 3,
+      "contraction_drop": 3,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    },
+    {
+      "name": "boundary-reset",
+      "source_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "target_signature": {
+        "R1": "zero",
+        "R2": "zero"
+      },
+      "intermediate_signatures": [
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        },
+        {
+          "R1": "zero",
+          "R2": "zero"
+        }
+      ],
+      "source_prime_product": 14,
+      "intermediate_prime_products": [
+        14,
+        14,
+        14
+      ],
+      "target_prime_product": 14,
+      "source_signed_mass": -1,
+      "intermediate_signed_mass": [
+        -1,
+        0,
+        1
+      ],
+      "target_signed_mass": 1,
+      "signature_signed_mass_delta": 0,
+      "total_signed_mass_delta": 2,
+      "source_signature_conserved": true,
+      "source_prime_product_conserved": true,
+      "bounded_transmutation": true,
+      "transmutation_detected": false,
+      "residual_l1_sequence": [
+        2,
+        1,
+        0
+      ],
+      "residual_l1_strict_descent": true,
+      "residual_l1_unit_descent": true,
+      "state_repeat_detected": false,
+      "integer_repeat_detected": false,
+      "terminal_reached": true,
+      "trajectory_kind": "strictly_contracting",
+      "trajectory_is_irreversible": true,
+      "macro_length": 2,
+      "execution_length": 2,
+      "terminal_state_key": [
+        "zero",
+        "zero",
+        "zero",
+        "positive"
+      ],
+      "contraction_steps": 2,
+      "contraction_drop": 2,
+      "dynamical_class": "conservative_contracting",
+      "regime_valid": true,
+      "passed": true
+    }
+  ]
+}
