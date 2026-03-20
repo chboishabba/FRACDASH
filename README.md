@@ -230,6 +230,17 @@ So the current bridge target is:
 
 > exact paired-prime macro realization with well-formedness preservation, strict contraction, and bounded transmutation, where conservative slices are the zero-transmutation special case
 
+### Theorem Split
+
+The theorem architecture for the current phase is intentionally frozen as:
+
+- [`formalism/GenericMacroBridge.agda`](/home/c/Documents/code/FRACDASH/formalism/GenericMacroBridge.agda) = structural, class-indexed bridge contract
+- [`formalism/BridgeInstances.agda`](/home/c/Documents/code/FRACDASH/formalism/BridgeInstances.agda) = stronger numeric theorem layer for the closed slice family
+
+That split is deliberate. The generic layer carries the reusable execution/realization shape and regime witness interface. The master layer carries the current residual/transmutation inequalities for the closed family without asserting that those exact numeric choices belong in every future bridge instance.
+
+The short repo-facing statement of the current result lives in [`CURRENT_FORMAL_RESULT.md`](/home/c/Documents/code/FRACDASH/CURRENT_FORMAL_RESULT.md).
+
 The current guarantee story should be read as:
 
 - FRACTRAN is presently the best **auditable execution target**
@@ -267,6 +278,19 @@ Current practical conclusion:
 
 - keep `heat` as the least-bad named-equation baseline if the solver lane is revisited
 - treat the near-term project win as **proof-carrying / auditable execution**, not solver speed
+
+That conclusion now has a reproducible upstream semantic boundary:
+
+- `../dashi_agda` contains a real wave/unitary formal surface
+- FRACDASH does not yet realize that surface as a numerically good executable
+  wave solver
+- so `wave` remains a formal bridge target, while `heat` remains the least-bad
+  practical runtime comparison family
+
+See:
+
+- [`benchmarks/results/2026-03-20-dashi-agda-wave-surface.md`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-20-dashi-agda-wave-surface.md)
+- [`scripts/check_dashi_agda_wave_surface.py`](/home/c/Documents/code/FRACDASH/scripts/check_dashi_agda_wave_surface.py)
 
 ### MonsterLean Intake Check
 

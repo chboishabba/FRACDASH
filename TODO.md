@@ -1,5 +1,20 @@
 # TODO
 
+## Current Bridge Checkpoint
+
+- [x] close `physics1` as the first exact local `X -> Z -> Y` bridge slice
+- [x] close `physics3` as the second exact local `X -> Z -> Y` bridge slice
+- [x] promote the macro FRACTRAN layer from slice-local to bridge-generic on both the Python and Agda sides
+- [x] strengthen structural `WellFormedY` into a substantive paired-prime exclusivity invariant on the closed slices
+- [x] add bridge-core validators plus terminal-basin and contraction-cost summaries for the closed slices
+- [x] widen the Python-side bridge pipeline to `physics15`
+- [x] classify the `physics15_boundary_crossfeed_neutral` conservation break as intended widened semantics (`transmuting_contracting`), not a bridge regression
+- [x] widen the next bridge slice batch (`physics19`, `physics20`, `physics21`, `physics22`)
+- [x] freeze the theorem split for this phase:
+  - `formalism/GenericMacroBridge.agda` stays structural / class-indexed
+  - `formalism/BridgeInstances.agda` stays the stronger numeric theorem layer for the closed family
+- [x] write the short current formal result note for the closed bridge family
+
 ## Phase 1: Minimal Model
 
 - [x] Define the smallest DASHI state space that still preserves balanced ternary structure.
@@ -35,7 +50,7 @@
   - [x] map parsed transition rules into FRACTRAN candidates with provenance
   - [x] wire that output into the Phase 2 verifier path and preserve round-trip checks (`scripts/toy_dashi_transitions.py --agdas-path`)
   - [x] define a FRACDASH-side wave-1 mapping in `AGDAS_BRIDGE_MAPPING.md`
-  - [x] implement FRACDASH-side wave-1 template transitions in `scripts/agdas_bridge.py`
+  - [x] implement FRACDASH-side wave-1 template transitions in `scripts/agdas_bridge.py`)
   - [x] run the wave-1 template transitions through the Phase 2 verifier path (`--agdas-templates`)
   - [x] add a compressed wave-2 `MonsterState` / `Monster.Step` template set
   - [x] run the wave-2 template set through the Phase 2 verifier path and capture the artifact
@@ -112,44 +127,6 @@
     - [x] emit lift/scan/Monster provenance on generated templates for debugging and regression
 - [ ] Introduce a prime-exponent-vector engine for batched runs and compare it against the bigint/cycle-detecting baseline.
 - [ ] Prototype LUT or divisibility-mask rule selection on CPU before any GPU port.
-
-## Bridge Hard Track
-
-- [x] Close `physics1` as the first explicit `X -> Z -> Y` gold slice.
-- [x] Close `physics3` as the second explicit `X -> Z -> Y` gold slice.
-- [x] Promote the macro FRACTRAN layer from slice-local to bridge-generic across Python and Agda.
-- [x] Strengthen structural `WellFormedY` into a substantive paired-prime exclusivity invariant on the closed slices.
-- [x] Add the first bridge-core validator package on top of emitted FRACTRAN traces.
-- [x] Add terminal-basin and contraction-profile summaries without changing validator pass/fail semantics.
-- [x] Widen the bridge beyond the first two closed slices:
-  - [x] `physics15` Python-side widening pass: delta export, macro soundness, bridge invariants, bridge-core validator, and cost/basin summaries
-  - [x] classify the `physics15_boundary_crossfeed_neutral` conservation break as intended semantic widening
-  - [x] add a bridge-wide contracting/transmuting classifier so conservation is treated as regime-specific rather than universal
-  - [x] widen the same pipeline to `physics19`, `physics20`, `physics21`, and `physics22`
-  - [x] build one canonical cross-slice regime summary table for `physics1`, `physics3`, `physics15`, `physics19`, `physics20`, `physics21`, `physics22`
-  - [x] decide that Batch C should be formalized next on the Agda side, with `physics15` as the first widened transmuting slice
-  - [x] add `formalism/Physics15StepDelta.agda` as the first widened Agda slice
-  - [ ] finish the numeric tightening of the Agda bridge layer:
-    - [x] add the thin master theorem layer in `formalism/BridgeInstances.agda`
-    - [x] add exact per-slice `slice-regime-valid` witnesses over source-step constructors
-    - [x] add the first numeric master-level theorem surface for target-relative residual decrease and bounded transmutation
-    - [x] keep those numeric inequalities in `formalism/BridgeInstances.agda` for now rather than lifting them into `RegimeValidBridge`
-    - [x] close widened Batch C Agda slices through `physics22` and confirm that the same numeric theorem package drops in unchanged
-    - [x] decide whether to freeze the `BridgeInstances.agda` numeric contract as the stable bridge-family theorem or lift parts of it upward into `formalism/GenericMacroBridge.agda`
-      Decision: keep the stronger residual theorems in `BridgeInstances.agda`, but lift only the stable class-indexed numeric bound extractors into `formalism/GenericMacroBridge.agda`.
-    - [x] promote the stable bridge claim more explicitly in all top-level docs and repo summaries
-
-## Solver Track
-
-- [x] add a first named-equation probe harness comparing a transparent NumPy reference against a DASHI-style local update path
-- [x] run and record the first `wave` probe artifact
-- [x] decide whether the `wave` result is solver-shaped, qualitative-only, or structurally mismatched
-- [x] if structurally mismatched, pivot the main benchmark family to `heat` / diffusion and record that fallback explicitly
-- [x] run and record the first `heat` fallback probe artifact
-- [x] if the fallback is used, take one more solver-speed shot with a stricter `heat` update rule and record the outcome
-- [ ] if the solver lane is revisited later, freeze a stricter matched-grid runtime/error comparison against the transparent heat baseline
-- [x] decide whether the project win is currently solver speed, qualitative dynamics, or proof-carrying execution
-  Current answer: proof-carrying execution first; `heat` remains the best qualitative baseline if the solver lane resumes.
 
 ## Phase 3: Interpretation
 

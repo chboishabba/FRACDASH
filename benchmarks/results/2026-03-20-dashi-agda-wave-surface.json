@@ -1,0 +1,108 @@
+{
+  "date": "2026-03-20",
+  "dashi_agda_root": "/home/c/Documents/code/dashi_agda",
+  "wave_modules": [
+    {
+      "path": "/home/c/Documents/code/dashi_agda/DASHI/Unifier.agda",
+      "lane": "wave",
+      "role": "top-level wave lift surface with unitary evolution placeholder",
+      "exists": true,
+      "matched_patterns": [
+        "record WaveLift",
+        "U : \u211d \u2192",
+        "Hgen : Set"
+      ],
+      "required_patterns": [
+        "record WaveLift",
+        "U : \u211d \u2192",
+        "Hgen : Set"
+      ],
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/DASHI/Quantum/Stone.agda",
+      "lane": "wave",
+      "role": "Stone group / continuity package for wave evolution",
+      "exists": true,
+      "matched_patterns": [
+        "record StoneGroup",
+        "record StoneContinuity",
+        "Stone-theorem"
+      ],
+      "required_patterns": [
+        "record StoneGroup",
+        "record StoneContinuity",
+        "Stone-theorem"
+      ],
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/DASHI/Physics/WaveLiftEvenSubalgebra.agda",
+      "lane": "wave",
+      "role": "wave-lift to even-subalgebra bridge prototype",
+      "exists": true,
+      "matched_patterns": [
+        "record WaveLift",
+        "record LiftFactorsThroughEven",
+        "waveLift\u21d2evenSubalgebra"
+      ],
+      "required_patterns": [
+        "record WaveLift",
+        "record LiftFactorsThroughEven",
+        "waveLift\u21d2evenSubalgebra"
+      ],
+      "pattern_pass": true
+    },
+    {
+      "path": "/home/c/Documents/code/dashi_agda/DASHI/Physics/Closure/Algebra/WaveRegime.agda",
+      "lane": "wave",
+      "role": "closure-heavy wave regime ladder",
+      "exists": true,
+      "matched_patterns": [
+        "module DASHI.Physics.Closure.Algebra.WaveRegime",
+        "WaveObservableTransportGeometry",
+        "Regime"
+      ],
+      "required_patterns": [
+        "module DASHI.Physics.Closure.Algebra.WaveRegime",
+        "WaveObservableTransportGeometry",
+        "Regime"
+      ],
+      "pattern_pass": true
+    }
+  ],
+  "diffusion_modules": [
+    {
+      "path": "/home/c/Documents/code/dashi_agda/DASHI/Physics/Closure/ContractionDiffusionPair.agda",
+      "lane": "diffusion",
+      "role": "contraction/diffusion conceptual pair",
+      "exists": true,
+      "matched_patterns": [
+        "record ContractionDiffusionPair",
+        "updateKD",
+        "updateDK"
+      ],
+      "required_patterns": [
+        "record ContractionDiffusionPair",
+        "updateKD",
+        "updateDK"
+      ],
+      "pattern_pass": true
+    }
+  ],
+  "wave_summary": {
+    "wave_surface_present": true,
+    "wave_surface_pattern_complete": true,
+    "interpretation": "formal_wave_target_present"
+  },
+  "current_fracdash_decision": {
+    "formal_lane": "wave remains active as an upstream semantic and bridge-alignment target",
+    "solver_lane": "heat remains the least-bad executable runtime comparison family",
+    "current_mainline": "proof-carrying / auditable execution"
+  },
+  "bridge_boundary": {
+    "upstream": "wave/unitary semantics exist in ../dashi_agda",
+    "local": "FRACDASH currently realizes a compressed, empirically dissipative executable subset",
+    "claim": "no current FRACDASH artifact should be read as a successful executable wave solver"
+  }
+}

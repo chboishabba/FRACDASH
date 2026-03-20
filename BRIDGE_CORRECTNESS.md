@@ -448,6 +448,22 @@ Current widened bridge result:
 - a quotient-validity section stating exactly what each reduced carrier forgets
 - decoder-validity claims for the physics-facing observables
 - robustness tests separating semantic invariants from artifact-sensitive metrics
+
+## Frozen Theorem Split
+
+For the current phase, the theorem split is intentionally frozen:
+
+- [`formalism/GenericMacroBridge.agda`](/home/c/Documents/code/FRACDASH/formalism/GenericMacroBridge.agda) remains the structural, class-indexed bridge contract.
+- [`formalism/BridgeInstances.agda`](/home/c/Documents/code/FRACDASH/formalism/BridgeInstances.agda) remains the stronger numeric theorem layer for the currently closed slice family.
+
+This means:
+
+- the generic layer owns the reusable `X -> Z -> Y` execution shape, well-formedness preservation, regime classification, and class-indexed witness surface
+- the master layer owns the current residual-decrease and bounded-transmutation theorems for the closed family
+
+This split is being kept on purpose. It avoids freezing the current numeric residual notion and bound values as part of every future generic bridge instance before that generality is actually needed.
+
+The short phase-close statement of this result is recorded in [`CURRENT_FORMAL_RESULT.md`](/home/c/Documents/code/FRACDASH/CURRENT_FORMAL_RESULT.md).
 - keep the current split for now:
   - `formalism/GenericMacroBridge.agda` remains the structural/class-indexed bridge contract
   - `formalism/BridgeInstances.agda` remains the stronger numeric theorem layer for the currently closed slice family
@@ -480,3 +496,33 @@ The following remain downstream hypotheses, not bridge-correctness premises:
 
 Those only become admissible claims after the bridge obligations above are
 either proved or validated strongly enough to rule out implementation artifacts.
+
+## Upstream Wave Target Boundary
+
+`../dashi_agda` should be treated as authoritative for whether a wave-facing
+semantic lane exists at all.
+
+Current verified reading:
+
+- upstream Agda contains a genuine wave/unitary semantic surface
+  - `DASHI.Unifier.WaveLift`
+  - `DASHI.Quantum.Stone`
+  - `DASHI.Physics.WaveLiftEvenSubalgebra`
+  - the broader `DASHI.Physics.Closure.*Wave*` ladder
+- FRACDASH currently realizes only a compressed executable subset of that
+  upstream formal surface
+- the current local executable lane remains empirically dissipative /
+  contraction-heavy
+
+Therefore the current split should be explicit:
+
+- `wave` is a formal target and bridge-alignment target
+- `heat` is the least-bad current runtime/solver comparison family
+- no current FRACDASH artifact should be read as a successful executable wave
+  solver
+
+The reproducible upstream check for this boundary lives in:
+
+- `scripts/check_dashi_agda_wave_surface.py`
+- `benchmarks/results/2026-03-20-dashi-agda-wave-surface.json`
+- `benchmarks/results/2026-03-20-dashi-agda-wave-surface.md`
