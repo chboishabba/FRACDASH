@@ -63,6 +63,8 @@ The near-term questions are:
 - [`MONSTERLEAN_INTAKE.md`](/home/c/Documents/code/FRACDASH/MONSTERLEAN_INTAKE.md): intake notes for the local `monster/MonsterLean` clone and proof-completeness caveats
 - [`AGDAS_FORMALISM_INTAKE.md`](/home/c/Documents/code/FRACDASH/AGDAS_FORMALISM_INTAKE.md): authoritative intake note for the upstream `../dashi_agda` physics/closure formalism
 - [`BRIDGE_CORRECTNESS.md`](/home/c/Documents/code/FRACDASH/BRIDGE_CORRECTNESS.md): formal target note for semantics-preserving compilation, quotient validity, decoder correctness, and robustness
+- [`CURRENT_FORMAL_RESULT.md`](/home/c/Documents/code/FRACDASH/CURRENT_FORMAL_RESULT.md): short current formal result statement for the closed bridge family
+- [`JMD_HANDOFF_NOTE.md`](/home/c/Documents/code/FRACDASH/JMD_HANDOFF_NOTE.md): short handoff note separating the closed bridge result from the still-open 10-walk / rank-4 semantics question
 - [`benchmarks/`](/home/c/Documents/code/FRACDASH/benchmarks): benchmark runners, summaries, and result artifacts
 - [`fractran/`](/home/c/Documents/code/FRACDASH/fractran): local FRACTRAN baseline interpreter and benchmark binary
 
