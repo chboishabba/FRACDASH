@@ -502,6 +502,116 @@ def formalism_targets() -> dict[str, object]:
     }
 
 
+def execution_status_summary() -> dict[str, object]:
+    """Executable witness/status surface for the closed bridge slices (informational)."""
+    regime_usage = {
+        "physics1": "conservative_only",
+        "physics3": "conservative_only",
+        "physics15": "mixed (transmuting on r2=+2 deltas)",
+        "physics19": "mixed (transmuting on r2=+2 or r2=-1 deltas)",
+        "physics20": "mixed (transmuting on r2=+2 or r2=-1 deltas)",
+        "physics21": "mixed (transmuting on r2=+2 or r2=-1 deltas)",
+        "physics22": "mixed (transmuting on r2=+2 or r2=-1 deltas)",
+        "physics23": "mixed (transmuting on r2=+2 or r2=-1 deltas; widened low-severity reentry)",
+        "carrier8_physics1": "exploratory_8_register",
+        "carrier8_physics2": "exploratory_8_register",
+        "carrier8_physics3": "exploratory_8_register",
+        "carrier8_physics4": "exploratory_8_register",
+        "carrier8_physics5": "exploratory_8_register",
+        "carrier8_physics6": "exploratory_8_register",
+    }
+    return {
+        "source": "formalism/ExecutionWitnessSketch.agda",
+        "bridge_instances": {
+            "physics1": {
+                "regime_class": "conservative_contracting",
+                "admissibility": "wellFormedY preserved via realizeDelta-preserves-wellFormed",
+                "family_tag": "regime_class (per-delta via classify)",
+                "regime_usage": regime_usage["physics1"],
+            },
+            "physics3": {
+                "regime_class": "conservative_contracting",
+                "admissibility": "wellFormedY preserved via realizeDelta-preserves-wellFormed",
+                "family_tag": "regime_class (per-delta via classify)",
+                "regime_usage": regime_usage["physics3"],
+            },
+            "physics15": {
+                "regime_class": "conservative_contracting",
+                "admissibility": "wellFormedY preserved via realizeDelta-preserves-wellFormed",
+                "family_tag": "regime_class (per-delta via classify)",
+                "regime_usage": regime_usage["physics15"],
+            },
+            "physics19": {
+                "regime_class": "conservative_contracting",
+                "admissibility": "wellFormedY preserved via realizeDelta-preserves-wellFormed",
+                "family_tag": "regime_class (per-delta via classify)",
+                "regime_usage": regime_usage["physics19"],
+            },
+            "physics20": {
+                "regime_class": "conservative_contracting",
+                "admissibility": "wellFormedY preserved via realizeDelta-preserves-wellFormed",
+                "family_tag": "regime_class (per-delta via classify)",
+                "regime_usage": regime_usage["physics20"],
+            },
+            "physics21": {
+                "regime_class": "conservative_contracting",
+                "admissibility": "wellFormedY preserved via realizeDelta-preserves-wellFormed",
+                "family_tag": "regime_class (per-delta via classify)",
+                "regime_usage": regime_usage["physics21"],
+            },
+            "physics22": {
+                "regime_class": "conservative_contracting",
+                "admissibility": "wellFormedY preserved via realizeDelta-preserves-wellFormed",
+                "family_tag": "regime_class (per-delta via classify)",
+                "regime_usage": regime_usage["physics22"],
+            },
+            "physics23": {
+                "regime_class": "conservative_contracting",
+                "admissibility": "wellFormedY preserved via realizeDelta-preserves-wellFormed",
+                "family_tag": "regime_class (per-delta via classify)",
+                "regime_usage": regime_usage["physics23"],
+            },
+            "carrier8_physics1": {
+                "regime_class": "exploratory_8_register",
+                "admissibility": "runtime-observed only; no Agda-side execution witness package yet",
+                "family_tag": "branch_local_memory_profile",
+                "regime_usage": regime_usage["carrier8_physics1"],
+            },
+            "carrier8_physics2": {
+                "regime_class": "exploratory_8_register",
+                "admissibility": "runtime-observed only; no Agda-side execution witness package yet",
+                "family_tag": "branch_local_memory_profile",
+                "regime_usage": regime_usage["carrier8_physics2"],
+            },
+            "carrier8_physics3": {
+                "regime_class": "exploratory_8_register",
+                "admissibility": "runtime-observed only; no Agda-side execution witness package yet",
+                "family_tag": "branch_local_memory_profile",
+                "regime_usage": regime_usage["carrier8_physics3"],
+            },
+            "carrier8_physics4": {
+                "regime_class": "exploratory_8_register",
+                "admissibility": "runtime-observed only; no Agda-side execution witness package yet",
+                "family_tag": "branch_local_memory_profile",
+                "regime_usage": regime_usage["carrier8_physics4"],
+            },
+            "carrier8_physics5": {
+                "regime_class": "exploratory_8_register",
+                "admissibility": "runtime-observed only; no Agda-side execution witness package yet",
+                "family_tag": "branch_local_memory_profile",
+                "regime_usage": regime_usage["carrier8_physics5"],
+            },
+            "carrier8_physics6": {
+                "regime_class": "exploratory_8_register",
+                "admissibility": "runtime-observed only; no Agda-side execution witness package yet",
+                "family_tag": "branch_local_memory_profile",
+                "regime_usage": regime_usage["carrier8_physics6"],
+            },
+        },
+        "regime_usage_by_slice": regime_usage,
+    }
+
+
 def all_states() -> list[State]:
     return [tuple(int(v) for v in vec) for vec in product((-1, 0, 1), repeat=len(REGISTERS))]
 
@@ -748,7 +858,7 @@ def main() -> None:
     parser.add_argument(
         "--template-set",
         default="physics8",
-        choices=("physics2", "physics3", "physics4", "physics5", "physics6", "physics7", "physics8", "physics9", "physics10", "physics11", "physics12", "physics13", "physics14", "physics15", "physics16", "physics17", "physics18", "physics19", "physics20", "physics21", "physics22", "carrier8_physics1", "carrier8_physics2"),
+        choices=("physics2", "physics3", "physics4", "physics5", "physics6", "physics7", "physics8", "physics9", "physics10", "physics11", "physics12", "physics13", "physics14", "physics15", "physics16", "physics17", "physics18", "physics19", "physics20", "physics21", "physics22", "physics23", "carrier8_physics1", "carrier8_physics2", "carrier8_physics3", "carrier8_physics4", "carrier8_physics5", "carrier8_physics6"),
         help="Physics template set to analyze.",
     )
     parser.add_argument("--max-trace-steps", type=int, default=24, help="Max steps per sample trace.")
@@ -868,6 +978,7 @@ def main() -> None:
             "statistical_laws": statistical_laws,
         },
         "formalism_targets": formalism_targets(),
+        "execution_status": execution_status_summary(),
         "observable_surrogates": observable_surrogates(analysis_nodes, analysis_succ, dist),
         "candidate_invariants": [
             {

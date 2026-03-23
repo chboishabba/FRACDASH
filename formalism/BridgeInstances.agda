@@ -13,6 +13,7 @@ import formalism.Physics19StepDelta as P19
 import formalism.Physics20StepDelta as P20
 import formalism.Physics21StepDelta as P21
 import formalism.Physics22StepDelta as P22
+import formalism.ExecutionWitnessSketch as EW
 
 ------------------------------------------------------------------------
 -- Thin master instantiation layer for the current closed bridge slices.
@@ -132,6 +133,164 @@ physics22-bounded-transmutation y δ with physics22-classify y δ
 ... | G.conservative-contracting = G.zero-transmutation
 ... | G.transmuting-contracting = G.bounded-transmutation-witness
 
+------------------------------------------------------------------------
+-- Executable witness/status surfaces (stubbed except physics15).
+------------------------------------------------------------------------
+
+physics1-execution-admissible :
+  P1.Exp4 → P1.Delta4 → Set
+physics1-execution-admissible y δ =
+  G.WellFormedY P1.primeExecution
+    (G.applyFracs P1.primeExecution
+      (P1.encodeY y)
+      (G.realizeNormalized P1.primeExecution P1.unitRealization y (P1.normalize δ)))
+
+physics1-execution-evidence :
+  ∀ y δ → physics1-execution-admissible y δ
+physics1-execution-evidence y δ =
+  G.realizeDelta-preserves-wellFormed P1.primeExecution P1.unitRealization y δ
+
+status1 : EW.ExecutionStatus (G.PrimeExecution.PrimeState P1.primeExecution)
+status1 = record
+  { regimeClass = G.conservative-contracting
+  ; wellFormedY = G.PrimeExecution.WellFormedY P1.primeExecution
+  ; executionAdmissible = ∀ y δ → physics1-execution-admissible y δ
+  ; familyTag = G.RegimeClass
+  ; evidence = physics1-execution-evidence
+  }
+
+physics3-execution-admissible :
+  P3.Exp6 → P3.Delta6 → Set
+physics3-execution-admissible y δ =
+  G.WellFormedY P3.primeExecution
+    (G.applyFracs P3.primeExecution
+      (P3.encodeY y)
+      (G.realizeNormalized P3.primeExecution P3.unitRealization y (P3.normalize δ)))
+
+physics3-execution-evidence :
+  ∀ y δ → physics3-execution-admissible y δ
+physics3-execution-evidence y δ =
+  G.realizeDelta-preserves-wellFormed P3.primeExecution P3.unitRealization y δ
+
+status3 : EW.ExecutionStatus (G.PrimeExecution.PrimeState P3.primeExecution)
+status3 = record
+  { regimeClass = G.conservative-contracting
+  ; wellFormedY = G.PrimeExecution.WellFormedY P3.primeExecution
+  ; executionAdmissible = ∀ y δ → physics3-execution-admissible y δ
+  ; familyTag = G.RegimeClass
+  ; evidence = physics3-execution-evidence
+  }
+
+physics15-execution-admissible :
+  P15.Exp6 → P15.Delta6 → Set
+physics15-execution-admissible y δ =
+  G.WellFormedY P15.primeExecution
+    (G.applyFracs P15.primeExecution
+      (P15.encodeY y)
+      (G.realizeNormalized P15.primeExecution P15.unitRealization y (P15.normalize δ)))
+
+physics15-execution-evidence :
+  ∀ y δ → physics15-execution-admissible y δ
+physics15-execution-evidence y δ =
+  G.realizeDelta-preserves-wellFormed P15.primeExecution P15.unitRealization y δ
+
+status15 : EW.ExecutionStatus (G.PrimeExecution.PrimeState P15.primeExecution)
+status15 = record
+  { regimeClass = G.conservative-contracting
+  ; wellFormedY = G.PrimeExecution.WellFormedY P15.primeExecution
+  ; executionAdmissible = ∀ y δ → physics15-execution-admissible y δ
+  ; familyTag = G.RegimeClass
+  ; evidence = physics15-execution-evidence
+  }
+
+physics19-execution-admissible :
+  P19.Exp6 → P19.Delta6 → Set
+physics19-execution-admissible y δ =
+  G.WellFormedY P19.primeExecution
+    (G.applyFracs P19.primeExecution
+      (P19.encodeY y)
+      (G.realizeNormalized P19.primeExecution P19.unitRealization y (P19.normalize δ)))
+
+physics19-execution-evidence :
+  ∀ y δ → physics19-execution-admissible y δ
+physics19-execution-evidence y δ =
+  G.realizeDelta-preserves-wellFormed P19.primeExecution P19.unitRealization y δ
+
+status19 : EW.ExecutionStatus (G.PrimeExecution.PrimeState P19.primeExecution)
+status19 = record
+  { regimeClass = G.conservative-contracting
+  ; wellFormedY = G.PrimeExecution.WellFormedY P19.primeExecution
+  ; executionAdmissible = ∀ y δ → physics19-execution-admissible y δ
+  ; familyTag = G.RegimeClass
+  ; evidence = physics19-execution-evidence
+  }
+
+physics20-execution-admissible :
+  P20.Exp6 → P20.Delta6 → Set
+physics20-execution-admissible y δ =
+  G.WellFormedY P20.primeExecution
+    (G.applyFracs P20.primeExecution
+      (P20.encodeY y)
+      (G.realizeNormalized P20.primeExecution P20.unitRealization y (P20.normalize δ)))
+
+physics20-execution-evidence :
+  ∀ y δ → physics20-execution-admissible y δ
+physics20-execution-evidence y δ =
+  G.realizeDelta-preserves-wellFormed P20.primeExecution P20.unitRealization y δ
+
+status20 : EW.ExecutionStatus (G.PrimeExecution.PrimeState P20.primeExecution)
+status20 = record
+  { regimeClass = G.conservative-contracting
+  ; wellFormedY = G.PrimeExecution.WellFormedY P20.primeExecution
+  ; executionAdmissible = ∀ y δ → physics20-execution-admissible y δ
+  ; familyTag = G.RegimeClass
+  ; evidence = physics20-execution-evidence
+  }
+
+physics21-execution-admissible :
+  P21.Exp6 → P21.Delta6 → Set
+physics21-execution-admissible y δ =
+  G.WellFormedY P21.primeExecution
+    (G.applyFracs P21.primeExecution
+      (P21.encodeY y)
+      (G.realizeNormalized P21.primeExecution P21.unitRealization y (P21.normalize δ)))
+
+physics21-execution-evidence :
+  ∀ y δ → physics21-execution-admissible y δ
+physics21-execution-evidence y δ =
+  G.realizeDelta-preserves-wellFormed P21.primeExecution P21.unitRealization y δ
+
+status21 : EW.ExecutionStatus (G.PrimeExecution.PrimeState P21.primeExecution)
+status21 = record
+  { regimeClass = G.conservative-contracting
+  ; wellFormedY = G.PrimeExecution.WellFormedY P21.primeExecution
+  ; executionAdmissible = ∀ y δ → physics21-execution-admissible y δ
+  ; familyTag = G.RegimeClass
+  ; evidence = physics21-execution-evidence
+  }
+
+physics22-execution-admissible :
+  P22.Exp6 → P22.Delta6 → Set
+physics22-execution-admissible y δ =
+  G.WellFormedY P22.primeExecution
+    (G.applyFracs P22.primeExecution
+      (P22.encodeY y)
+      (G.realizeNormalized P22.primeExecution P22.unitRealization y (P22.normalize δ)))
+
+physics22-execution-evidence :
+  ∀ y δ → physics22-execution-admissible y δ
+physics22-execution-evidence y δ =
+  G.realizeDelta-preserves-wellFormed P22.primeExecution P22.unitRealization y δ
+
+status22 : EW.ExecutionStatus (G.PrimeExecution.PrimeState P22.primeExecution)
+status22 = record
+  { regimeClass = G.conservative-contracting
+  ; wellFormedY = G.PrimeExecution.WellFormedY P22.primeExecution
+  ; executionAdmissible = ∀ y δ → physics22-execution-admissible y δ
+  ; familyTag = G.RegimeClass
+  ; evidence = physics22-execution-evidence
+  }
+
 physics1-bridge : G.RegimeValidBridge P1.normalizationContract P1.primeExecution P1.unitRealization
 physics1-bridge = record
   { classifyDelta = physics1-classify
@@ -218,6 +377,42 @@ bridge-instance S22 = physics22-bridge
 
 bridge-regime-valid : (s : BridgeSlice) → bridgeOf s
 bridge-regime-valid s = bridge-instance s
+
+slice-status : (s : BridgeSlice) → Set₁
+slice-status S1 = EW.ExecutionStatus (G.PrimeExecution.PrimeState P1.primeExecution)
+slice-status S3 = EW.ExecutionStatus (G.PrimeExecution.PrimeState P3.primeExecution)
+slice-status S15 = EW.ExecutionStatus (G.PrimeExecution.PrimeState P15.primeExecution)
+slice-status S19 = EW.ExecutionStatus (G.PrimeExecution.PrimeState P19.primeExecution)
+slice-status S20 = EW.ExecutionStatus (G.PrimeExecution.PrimeState P20.primeExecution)
+slice-status S21 = EW.ExecutionStatus (G.PrimeExecution.PrimeState P21.primeExecution)
+slice-status S22 = EW.ExecutionStatus (G.PrimeExecution.PrimeState P22.primeExecution)
+
+statusOf : (s : BridgeSlice) → slice-status s
+statusOf S1 = status1
+statusOf S3 = status3
+statusOf S15 = status15
+statusOf S19 = status19
+statusOf S20 = status20
+statusOf S21 = status21
+statusOf S22 = status22
+
+delta-family : (s : BridgeSlice) → Set
+delta-family S1 = P1.Delta4
+delta-family S3 = P3.Delta6
+delta-family S15 = P15.Delta6
+delta-family S19 = P19.Delta6
+delta-family S20 = P20.Delta6
+delta-family S21 = P21.Delta6
+delta-family S22 = P22.Delta6
+
+classify-delta : (s : BridgeSlice) → delta-family s → G.RegimeClass
+classify-delta S1 δ = physics1-classify P1.default-exp4 δ
+classify-delta S3 δ = physics3-classify P3.default-exp6 δ
+classify-delta S15 δ = physics15-classify P15.default-exp6 δ
+classify-delta S19 δ = physics19-classify P19.default-exp6 δ
+classify-delta S20 δ = physics20-classify P20.default-exp6 δ
+classify-delta S21 δ = physics21-classify P21.default-exp6 δ
+classify-delta S22 δ = physics22-classify P22.default-exp6 δ
 
 ------------------------------------------------------------------------
 -- First numeric theorem layer:

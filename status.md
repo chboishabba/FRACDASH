@@ -2,9 +2,77 @@
 
 ## Snapshot
 
-- Date: `2026-03-20`
+- Date: `2026-03-23`
 - Phase: `Phase 2 CORE experiments running`
 - State: `active`
+
+## Active Performance Decision
+
+The next CPU/GPU task is now a profiling milestone rather than another blind
+optimization round.
+
+Current read:
+
+- `compiled` is already the leading exact-step CPU path on the sampled
+  `primegame_*` workloads
+- `frac-opt` remains the imported exact-step CPU comparison baseline
+- the resident GPU path already wins in parts of the measured medium/large batch
+  region, but current timing still mixes real device work with host/setup cost
+
+So the immediate deliverable is:
+
+- one CPU profiling artifact with exact-step timing plus `.prof` / RTS hotspot
+  summaries
+- one GPU profiling artifact with cold-start versus warm-resident timing
+  breakdowns
+- one short decision note classifying likely next wins as `obvious_now`,
+  `possible_but_unproven`, or `not worth immediate effort`
+
+## Active Experiment Decision
+
+The active 6-register exploratory baseline is now `physics22`.
+
+Current read:
+
+- the widened `physics15 -> physics22` family is stable as a mixed-transmuting,
+  regime-valid branch family rather than a set of unrelated exploratory slices
+- `physics22` is the local leader on recurrent-core size, terminal-state
+  reduction, and direct `boundary -> interior` re-entry
+- `distance_to_cycle` remains the best current invariant candidate on this lane
+  and the geometry surrogates remain strong enough to treat `physics22` as the
+  comparison baseline for the next 6-register experiment
+
+So the immediate deliverable on the experiment side is:
+
+- keep `physics22` as the active 6-register baseline until a later branch beats
+  it on the same widened-family summary axes
+- write a short result note distinguishing what is observed about `physics22`
+  from what remains conjectural
+- use `physics22` as the anchor point for the next bridge-side experiment rather
+  than reopening the widened-family classification question
+- build one explicit cross-carrier comparison surface so the exploratory
+  8-register branch can be judged against the active 6-register baseline on
+  comparable recurrent-core / geometry / branch-local-observable axes
+- treat `carrier8_physics2` as the current serious parallel 8-register
+  experiment track unless a later cross-carrier summary shows that signal was a
+  mirage
+- read `physics23` as the first genuine 6-register successor candidate rather
+  than the new default baseline: it improves the recurrent core while leaving
+  the other main axes flat
+- keep `physics23` in that candidate state until a later branch also beats
+  `physics22` on terminal mass or direct `boundary -> interior` re-entry
+- read `carrier8_physics3` as a negative result for now: it does not yet move
+  the shared cross-carrier comparison surface beyond `carrier8_physics2`
+- read `carrier8_physics4` as a second negative result for now: moving the
+  boundary-return re-entry hook earlier still leaves the shared comparison
+  surface flat against `carrier8_physics2`
+- read `carrier8_physics5` as the first real 8-register successor candidate:
+  it makes sampled `boundary -> interior` recovery visible (`0 -> 6`) and
+  improves `action_rank` strict decrease, but it is not yet a clean baseline
+  handoff because curvature spread drops relative to `carrier8_physics2`
+- lock `carrier8_physics2` as the active parallel 8-register track for now and
+  target the next refinement at earlier boundary-return re-entry, not a generic
+  extra memory hook
 
 ## What Exists
 

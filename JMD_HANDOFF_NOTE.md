@@ -19,11 +19,23 @@ Current regime split:
 - `physics1`, `physics3` = `conservative_contracting`
 - `physics15`, `physics19`, `physics20`, `physics21`, `physics22` = widened `regime-valid` family with bounded transmutation
 
+Current active exploratory baseline:
+
+- `physics22` is the leading 6-register branch on the widened-family summary
+  axes currently tracked in-repo:
+  - largest deterministic recurrent core in the widened family
+  - lowest terminal-state count in the widened family
+  - strongest direct `boundary -> interior` re-entry currently observed on the
+    6-register lane
+
 The important change is:
 
 - conservation is not the universal bridge invariant
 - conservation is the zero-transmutation special case
 - the wider valid bridge claim is strict contraction plus bounded transmutation
+- physics-facing interpretation docs are now being aligned to that split, so the
+  old conservation-only framing should be treated as a conservative-subregime
+  description rather than the universal bridge frame
 
 Repo-facing summary:
 

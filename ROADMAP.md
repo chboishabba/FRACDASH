@@ -280,6 +280,11 @@ or realization step.
    - Batch D: `carrier8_physics1`, `carrier8_physics2`
 2. Shift emphasis from Python fixtures to FRACTRAN execution benchmarking once at least one post-`physics3` batch is closed.
 3. Keep rank/cone/chamber interpretation and any GR/QFT/Weyl/moonshine language downstream until bridge preservation is stable across those batches.
+4. Before any new CPU or GPU optimization round, run one explicit profiling milestone:
+   - CPU exact-step timing plus `.prof` / RTS hotspot extraction
+   - GPU cold-start versus warm-resident timing breakdown
+   - a final decision summary that says whether any obvious large win remains over
+     the current imported baseline and routed GPU path
 
 ### Delegated Support Track
 

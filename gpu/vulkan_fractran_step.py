@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import ctypes
 import os
+import time
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -32,6 +33,14 @@ class FractranBatchStepResult:
     next_exponents: np.ndarray
     selected_rules: np.ndarray
     halted: np.ndarray
+
+
+@dataclass(frozen=True)
+class FractranBatchProfiledResult:
+    next_exponents: np.ndarray
+    selected_rules: np.ndarray
+    halted: np.ndarray
+    phase_seconds: dict[str, float]
 
 
 def ensure_default_icd() -> str | None:
@@ -255,9 +264,9 @@ class VulkanFractranStepper:
         self.vk.vkDestroyFence(self.device, fence, None)
         self.vk.vkResetCommandBuffer(self.command_buffer, 0)
 
-    def run_steps_batch(
+    def run_steps_batch_profiled(
         self, layout: CompiledFractranLayout, states: np.ndarray, steps: int
-    ) -> FractranBatchStepResult:
+    ) -> FractranBatchProfiledResult:
         buffers = layout.gpu_buffers()
         state_matrix = np.asarray(states, dtype=np.int32, order="C")
         if state_matrix.ndim == 1:
@@ -269,15 +278,19 @@ class VulkanFractranStepper:
         if steps < 0:
             raise ValueError("steps must be non-negative")
         state_count, prime_count = state_matrix.shape
+        total_start = time.perf_counter()
+        host_prepare_start = total_start
         state_in = state_matrix.reshape(-1).copy()
         state_out = np.zeros_like(state_in)
         meta_out = np.zeros(state_count * 2, dtype=np.int32)
         den_thresholds = np.asarray(buffers["den_thresholds"], dtype=np.int32, order="C").reshape(-1)
         deltas = np.asarray(buffers["deltas"], dtype=np.int32, order="C").reshape(-1)
         required_masks = np.asarray(buffers["required_masks"], dtype=np.uint32, order="C")
+        host_prepare_end = time.perf_counter()
 
         allocated: list[tuple[object, object]] = []
         try:
+            allocate_start = time.perf_counter()
             den_buffer, den_memory = self._create_storage_buffer(den_thresholds.nbytes)
             delta_buffer, delta_memory = self._create_storage_buffer(deltas.nbytes)
             mask_buffer, mask_memory = self._create_storage_buffer(required_masks.nbytes)
@@ -294,12 +307,16 @@ class VulkanFractranStepper:
                     (meta_buffer, meta_memory),
                 ]
             )
+            allocate_end = time.perf_counter()
 
+            upload_start = time.perf_counter()
             self.gpu_vulkan_dispatcher._write_buffer(self.device, den_memory, den_thresholds)
             self.gpu_vulkan_dispatcher._write_buffer(self.device, delta_memory, deltas)
             self.gpu_vulkan_dispatcher._write_buffer(self.device, mask_memory, required_masks)
             self.gpu_vulkan_dispatcher._write_buffer(self.device, state_a_memory, state_in)
+            upload_end = time.perf_counter()
 
+            descriptor_start = time.perf_counter()
             self._update_descriptor_set(
                 self.descriptor_sets[0],
                 [
@@ -322,35 +339,68 @@ class VulkanFractranStepper:
                     (meta_buffer, meta_out.nbytes),
                 ],
             )
+            descriptor_end = time.perf_counter()
 
             current_shape = state_out.shape
 
             if steps == 0:
+                record_end = descriptor_end
+                execute_end = descriptor_end
                 next_state = state_in
                 meta = np.full(meta_out.shape, -1, dtype=np.int32)
                 meta[1::2] = 0
             else:
+                record_start = time.perf_counter()
                 self._record_dispatch_sequence(
                     self.descriptor_sets, prime_count, len(layout.rules), state_count, steps
                 )
+                record_end = time.perf_counter()
+                execute_start = time.perf_counter()
                 self._submit_and_wait()
+                execute_end = time.perf_counter()
                 final_memory = state_b_memory if steps % 2 == 1 else state_a_memory
+                readback_start = time.perf_counter()
                 next_state = self.gpu_vulkan_dispatcher._read_buffer(
                     self.device, final_memory, current_shape, state_out.dtype
                 )
                 meta = self.gpu_vulkan_dispatcher._read_buffer(
                     self.device, meta_memory, meta_out.shape, meta_out.dtype
                 )
+                readback_end = time.perf_counter()
+            if steps == 0:
+                readback_start = execute_end
+                readback_end = execute_end
             next_state_matrix = np.asarray(next_state, dtype=np.int32).reshape(state_count, prime_count)
             meta_matrix = np.asarray(meta, dtype=np.int32).reshape(state_count, 2)
-            return FractranBatchStepResult(
+            total_end = time.perf_counter()
+            return FractranBatchProfiledResult(
                 next_exponents=next_state_matrix,
                 selected_rules=meta_matrix[:, 0].astype(np.int32, copy=False),
                 halted=meta_matrix[:, 1].astype(bool, copy=False),
+                phase_seconds={
+                    "host_prepare": host_prepare_end - host_prepare_start,
+                    "buffer_allocate": allocate_end - allocate_start,
+                    "buffer_upload": upload_end - upload_start,
+                    "descriptor_update": descriptor_end - descriptor_start,
+                    "command_record": record_end - descriptor_end if steps == 0 else record_end - record_start,
+                    "submit_wait": execute_end - record_end if steps == 0 else execute_end - execute_start,
+                    "readback": readback_end - readback_start,
+                    "total": total_end - total_start,
+                },
             )
         finally:
             for buffer, memory in allocated:
                 self.handles.destroy_buffer(buffer, memory)
+
+    def run_steps_batch(
+        self, layout: CompiledFractranLayout, states: np.ndarray, steps: int
+    ) -> FractranBatchStepResult:
+        profiled = self.run_steps_batch_profiled(layout, states, steps)
+        return FractranBatchStepResult(
+            next_exponents=profiled.next_exponents,
+            selected_rules=profiled.selected_rules,
+            halted=profiled.halted,
+        )
 
     def step_batch(self, layout: CompiledFractranLayout, states: np.ndarray) -> FractranBatchStepResult:
         return self.run_steps_batch(layout, states, 1)

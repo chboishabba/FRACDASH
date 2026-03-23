@@ -190,6 +190,13 @@ Status: complete
    - `heat` is the least-bad fallback and only `qualitative_only`
    - do not spend more main-line effort on solver-speed claims unless a later matched-grid heat comparison is explicitly resumed
 8. Use interpretation work downstream of the stable bridge claim rather than as a replacement for it.
+9. Do one explicit CPU/GPU profiling pass before any further performance tuning:
+   - CPU exact-step profiling should compare `compiled`, `frac-opt`, and `reg`
+     using both wall-clock timing and GHC `.prof` / RTS summaries
+   - GPU profiling should separate cold-start and warm-resident timings so host
+     overhead is not mistaken for device cost
+   - the profiling milestone should end with a decision artifact, not with a
+     speculative optimization branch
 
 ### Delegated Support Track
 

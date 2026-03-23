@@ -805,6 +805,22 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
             ),
         ),
     ]
+    physics23 = [
+        *physics22,
+        TemplateRule(
+            name="physics23_boundary_direct_reentry_low",
+            template_set="physics23",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R3": "zero", "R4": "negative", "R6": "positive"},
+            action={"R4": "positive"},
+            description=(
+                "Directly re-enter the interior from low-severity boundary states once a positive "
+                "action pulse is active. This extends the physics22 re-entry pattern into the "
+                "remaining low-severity boundary fringe while aiming to preserve the current "
+                "fixed-walk and geometry surface."
+            ),
+        ),
+    ]
     carrier8_physics2 = [
         TemplateRule(
             name=f"carrier8_{rule.name}",
@@ -1317,6 +1333,171 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
             description="8-register: interior action flips neg→pos with opposite memory tag; complementary branch for spread.",
         )
     )
+    carrier8_physics3 = [
+        TemplateRule(
+            name=rule.name,
+            template_set="carrier8_physics3",
+            module=rule.module,
+            condition=dict(rule.condition),
+            action=dict(rule.action),
+            description=rule.description,
+        )
+        for rule in carrier8_physics2
+    ]
+    carrier8_physics3.append(
+        TemplateRule(
+            name="carrier8_boundary_direct_reentry_return",
+            template_set="carrier8_physics3",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "negative", "R7": "positive", "R8": "zero"},
+            action={"R4": "positive", "R7": "zero"},
+            description=(
+                "8-register: directly re-enter the interior from a boundary state when return memory "
+                "is already tagged and transport is neutral. This is the carrier8 analogue of the "
+                "physics22/23 direct re-entry emphasis."
+            ),
+        )
+    )
+    carrier8_physics4 = [
+        TemplateRule(
+            name=rule.name,
+            template_set="carrier8_physics4",
+            module=rule.module,
+            condition=dict(rule.condition),
+            action=dict(rule.action),
+            description=rule.description,
+        )
+        for rule in carrier8_physics2
+    ]
+    cycle_damp_pos_index = next(
+        i for i, rule in enumerate(carrier8_physics4) if rule.name == "carrier8_cycle_damp_return_pos"
+    )
+    carrier8_physics4[cycle_damp_pos_index:cycle_damp_pos_index] = [
+        TemplateRule(
+            name="carrier8_boundary_reentry_return_pos",
+            template_set="carrier8_physics4",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "negative", "R7": "positive", "R8": "zero"},
+            action={"R4": "positive", "R7": "zero"},
+            description=(
+                "8-register: boundary state with positive return memory re-enters the interior before "
+                "the broad return-memory damping rules run."
+            ),
+        ),
+        TemplateRule(
+            name="carrier8_boundary_reentry_return_pos_transport",
+            template_set="carrier8_physics4",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "negative", "R7": "positive", "R8": "positive"},
+            action={"R4": "positive", "R7": "zero", "R8": "zero"},
+            description=(
+                "8-register: same early boundary-return re-entry when transport is already tagged; "
+                "clear transport on return so the step stays interpretable as re-entry."
+            ),
+        ),
+    ]
+    cycle_damp_neg_index = next(
+        i for i, rule in enumerate(carrier8_physics4) if rule.name == "carrier8_cycle_damp_return_neg"
+    )
+    carrier8_physics4[cycle_damp_neg_index:cycle_damp_neg_index] = [
+        TemplateRule(
+            name="carrier8_boundary_reentry_return_neg",
+            template_set="carrier8_physics4",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "negative", "R7": "negative", "R8": "zero"},
+            action={"R4": "positive", "R7": "zero"},
+            description=(
+                "8-register: symmetric early boundary-return re-entry for negative return memory so "
+                "both signed memory states compete with the broad damping hook."
+            ),
+        )
+    ]
+    carrier8_physics5 = [
+        TemplateRule(
+            name=rule.name,
+            template_set="carrier8_physics5",
+            module=rule.module,
+            condition=dict(rule.condition),
+            action=dict(rule.action),
+            description=rule.description,
+        )
+        for rule in carrier8_physics4
+    ]
+    join_left_high_index = next(
+        i for i, rule in enumerate(carrier8_physics5) if rule.name == "carrier8_physics2_join_left_high"
+    )
+    carrier8_physics5[join_left_high_index:join_left_high_index] = [
+        TemplateRule(
+            name="carrier8_boundary_memory_reentry_latched_left",
+            template_set="carrier8_physics5",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R3": "zero", "R4": "negative", "R5": "positive", "R6": "negative", "R7": "positive"},
+            action={"R4": "positive", "R5": "zero", "R6": "zero", "R7": "zero"},
+            description=(
+                "8-register: when positive return memory is already active, boundary states with a "
+                "left latch re-enter the interior directly instead of materializing another boundary join."
+            ),
+        )
+    ]
+    join_right_high_index = next(
+        i for i, rule in enumerate(carrier8_physics5) if rule.name == "carrier8_physics2_join_right_high"
+    )
+    carrier8_physics5[join_right_high_index:join_right_high_index] = [
+        TemplateRule(
+            name="carrier8_boundary_memory_reentry_latched_right",
+            template_set="carrier8_physics5",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R3": "zero", "R4": "negative", "R5": "negative", "R6": "negative", "R7": "positive"},
+            action={"R4": "positive", "R5": "zero", "R6": "zero", "R7": "zero"},
+            description=(
+                "8-register: symmetric boundary recovery for right-latched states with positive return "
+                "memory; preempts the boundary join path in the sampled active basin."
+            ),
+        )
+    ]
+    boundary_discharge_index = next(
+        i for i, rule in enumerate(carrier8_physics5) if rule.name == "carrier8_physics11_boundary_discharge"
+    )
+    carrier8_physics5[boundary_discharge_index:boundary_discharge_index] = [
+        TemplateRule(
+            name="carrier8_boundary_memory_reentry_unlatched",
+            template_set="carrier8_physics5",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R3": "zero", "R4": "negative", "R5": "zero", "R6": "negative", "R7": "positive"},
+            action={"R4": "positive", "R6": "zero", "R7": "zero"},
+            description=(
+                "8-register: boundary states already carrying positive return memory re-enter the "
+                "interior before the old boundary-discharge step can consume them."
+            ),
+        )
+    ]
+    carrier8_physics6 = [
+        TemplateRule(
+            name=rule.name,
+            template_set="carrier8_physics6",
+            module=rule.module,
+            condition=dict(rule.condition),
+            action=dict(rule.action),
+            description=rule.description,
+        )
+        for rule in carrier8_physics5
+    ]
+    reentry_insert_index = next(
+        i for i, rule in enumerate(carrier8_physics6) if rule.name == "carrier8_boundary_memory_reentry_unlatched"
+    ) + 3
+    carrier8_physics6[reentry_insert_index:reentry_insert_index] = [
+        TemplateRule(
+            name="carrier8_reentry_curvature_boost",
+            template_set="carrier8_physics6",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R5": "zero", "R7": "zero", "R8": "zero"},
+            action={"R5": "positive", "R8": "positive"},
+            description=(
+                "8-register: immediately after boundary-driven reentry, add a small latch+transport pulse "
+                "to restore curvature spread without blocking the new boundary->interior path."
+            ),
+        )
+    ]
     carrier8_physics1: list[TemplateRule] = []
     for rule in physics20:
         action = dict(rule.action)
@@ -1447,14 +1628,24 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
         return physics21
     if template_set == "physics22":
         return physics22
+    if template_set == "physics23":
+        return physics23
     if template_set == "carrier8_physics1":
         return carrier8_physics1
     if template_set == "carrier8_physics2":
         return carrier8_physics2
+    if template_set == "carrier8_physics3":
+        return carrier8_physics3
+    if template_set == "carrier8_physics4":
+        return carrier8_physics4
+    if template_set == "carrier8_physics5":
+        return carrier8_physics5
+    if template_set == "carrier8_physics6":
+        return carrier8_physics6
     if template_set == "wave3":
         return wave3
     if template_set == "all":
-        return wave1 + wave2 + physics1 + physics2 + physics3 + physics4 + physics5 + physics6 + physics7 + physics8 + physics9 + physics10 + physics11 + physics12 + physics13 + physics14 + physics15 + physics16 + physics17 + physics18 + physics19 + physics20 + physics21 + physics22 + carrier8_physics1 + carrier8_physics2 + wave3
+        return wave1 + wave2 + physics1 + physics2 + physics3 + physics4 + physics5 + physics6 + physics7 + physics8 + physics9 + physics10 + physics11 + physics12 + physics13 + physics14 + physics15 + physics16 + physics17 + physics18 + physics19 + physics20 + physics21 + physics22 + physics23 + carrier8_physics1 + carrier8_physics2 + carrier8_physics3 + carrier8_physics4 + carrier8_physics5 + carrier8_physics6 + wave3
     raise ValueError(f"unknown template set: {template_set}")
 
 
@@ -1796,7 +1987,10 @@ def main() -> None:
             "physics20",
             "physics21",
             "physics22",
+            "physics23",
             "carrier8_physics1",
+            "carrier8_physics2",
+            "carrier8_physics3",
             "all",
         ),
         help="Which FRACDASH-side template transition set to use.",

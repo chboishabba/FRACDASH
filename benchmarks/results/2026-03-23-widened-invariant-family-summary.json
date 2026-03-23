@@ -1,0 +1,162 @@
+{
+  "date": "2026-03-23",
+  "templates": [
+    "physics15",
+    "physics19",
+    "physics20",
+    "physics21",
+    "physics22"
+  ],
+  "rows": [
+    {
+      "template_set": "physics15",
+      "invariant_artifact": "benchmarks/results/2026-03-23-physics-invariants-physics15.json",
+      "phase2_artifact": "benchmarks/results/2026-03-15-agdas-physics15-phase2.json",
+      "execution_status": {
+        "regime_class": "conservative_contracting",
+        "family_tag": "regime_class (per-delta via classify)",
+        "regime_usage": "mixed (transmuting on r2=+2 deltas)",
+        "admissibility": "wellFormedY preserved via realizeDelta-preserves-wellFormed"
+      },
+      "recurrent_core": {
+        "deterministic_edges": 220,
+        "terminal_states": 509,
+        "longest_chain": 22,
+        "cycle_starts": 194,
+        "timeout_states": 0
+      },
+      "geometry_surrogates": {
+        "best_candidate": "distance_to_cycle",
+        "geodesic_like_near_min_ratio": 0.9072164948453608,
+        "curvature_like_mean_neighbor_spread": 1.6333333333333333,
+        "defect_nonincrease_ratio": null
+      },
+      "reentry_flow": {
+        "shell_to_interior": 27,
+        "boundary_to_interior": 0,
+        "boundary_to_interior_ratio": 0.0
+      }
+    },
+    {
+      "template_set": "physics19",
+      "invariant_artifact": "benchmarks/results/2026-03-23-physics-invariants-physics19.json",
+      "phase2_artifact": "benchmarks/results/2026-03-15-agdas-physics19-phase2.json",
+      "execution_status": {
+        "regime_class": "conservative_contracting",
+        "family_tag": "regime_class (per-delta via classify)",
+        "regime_usage": "mixed (transmuting on r2=+2 or r2=-1 deltas)",
+        "admissibility": "wellFormedY preserved via realizeDelta-preserves-wellFormed"
+      },
+      "recurrent_core": {
+        "deterministic_edges": 274,
+        "terminal_states": 455,
+        "longest_chain": 32,
+        "cycle_starts": 254,
+        "timeout_states": 0
+      },
+      "geometry_surrogates": {
+        "best_candidate": "distance_to_cycle",
+        "geodesic_like_near_min_ratio": 0.9094488188976378,
+        "curvature_like_mean_neighbor_spread": 1.8257887517146776,
+        "defect_nonincrease_ratio": null
+      },
+      "reentry_flow": {
+        "shell_to_interior": 27,
+        "boundary_to_interior": 0,
+        "boundary_to_interior_ratio": 0.0
+      }
+    },
+    {
+      "template_set": "physics20",
+      "invariant_artifact": "benchmarks/results/2026-03-23-physics-invariants-physics20.json",
+      "phase2_artifact": "benchmarks/results/2026-03-15-agdas-physics20-phase2.json",
+      "execution_status": {
+        "regime_class": "conservative_contracting",
+        "family_tag": "regime_class (per-delta via classify)",
+        "regime_usage": "mixed (transmuting on r2=+2 or r2=-1 deltas)",
+        "admissibility": "wellFormedY preserved via realizeDelta-preserves-wellFormed"
+      },
+      "recurrent_core": {
+        "deterministic_edges": 301,
+        "terminal_states": 428,
+        "longest_chain": 32,
+        "cycle_starts": 281,
+        "timeout_states": 0
+      },
+      "geometry_surrogates": {
+        "best_candidate": "distance_to_cycle",
+        "geodesic_like_near_min_ratio": 0.9181494661921709,
+        "curvature_like_mean_neighbor_spread": 1.9272976680384089,
+        "defect_nonincrease_ratio": null
+      },
+      "reentry_flow": {
+        "shell_to_interior": 27,
+        "boundary_to_interior": 0,
+        "boundary_to_interior_ratio": 0.0
+      }
+    },
+    {
+      "template_set": "physics21",
+      "invariant_artifact": "benchmarks/results/2026-03-23-physics-invariants-physics21.json",
+      "phase2_artifact": "benchmarks/results/2026-03-15-agdas-physics21-phase2.json",
+      "execution_status": {
+        "regime_class": "conservative_contracting",
+        "family_tag": "regime_class (per-delta via classify)",
+        "regime_usage": "mixed (transmuting on r2=+2 or r2=-1 deltas)",
+        "admissibility": "wellFormedY preserved via realizeDelta-preserves-wellFormed"
+      },
+      "recurrent_core": {
+        "deterministic_edges": 310,
+        "terminal_states": 419,
+        "longest_chain": 32,
+        "cycle_starts": 290,
+        "timeout_states": 0
+      },
+      "geometry_surrogates": {
+        "best_candidate": "distance_to_cycle",
+        "geodesic_like_near_min_ratio": 0.9206896551724137,
+        "curvature_like_mean_neighbor_spread": 1.9931412894375857,
+        "defect_nonincrease_ratio": null
+      },
+      "reentry_flow": {
+        "shell_to_interior": 27,
+        "boundary_to_interior": 9,
+        "boundary_to_interior_ratio": 0.02903225806451613
+      }
+    },
+    {
+      "template_set": "physics22",
+      "invariant_artifact": "benchmarks/results/2026-03-23-physics-invariants-physics22.json",
+      "phase2_artifact": "benchmarks/results/2026-03-15-agdas-physics22-phase2.json",
+      "execution_status": {
+        "regime_class": "conservative_contracting",
+        "family_tag": "regime_class (per-delta via classify)",
+        "regime_usage": "mixed (transmuting on r2=+2 or r2=-1 deltas)",
+        "admissibility": "wellFormedY preserved via realizeDelta-preserves-wellFormed"
+      },
+      "recurrent_core": {
+        "deterministic_edges": 364,
+        "terminal_states": 365,
+        "longest_chain": 32,
+        "cycle_starts": 290,
+        "timeout_states": 0
+      },
+      "geometry_surrogates": {
+        "best_candidate": "distance_to_cycle",
+        "geodesic_like_near_min_ratio": 0.9206896551724137,
+        "curvature_like_mean_neighbor_spread": 1.9931412894375857,
+        "defect_nonincrease_ratio": null
+      },
+      "reentry_flow": {
+        "shell_to_interior": 27,
+        "boundary_to_interior": 63,
+        "boundary_to_interior_ratio": 0.17307692307692307
+      }
+    }
+  ],
+  "interpretation": [
+    "Highest direct boundary-to-interior re-entry is `physics22` with `63`.",
+    "Largest deterministic recurrent core is `physics22` with `364` edges.",
+    "Mixed transmuting usage coexists with strong geometry-surrogate values; widened slices should be read through regime usage, not against the conservative-only lock."
+  ]
+}

@@ -392,7 +392,7 @@ def main() -> None:
     parser.add_argument(
         "--template-set",
         default="physics2",
-        choices=("physics2", "physics3", "physics4", "physics5", "physics6", "physics7", "physics8", "physics9", "physics10", "physics11", "physics12", "physics13", "physics14", "physics15", "physics16", "physics17", "physics18", "physics19", "physics20", "physics21", "physics22"),
+        choices=("physics2", "physics3", "physics4", "physics5", "physics6", "physics7", "physics8", "physics9", "physics10", "physics11", "physics12", "physics13", "physics14", "physics15", "physics16", "physics17", "physics18", "physics19", "physics20", "physics21", "physics22", "physics23"),
         help="Template set to execute.",
     )
     parser.add_argument("--max-steps", type=int, default=12, help="Deterministic walk step cap.")

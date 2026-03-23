@@ -1,0 +1,74 @@
+{
+  "date": "2026-03-23",
+  "baseline_from": "physics21",
+  "baseline_to": "physics22",
+  "delta_summary": {
+    "transition_count": {
+      "from": 35,
+      "to": 36,
+      "delta": 1
+    },
+    "deterministic_edges": {
+      "from": 395,
+      "to": 476,
+      "delta": 81
+    },
+    "terminal_states": {
+      "from": 419,
+      "to": 365,
+      "delta": -54
+    },
+    "longest_chain": {
+      "from": 32,
+      "to": 32,
+      "delta": 0
+    },
+    "boundary_to_interior": {
+      "from": 9,
+      "to": 63,
+      "delta": 54
+    },
+    "boundary_to_interior_ratio": {
+      "from": 0.02903225806451613,
+      "to": 0.17307692307692307,
+      "delta": 0.14404466501240695
+    },
+    "geodesic_like_near_min_ratio": {
+      "from": 0.9206896551724137,
+      "to": 0.9206896551724137,
+      "delta": 0.0
+    },
+    "curvature_like_mean_neighbor_spread": {
+      "from": 1.9931412894375857,
+      "to": 1.9931412894375857,
+      "delta": 0.0
+    }
+  },
+  "stable_quantities": {
+    "best_candidate": {
+      "from": "distance_to_cycle",
+      "to": "distance_to_cycle"
+    },
+    "cycle_count": {
+      "from": 290,
+      "to": 290
+    },
+    "fixed_walk_terminal": {
+      "from": 439,
+      "to": 439
+    },
+    "timeout_states": {
+      "from": 0,
+      "to": 0
+    },
+    "geodesic_like_exact_min_ratio": {
+      "from": 0.4482758620689655,
+      "to": 0.4482758620689655
+    }
+  },
+  "interpretation": [
+    "The physics22 gain over physics21 is primarily a deterministic recurrent-core and re-entry gain, not a change in the fixed-walk cycle/terminal split.",
+    "The main new effect is stronger direct boundary-to-interior reinjection while keeping the current geometry-surrogate values flat at the physics21 level.",
+    "This makes physics22 a better comparison baseline for the next 6-register branch than physics21, because the gain is concentrated in the deterministic recurrent core where future refinements should compete."
+  ]
+}

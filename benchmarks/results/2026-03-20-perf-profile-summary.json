@@ -1,0 +1,568 @@
+{
+  "cpu_assessment": {
+    "compiled_vs_frac_opt": [
+      {
+        "compiled_faster": false,
+        "compiled_over_frac_opt": 1.6693467893978042,
+        "scenario": "mult_smoke"
+      },
+      {
+        "compiled_faster": true,
+        "compiled_over_frac_opt": 0.6859410815619573,
+        "scenario": "primegame_large"
+      },
+      {
+        "compiled_faster": true,
+        "compiled_over_frac_opt": 0.8724666269994421,
+        "scenario": "primegame_medium"
+      },
+      {
+        "compiled_faster": true,
+        "compiled_over_frac_opt": 0.7041248664586277,
+        "scenario": "primegame_small"
+      }
+    ],
+    "compiled_wins_all_sampled_exact_cases": false,
+    "decision": "cpu-baseline-still-has-obvious-gap",
+    "obvious_large_cpu_gain_over_imported_baseline": true,
+    "top_compiled_hotspots": [
+      {
+        "hotspots": [
+          {
+            "alloc_percent": 23.1,
+            "cost_centre": "emitRecord",
+            "module": "Bench",
+            "src": "src/Bench.hs:(375,1)-(391,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 19.5,
+            "cost_centre": "CAF",
+            "module": "GHC.Float",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.2,
+            "cost_centre": "parseArgs.go",
+            "module": "Bench",
+            "src": "src/Bench.hs:(116,5)-(144,76)",
+            "time_percent": 0.0
+          }
+        ],
+        "scenario": "mult_smoke"
+      },
+      {
+        "hotspots": [
+          {
+            "alloc_percent": 14.6,
+            "cost_centre": "ruleCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(145,1)-(147,46)",
+            "time_percent": 33.3
+          },
+          {
+            "alloc_percent": 6.5,
+            "cost_centre": "ruleCompatible.enough",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:147:5-46",
+            "time_percent": 33.3
+          },
+          {
+            "alloc_percent": 0.4,
+            "cost_centre": "compileProgram.preOpt",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(79,5)-(83,7)",
+            "time_percent": 33.3
+          }
+        ],
+        "scenario": "primegame_small"
+      },
+      {
+        "hotspots": [
+          {
+            "alloc_percent": 60.6,
+            "cost_centre": "applyRule",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(150,1)-(151,7)",
+            "time_percent": 52.9
+          },
+          {
+            "alloc_percent": 14.5,
+            "cost_centre": "ruleCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(145,1)-(147,46)",
+            "time_percent": 11.8
+          },
+          {
+            "alloc_percent": 6.6,
+            "cost_centre": "ruleCompatible.enough",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:147:5-46",
+            "time_percent": 11.8
+          }
+        ],
+        "scenario": "primegame_medium"
+      },
+      {
+        "hotspots": [
+          {
+            "alloc_percent": 61.0,
+            "cost_centre": "applyRule",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(150,1)-(151,7)",
+            "time_percent": 44.0
+          },
+          {
+            "alloc_percent": 6.5,
+            "cost_centre": "ruleCompatible.enough",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:147:5-46",
+            "time_percent": 14.3
+          },
+          {
+            "alloc_percent": 13.9,
+            "cost_centre": "ruleCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(145,1)-(147,46)",
+            "time_percent": 11.3
+          }
+        ],
+        "scenario": "primegame_large"
+      }
+    ]
+  },
+  "cpu_decision": "cpu-baseline-still-has-obvious-gap",
+  "gpu_assessment": {
+    "cold_start_penalty_cases": [
+      {
+        "batch_size": 16,
+        "cold_speedup_cpu_over_gpu": 0.39701581431696564,
+        "scenario": "primegame_small",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 1.4631062161283404
+      },
+      {
+        "batch_size": 16,
+        "cold_speedup_cpu_over_gpu": 0.7266081822588945,
+        "scenario": "primegame_small",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 2.0728817770527654
+      },
+      {
+        "batch_size": 32,
+        "cold_speedup_cpu_over_gpu": 0.36084851796411416,
+        "scenario": "primegame_small",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 1.678031970869534
+      },
+      {
+        "batch_size": 32,
+        "cold_speedup_cpu_over_gpu": 0.6637682020206596,
+        "scenario": "primegame_small",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 2.5432842615488327
+      },
+      {
+        "batch_size": 32,
+        "cold_speedup_cpu_over_gpu": 0.9388110035814318,
+        "scenario": "primegame_small",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 2.123617107957721
+      },
+      {
+        "batch_size": 64,
+        "cold_speedup_cpu_over_gpu": 0.9203723495803906,
+        "scenario": "primegame_small",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 4.195180010320981
+      },
+      {
+        "batch_size": 16,
+        "cold_speedup_cpu_over_gpu": 0.37229567326085844,
+        "scenario": "mult_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 1.949317463475074
+      },
+      {
+        "batch_size": 16,
+        "cold_speedup_cpu_over_gpu": 0.7252266207116745,
+        "scenario": "mult_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 2.981919310121008
+      },
+      {
+        "batch_size": 32,
+        "cold_speedup_cpu_over_gpu": 0.31906008285122994,
+        "scenario": "mult_smoke",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 2.2619303386465095
+      },
+      {
+        "batch_size": 32,
+        "cold_speedup_cpu_over_gpu": 0.8313288340107934,
+        "scenario": "mult_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 4.5438232905895335
+      },
+      {
+        "batch_size": 64,
+        "cold_speedup_cpu_over_gpu": 0.6947176992525693,
+        "scenario": "mult_smoke",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 3.9319531444460405
+      },
+      {
+        "batch_size": 16,
+        "cold_speedup_cpu_over_gpu": 0.7069429852391965,
+        "scenario": "paper_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 3.1368530823370495
+      },
+      {
+        "batch_size": 32,
+        "cold_speedup_cpu_over_gpu": 0.3181932356886724,
+        "scenario": "paper_smoke",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 1.206236878801175
+      },
+      {
+        "batch_size": 32,
+        "cold_speedup_cpu_over_gpu": 0.7395906559660606,
+        "scenario": "paper_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 3.8389782193248143
+      },
+      {
+        "batch_size": 64,
+        "cold_speedup_cpu_over_gpu": 0.7355615830652784,
+        "scenario": "paper_smoke",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 4.148088682972477
+      },
+      {
+        "batch_size": 4,
+        "cold_speedup_cpu_over_gpu": 0.251490155378109,
+        "scenario": "hamming_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 1.7481981441999073
+      },
+      {
+        "batch_size": 16,
+        "cold_speedup_cpu_over_gpu": 0.43415028738653183,
+        "scenario": "hamming_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 2.1935715402829734
+      },
+      {
+        "batch_size": 16,
+        "cold_speedup_cpu_over_gpu": 0.8022325818917091,
+        "scenario": "hamming_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 3.230518227521286
+      },
+      {
+        "batch_size": 32,
+        "cold_speedup_cpu_over_gpu": 0.41373022900916767,
+        "scenario": "hamming_smoke",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 2.3978512384791006
+      },
+      {
+        "batch_size": 32,
+        "cold_speedup_cpu_over_gpu": 0.8396498104143868,
+        "scenario": "hamming_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 3.913885343396192
+      },
+      {
+        "batch_size": 64,
+        "cold_speedup_cpu_over_gpu": 0.7694667705665316,
+        "scenario": "hamming_smoke",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 2.523909084259872
+      }
+    ],
+    "decision": "warm-resident-gpu-win-is-real",
+    "obvious_large_gpu_gain_region_exists": true,
+    "warm_gpu_preferred_cases": [
+      {
+        "batch_size": 16,
+        "scenario": "primegame_small",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 1.4631062161283404
+      },
+      {
+        "batch_size": 16,
+        "scenario": "primegame_small",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 2.0728817770527654
+      },
+      {
+        "batch_size": 32,
+        "scenario": "primegame_small",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 1.678031970869534
+      },
+      {
+        "batch_size": 32,
+        "scenario": "primegame_small",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 2.5432842615488327
+      },
+      {
+        "batch_size": 32,
+        "scenario": "primegame_small",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 2.123617107957721
+      },
+      {
+        "batch_size": 64,
+        "scenario": "primegame_small",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 4.195180010320981
+      },
+      {
+        "batch_size": 64,
+        "scenario": "primegame_small",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 5.0828424097562355
+      },
+      {
+        "batch_size": 64,
+        "scenario": "primegame_small",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 7.0338998376488675
+      },
+      {
+        "batch_size": 128,
+        "scenario": "primegame_small",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 5.9491028581586995
+      },
+      {
+        "batch_size": 128,
+        "scenario": "primegame_small",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 10.24293897401667
+      },
+      {
+        "batch_size": 128,
+        "scenario": "primegame_small",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 13.582319935305515
+      },
+      {
+        "batch_size": 16,
+        "scenario": "mult_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 1.949317463475074
+      },
+      {
+        "batch_size": 16,
+        "scenario": "mult_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 2.981919310121008
+      },
+      {
+        "batch_size": 32,
+        "scenario": "mult_smoke",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 2.2619303386465095
+      },
+      {
+        "batch_size": 32,
+        "scenario": "mult_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 4.5438232905895335
+      },
+      {
+        "batch_size": 32,
+        "scenario": "mult_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 6.775571181205917
+      },
+      {
+        "batch_size": 64,
+        "scenario": "mult_smoke",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 3.9319531444460405
+      },
+      {
+        "batch_size": 64,
+        "scenario": "mult_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 8.030631841008026
+      },
+      {
+        "batch_size": 64,
+        "scenario": "mult_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 13.567075600777441
+      },
+      {
+        "batch_size": 128,
+        "scenario": "mult_smoke",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 8.674135422928114
+      },
+      {
+        "batch_size": 128,
+        "scenario": "mult_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 14.800763039183398
+      },
+      {
+        "batch_size": 128,
+        "scenario": "mult_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 26.176052376079618
+      },
+      {
+        "batch_size": 16,
+        "scenario": "paper_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 3.1368530823370495
+      },
+      {
+        "batch_size": 32,
+        "scenario": "paper_smoke",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 1.206236878801175
+      },
+      {
+        "batch_size": 32,
+        "scenario": "paper_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 3.8389782193248143
+      },
+      {
+        "batch_size": 32,
+        "scenario": "paper_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 4.763270302953496
+      },
+      {
+        "batch_size": 64,
+        "scenario": "paper_smoke",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 4.148088682972477
+      },
+      {
+        "batch_size": 64,
+        "scenario": "paper_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 7.5186223472990985
+      },
+      {
+        "batch_size": 64,
+        "scenario": "paper_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 8.261448123419452
+      },
+      {
+        "batch_size": 128,
+        "scenario": "paper_smoke",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 6.1590789334905605
+      },
+      {
+        "batch_size": 128,
+        "scenario": "paper_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 15.83931139290602
+      },
+      {
+        "batch_size": 128,
+        "scenario": "paper_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 24.657302135133136
+      },
+      {
+        "batch_size": 4,
+        "scenario": "hamming_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 1.7481981441999073
+      },
+      {
+        "batch_size": 16,
+        "scenario": "hamming_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 2.1935715402829734
+      },
+      {
+        "batch_size": 16,
+        "scenario": "hamming_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 3.230518227521286
+      },
+      {
+        "batch_size": 32,
+        "scenario": "hamming_smoke",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 2.3978512384791006
+      },
+      {
+        "batch_size": 32,
+        "scenario": "hamming_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 3.913885343396192
+      },
+      {
+        "batch_size": 32,
+        "scenario": "hamming_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 7.44673942448218
+      },
+      {
+        "batch_size": 64,
+        "scenario": "hamming_smoke",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 2.523909084259872
+      },
+      {
+        "batch_size": 64,
+        "scenario": "hamming_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 4.983151763722655
+      },
+      {
+        "batch_size": 64,
+        "scenario": "hamming_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 15.174632968670691
+      },
+      {
+        "batch_size": 128,
+        "scenario": "hamming_smoke",
+        "steps": 4,
+        "warm_speedup_cpu_over_gpu": 9.726490768569462
+      },
+      {
+        "batch_size": 128,
+        "scenario": "hamming_smoke",
+        "steps": 8,
+        "warm_speedup_cpu_over_gpu": 17.6204119562603
+      },
+      {
+        "batch_size": 128,
+        "scenario": "hamming_smoke",
+        "steps": 16,
+        "warm_speedup_cpu_over_gpu": 25.816790274775247
+      }
+    ]
+  },
+  "gpu_decision": "warm-resident-gpu-win-is-real",
+  "not_worth_immediate_effort": [
+    "none-yet"
+  ],
+  "obvious_now": [
+    "tighten GPU routing around warm-resident wins",
+    "profile-based GPU host/setup reduction"
+  ],
+  "possible_but_unproven": [
+    "another compiled rule-selection optimization round",
+    "CPU batched exponent-vector execution",
+    "program-family-specific mask or threshold shortcuts"
+  ]
+}

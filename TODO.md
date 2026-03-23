@@ -14,6 +14,14 @@
   - `formalism/GenericMacroBridge.agda` stays structural / class-indexed
   - `formalism/BridgeInstances.agda` stays the stronger numeric theorem layer for the closed family
 - [x] write the short current formal result note for the closed bridge family
+- [x] re-anchor the physics-facing interpretation layer so conservation is scoped to the `conservative_contracting` subregime and widened Batch C slices are described through bounded transmutation
+
+## Current Performance Checkpoint
+
+- [x] add a CPU profiling runner that combines exact-step timing with GHC `.prof` / RTS breakdowns for `compiled`, `frac-opt`, and `reg`
+- [x] add a GPU profiling runner that separates cold-start, warm-resident, and per-phase timing on the Vulkan path
+- [x] capture one profiling artifact set and a short "obvious gain / no obvious gain" decision summary before any further CPU or GPU optimization work
+- [x] keep `cycle` outside the exact-step winner comparison and profile it only as an `at-least` checkpoint engine
 
 ## Phase 1: Minimal Model
 
@@ -121,6 +129,10 @@
     - [x] treat that artifact as the source-of-truth bridge status for future physics work
   - [x] document upstream Stage C / minimal-credible / seam / observable surfaces and their FRACDASH wiring map in `AGDAS_FORMALISM_INTAKE.md`
   - [x] extend the formalism checker to cover Stage C, MDL/Fejér/seam, observable, and known-limits QFT bridge modules
+  - [x] refresh the formalism intake for the upstream execution-admissibility / family-classification witness expansion in `MinimalCrediblePhysicsClosure`, `PhysicsClosureCoreWitness`, and `PhysicsClosureFullInstance`
+  - [x] add a first explicit FRACDASH-side executable witness/status layer (ExecutionWitnessSketch + per-slice status in BridgeInstances) for upstream execution admissibility beyond the regime-surrogate bridge theorems; reporters now emit `execution_status`
+  - [x] add per-slice regime-class usage summary to execution status (conservative-only vs mixed transmuting)
+  - [x] thread regime-class family tags/usage into invariant reports so failures can be scoped by class
   - [x] bulk-wire upstream surfaces into FRACDASH execution and reporting:
     - [x] add Stage C / minimal-credible targets to the invariant/observable reporters
     - [x] surface MDL/Fejér and seam certificate checks (or TODO stubs) in the physics target suite
@@ -139,9 +151,23 @@
 - [x] Extend observable surrogates with branch-aware re-entry and 8-register memory profiles:
   - [x] `boundary_return_profile` for return-memory-tagged 8-register states
   - [x] `transport_debt_profile` for transport/debt occupancy splits on the 8-register branch
-- [ ] Decide whether to promote `physics22` as the active exploratory 6-register baseline for future invariant work (it is the first branch with strong direct re-entry).
+- [x] Promote `physics22` as the active exploratory 6-register baseline for future invariant work.
+- [x] Build a widened-family comparison artifact for `physics15`, `physics19`, `physics20`, `physics21`, and `physics22` that aligns `execution_status` / regime usage with recurrent-core and geometry-surrogate outcomes.
+- [x] Build a `physics21 -> physics22` baseline-delta artifact so future 6-register refinements are judged against the actual handoff gain shape, not just the widened-family endpoint table.
+- [ ] Design the next 6-register refinement against the `physics22` baseline-delta target:
+  - preserve the current fixed-walk cycle/terminal split
+  - preserve `distance_to_cycle` as best candidate and keep geometry surrogates at least flat
+  - improve the deterministic recurrent core beyond the current `physics22` delta profile
+- [x] Decide whether the first `physics23` trial (`476 -> 503` deterministic edges, other main axes flat) is enough to replace `physics22` as the active 6-register baseline or should remain a successor candidate only.
+- [x] Keep `physics23` as a genuine successor candidate, but not the active baseline yet: it improves the deterministic recurrent core without yet beating `physics22` on terminal mass or direct re-entry.
+- [x] Build a cross-carrier comparison artifact that lines up the active 6-register baseline (`physics22`) against the exploratory 8-register branches on comparable recurrent-core / geometry / branch-local-observable axes.
+- [x] Decide whether to treat `carrier8_physics2` as the active parallel 8-register experiment track, distinct from but not replacing the `physics22` 6-register baseline.
+- [x] Treat `carrier8_physics2` as the active parallel 8-register track for now; `carrier8_physics3` did not move the shared comparison surface enough to dislodge it.
+- [x] Design the next 8-register refinement beyond `carrier8_physics2/3`; target the actual weak point from `carrier8_physics3` by inserting an earlier boundary-return re-entry hook that can compete with the broad return-memory damping rules.
+- [x] Design the next 8-register refinement beyond `carrier8_physics4`; the first early re-entry insertion still leaves the shared cross-carrier summary flat, so the next branch should target a deeper carrier8 basin/selection change rather than another placement-only tweak.
+- [ ] Decide whether `carrier8_physics5` is enough to replace `carrier8_physics2` as the active parallel 8-register baseline or should remain a successor candidate only; it is the first branch with nonzero sampled `boundary_to_interior`, but it gives back some curvature spread.
 - [ ] Decide whether the `113` total degeneracy has structural support or should be discarded as coincidence.
-- [ ] Write a short result note distinguishing observations from conjectures.
+- [ ] Write and maintain the short result note distinguishing observations from conjectures for the active `physics22` exploratory baseline.
 - [ ] Intake `monster/MonsterLean` references into FRACDASH with proof-completeness filtering:
   - [x] generate a machine-readable inventory for candidate modules (`MonsterWalk*`, `ComplexityLattice`) with `sorry`/`axiom` flags
   - [x] extract only reusable definitions/constants into FRACDASH-side notes

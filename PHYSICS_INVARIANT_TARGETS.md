@@ -10,6 +10,23 @@ The suite is intentionally split into:
 
 The current version is `physics_target_suite_v1`.
 
+## Regime Taxonomy
+
+The current physics-facing interpretation layer now distinguishes two bridge-valid
+regimes:
+
+- `conservative_contracting`
+  - strict contraction with zero transmutation
+  - exact `R1/R2` source-signature conservation remains in force
+- `transmuting_contracting`
+  - strict contraction with bounded transmutation
+  - exact `R1/R2` conservation is not required, but decode correctness,
+    well-formedness, and regime validity still hold
+
+The locked `physics2..physics8` exact-law package below remains the canonical
+conservative subregime lock. It should not be read as the universal bridge
+invariant set for every widened family.
+
 ## Canonical Artifact Inputs
 
 - Phase-2 physics templates: `benchmarks/results/*-agdas-physics[2-8]-phase2.json` (locked set)
@@ -20,6 +37,8 @@ The checker resolves the latest artifact per template by filename date prefix.
 ## V1 Exact Laws (`implemented`)
 
 These are enforced by [`scripts/check_physics_invariant_targets.py`](/home/c/Documents/code/FRACDASH/scripts/check_physics_invariant_targets.py).
+They define the current conservative subregime lock on the canonical
+`physics2..physics8` family.
 
 1. `source_charge_conservation`
    - deterministic edges preserve `R1` and `R2` exactly
@@ -97,7 +116,7 @@ The V1 suite is anchored to the current `physics2..physics8` artifacts:
 
 - `physics9..physics20` are allowed to extend the physics lane without changing the hard lock.
 - Their artifacts are measured against the same V1 suite, but they are not yet used as canonical gate inputs.
-- `physics19` currently preserves the exact laws and the corrected cycle-reachable geometry surrogates, but it does not yet improve the deterministic recurrent core beyond `physics18`.
+- `physics19` currently preserves the conservative exact laws and the corrected cycle-reachable geometry surrogates, but it does not yet improve the deterministic recurrent core beyond `physics18`.
 - `physics20` is the first post-correction widening branch that changes the deterministic recurrent core:
   - deterministic edges `274 -> 301`
   - phase graph edges `359 -> 386`
@@ -105,16 +124,36 @@ The V1 suite is anchored to the current `physics2..physics8` artifacts:
   - corrected `geodesic_like_flow.near_min_ratio 0.9094 -> 0.9181`
   - corrected `curvature_like_concentration.mean_neighbor_spread 1.8258 -> 1.9273`
   - `defect_attraction.nonincrease_ratio 0.6496 -> 0.6811`
-  - exact V1 laws remain satisfied
+  - remains in the `conservative_contracting` subregime on the current checked branch
 - `physics22` is now the leading 6-register exploratory branch:
   - deterministic edges `310 -> 364`
   - boundary-to-interior re-entry `9 -> 63`
   - corrected `geodesic_like_flow.near_min_ratio = 0.9207` (still strong)
-  - exact V1 laws remain satisfied
+  - remains in the `conservative_contracting` subregime on the current checked branch
 - A separate exploratory branch now exists for a physics-local 8-register carrier (`carrier8_physics1`); it is excluded from the hard lock and should be interpreted through branch-local observables rather than direct comparison to the locked `physics2..physics8` lineage.
   - first artifact: `benchmarks/results/2026-03-15-agdas-carrier8-physics1-phase2.json`
   - first invariant artifact: `benchmarks/results/2026-03-15-physics-invariants-carrier8_physics1.json`
   - current role: expose return/debt occupancy explicitly, not replace the 6-register exact-law baseline
+
+## Wider Bridge Reading (`observed experimentally`)
+
+The bridge result is now wider than the locked conservative exact-law package:
+
+- conservation is not the universal bridge invariant
+- conservation is the zero-transmutation special case
+- the wider valid bridge claim is strict contraction plus bounded transmutation
+
+For the currently closed widened family, the stable interpretation split is:
+
+- `conservative_contracting`
+  - exact source-signature conservation remains visible
+- `transmuting_contracting`
+  - exact source-signature conservation can fail locally while strict contraction
+    and bounded transmutation remain intact
+
+This wider bridge-valid regime taxonomy should be used for `physics15`,
+`physics19`, `physics20`, `physics21`, and `physics22`, rather than treating any
+departure from the conservative exact-law package as an automatic bridge failure.
 
 ## Observable Surrogates (`observed experimentally`)
 

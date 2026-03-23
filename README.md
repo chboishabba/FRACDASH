@@ -32,6 +32,7 @@ What exists now:
 - one thin master instantiation layer over those witnesses:
   - [`formalism/BridgeInstances.agda`](/home/c/Documents/code/FRACDASH/formalism/BridgeInstances.agda)
 - a stable cross-slice bridge regime summary at [`benchmarks/results/2026-03-19-bridge-regime-summary.md`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-19-bridge-regime-summary.md)
+- an executable witness/status surface for the closed bridge family via [`formalism/ExecutionWitnessSketch.agda`](/home/c/Documents/code/FRACDASH/formalism/ExecutionWitnessSketch.agda) and `execution_status` emission in invariant artifacts
 
 What does not exist yet:
 
@@ -148,6 +149,33 @@ python3 scripts/check_timing_regression.py \
 
 It compares median `cpu_seconds` across the tracked `(scenario, engine)` pairs and exits non-zero if slowdowns exceed tolerance.
 
+### CPU / GPU Profiling Before Optimization
+
+The next performance milestone is profiling, not blind tuning.
+
+Current working read:
+
+- the imported `frac-opt` path is still the main exact-step CPU comparison point
+- the local `compiled` path is already ahead of `frac-opt` on the sampled
+  `primegame_*` matrix
+- the current GPU path already wins in parts of the measured medium/large batch
+  region, but not uniformly enough to skip profiling breakdowns
+
+So the immediate question is no longer "can we beat the old baseline somehow?"
+but:
+
+- is there any obvious large CPU win left over `frac-opt` and the current
+  `compiled` path?
+- how much of current GPU cost is true device execution versus host/setup
+  overhead?
+- where should the deterministic CPU/GPU routing boundary move, if at all?
+
+The profiling pass should keep three contracts separate:
+
+- exact-step CPU: `compiled` vs `frac-opt` vs `reg`
+- checkpoint/fast-forward: `cycle` on its own axis
+- batched throughput: resident GPU versus compiled CPU batch execution
+
 ### Physics Invariant Target Check
 
 Use the physics target gate after AGDAS/physics template or invariant-analysis changes:
@@ -174,7 +202,24 @@ This checks the current V1 physics target suite over the latest locked `physics2
 
 The canonical target table lives in `PHYSICS_INVARIANT_TARGETS.md`.
 
+That table should now be read through the current regime taxonomy:
+
+- `conservative_contracting` = strict contraction plus zero transmutation
+- `transmuting_contracting` = strict contraction plus bounded transmutation
+
+The locked `physics2..physics8` exact-law package remains the conservative
+subregime lock. It is no longer the universal bridge invariant set for every
+widened slice.
+
 Each invariant artifact now also emits an `observable_surrogates` block with shell/interior occupancy, action-phase occupancy, re-entry flow, latch alignment, and source-defect coupling summaries for exploratory physics interpretation.
+Widened-family invariant artifacts also emit `execution_status`, which is the current stable reporting contract for local execution-admissibility and regime/family usage. The next comparison layer should read `physics15`, `physics19`, `physics20`, `physics21`, and `physics22` through that surface instead of treating widened slices as an undifferentiated exploratory block.
+That widened-family comparison artifact now exists at [`benchmarks/results/2026-03-23-widened-invariant-family-summary.md`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-23-widened-invariant-family-summary.md) and its JSON counterpart. Current read: the widened family stays mixed-transmuting throughout, but recurrent-core size, terminal-state reduction, and direct boundary-to-interior re-entry improve monotonically through `physics22`, while `distance_to_cycle` remains the best candidate and geometry-surrogate values stay strong.
+The next 6-register comparison anchor is now explicit as well: [`benchmarks/results/2026-03-23-physics22-baseline-delta.md`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-23-physics22-baseline-delta.md) shows that the `physics21 -> physics22` gain is concentrated in the deterministic recurrent core (`+81` edges, `-54` terminal states, `+54` direct boundary-to-interior re-entries) while the fixed-walk cycle/terminal split and the current geometry-surrogate values stay flat. That is the right baseline shape for future 6-register refinements to beat.
+The next immediate comparison task is therefore two-sided:
+- design the next 6-register refinement against that `physics22` delta shape rather than against older widened-family branches
+- compare `physics22` to the 8-register branches on a shared summary surface so the wider carrier can compete with the active baseline using comparable outputs
+That cross-carrier summary now exists at [`benchmarks/results/2026-03-23-cross-carrier-baseline-summary.md`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-23-cross-carrier-baseline-summary.md). Current read: `physics22` remains the clearer active 6-register baseline, `carrier8_physics1` remains mainly an observable branch, and `carrier8_physics2` should now be treated as the active parallel 8-register experiment track because it already exceeds the 6-register baseline on at least one geometry surrogate, even though it is not yet a direct replacement baseline.
+The first concrete successor trials are now in-repo as well. `physics23` clears the minimum 6-register successor condition by improving deterministic recurrent edges from `476 -> 503` while keeping the fixed-walk split, best-candidate signal, and geometry surrogates flat, but it does not yet improve terminal mass or direct re-entry beyond `physics22`, so it should still be read as a successor candidate rather than the new default baseline. On the 8-register side, `carrier8_physics3` does not materially move the `carrier8_physics2` baseline on the shared comparison axes, and `carrier8_physics4` showed that simple early hook placement was still not enough. `carrier8_physics5` is the first 8-register branch to move the shared surface in the right direction: sampled `boundary_to_interior` is now `6` instead of `0`, and `action_rank` strict decrease improves, but curvature spread drops from `0.79661` to `0.76341`, so it should be read as a real successor candidate rather than a clean replacement baseline. [`CARRIER8_PHYSICS5_TARGET_NOTE.md`](/home/c/Documents/code/FRACDASH/CARRIER8_PHYSICS5_TARGET_NOTE.md) records that narrower read.
 
 ### AGDA Formalism Check
 
@@ -193,7 +238,7 @@ The checker now covers the canonical closure/audit spine plus Stage C, minimal-c
 
 The next physics split is now explicit. The narrow branch stays on the existing 6-register carrier and tries to produce the first direct `boundary -> interior` re-entry (`physics21`) without breaking the exact V1 laws. In parallel, FRACDASH is adding a separate physics-local 8-register carrier (`carrier8_physics1`) that preserves the current `R1..R6` semantics and adds `R7` boundary-return memory plus `R8` transport/debt memory so later experiments can measure return type and deferred transport load directly instead of overloading the 6-register grammar.
 
-That split is now implemented. `physics22` is the current best 6-register exploratory branch: it lifts deterministic edges to `364` and raises direct `boundary_to_interior` re-entry to `63` while keeping the exact V1 laws intact and keeping corrected `geodesic_like_flow.near_min_ratio` at `~0.92`. The 8-register branch now exists as `scripts/agdas_physics8_state.py` plus `scripts/agdas_physics8_experiments.py`, with artifacts at `benchmarks/results/2026-03-15-agdas-carrier8-physics1-phase2.json` and `benchmarks/results/2026-03-15-physics-invariants-carrier8_physics1.json`; its current job is to expose `boundary_return_profile` and `transport_debt_profile`, not to replace the 6-register lock.
+That split is now implemented. `physics22` is the active 6-register exploratory baseline: it lifts deterministic edges to `364`, lowers terminal states to `365`, and raises direct `boundary_to_interior` re-entry to `63` while keeping the exact V1 laws intact and keeping corrected `geodesic_like_flow.near_min_ratio` at `~0.92`. The 8-register branch now exists as `scripts/agdas_physics8_state.py` plus `scripts/agdas_physics8_experiments.py`, with artifacts at `benchmarks/results/2026-03-15-agdas-carrier8-physics1-phase2.json` and `benchmarks/results/2026-03-15-physics-invariants-carrier8_physics1.json`; its current job is to expose `boundary_return_profile` and `transport_debt_profile`, not to replace the active 6-register baseline.
 
 ### Bridge Correctness Framing
 
@@ -421,6 +466,7 @@ The wave-2 `MonsterState` / `Monster.Step` probe now runs as `FRACDASH_AGDAS_TEM
 That larger carrier prototype now exists in `scripts/agdas_wave3_state.py`: it expands the bridge carrier from `3^4 = 81` to `3^6 = 729` states so mask summary, candidate/admissibility, and a 2-trit window can live on distinct registers before we attempt the next Monster-facing experiment pass.
 The first wave-3 execution path now exists in `scripts/agdas_wave3_experiments.py` and writes `benchmarks/results/2026-03-14-agdas-template-wave3-phase2.json`. It confirms the larger carrier is wired, but it also shows the next missing piece clearly: the current Monster-facing wave-3 templates still model only a single step because no rule reintroduces pending choice/admissibility state after a transition.
 For a more physics-facing path, FRACDASH now also has a local formal sketch in `formalism/PhysicsBridgeRefreshSketch.agda` and a recurrent `physics1` template set covering severity join, contraction-style relaxation, and boundary reset. Its artifact is `benchmarks/results/2026-03-14-agdas-physics1-phase2.json`, and it already shows nontrivial recurrent behavior on the existing 4-register carrier, making it the higher-signal bridge direction for now.
+Execution admissibility and family tagging: `formalism/ExecutionWitnessSketch.agda` plus per-slice status in `formalism/BridgeInstances.agda` expose the current executable witness surface (well-formedness preserved per slice; family tag = regime class). Reports from `scripts/physics_invariant_analysis.py` include this under `execution_status` for traceability against upstream `ExecutionAdmissibility*` witnesses.
 The widened `physics2` layer is implemented on a dedicated 6-register carrier with separate source severities, effective joined severity, region flag, signature latch, and action/energy phase. The carrier lives in `scripts/agdas_physics2_state.py`, the runner in `scripts/agdas_physics_experiments.py`, and the canonical artifact in `benchmarks/results/2026-03-14-agdas-physics2-phase2.json`. On the first pass it produces a substantially denser recurrent structure than `physics1`, with `657` edges over `729` states, longest chain `12`, and a canonical 4-step scan -> join -> contract -> rearm cycle.
 The `physics3` refinement is also implemented on the same 6-register carrier. It adds an explicit latent cone shell between boundary and interior and reports action-phase monotonicity directly in the artifact. The canonical result is `benchmarks/results/2026-03-14-agdas-physics3-phase2.json`, which increases the graph to `900` edges over `729` states, raises longest chain to `15`, and makes the canonical loop explicitly 5-step by splitting `boundary -> shell -> interior rearm`. Its first monotonicity split is mixed rather than cleanly ordered: `234` decreases, `504` preserves, `162` increases.
 That next pass is now implemented as `physics4` on the same 6-register carrier. Its artifact is `benchmarks/results/2026-03-14-agdas-physics4-phase2.json`. The result is informative but not yet the new lead: stricter shell/interior guards cut action-rank increases from `162` to `9`, but they also collapse the recurrent structure to `162` edges, longest chain `9`, and `0` cycles, so every fixed walk terminates. In other words, `physics4` improves order cleanliness by overconstraining the bridge.

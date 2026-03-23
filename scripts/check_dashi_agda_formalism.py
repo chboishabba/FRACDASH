@@ -84,9 +84,35 @@ UPSTREAM_MODULES = (
     ),
     UpstreamModule(
         path="DASHI/Physics/Closure/MinimalCrediblePhysicsClosure.agda",
-        role="minimum-credible closure adapter: full closure + observables with matching signature",
-        required_patterns=("module DASHI.Physics.Closure.MinimalCrediblePhysicsClosure", "record MinimalCrediblePhysicsClosure"),
+        role="minimum-credible closure adapter: full closure + observables with matching signature + authoritative execution/family witnesses",
+        required_patterns=(
+            "module DASHI.Physics.Closure.MinimalCrediblePhysicsClosure",
+            "record MinimalCrediblePhysicsClosure",
+            "authoritativeExecutionAdmissibilityWitness",
+            "authoritativeFamilyClassificationWitness",
+        ),
         local_counterparts=("AGDAS_FORMALISM_INTAKE.md", "scripts/physics_invariant_analysis.py"),
+    ),
+    UpstreamModule(
+        path="DASHI/Physics/Closure/PhysicsClosureCoreWitness.agda",
+        role="core closure witness bundle now including dynamics, execution admissibility, and family classification witnesses",
+        required_patterns=(
+            "module DASHI.Physics.Closure.PhysicsClosureCoreWitness",
+            "record PhysicsClosureCoreWitness",
+            "executionAdmissibilityWitness",
+            "familyClassificationWitness",
+        ),
+        local_counterparts=("AGDAS_FORMALISM_INTAKE.md", "formalism/BridgeInstances.agda"),
+    ),
+    UpstreamModule(
+        path="DASHI/Physics/Closure/PhysicsClosureFullInstance.agda",
+        role="canonical full-instance wiring that supplies the current trace execution admissibility and family classification witnesses",
+        required_patterns=(
+            "module DASHI.Physics.Closure.PhysicsClosureFullInstance",
+            "currentTraceExecutionAdmissibility",
+            "currentFamilyClassification",
+        ),
+        local_counterparts=("AGDAS_FORMALISM_INTAKE.md",),
     ),
     UpstreamModule(
         path="DASHI/Physics/Closure/CanonicalStageC.agda",
@@ -123,6 +149,34 @@ UPSTREAM_MODULES = (
         role="known-limits QFT bridge theorem bundle with canonical wave-even witnesses",
         required_patterns=("module DASHI.Physics.Closure.KnownLimitsQFTBridgeTheorem", "known-limits QFT bridge"),
         local_counterparts=("AGDAS_FORMALISM_INTAKE.md", "PHYSICS_INVARIANT_TARGETS.md"),
+    ),
+    UpstreamModule(
+        path="DASHI/Physics/Closure/ExecutionAdmissibilityWitness.agda",
+        role="shared witness vocabulary for execution admissibility and family classification",
+        required_patterns=(
+            "module DASHI.Physics.Closure.ExecutionAdmissibilityWitness",
+            "SomeExecutionAdmissibilityWitness",
+            "SomeFamilyClassificationWitness",
+        ),
+        local_counterparts=("AGDAS_FORMALISM_INTAKE.md", "formalism/GenericMacroBridge.agda"),
+    ),
+    UpstreamModule(
+        path="DASHI/Physics/Closure/ExecutionAdmissibilityCurrentTraceWitness.agda",
+        role="current-trace execution admissibility witness used by the authoritative minimal closure",
+        required_patterns=(
+            "module DASHI.Physics.Closure.ExecutionAdmissibilityCurrentTraceWitness",
+            "currentTraceExecutionAdmissibility",
+        ),
+        local_counterparts=("AGDAS_FORMALISM_INTAKE.md",),
+    ),
+    UpstreamModule(
+        path="DASHI/Physics/Closure/ExecutionAdmissibilityCurrentFamilyWitness.agda",
+        role="current-family classification witness paired with the authoritative minimal closure",
+        required_patterns=(
+            "module DASHI.Physics.Closure.ExecutionAdmissibilityCurrentFamilyWitness",
+            "currentFamilyClassification",
+        ),
+        local_counterparts=("AGDAS_FORMALISM_INTAKE.md", "formalism/BridgeInstances.agda"),
     ),
 )
 
@@ -195,6 +249,8 @@ def local_counterpart_status() -> dict[str, object]:
         "scripts/agdas_physics8_experiments.py",
         "scripts/toy_dashi_transitions.py",
         "PHYSICS_INVARIANT_TARGETS.md",
+        "formalism/GenericMacroBridge.agda",
+        "formalism/BridgeInstances.agda",
     )
     statuses = {}
     for rel in local_paths:
@@ -256,6 +312,7 @@ def markdown_summary(payload: dict[str, object]) -> str:
             "",
             "- `../dashi_agda` contains a concrete closure/audit surface that FRACDASH should treat as authoritative semantics.",
             "- FRACDASH still executes a compressed subset and should not present the full closure as locally implemented.",
+            "- The current authoritative minimal-credible closure now includes execution-admissibility and family-classification witness surfaces; FRACDASH should treat those as upstream truth even where local executable coverage is only partial.",
         ]
     )
     return "\n".join(lines) + "\n"

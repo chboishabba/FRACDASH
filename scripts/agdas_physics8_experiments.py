@@ -294,6 +294,7 @@ def summary(template_set: str, max_steps: int) -> dict[str, object]:
     all_states_list = all_vectors()
     deterministic_sources = [state for state, edges in graph.items() if edges]
     return {
+        "template_set": template_set,
         "register_count": len(REGISTERS),
         "state_space_size": 3 ** len(REGISTERS),
         "transition_source": "agdas_templates",
@@ -336,7 +337,7 @@ def main() -> None:
     parser.add_argument(
         "--template-set",
         default="carrier8_physics1",
-        choices=("carrier8_physics1", "carrier8_physics2"),
+        choices=("carrier8_physics1", "carrier8_physics2", "carrier8_physics3", "carrier8_physics4", "carrier8_physics5", "carrier8_physics6"),
         help="Template set to execute.",
     )
     parser.add_argument("--max-steps", type=int, default=12, help="Deterministic walk step cap.")

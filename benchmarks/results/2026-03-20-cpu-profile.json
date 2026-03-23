@@ -1,0 +1,2679 @@
+{
+  "assessment": {
+    "compiled_vs_frac_opt": [
+      {
+        "compiled_faster": false,
+        "compiled_over_frac_opt": 1.6693467893978042,
+        "scenario": "mult_smoke"
+      },
+      {
+        "compiled_faster": true,
+        "compiled_over_frac_opt": 0.6859410815619573,
+        "scenario": "primegame_large"
+      },
+      {
+        "compiled_faster": true,
+        "compiled_over_frac_opt": 0.8724666269994421,
+        "scenario": "primegame_medium"
+      },
+      {
+        "compiled_faster": true,
+        "compiled_over_frac_opt": 0.7041248664586277,
+        "scenario": "primegame_small"
+      }
+    ],
+    "compiled_wins_all_sampled_exact_cases": false,
+    "decision": "cpu-baseline-still-has-obvious-gap",
+    "obvious_large_cpu_gain_over_imported_baseline": true,
+    "top_compiled_hotspots": [
+      {
+        "hotspots": [
+          {
+            "alloc_percent": 23.1,
+            "cost_centre": "emitRecord",
+            "module": "Bench",
+            "src": "src/Bench.hs:(375,1)-(391,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 19.5,
+            "cost_centre": "CAF",
+            "module": "GHC.Float",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.2,
+            "cost_centre": "parseArgs.go",
+            "module": "Bench",
+            "src": "src/Bench.hs:(116,5)-(144,76)",
+            "time_percent": 0.0
+          }
+        ],
+        "scenario": "mult_smoke"
+      },
+      {
+        "hotspots": [
+          {
+            "alloc_percent": 14.6,
+            "cost_centre": "ruleCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(145,1)-(147,46)",
+            "time_percent": 33.3
+          },
+          {
+            "alloc_percent": 6.5,
+            "cost_centre": "ruleCompatible.enough",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:147:5-46",
+            "time_percent": 33.3
+          },
+          {
+            "alloc_percent": 0.4,
+            "cost_centre": "compileProgram.preOpt",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(79,5)-(83,7)",
+            "time_percent": 33.3
+          }
+        ],
+        "scenario": "primegame_small"
+      },
+      {
+        "hotspots": [
+          {
+            "alloc_percent": 60.6,
+            "cost_centre": "applyRule",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(150,1)-(151,7)",
+            "time_percent": 52.9
+          },
+          {
+            "alloc_percent": 14.5,
+            "cost_centre": "ruleCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(145,1)-(147,46)",
+            "time_percent": 11.8
+          },
+          {
+            "alloc_percent": 6.6,
+            "cost_centre": "ruleCompatible.enough",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:147:5-46",
+            "time_percent": 11.8
+          }
+        ],
+        "scenario": "primegame_medium"
+      },
+      {
+        "hotspots": [
+          {
+            "alloc_percent": 61.0,
+            "cost_centre": "applyRule",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(150,1)-(151,7)",
+            "time_percent": 44.0
+          },
+          {
+            "alloc_percent": 6.5,
+            "cost_centre": "ruleCompatible.enough",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:147:5-46",
+            "time_percent": 14.3
+          },
+          {
+            "alloc_percent": 13.9,
+            "cost_centre": "ruleCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(145,1)-(147,46)",
+            "time_percent": 11.3
+          }
+        ],
+        "scenario": "primegame_large"
+      }
+    ]
+  },
+  "cycle_profiles": [
+    {
+      "engine": "cycle",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 24.9,
+            "cost_centre": "emitRecord",
+            "module": "Bench",
+            "src": "src/Bench.hs:(375,1)-(391,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 21.0,
+            "cost_centre": "CAF",
+            "module": "GHC.Float",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.4,
+            "cost_centre": "main",
+            "module": "Main",
+            "src": "src/bench_main.hs:(9,1)-(13,23)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.8,
+            "cost_centre": "facmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(68,1)-(69,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.5,
+            "cost_centre": "factors.fac",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(40,3)-(43,26)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.0,
+            "cost_centre": "mult",
+            "module": "Demo",
+            "src": "src/Demo.hs:41:1-80",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.4,
+            "cost_centre": "CAF",
+            "module": "GHC.IO.Encoding",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 24.9,
+            "cost_centre": "emitRecord",
+            "module": "Bench",
+            "src": "src/Bench.hs:(375,1)-(391,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 21.0,
+            "cost_centre": "CAF",
+            "module": "GHC.Float",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.4,
+            "cost_centre": "main",
+            "module": "Main",
+            "src": "src/bench_main.hs:(9,1)-(13,23)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.8,
+            "cost_centre": "facmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(68,1)-(69,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.5,
+            "cost_centre": "factors.fac",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(40,3)-(43,26)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.0,
+            "cost_centre": "mult",
+            "module": "Demo",
+            "src": "src/Demo.hs:41:1-80",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.4,
+            "cost_centre": "CAF",
+            "module": "GHC.IO.Encoding",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 382064,
+        "gc_time_seconds": 0.0,
+        "mut_time_seconds": 0.0,
+        "total_time_seconds": 0.001
+      },
+      "scenario": "mult_smoke"
+    },
+    {
+      "engine": "cycle",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 16.8,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 25.0
+          },
+          {
+            "alloc_percent": 13.3,
+            "cost_centre": "cycles'.eval",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(140,3)-(151,70)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 8.6,
+            "cost_centre": "stateSplit",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(98,1)-(99,43)",
+            "time_percent": 25.0
+          },
+          {
+            "alloc_percent": 8.5,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 12.5
+          },
+          {
+            "alloc_percent": 5.9,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.9,
+            "cost_centre": "cycInsert.nset",
+            "module": "CBuf",
+            "src": "src/CBuf.hs:48:3-63",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.6,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 12.5
+          },
+          {
+            "alloc_percent": 4.5,
+            "cost_centre": "cycles'.eval.match",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:144:5-71",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 3.5,
+            "cost_centre": "getRange",
+            "module": "CBuf",
+            "src": "src/CBuf.hs:(68,1)-(72,40)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 3.4,
+            "cost_centre": "insert",
+            "module": "CBuf",
+            "src": "src/CBuf.hs:(33,1)-(34,24)",
+            "time_percent": 12.5
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 16.8,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 25.0
+          },
+          {
+            "alloc_percent": 8.6,
+            "cost_centre": "stateSplit",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(98,1)-(99,43)",
+            "time_percent": 25.0
+          },
+          {
+            "alloc_percent": 8.5,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 12.5
+          },
+          {
+            "alloc_percent": 5.6,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 12.5
+          },
+          {
+            "alloc_percent": 3.4,
+            "cost_centre": "insert",
+            "module": "CBuf",
+            "src": "src/CBuf.hs:(33,1)-(34,24)",
+            "time_percent": 12.5
+          },
+          {
+            "alloc_percent": 2.2,
+            "cost_centre": "compat.valid",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:65:3-34",
+            "time_percent": 12.5
+          },
+          {
+            "alloc_percent": 13.3,
+            "cost_centre": "cycles'.eval",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(140,3)-(151,70)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.9,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.9,
+            "cost_centre": "cycInsert.nset",
+            "module": "CBuf",
+            "src": "src/CBuf.hs:48:3-63",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 4.5,
+            "cost_centre": "cycles'.eval.match",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:144:5-71",
+            "time_percent": 0.0
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 23097368,
+        "gc_time_seconds": 0.001,
+        "mut_time_seconds": 0.009,
+        "total_time_seconds": 0.01
+      },
+      "scenario": "primegame_small"
+    },
+    {
+      "engine": "cycle",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 22.5,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 27.5
+          },
+          {
+            "alloc_percent": 12.5,
+            "cost_centre": "cycles'.eval",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(140,3)-(151,70)",
+            "time_percent": 3.9
+          },
+          {
+            "alloc_percent": 8.7,
+            "cost_centre": "stateSplit",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(98,1)-(99,43)",
+            "time_percent": 3.9
+          },
+          {
+            "alloc_percent": 7.4,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 2.0
+          },
+          {
+            "alloc_percent": 6.6,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 7.8
+          },
+          {
+            "alloc_percent": 5.5,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 4.8,
+            "cost_centre": "cycInsert.nset",
+            "module": "CBuf",
+            "src": "src/CBuf.hs:48:3-63",
+            "time_percent": 9.8
+          },
+          {
+            "alloc_percent": 4.0,
+            "cost_centre": "cycles'.eval.match",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:144:5-71",
+            "time_percent": 2.0
+          },
+          {
+            "alloc_percent": 3.2,
+            "cost_centre": "unfmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(71,1)-(72,49)",
+            "time_percent": 2.0
+          },
+          {
+            "alloc_percent": 3.1,
+            "cost_centre": "insert",
+            "module": "CBuf",
+            "src": "src/CBuf.hs:(33,1)-(34,24)",
+            "time_percent": 2.0
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 22.5,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 27.5
+          },
+          {
+            "alloc_percent": 4.8,
+            "cost_centre": "cycInsert.nset",
+            "module": "CBuf",
+            "src": "src/CBuf.hs:48:3-63",
+            "time_percent": 9.8
+          },
+          {
+            "alloc_percent": 6.6,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 7.8
+          },
+          {
+            "alloc_percent": 0.4,
+            "cost_centre": "leap.life.dip",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:119:7-55",
+            "time_percent": 5.9
+          },
+          {
+            "alloc_percent": 0.3,
+            "cost_centre": "insert'",
+            "module": "CBuf",
+            "src": "src/CBuf.hs:(37,1)-(39,30)",
+            "time_percent": 5.9
+          },
+          {
+            "alloc_percent": 12.5,
+            "cost_centre": "cycles'.eval",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(140,3)-(151,70)",
+            "time_percent": 3.9
+          },
+          {
+            "alloc_percent": 8.7,
+            "cost_centre": "stateSplit",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(98,1)-(99,43)",
+            "time_percent": 3.9
+          },
+          {
+            "alloc_percent": 1.5,
+            "cost_centre": "stateSplit.part",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:99:3-43",
+            "time_percent": 3.9
+          },
+          {
+            "alloc_percent": 7.4,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 2.0
+          },
+          {
+            "alloc_percent": 4.0,
+            "cost_centre": "cycles'.eval.match",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:144:5-71",
+            "time_percent": 2.0
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 161328608,
+        "gc_time_seconds": 0.004,
+        "mut_time_seconds": 0.053,
+        "total_time_seconds": 0.056
+      },
+      "scenario": "primegame_medium"
+    },
+    {
+      "engine": "cycle",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 27.6,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 30.4
+          },
+          {
+            "alloc_percent": 11.5,
+            "cost_centre": "cycles'.eval",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(140,3)-(151,70)",
+            "time_percent": 3.2
+          },
+          {
+            "alloc_percent": 8.2,
+            "cost_centre": "stateSplit",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(98,1)-(99,43)",
+            "time_percent": 2.2
+          },
+          {
+            "alloc_percent": 6.7,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 5.4
+          },
+          {
+            "alloc_percent": 6.6,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 3.5
+          },
+          {
+            "alloc_percent": 5.1,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 5.1
+          },
+          {
+            "alloc_percent": 4.1,
+            "cost_centre": "cycInsert.nset",
+            "module": "CBuf",
+            "src": "src/CBuf.hs:48:3-63",
+            "time_percent": 6.7
+          },
+          {
+            "alloc_percent": 3.6,
+            "cost_centre": "cycles'.eval.match",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:144:5-71",
+            "time_percent": 2.9
+          },
+          {
+            "alloc_percent": 3.1,
+            "cost_centre": "unfmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(71,1)-(72,49)",
+            "time_percent": 2.2
+          },
+          {
+            "alloc_percent": 2.8,
+            "cost_centre": "insert",
+            "module": "CBuf",
+            "src": "src/CBuf.hs:(33,1)-(34,24)",
+            "time_percent": 3.5
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 27.6,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 30.4
+          },
+          {
+            "alloc_percent": 4.1,
+            "cost_centre": "cycInsert.nset",
+            "module": "CBuf",
+            "src": "src/CBuf.hs:48:3-63",
+            "time_percent": 6.7
+          },
+          {
+            "alloc_percent": 0.0,
+            "cost_centre": "get0",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:62:1-26",
+            "time_percent": 5.8
+          },
+          {
+            "alloc_percent": 6.7,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 5.4
+          },
+          {
+            "alloc_percent": 5.1,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 5.1
+          },
+          {
+            "alloc_percent": 1.8,
+            "cost_centre": "compat.valid",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:65:3-34",
+            "time_percent": 3.8
+          },
+          {
+            "alloc_percent": 6.6,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 3.5
+          },
+          {
+            "alloc_percent": 2.8,
+            "cost_centre": "insert",
+            "module": "CBuf",
+            "src": "src/CBuf.hs:(33,1)-(34,24)",
+            "time_percent": 3.5
+          },
+          {
+            "alloc_percent": 11.5,
+            "cost_centre": "cycles'.eval",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(140,3)-(151,70)",
+            "time_percent": 3.2
+          },
+          {
+            "alloc_percent": 3.6,
+            "cost_centre": "cycles'.eval.match",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:144:5-71",
+            "time_percent": 2.9
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 977946936,
+        "gc_time_seconds": 0.022,
+        "mut_time_seconds": 0.312,
+        "total_time_seconds": 0.334
+      },
+      "scenario": "primegame_large"
+    }
+  ],
+  "exact_engines": [
+    "compiled",
+    "frac-opt",
+    "reg"
+  ],
+  "include_cycle": true,
+  "profile_cases": [
+    {
+      "engine": "compiled",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 23.1,
+            "cost_centre": "emitRecord",
+            "module": "Bench",
+            "src": "src/Bench.hs:(375,1)-(391,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 19.5,
+            "cost_centre": "CAF",
+            "module": "GHC.Float",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.2,
+            "cost_centre": "parseArgs.go",
+            "module": "Bench",
+            "src": "src/Bench.hs:(116,5)-(144,76)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.1,
+            "cost_centre": "main",
+            "module": "Main",
+            "src": "src/bench_main.hs:(9,1)-(13,23)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 4.0,
+            "cost_centre": "facmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(68,1)-(69,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 3.5,
+            "cost_centre": "factors.fac",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(40,3)-(43,26)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.9,
+            "cost_centre": "mult",
+            "module": "Demo",
+            "src": "src/Demo.hs:41:1-80",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.9,
+            "cost_centre": "deltaArray.entries",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(90,5)-(93,7)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.4,
+            "cost_centre": "applyRule",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(150,1)-(151,7)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.3,
+            "cost_centre": "CAF",
+            "module": "GHC.IO.Encoding",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 23.1,
+            "cost_centre": "emitRecord",
+            "module": "Bench",
+            "src": "src/Bench.hs:(375,1)-(391,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 19.5,
+            "cost_centre": "CAF",
+            "module": "GHC.Float",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.2,
+            "cost_centre": "parseArgs.go",
+            "module": "Bench",
+            "src": "src/Bench.hs:(116,5)-(144,76)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.1,
+            "cost_centre": "main",
+            "module": "Main",
+            "src": "src/bench_main.hs:(9,1)-(13,23)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 4.0,
+            "cost_centre": "facmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(68,1)-(69,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 3.5,
+            "cost_centre": "factors.fac",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(40,3)-(43,26)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.9,
+            "cost_centre": "mult",
+            "module": "Demo",
+            "src": "src/Demo.hs:41:1-80",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.9,
+            "cost_centre": "deltaArray.entries",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(90,5)-(93,7)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.4,
+            "cost_centre": "applyRule",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(150,1)-(151,7)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.3,
+            "cost_centre": "CAF",
+            "module": "GHC.IO.Encoding",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 417520,
+        "gc_time_seconds": 0.0,
+        "mut_time_seconds": 0.0,
+        "total_time_seconds": 0.001
+      },
+      "scenario": "mult_smoke"
+    },
+    {
+      "engine": "frac-opt",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 25.5,
+            "cost_centre": "emitRecord",
+            "module": "Bench",
+            "src": "src/Bench.hs:(375,1)-(391,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 22.0,
+            "cost_centre": "CAF",
+            "module": "GHC.Float",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.7,
+            "cost_centre": "main",
+            "module": "Main",
+            "src": "src/bench_main.hs:(9,1)-(13,23)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.7,
+            "cost_centre": "facmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(68,1)-(69,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.4,
+            "cost_centre": "factors.fac",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(40,3)-(43,26)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.9,
+            "cost_centre": "mult",
+            "module": "Demo",
+            "src": "src/Demo.hs:41:1-80",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.4,
+            "cost_centre": "CAF",
+            "module": "GHC.IO.Encoding",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 25.5,
+            "cost_centre": "emitRecord",
+            "module": "Bench",
+            "src": "src/Bench.hs:(375,1)-(391,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 22.0,
+            "cost_centre": "CAF",
+            "module": "GHC.Float",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.7,
+            "cost_centre": "main",
+            "module": "Main",
+            "src": "src/bench_main.hs:(9,1)-(13,23)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.7,
+            "cost_centre": "facmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(68,1)-(69,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.4,
+            "cost_centre": "factors.fac",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(40,3)-(43,26)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.9,
+            "cost_centre": "mult",
+            "module": "Demo",
+            "src": "src/Demo.hs:41:1-80",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.4,
+            "cost_centre": "CAF",
+            "module": "GHC.IO.Encoding",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 363600,
+        "gc_time_seconds": 0.0,
+        "mut_time_seconds": 0.0,
+        "total_time_seconds": 0.001
+      },
+      "scenario": "mult_smoke"
+    },
+    {
+      "engine": "reg",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 26.2,
+            "cost_centre": "emitRecord",
+            "module": "Bench",
+            "src": "src/Bench.hs:(375,1)-(391,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 22.6,
+            "cost_centre": "CAF",
+            "module": "GHC.Float",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 6.1,
+            "cost_centre": "parseArgs.go",
+            "module": "Bench",
+            "src": "src/Bench.hs:(116,5)-(144,76)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.8,
+            "cost_centre": "main",
+            "module": "Main",
+            "src": "src/bench_main.hs:(9,1)-(13,23)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.7,
+            "cost_centre": "facmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(68,1)-(69,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.5,
+            "cost_centre": "factors.fac",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(40,3)-(43,26)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.9,
+            "cost_centre": "mult",
+            "module": "Demo",
+            "src": "src/Demo.hs:41:1-80",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.5,
+            "cost_centre": "CAF",
+            "module": "GHC.IO.Encoding",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.2,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 0.0
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 26.2,
+            "cost_centre": "emitRecord",
+            "module": "Bench",
+            "src": "src/Bench.hs:(375,1)-(391,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 22.6,
+            "cost_centre": "CAF",
+            "module": "GHC.Float",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 6.1,
+            "cost_centre": "parseArgs.go",
+            "module": "Bench",
+            "src": "src/Bench.hs:(116,5)-(144,76)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 5.8,
+            "cost_centre": "main",
+            "module": "Main",
+            "src": "src/bench_main.hs:(9,1)-(13,23)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.7,
+            "cost_centre": "facmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(68,1)-(69,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.5,
+            "cost_centre": "factors.fac",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(40,3)-(43,26)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.9,
+            "cost_centre": "mult",
+            "module": "Demo",
+            "src": "src/Demo.hs:41:1-80",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.5,
+            "cost_centre": "CAF",
+            "module": "GHC.IO.Encoding",
+            "src": "<entire-module>",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.2,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 0.0
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 353832,
+        "gc_time_seconds": 0.0,
+        "mut_time_seconds": 0.0,
+        "total_time_seconds": 0.001
+      },
+      "scenario": "mult_smoke"
+    },
+    {
+      "engine": "compiled",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 55.2,
+            "cost_centre": "applyRule",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(150,1)-(151,7)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 14.6,
+            "cost_centre": "ruleCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(145,1)-(147,46)",
+            "time_percent": 33.3
+          },
+          {
+            "alloc_percent": 6.5,
+            "cost_centre": "ruleCompatible.enough",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:147:5-46",
+            "time_percent": 33.3
+          },
+          {
+            "alloc_percent": 4.9,
+            "cost_centre": "runCompiledTrace.unfold",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(192,5)-(198,21)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 3.4,
+            "cost_centre": "runCompiledTrace.firstCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(199,5)-(204,29)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.3,
+            "cost_centre": "runCompiledTrace.unfold.nextValue",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:196:15-92",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.2,
+            "cost_centre": "trimCompiledTrace",
+            "module": "Bench",
+            "src": "src/Bench.hs:(408,1)-(412,27)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.1,
+            "cost_centre": "emitRecord",
+            "module": "Bench",
+            "src": "src/Bench.hs:(375,1)-(391,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.1,
+            "cost_centre": "deltaArray.entries",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(90,5)-(93,7)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 0.4,
+            "cost_centre": "compileProgram.preOpt",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(79,5)-(83,7)",
+            "time_percent": 33.3
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 14.6,
+            "cost_centre": "ruleCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(145,1)-(147,46)",
+            "time_percent": 33.3
+          },
+          {
+            "alloc_percent": 6.5,
+            "cost_centre": "ruleCompatible.enough",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:147:5-46",
+            "time_percent": 33.3
+          },
+          {
+            "alloc_percent": 0.4,
+            "cost_centre": "compileProgram.preOpt",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(79,5)-(83,7)",
+            "time_percent": 33.3
+          },
+          {
+            "alloc_percent": 55.2,
+            "cost_centre": "applyRule",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(150,1)-(151,7)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 4.9,
+            "cost_centre": "runCompiledTrace.unfold",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(192,5)-(198,21)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 3.4,
+            "cost_centre": "runCompiledTrace.firstCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(199,5)-(204,29)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.3,
+            "cost_centre": "runCompiledTrace.unfold.nextValue",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:196:15-92",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.2,
+            "cost_centre": "trimCompiledTrace",
+            "module": "Bench",
+            "src": "src/Bench.hs:(408,1)-(412,27)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.1,
+            "cost_centre": "emitRecord",
+            "module": "Bench",
+            "src": "src/Bench.hs:(375,1)-(391,48)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.1,
+            "cost_centre": "deltaArray.entries",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(90,5)-(93,7)",
+            "time_percent": 0.0
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 8612448,
+        "gc_time_seconds": 0.001,
+        "mut_time_seconds": 0.003,
+        "total_time_seconds": 0.004
+      },
+      "scenario": "primegame_small"
+    },
+    {
+      "engine": "frac-opt",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 29.9,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 20.0
+          },
+          {
+            "alloc_percent": 14.2,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 10.3,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 20.0
+          },
+          {
+            "alloc_percent": 8.2,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 20.0
+          },
+          {
+            "alloc_percent": 5.5,
+            "cost_centre": "unfmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(71,1)-(72,49)",
+            "time_percent": 20.0
+          },
+          {
+            "alloc_percent": 3.7,
+            "cost_centre": "compat.valid",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:65:3-34",
+            "time_percent": 20.0
+          },
+          {
+            "alloc_percent": 3.0,
+            "cost_centre": "fracOpt'.eval",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:92:3-53",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.7,
+            "cost_centre": "fdiv",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(58,1)-(60,32)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.3,
+            "cost_centre": "fprod",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(56,1)-(57,47)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.0,
+            "cost_centre": "enginePoints",
+            "module": "Bench",
+            "src": "src/Bench.hs:(156,1)-(169,37)",
+            "time_percent": 0.0
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 29.9,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 20.0
+          },
+          {
+            "alloc_percent": 10.3,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 20.0
+          },
+          {
+            "alloc_percent": 8.2,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 20.0
+          },
+          {
+            "alloc_percent": 5.5,
+            "cost_centre": "unfmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(71,1)-(72,49)",
+            "time_percent": 20.0
+          },
+          {
+            "alloc_percent": 3.7,
+            "cost_centre": "compat.valid",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:65:3-34",
+            "time_percent": 20.0
+          },
+          {
+            "alloc_percent": 14.2,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 3.0,
+            "cost_centre": "fracOpt'.eval",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:92:3-53",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.7,
+            "cost_centre": "fdiv",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(58,1)-(60,32)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.3,
+            "cost_centre": "fprod",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(56,1)-(57,47)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.0,
+            "cost_centre": "enginePoints",
+            "module": "Bench",
+            "src": "src/Bench.hs:(156,1)-(169,37)",
+            "time_percent": 0.0
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 16116584,
+        "gc_time_seconds": 0.001,
+        "mut_time_seconds": 0.006,
+        "total_time_seconds": 0.007
+      },
+      "scenario": "primegame_small"
+    },
+    {
+      "engine": "reg",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 26.2,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 33.3
+          },
+          {
+            "alloc_percent": 22.7,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 9.0,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 7.8,
+            "cost_centre": "regBased'.match",
+            "module": "Others",
+            "src": "src/Others.hs:29:3-30",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 7.1,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 16.7
+          },
+          {
+            "alloc_percent": 6.0,
+            "cost_centre": "compat.valid",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:65:3-34",
+            "time_percent": 33.3
+          },
+          {
+            "alloc_percent": 4.8,
+            "cost_centre": "unfmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(71,1)-(72,49)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 3.7,
+            "cost_centre": "regBased'.eval",
+            "module": "Others",
+            "src": "src/Others.hs:30:3-46",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.4,
+            "cost_centre": "fdiv",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(58,1)-(60,32)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.0,
+            "cost_centre": "fprod",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(56,1)-(57,47)",
+            "time_percent": 0.0
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 26.2,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 33.3
+          },
+          {
+            "alloc_percent": 6.0,
+            "cost_centre": "compat.valid",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:65:3-34",
+            "time_percent": 33.3
+          },
+          {
+            "alloc_percent": 7.1,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 16.7
+          },
+          {
+            "alloc_percent": 22.7,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 9.0,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 7.8,
+            "cost_centre": "regBased'.match",
+            "module": "Others",
+            "src": "src/Others.hs:29:3-30",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 4.8,
+            "cost_centre": "unfmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(71,1)-(72,49)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 3.7,
+            "cost_centre": "regBased'.eval",
+            "module": "Others",
+            "src": "src/Others.hs:30:3-46",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.4,
+            "cost_centre": "fdiv",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(58,1)-(60,32)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.0,
+            "cost_centre": "fprod",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(56,1)-(57,47)",
+            "time_percent": 0.0
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 18631936,
+        "gc_time_seconds": 0.001,
+        "mut_time_seconds": 0.007,
+        "total_time_seconds": 0.008
+      },
+      "scenario": "primegame_small"
+    },
+    {
+      "engine": "compiled",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 60.6,
+            "cost_centre": "applyRule",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(150,1)-(151,7)",
+            "time_percent": 52.9
+          },
+          {
+            "alloc_percent": 14.5,
+            "cost_centre": "ruleCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(145,1)-(147,46)",
+            "time_percent": 11.8
+          },
+          {
+            "alloc_percent": 6.6,
+            "cost_centre": "ruleCompatible.enough",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:147:5-46",
+            "time_percent": 11.8
+          },
+          {
+            "alloc_percent": 5.4,
+            "cost_centre": "runCompiledTrace.unfold",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(192,5)-(198,21)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 3.5,
+            "cost_centre": "runCompiledTrace.firstCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(199,5)-(204,29)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.9,
+            "cost_centre": "runCompiledTrace.unfold.nextValue",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:196:15-92",
+            "time_percent": 5.9
+          },
+          {
+            "alloc_percent": 1.3,
+            "cost_centre": "trimCompiledTrace",
+            "module": "Bench",
+            "src": "src/Bench.hs:(408,1)-(412,27)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.0,
+            "cost_centre": "summarizeCompiledTrace.checksum.\\",
+            "module": "Bench",
+            "src": "src/Bench.hs:223:48-58",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 0.0,
+            "cost_centre": "compiledNumValue",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:19:5-20",
+            "time_percent": 5.9
+          },
+          {
+            "alloc_percent": 0.0,
+            "cost_centre": "compiledDelta",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:18:5-17",
+            "time_percent": 5.9
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 60.6,
+            "cost_centre": "applyRule",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(150,1)-(151,7)",
+            "time_percent": 52.9
+          },
+          {
+            "alloc_percent": 14.5,
+            "cost_centre": "ruleCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(145,1)-(147,46)",
+            "time_percent": 11.8
+          },
+          {
+            "alloc_percent": 6.6,
+            "cost_centre": "ruleCompatible.enough",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:147:5-46",
+            "time_percent": 11.8
+          },
+          {
+            "alloc_percent": 2.9,
+            "cost_centre": "runCompiledTrace.unfold.nextValue",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:196:15-92",
+            "time_percent": 5.9
+          },
+          {
+            "alloc_percent": 0.0,
+            "cost_centre": "compiledNumValue",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:19:5-20",
+            "time_percent": 5.9
+          },
+          {
+            "alloc_percent": 0.0,
+            "cost_centre": "compiledDelta",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:18:5-17",
+            "time_percent": 5.9
+          },
+          {
+            "alloc_percent": 0.0,
+            "cost_centre": "compileProgram.preOpt",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(79,5)-(83,7)",
+            "time_percent": 5.9
+          },
+          {
+            "alloc_percent": 5.4,
+            "cost_centre": "runCompiledTrace.unfold",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(192,5)-(198,21)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 3.5,
+            "cost_centre": "runCompiledTrace.firstCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(199,5)-(204,29)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.3,
+            "cost_centre": "trimCompiledTrace",
+            "module": "Bench",
+            "src": "src/Bench.hs:(408,1)-(412,27)",
+            "time_percent": 0.0
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 77381120,
+        "gc_time_seconds": 0.007,
+        "mut_time_seconds": 0.017,
+        "total_time_seconds": 0.024
+      },
+      "scenario": "primegame_medium"
+    },
+    {
+      "engine": "frac-opt",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 40.4,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 49.1
+          },
+          {
+            "alloc_percent": 11.6,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 15.1
+          },
+          {
+            "alloc_percent": 9.6,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 1.9
+          },
+          {
+            "alloc_percent": 7.6,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 7.5
+          },
+          {
+            "alloc_percent": 6.4,
+            "cost_centre": "fracOpt'.match",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:91:3-74",
+            "time_percent": 5.7
+          },
+          {
+            "alloc_percent": 5.4,
+            "cost_centre": "unfmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(71,1)-(72,49)",
+            "time_percent": 1.9
+          },
+          {
+            "alloc_percent": 3.1,
+            "cost_centre": "compat.valid",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:65:3-34",
+            "time_percent": 3.8
+          },
+          {
+            "alloc_percent": 2.7,
+            "cost_centre": "fracOpt'.eval",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:92:3-53",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.5,
+            "cost_centre": "fdiv",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(58,1)-(60,32)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 2.1,
+            "cost_centre": "fprod",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(56,1)-(57,47)",
+            "time_percent": 0.0
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 40.4,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 49.1
+          },
+          {
+            "alloc_percent": 11.6,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 15.1
+          },
+          {
+            "alloc_percent": 0.0,
+            "cost_centre": "get0",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:62:1-26",
+            "time_percent": 11.3
+          },
+          {
+            "alloc_percent": 7.6,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 7.5
+          },
+          {
+            "alloc_percent": 6.4,
+            "cost_centre": "fracOpt'.match",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:91:3-74",
+            "time_percent": 5.7
+          },
+          {
+            "alloc_percent": 3.1,
+            "cost_centre": "compat.valid",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:65:3-34",
+            "time_percent": 3.8
+          },
+          {
+            "alloc_percent": 9.6,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 1.9
+          },
+          {
+            "alloc_percent": 5.4,
+            "cost_centre": "unfmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(71,1)-(72,49)",
+            "time_percent": 1.9
+          },
+          {
+            "alloc_percent": 0.0,
+            "cost_centre": "summarize.checksum",
+            "module": "Bench",
+            "src": "src/Bench.hs:(206,5)-(209,69)",
+            "time_percent": 1.9
+          },
+          {
+            "alloc_percent": 2.7,
+            "cost_centre": "fracOpt'.eval",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:92:3-53",
+            "time_percent": 0.0
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 183784448,
+        "gc_time_seconds": 0.006,
+        "mut_time_seconds": 0.052,
+        "total_time_seconds": 0.058
+      },
+      "scenario": "primegame_medium"
+    },
+    {
+      "engine": "reg",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 35.8,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 44.8
+          },
+          {
+            "alloc_percent": 19.5,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 10.3
+          },
+          {
+            "alloc_percent": 8.5,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 6.9
+          },
+          {
+            "alloc_percent": 6.8,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 5.2
+          },
+          {
+            "alloc_percent": 5.3,
+            "cost_centre": "compat.valid",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:65:3-34",
+            "time_percent": 12.1
+          },
+          {
+            "alloc_percent": 4.8,
+            "cost_centre": "unfmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(71,1)-(72,49)",
+            "time_percent": 3.4
+          },
+          {
+            "alloc_percent": 3.4,
+            "cost_centre": "regBased'.eval",
+            "module": "Others",
+            "src": "src/Others.hs:30:3-46",
+            "time_percent": 3.4
+          },
+          {
+            "alloc_percent": 2.2,
+            "cost_centre": "fdiv",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(58,1)-(60,32)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.9,
+            "cost_centre": "fprod",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(56,1)-(57,47)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 1.6,
+            "cost_centre": "fdiv.nonzero",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:60:3-32",
+            "time_percent": 3.4
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 35.8,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 44.8
+          },
+          {
+            "alloc_percent": 5.3,
+            "cost_centre": "compat.valid",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:65:3-34",
+            "time_percent": 12.1
+          },
+          {
+            "alloc_percent": 19.5,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 10.3
+          },
+          {
+            "alloc_percent": 8.5,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 6.9
+          },
+          {
+            "alloc_percent": 0.0,
+            "cost_centre": "get0",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:62:1-26",
+            "time_percent": 6.9
+          },
+          {
+            "alloc_percent": 6.8,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 5.2
+          },
+          {
+            "alloc_percent": 4.8,
+            "cost_centre": "unfmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(71,1)-(72,49)",
+            "time_percent": 3.4
+          },
+          {
+            "alloc_percent": 3.4,
+            "cost_centre": "regBased'.eval",
+            "module": "Others",
+            "src": "src/Others.hs:30:3-46",
+            "time_percent": 3.4
+          },
+          {
+            "alloc_percent": 1.6,
+            "cost_centre": "fdiv.nonzero",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:60:3-32",
+            "time_percent": 3.4
+          },
+          {
+            "alloc_percent": 2.2,
+            "cost_centre": "fdiv",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(58,1)-(60,32)",
+            "time_percent": 0.0
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 208993120,
+        "gc_time_seconds": 0.006,
+        "mut_time_seconds": 0.06,
+        "total_time_seconds": 0.067
+      },
+      "scenario": "primegame_medium"
+    },
+    {
+      "engine": "compiled",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 61.0,
+            "cost_centre": "applyRule",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(150,1)-(151,7)",
+            "time_percent": 44.0
+          },
+          {
+            "alloc_percent": 13.9,
+            "cost_centre": "ruleCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(145,1)-(147,46)",
+            "time_percent": 11.3
+          },
+          {
+            "alloc_percent": 6.5,
+            "cost_centre": "ruleCompatible.enough",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:147:5-46",
+            "time_percent": 14.3
+          },
+          {
+            "alloc_percent": 5.4,
+            "cost_centre": "runCompiledTrace.unfold",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(192,5)-(198,21)",
+            "time_percent": 7.1
+          },
+          {
+            "alloc_percent": 4.0,
+            "cost_centre": "runCompiledTrace.unfold.nextValue",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:196:15-92",
+            "time_percent": 4.8
+          },
+          {
+            "alloc_percent": 3.3,
+            "cost_centre": "runCompiledTrace.firstCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(199,5)-(204,29)",
+            "time_percent": 2.4
+          },
+          {
+            "alloc_percent": 1.5,
+            "cost_centre": "summarizeCompiledTrace.checksum.\\",
+            "module": "Bench",
+            "src": "src/Bench.hs:223:48-58",
+            "time_percent": 4.2
+          },
+          {
+            "alloc_percent": 1.3,
+            "cost_centre": "trimCompiledTrace",
+            "module": "Bench",
+            "src": "src/Bench.hs:(408,1)-(412,27)",
+            "time_percent": 0.0
+          },
+          {
+            "alloc_percent": 0.9,
+            "cost_centre": "runCompiledTrace.unfold.rule",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:195:15-35",
+            "time_percent": 1.2
+          },
+          {
+            "alloc_percent": 0.0,
+            "cost_centre": "summarizeCompiledTrace.finalHash",
+            "module": "Bench",
+            "src": "src/Bench.hs:(224,5)-(227,70)",
+            "time_percent": 2.4
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 61.0,
+            "cost_centre": "applyRule",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(150,1)-(151,7)",
+            "time_percent": 44.0
+          },
+          {
+            "alloc_percent": 6.5,
+            "cost_centre": "ruleCompatible.enough",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:147:5-46",
+            "time_percent": 14.3
+          },
+          {
+            "alloc_percent": 13.9,
+            "cost_centre": "ruleCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(145,1)-(147,46)",
+            "time_percent": 11.3
+          },
+          {
+            "alloc_percent": 5.4,
+            "cost_centre": "runCompiledTrace.unfold",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(192,5)-(198,21)",
+            "time_percent": 7.1
+          },
+          {
+            "alloc_percent": 4.0,
+            "cost_centre": "runCompiledTrace.unfold.nextValue",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:196:15-92",
+            "time_percent": 4.8
+          },
+          {
+            "alloc_percent": 1.5,
+            "cost_centre": "summarizeCompiledTrace.checksum.\\",
+            "module": "Bench",
+            "src": "src/Bench.hs:223:48-58",
+            "time_percent": 4.2
+          },
+          {
+            "alloc_percent": 3.3,
+            "cost_centre": "runCompiledTrace.firstCompatible",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:(199,5)-(204,29)",
+            "time_percent": 2.4
+          },
+          {
+            "alloc_percent": 0.0,
+            "cost_centre": "summarizeCompiledTrace.finalHash",
+            "module": "Bench",
+            "src": "src/Bench.hs:(224,5)-(227,70)",
+            "time_percent": 2.4
+          },
+          {
+            "alloc_percent": 0.0,
+            "cost_centre": "compiledDenIx",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:16:5-17",
+            "time_percent": 1.8
+          },
+          {
+            "alloc_percent": 0.9,
+            "cost_centre": "runCompiledTrace.unfold.rule",
+            "module": "Compiled",
+            "src": "src/Compiled.hs:195:15-35",
+            "time_percent": 1.2
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 763365280,
+        "gc_time_seconds": 0.066,
+        "mut_time_seconds": 0.164,
+        "total_time_seconds": 0.23
+      },
+      "scenario": "primegame_large"
+    },
+    {
+      "engine": "frac-opt",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 48.7,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 60.2
+          },
+          {
+            "alloc_percent": 9.6,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 3.4
+          },
+          {
+            "alloc_percent": 8.5,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 3.7
+          },
+          {
+            "alloc_percent": 6.8,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 5.0
+          },
+          {
+            "alloc_percent": 5.3,
+            "cost_centre": "fracOpt'.match",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:91:3-74",
+            "time_percent": 2.2
+          },
+          {
+            "alloc_percent": 5.0,
+            "cost_centre": "unfmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(71,1)-(72,49)",
+            "time_percent": 2.5
+          },
+          {
+            "alloc_percent": 2.6,
+            "cost_centre": "compat.valid",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:65:3-34",
+            "time_percent": 3.2
+          },
+          {
+            "alloc_percent": 2.3,
+            "cost_centre": "fracOpt'.eval",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:92:3-53",
+            "time_percent": 2.4
+          },
+          {
+            "alloc_percent": 2.2,
+            "cost_centre": "fdiv",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(58,1)-(60,32)",
+            "time_percent": 0.2
+          },
+          {
+            "alloc_percent": 1.9,
+            "cost_centre": "fprod",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(56,1)-(57,47)",
+            "time_percent": 0.8
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 48.7,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 60.2
+          },
+          {
+            "alloc_percent": 0.0,
+            "cost_centre": "get0",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:62:1-26",
+            "time_percent": 8.6
+          },
+          {
+            "alloc_percent": 6.8,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 5.0
+          },
+          {
+            "alloc_percent": 8.5,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 3.7
+          },
+          {
+            "alloc_percent": 9.6,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 3.4
+          },
+          {
+            "alloc_percent": 2.6,
+            "cost_centre": "compat.valid",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:65:3-34",
+            "time_percent": 3.2
+          },
+          {
+            "alloc_percent": 5.0,
+            "cost_centre": "unfmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(71,1)-(72,49)",
+            "time_percent": 2.5
+          },
+          {
+            "alloc_percent": 2.3,
+            "cost_centre": "fracOpt'.eval",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:92:3-53",
+            "time_percent": 2.4
+          },
+          {
+            "alloc_percent": 5.3,
+            "cost_centre": "fracOpt'.match",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:91:3-74",
+            "time_percent": 2.2
+          },
+          {
+            "alloc_percent": 1.5,
+            "cost_centre": "fracOpt'.next",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:94:3-90",
+            "time_percent": 2.0
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 2165815640,
+        "gc_time_seconds": 0.049,
+        "mut_time_seconds": 0.599,
+        "total_time_seconds": 0.649
+      },
+      "scenario": "primegame_large"
+    },
+    {
+      "engine": "reg",
+      "profile": {
+        "top_by_alloc": [
+          {
+            "alloc_percent": 43.8,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 53.3
+          },
+          {
+            "alloc_percent": 16.6,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 7.1
+          },
+          {
+            "alloc_percent": 7.6,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 5.0
+          },
+          {
+            "alloc_percent": 6.1,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 4.0
+          },
+          {
+            "alloc_percent": 5.5,
+            "cost_centre": "regBased'.match",
+            "module": "Others",
+            "src": "src/Others.hs:29:3-30",
+            "time_percent": 3.1
+          },
+          {
+            "alloc_percent": 4.6,
+            "cost_centre": "compat.valid",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:65:3-34",
+            "time_percent": 5.2
+          },
+          {
+            "alloc_percent": 4.5,
+            "cost_centre": "unfmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(71,1)-(72,49)",
+            "time_percent": 2.2
+          },
+          {
+            "alloc_percent": 3.0,
+            "cost_centre": "regBased'.eval",
+            "module": "Others",
+            "src": "src/Others.hs:30:3-46",
+            "time_percent": 2.4
+          },
+          {
+            "alloc_percent": 2.0,
+            "cost_centre": "fdiv",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(58,1)-(60,32)",
+            "time_percent": 0.7
+          },
+          {
+            "alloc_percent": 1.7,
+            "cost_centre": "fprod",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(56,1)-(57,47)",
+            "time_percent": 0.4
+          }
+        ],
+        "top_by_time": [
+          {
+            "alloc_percent": 43.8,
+            "cost_centre": "unfmap.mul",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:72:3-49",
+            "time_percent": 53.3
+          },
+          {
+            "alloc_percent": 0.0,
+            "cost_centre": "get0",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:62:1-26",
+            "time_percent": 11.4
+          },
+          {
+            "alloc_percent": 16.6,
+            "cost_centre": "compat",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(64,1)-(65,34)",
+            "time_percent": 7.1
+          },
+          {
+            "alloc_percent": 4.6,
+            "cost_centre": "compat.valid",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:65:3-34",
+            "time_percent": 5.2
+          },
+          {
+            "alloc_percent": 7.6,
+            "cost_centre": "fdiv.sub",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:59:3-63",
+            "time_percent": 5.0
+          },
+          {
+            "alloc_percent": 6.1,
+            "cost_centre": "fprod.add",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:57:3-47",
+            "time_percent": 4.0
+          },
+          {
+            "alloc_percent": 5.5,
+            "cost_centre": "regBased'.match",
+            "module": "Others",
+            "src": "src/Others.hs:29:3-30",
+            "time_percent": 3.1
+          },
+          {
+            "alloc_percent": 3.0,
+            "cost_centre": "regBased'.eval",
+            "module": "Others",
+            "src": "src/Others.hs:30:3-46",
+            "time_percent": 2.4
+          },
+          {
+            "alloc_percent": 4.5,
+            "cost_centre": "unfmap",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:(71,1)-(72,49)",
+            "time_percent": 2.2
+          },
+          {
+            "alloc_percent": 1.5,
+            "cost_centre": "fdiv.nonzero",
+            "module": "Fractran",
+            "src": "src/Fractran.hs:60:3-32",
+            "time_percent": 1.0
+          }
+        ]
+      },
+      "rts": {
+        "bytes_allocated": 2420145280,
+        "gc_time_seconds": 0.05,
+        "mut_time_seconds": 0.678,
+        "total_time_seconds": 0.728
+      },
+      "scenario": "primegame_large"
+    }
+  ],
+  "scenarios": [
+    "mult_smoke",
+    "primegame_small",
+    "primegame_medium",
+    "primegame_large"
+  ],
+  "timing_summary": {
+    "mult_smoke:compiled": {
+      "engine": "compiled",
+      "logical_steps_reached": 2,
+      "median_cpu_seconds": 3.0105e-05,
+      "median_cpu_seconds_per_logical_step": 1.50525e-05,
+      "runs": 5,
+      "scenario": "mult_smoke"
+    },
+    "mult_smoke:cycle": {
+      "engine": "cycle",
+      "logical_steps_reached": 2,
+      "median_cpu_seconds": 7.1493e-05,
+      "median_cpu_seconds_per_logical_step": 3.57465e-05,
+      "runs": 5,
+      "scenario": "mult_smoke"
+    },
+    "mult_smoke:frac-opt": {
+      "engine": "frac-opt",
+      "logical_steps_reached": 2,
+      "median_cpu_seconds": 1.8034e-05,
+      "median_cpu_seconds_per_logical_step": 9.017e-06,
+      "runs": 5,
+      "scenario": "mult_smoke"
+    },
+    "mult_smoke:reg": {
+      "engine": "reg",
+      "logical_steps_reached": 2,
+      "median_cpu_seconds": 1.7827e-05,
+      "median_cpu_seconds_per_logical_step": 8.9135e-06,
+      "runs": 5,
+      "scenario": "mult_smoke"
+    },
+    "primegame_large:compiled": {
+      "engine": "compiled",
+      "logical_steps_reached": 100000,
+      "median_cpu_seconds": 0.113469072,
+      "median_cpu_seconds_per_logical_step": 1.1346907200000001e-06,
+      "runs": 5,
+      "scenario": "primegame_large"
+    },
+    "primegame_large:cycle": {
+      "engine": "cycle",
+      "logical_steps_reached": 100041,
+      "median_cpu_seconds": 0.119712767,
+      "median_cpu_seconds_per_logical_step": 1.1966370488099878e-06,
+      "runs": 5,
+      "scenario": "primegame_large"
+    },
+    "primegame_large:frac-opt": {
+      "engine": "frac-opt",
+      "logical_steps_reached": 100000,
+      "median_cpu_seconds": 0.165421018,
+      "median_cpu_seconds_per_logical_step": 1.65421018e-06,
+      "runs": 5,
+      "scenario": "primegame_large"
+    },
+    "primegame_large:reg": {
+      "engine": "reg",
+      "logical_steps_reached": 100000,
+      "median_cpu_seconds": 0.211123723,
+      "median_cpu_seconds_per_logical_step": 2.11123723e-06,
+      "runs": 5,
+      "scenario": "primegame_large"
+    },
+    "primegame_medium:compiled": {
+      "engine": "compiled",
+      "logical_steps_reached": 10000,
+      "median_cpu_seconds": 0.013170395,
+      "median_cpu_seconds_per_logical_step": 1.3170395e-06,
+      "runs": 5,
+      "scenario": "primegame_medium"
+    },
+    "primegame_medium:cycle": {
+      "engine": "cycle",
+      "logical_steps_reached": 10022,
+      "median_cpu_seconds": 0.020912183,
+      "median_cpu_seconds_per_logical_step": 2.0866277190181603e-06,
+      "runs": 5,
+      "scenario": "primegame_medium"
+    },
+    "primegame_medium:frac-opt": {
+      "engine": "frac-opt",
+      "logical_steps_reached": 10000,
+      "median_cpu_seconds": 0.015095586,
+      "median_cpu_seconds_per_logical_step": 1.5095585999999999e-06,
+      "runs": 5,
+      "scenario": "primegame_medium"
+    },
+    "primegame_medium:reg": {
+      "engine": "reg",
+      "logical_steps_reached": 10000,
+      "median_cpu_seconds": 0.020735291,
+      "median_cpu_seconds_per_logical_step": 2.0735291e-06,
+      "runs": 5,
+      "scenario": "primegame_medium"
+    },
+    "primegame_small:compiled": {
+      "engine": "compiled",
+      "logical_steps_reached": 1000,
+      "median_cpu_seconds": 0.001701767,
+      "median_cpu_seconds_per_logical_step": 1.701767e-06,
+      "runs": 5,
+      "scenario": "primegame_small"
+    },
+    "primegame_small:cycle": {
+      "engine": "cycle",
+      "logical_steps_reached": 1000,
+      "median_cpu_seconds": 0.003541279,
+      "median_cpu_seconds_per_logical_step": 3.541279e-06,
+      "runs": 5,
+      "scenario": "primegame_small"
+    },
+    "primegame_small:frac-opt": {
+      "engine": "frac-opt",
+      "logical_steps_reached": 1000,
+      "median_cpu_seconds": 0.002416854,
+      "median_cpu_seconds_per_logical_step": 2.416854e-06,
+      "runs": 5,
+      "scenario": "primegame_small"
+    },
+    "primegame_small:reg": {
+      "engine": "reg",
+      "logical_steps_reached": 1000,
+      "median_cpu_seconds": 0.002317914,
+      "median_cpu_seconds_per_logical_step": 2.317914e-06,
+      "runs": 5,
+      "scenario": "primegame_small"
+    }
+  }
+}

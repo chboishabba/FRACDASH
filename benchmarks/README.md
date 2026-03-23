@@ -35,6 +35,9 @@ Files captured so far:
 - `2026-03-13-cpu-matrix.jsonl`
 - `2026-03-13-cpu-matrix-summary.json`
 - `2026-03-13-gpu-benchmark-primegame-small.json`
+- `2026-03-20-cpu-profile.json`
+- `2026-03-20-gpu-profile.json`
+- `2026-03-20-perf-profile-summary.{json,md}`
 
 ## Initial GPU Routing Result
 
@@ -70,6 +73,19 @@ The extended matrix now includes `primegame_small`, `mult_smoke`, `paper_smoke`,
 Additional paper smoke result:
 
 - `paper_smoke` confirms the same shape: CPU for tiny batches, GPU preferred at `batch_size = 32` once `steps >= 8`, and a narrow middle band (`batch_size = 4`, `steps = 32`) that remains `measure-more`.
+
+## Profiling milestone (2026-03-20)
+
+- CPU profiling runner: `scripts/profile_fractran_cpu.py`
+  - exact-step timing plus GHC `.prof` / RTS breakdowns
+  - default engines: `compiled`, `frac-opt`, `reg` (`cycle` profiled separately as checkpoint-only)
+  - artifact: `benchmarks/results/2026-03-20-cpu-profile.json`
+- GPU profiling runner: `scripts/profile_fractran_gpu.py`
+  - cold-start vs warm-resident timing breakdowns using the resident Vulkan path
+  - artifact: `benchmarks/results/2026-03-20-gpu-profile.json`
+- Combined decision summary: `scripts/summarize_fractran_perf_profiles.py`
+  - artifacts: `benchmarks/results/2026-03-20-perf-profile-summary.{json,md}`
+- Current read: no obvious large exact-step CPU win beyond the `compiled` baseline; warm-resident GPU wins are real in the measured batch region; next targets are routing refinement and GPU host/setup overhead reduction.
 
 ## Timing regression check
 
