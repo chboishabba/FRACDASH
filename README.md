@@ -218,6 +218,25 @@ The next 6-register comparison anchor is now explicit as well: [`benchmarks/resu
 The next immediate comparison task is therefore two-sided:
 - design the next 6-register refinement against that `physics22` delta shape rather than against older widened-family branches
 - compare `physics22` to the 8-register branches on a shared summary surface so the wider carrier can compete with the active baseline using comparable outputs
+
+### Deterministic Walk Waveforms
+
+Use the waveform renderer to turn a saved phase-2 deterministic walk into both a
+standalone HTML view and a PNG artifact:
+
+```sh
+python3 scripts/render_trace_waveform.py \
+  benchmarks/results/2026-03-23-agdas-physics23-phase2.json
+```
+
+It reads the phase-2 `deterministic_walk.path`, reconstructs the full state rows,
+marks the cycle boundary when present, and emits:
+
+- `<input>.trace-waveform.html`
+- `<input>.trace-waveform.png`
+
+If a matching invariant artifact exists, the renderer auto-loads it to annotate
+the waveform with the current best candidate and regime usage summary.
 That cross-carrier summary now exists at [`benchmarks/results/2026-03-23-cross-carrier-baseline-summary.md`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-23-cross-carrier-baseline-summary.md). Current read: `physics22` remains the clearer active 6-register baseline, `carrier8_physics1` remains mainly an observable branch, and `carrier8_physics2` should now be treated as the active parallel 8-register experiment track because it already exceeds the 6-register baseline on at least one geometry surrogate, even though it is not yet a direct replacement baseline.
 The first concrete successor trials are now in-repo as well. `physics23` clears the minimum 6-register successor condition by improving deterministic recurrent edges from `476 -> 503` while keeping the fixed-walk split, best-candidate signal, and geometry surrogates flat, but it does not yet improve terminal mass or direct re-entry beyond `physics22`, so it should still be read as a successor candidate rather than the new default baseline. On the 8-register side, `carrier8_physics3` does not materially move the `carrier8_physics2` baseline, `carrier8_physics4` showed that simple early hook placement was still not enough, and `carrier8_physics5` first made sampled `boundary_to_interior` nonzero but at a curvature cost. `carrier8_physics6` is now promoted as the provisional 8-register baseline: it keeps `boundary_to_interior = 6`, restores curvature (`~0.97`), accepts a small geodesic dip, and brings best-candidate strict decrease back near baseline. [`CARRIER8_PHYSICS5_TARGET_NOTE.md`](/home/c/Documents/code/FRACDASH/CARRIER8_PHYSICS5_TARGET_NOTE.md) remains the prior target; the next refinement should aim to recover the small geodesic/strict-decrease loss without giving back boundary recovery or curvature.
 

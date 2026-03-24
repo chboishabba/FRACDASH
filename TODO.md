@@ -169,6 +169,10 @@
 - [x] Promote `carrier8_physics6` as the provisional 8-register baseline: keeps `boundary_to_interior=6`, restores curvature (`~0.97`), small geodesic dip (`~0.989`), best-candidate strict decrease back to baseline (`~0.515`).
 - [ ] Ingest a real source/attractor basis (ERDFA/CFT eigenvectors or PCA) and rerun physics6 with `--cone-basis` to get selective Δ-cone rejection; current placeholder bases reject 0 edges.
 - [ ] Design the next 8-register refinement beyond `carrier8_physics6` informed by the rejection pattern from a source-aligned cone; target geodesic/strict recovery without losing boundary/curvature.
+- [x] Add a deterministic-walk waveform renderer for saved phase-2 artifacts:
+  - `scripts/render_trace_waveform.py`
+  - emits standalone HTML + PNG from `deterministic_walk.path`
+  - auto-enriches from matching invariant artifacts when available
 - [ ] Decide whether the `113` total degeneracy has structural support or should be discarded as coincidence.
 - [ ] Write and maintain the short result note distinguishing observations from conjectures for the active `physics22` exploratory baseline.
 - [ ] Intake `monster/MonsterLean` references into FRACDASH with proof-completeness filtering:

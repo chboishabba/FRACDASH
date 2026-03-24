@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-03-25
+
+- Added [`scripts/render_trace_waveform.py`](/home/c/Documents/code/FRACDASH/scripts/render_trace_waveform.py) as the first deterministic-walk waveform renderer for phase-2 FRACDASH artifacts. It consumes `deterministic_walk.path`, reconstructs the full state rows, overlays cycle-start and transition summaries, and emits both a standalone HTML view and a PNG artifact.
+- The renderer auto-resolves a matching invariant artifact when one exists, so the waveform can annotate the walk with `best_candidate` and regime/execution-status context without introducing a second trace schema.
+- Verified the renderer on [`benchmarks/results/2026-03-23-agdas-physics23-phase2.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-23-agdas-physics23-phase2.json) and [`benchmarks/results/2026-03-23-agdas-carrier8-physics6-phase2.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-23-agdas-carrier8-physics6-phase2.json), generating companion `.trace-waveform.html` and `.trace-waveform.png` artifacts for each.
+
 ## 2026-03-23
 
 - Locked the experiment decisions implied by the first successor trials: `physics23` remains a genuine 6-register successor candidate but not the new active baseline because it improves the deterministic recurrent core without yet beating `physics22` on terminal mass or direct re-entry; `carrier8_physics2` is now explicitly the active parallel 8-register track because `carrier8_physics3` did not move the shared cross-carrier surface enough to replace it. Added [`CARRIER8_PHYSICS4_TARGET_NOTE.md`](/home/c/Documents/code/FRACDASH/CARRIER8_PHYSICS4_TARGET_NOTE.md) to constrain the next 8-register refinement around earlier boundary-return re-entry rather than another late memory hook.
