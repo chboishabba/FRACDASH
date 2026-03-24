@@ -173,6 +173,17 @@
   - `scripts/render_trace_waveform.py`
   - emits standalone HTML + PNG from `deterministic_walk.path`
   - auto-enriches from matching invariant artifacts when available
+- [x] Extend the waveform renderer to compare multiple saved phase-2 artifacts on
+  one normalized stacked surface (single HTML + PNG comparison output).
+- [x] Enrich saved `deterministic_walk` payloads with explicit per-step trace
+  fields (`delta`, changed-register mask/list, L1 step delta, action-rank
+  before/after, and precomputed state rows/register labels) so downstream
+  renderers do not need to recompute the entire walk schema.
+- [x] Add the first zkperf waveform adapter on top of extracted DA51 sample
+  shards:
+  - `scripts/render_zkperf_waveform.py`
+  - decodes `sample_*.cbor` rows from `zkperf-schema extract`
+  - emits normalized JSON plus HTML + PNG waveform artifacts
 - [ ] Decide whether the `113` total degeneracy has structural support or should be discarded as coincidence.
 - [ ] Write and maintain the short result note distinguishing observations from conjectures for the active `physics22` exploratory baseline.
 - [ ] Intake `monster/MonsterLean` references into FRACDASH with proof-completeness filtering:

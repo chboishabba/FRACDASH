@@ -110,6 +110,13 @@ def action_rank(vector: tuple[int, ...]) -> int:
     return 0
 
 
+def _state_counts(vector: tuple[int, ...]) -> dict[str, int]:
+    counts = {"negative": 0, "zero": 0, "positive": 0}
+    for value in vector:
+        counts[STATE_TO_NAME[value]] += 1
+    return counts
+
+
 def all_vectors() -> list[tuple[int, ...]]:
     from agdas_physics2_state import all_signed_vectors
 
@@ -131,13 +138,19 @@ def deterministic_walk(start: tuple[int, ...], transitions: Sequence[Transition]
     current = start
     seen: dict[tuple[int, ...], int] = {}
     path: list[dict[str, object]] = []
+    state_rows: list[list[int]] = [list(start)]
+    transition_names: list[str] = []
     for step in range(max_steps):
         if current in seen:
             return {
+                "trace_schema_version": 2,
                 "status": "cycle",
                 "steps": step,
                 "cycle_start": seen[current],
                 "final_state": current,
+                "register_labels": [reg.name for reg in REGISTERS],
+                "state_rows": state_rows,
+                "transition_names": transition_names,
                 "path": path,
             }
         seen[current] = step
@@ -148,27 +161,48 @@ def deterministic_walk(start: tuple[int, ...], transitions: Sequence[Transition]
                 break
         if next_edge is None:
             return {
+                "trace_schema_version": 2,
                 "status": "terminal",
                 "steps": step,
                 "cycle_start": None,
                 "final_state": current,
+                "register_labels": [reg.name for reg in REGISTERS],
+                "state_rows": state_rows,
+                "transition_names": transition_names,
                 "path": path,
             }
         transition, nxt = next_edge
+        delta = [int(b - a) for a, b in zip(current, nxt)]
+        changed_registers = [REGISTERS[idx].name for idx, (a, b) in enumerate(zip(current, nxt)) if a != b]
+        transition_names.append(transition.name)
         path.append(
             {
                 "step": step + 1,
-                "state": current,
+                "state": list(current),
                 "transition": transition.name,
-                "next_state": nxt,
+                "next_state": list(nxt),
+                "delta": delta,
+                "changed_registers": changed_registers,
+                "changed_register_mask": [name in changed_registers for name in (reg.name for reg in REGISTERS)],
+                "changed_register_count": len(changed_registers),
+                "l1_step_delta": sum(abs(value) for value in delta),
+                "action_rank_before": action_rank(current),
+                "action_rank_after": action_rank(nxt),
+                "state_counts_before": _state_counts(current),
+                "state_counts_after": _state_counts(nxt),
             }
         )
+        state_rows.append(list(nxt))
         current = nxt
     return {
+        "trace_schema_version": 2,
         "status": "timeout",
         "steps": max_steps,
         "cycle_start": None,
         "final_state": current,
+        "register_labels": [reg.name for reg in REGISTERS],
+        "state_rows": state_rows,
+        "transition_names": transition_names,
         "path": path,
     }
 
@@ -341,6 +375,7 @@ def summary(template_set: str, max_steps: int, diagnostic_max_steps: int) -> dic
     walk = deterministic_walk(start, transitions, max_steps)
     walk_summary = fixed_walk_summary(transitions, max_steps)
     return {
+        "template_set": template_set,
         "register_count": len(REGISTERS),
         "state_space_size": 3 ** len(REGISTERS),
         "transition_source": "agdas_templates",

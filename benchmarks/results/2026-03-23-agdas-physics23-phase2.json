@@ -1,4 +1,5 @@
 {
+  "template_set": "physics23",
   "register_count": 6,
   "state_space_size": 729,
   "transition_source": "agdas_templates",
@@ -986,6 +987,7 @@
     "R6": -1
   },
   "deterministic_walk": {
+    "trace_schema_version": 2,
     "status": "cycle",
     "steps": 7,
     "cycle_start": 4,
@@ -996,6 +998,89 @@
       0,
       1,
       0
+    ],
+    "register_labels": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "state_rows": [
+      [
+        1,
+        0,
+        0,
+        1,
+        0,
+        -1
+      ],
+      [
+        1,
+        0,
+        0,
+        1,
+        1,
+        -1
+      ],
+      [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        -1,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    ],
+    "transition_names": [
+      "physics4_scan_left_mid",
+      "physics2_join_left_mid",
+      "physics2_contract_mid",
+      "physics5_boundary_to_shell",
+      "physics6_shell_refresh_left",
+      "physics9_shell_probe_left_mid",
+      "physics9_shell_stage_release_left"
     ],
     "path": [
       {
@@ -1016,7 +1101,40 @@
           1,
           1,
           -1
-        ]
+        ],
+        "delta": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "changed_registers": [
+          "R5"
+        ],
+        "changed_register_mask": [
+          false,
+          false,
+          false,
+          false,
+          true,
+          false
+        ],
+        "changed_register_count": 1,
+        "l1_step_delta": 1,
+        "action_rank_before": 2,
+        "action_rank_after": 2,
+        "state_counts_before": {
+          "negative": 1,
+          "zero": 3,
+          "positive": 2
+        },
+        "state_counts_after": {
+          "negative": 1,
+          "zero": 2,
+          "positive": 3
+        }
       },
       {
         "step": 2,
@@ -1036,7 +1154,41 @@
           1,
           1,
           1
-        ]
+        ],
+        "delta": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          2
+        ],
+        "changed_registers": [
+          "R3",
+          "R6"
+        ],
+        "changed_register_mask": [
+          false,
+          false,
+          true,
+          false,
+          false,
+          true
+        ],
+        "changed_register_count": 2,
+        "l1_step_delta": 3,
+        "action_rank_before": 2,
+        "action_rank_after": 1,
+        "state_counts_before": {
+          "negative": 1,
+          "zero": 2,
+          "positive": 3
+        },
+        "state_counts_after": {
+          "negative": 0,
+          "zero": 1,
+          "positive": 5
+        }
       },
       {
         "step": 3,
@@ -1056,7 +1208,42 @@
           -1,
           1,
           0
-        ]
+        ],
+        "delta": [
+          0,
+          0,
+          -1,
+          -2,
+          0,
+          -1
+        ],
+        "changed_registers": [
+          "R3",
+          "R4",
+          "R6"
+        ],
+        "changed_register_mask": [
+          false,
+          false,
+          true,
+          true,
+          false,
+          true
+        ],
+        "changed_register_count": 3,
+        "l1_step_delta": 4,
+        "action_rank_before": 1,
+        "action_rank_after": 0,
+        "state_counts_before": {
+          "negative": 0,
+          "zero": 1,
+          "positive": 5
+        },
+        "state_counts_after": {
+          "negative": 1,
+          "zero": 3,
+          "positive": 2
+        }
       },
       {
         "step": 4,
@@ -1076,7 +1263,40 @@
           0,
           1,
           0
-        ]
+        ],
+        "delta": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "changed_registers": [
+          "R4"
+        ],
+        "changed_register_mask": [
+          false,
+          false,
+          false,
+          true,
+          false,
+          false
+        ],
+        "changed_register_count": 1,
+        "l1_step_delta": 1,
+        "action_rank_before": 0,
+        "action_rank_after": 0,
+        "state_counts_before": {
+          "negative": 1,
+          "zero": 3,
+          "positive": 2
+        },
+        "state_counts_after": {
+          "negative": 0,
+          "zero": 4,
+          "positive": 2
+        }
       },
       {
         "step": 5,
@@ -1096,7 +1316,40 @@
           0,
           0,
           0
-        ]
+        ],
+        "delta": [
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ],
+        "changed_registers": [
+          "R5"
+        ],
+        "changed_register_mask": [
+          false,
+          false,
+          false,
+          false,
+          true,
+          false
+        ],
+        "changed_register_count": 1,
+        "l1_step_delta": 1,
+        "action_rank_before": 0,
+        "action_rank_after": 0,
+        "state_counts_before": {
+          "negative": 0,
+          "zero": 4,
+          "positive": 2
+        },
+        "state_counts_after": {
+          "negative": 0,
+          "zero": 5,
+          "positive": 1
+        }
       },
       {
         "step": 6,
@@ -1116,7 +1369,41 @@
           0,
           1,
           0
-        ]
+        ],
+        "delta": [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "changed_registers": [
+          "R3",
+          "R5"
+        ],
+        "changed_register_mask": [
+          false,
+          false,
+          true,
+          false,
+          true,
+          false
+        ],
+        "changed_register_count": 2,
+        "l1_step_delta": 2,
+        "action_rank_before": 0,
+        "action_rank_after": 0,
+        "state_counts_before": {
+          "negative": 0,
+          "zero": 5,
+          "positive": 1
+        },
+        "state_counts_after": {
+          "negative": 0,
+          "zero": 3,
+          "positive": 3
+        }
       },
       {
         "step": 7,
@@ -1136,7 +1423,40 @@
           0,
           1,
           0
-        ]
+        ],
+        "delta": [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ],
+        "changed_registers": [
+          "R3"
+        ],
+        "changed_register_mask": [
+          false,
+          false,
+          true,
+          false,
+          false,
+          false
+        ],
+        "changed_register_count": 1,
+        "l1_step_delta": 1,
+        "action_rank_before": 0,
+        "action_rank_after": 0,
+        "state_counts_before": {
+          "negative": 0,
+          "zero": 3,
+          "positive": 3
+        },
+        "state_counts_after": {
+          "negative": 0,
+          "zero": 4,
+          "positive": 2
+        }
       }
     ]
   },
