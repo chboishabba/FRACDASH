@@ -1,0 +1,149 @@
+{
+  "harness": "zkperf-fractran-cross",
+  "date": "2026-03-24",
+  "backends": [
+    "python",
+    "rust"
+  ],
+  "witnesses": [
+    {
+      "context": "fractran:addition:init=8",
+      "signature": "dfaf72a51e2f16c7d11a93af5121513437a98d84a680df1aad97b4bec14b8211",
+      "complexity": "O(n*k)",
+      "max_n": 4,
+      "max_ms": 60000,
+      "elapsed_ms": 0.02,
+      "violated": false,
+      "timestamp": 1774394759095,
+      "platform": "linux",
+      "backend": "python",
+      "program": "addition",
+      "trace_length": 4
+    },
+    {
+      "context": "fractran:addition:init=8",
+      "signature": "d0fcf082c85ef0dc540e01ca9624b1608a9c313e24cbfc5b6a6e225eeef2b78f",
+      "complexity": "O(n*k)",
+      "max_n": 4,
+      "max_ms": 60000,
+      "elapsed_ms": 1.333,
+      "violated": false,
+      "timestamp": 1774394759096,
+      "platform": "linux",
+      "backend": "rust",
+      "program": "addition",
+      "trace_length": 4
+    },
+    {
+      "context": "fractran:addition:init=32",
+      "signature": "809ff72180929b2bcb44c4168f328621a8896bbfcdd116f070d4fe2189706ceb",
+      "complexity": "O(n*k)",
+      "max_n": 6,
+      "max_ms": 60000,
+      "elapsed_ms": 0.027,
+      "violated": false,
+      "timestamp": 1774394759097,
+      "platform": "linux",
+      "backend": "python",
+      "program": "addition",
+      "trace_length": 6
+    },
+    {
+      "context": "fractran:addition:init=32",
+      "signature": "50bc0def5dea7e67a6a2df363728af5b6d5cf4c09002241c82ad5deb6074757c",
+      "complexity": "O(n*k)",
+      "max_n": 6,
+      "max_ms": 60000,
+      "elapsed_ms": 1.153,
+      "violated": false,
+      "timestamp": 1774394759098,
+      "platform": "linux",
+      "backend": "rust",
+      "program": "addition",
+      "trace_length": 6
+    },
+    {
+      "context": "fractran:primegame:init=2",
+      "signature": "be8f0b2d6f3b78a08e67a2007a1ec9ca47a09129d2317da8b8149f3273ba9cff",
+      "complexity": "O(n*k)",
+      "max_n": 21,
+      "max_ms": 60000,
+      "elapsed_ms": 0.261,
+      "violated": false,
+      "timestamp": 1774394759098,
+      "platform": "linux",
+      "backend": "python",
+      "program": "primegame",
+      "trace_length": 21
+    },
+    {
+      "context": "fractran:primegame:init=2",
+      "signature": "e6523ab81d9a3a28cf159eb2f0911a2931b0733d92e7b8ede60e10e814497d9e",
+      "complexity": "O(n*k)",
+      "max_n": 21,
+      "max_ms": 60000,
+      "elapsed_ms": 1.08,
+      "violated": false,
+      "timestamp": 1774394759099,
+      "platform": "linux",
+      "backend": "rust",
+      "program": "primegame",
+      "trace_length": 21
+    },
+    {
+      "context": "fractran:multiply:init=108",
+      "signature": "f8a440ee367f100900e66fadb2c24212716bcb8fd34d3a23ad8583f8f3d83710",
+      "complexity": "O(n*k)",
+      "max_n": 26,
+      "max_ms": 60000,
+      "elapsed_ms": 0.173,
+      "violated": false,
+      "timestamp": 1774394759099,
+      "platform": "linux",
+      "backend": "python",
+      "program": "multiply",
+      "trace_length": 26
+    },
+    {
+      "context": "fractran:multiply:init=108",
+      "signature": "5a58bf3c052f2633a222909e790325ffd2ddfea483dafae4c4a8a5e0026c3d7c",
+      "complexity": "O(n*k)",
+      "max_n": 26,
+      "max_ms": 60000,
+      "elapsed_ms": 1.119,
+      "violated": false,
+      "timestamp": 1774394759101,
+      "platform": "linux",
+      "backend": "rust",
+      "program": "multiply",
+      "trace_length": 26
+    }
+  ],
+  "comparisons": [
+    {
+      "program": "addition",
+      "init": 8,
+      "status": "MATCH"
+    },
+    {
+      "program": "addition",
+      "init": 32,
+      "status": "MATCH"
+    },
+    {
+      "program": "primegame",
+      "init": 2,
+      "status": "MATCH"
+    },
+    {
+      "program": "multiply",
+      "init": 108,
+      "status": "MATCH"
+    }
+  ],
+  "programs": [
+    "addition",
+    "primegame",
+    "multiply"
+  ]
+}

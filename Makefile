@@ -25,6 +25,9 @@ check: lint  ## Full pre-merge quality gate (lint + compile check + physics targ
 test:  ## Run physics invariant target suite
 	$(NIX_DEVELOP) python3 scripts/check_physics_invariant_targets.py --json
 
+cross-test:  ## Run zkperf-witnessed FRACTRAN cross-implementation harness
+	$(NIX_DEVELOP) python3 tests/zkperf_fractran_harness.py
+
 build:  ## Build FRACTRAN binaries (requires fractran/ source)
 	@if [ -f fractran/build.sh ]; then \
 		cd fractran && $(NIX_DEVELOP) bash build.sh; \
