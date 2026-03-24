@@ -67,12 +67,13 @@ So the immediate deliverable on the experiment side is:
   boundary-return re-entry hook earlier still leaves the shared comparison
   surface flat against `carrier8_physics2`
 - read `carrier8_physics5` as the first real 8-register successor candidate:
-  it makes sampled `boundary -> interior` recovery visible (`0 -> 6`) and
-  improves `action_rank` strict decrease, but it is not yet a clean baseline
-  handoff because curvature spread drops relative to `carrier8_physics2`
-- lock `carrier8_physics2` as the active parallel 8-register track for now and
-  target the next refinement at earlier boundary-return re-entry, not a generic
-  extra memory hook
+  sampled `boundary -> interior` becomes nonzero and `action_rank` strict
+  decrease improves, but curvature spread dropped
+- promote `carrier8_physics6` as the provisional 8-register baseline: keeps
+  `boundary_to_interior = 6`, restores curvature to ~0.97, accepts a small
+  geodesic dip and candidate strict-decrease back near baseline
+- next refinement should aim to recover the small geodesic/strict-decrease loss
+  without giving back boundary recovery or curvature
 
 ## What Exists
 

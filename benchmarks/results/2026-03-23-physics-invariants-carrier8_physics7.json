@@ -1,10 +1,10 @@
 {
-  "template_set": "carrier8_physics6",
+  "template_set": "carrier8_physics7",
   "carrier_family": "physics_local_8",
   "transition_source_summary": {
     "source": "agdas_templates",
-    "template_set": "carrier8_physics6",
-    "template_count": 92,
+    "template_set": "carrier8_physics7",
+    "template_count": 94,
     "template_modules": [
       "Contraction.StrictContraction",
       "DASHI.Algebra.PhysicsSignature.scan",
@@ -34,22 +34,7 @@
   "deterministic_edges": 233,
   "deterministic_edges_full": 6561,
   "delta_cone": {
-    "enabled": true,
-    "drop_indices": [
-      3
-    ],
-    "weights": [
-      -1.0,
-      -1.0,
-      -1.0,
-      -1.0,
-      -1.0,
-      -1.0,
-      -1.0
-    ],
-    "basis": null,
-    "rejected_edges": 0,
-    "total_edges_before": 6561
+    "enabled": false
   },
   "scc_count": 512,
   "cycle_component_count": 20,

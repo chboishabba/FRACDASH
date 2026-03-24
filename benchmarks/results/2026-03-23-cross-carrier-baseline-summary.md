@@ -9,6 +9,8 @@
 | `carrier8_physics4` | `physics_local_8` | 6561 | 6561 | 0 | 10 | 6561 | action_rank | 0.990990990990991 | 0.7966101694915254 | 0 |
 | `carrier8_physics5` | `physics_local_8` | 6561 | 6561 | 0 | 10 | 6561 | action_rank | 0.9913793103448276 | 0.7634069400630915 | 6 |
 | `carrier8_physics6` | `physics_local_8` | 6561 | 6561 | 0 | 10 | 6561 | action_rank | 0.9893617021276596 | 0.9727891156462585 | 6 |
+| `carrier8_physics7` | `physics_local_8` | 6561 | 6561 | 0 | 10 | 6561 | action_rank | 0.9893617021276596 | 0.9727891156462585 | 6 |
+| `carrier8_physics8` | `physics_local_8` | 6561 | 6561 | 0 | 10 | 6561 | action_rank | 0.9893617021276596 | 0.9727891156462585 | 6 |
 
 ## Interpretation
 
@@ -19,6 +21,8 @@
 - `carrier8_physics4` still leaves the shared summary surface flat against `carrier8_physics2`, so the earlier re-entry hook is not yet strong enough to count as a branch handoff.
 - `carrier8_physics5` is the first carrier8 branch to move boundary-to-interior recovery inside the sampled active basin by preempting the boundary discharge/join bottlenecks.
 - `carrier8_physics6` does not yet change the shared cross-carrier surface beyond `carrier8_physics5`; if curvature stays low, `carrier8_physics2` remains the baseline.
+- `carrier8_physics7` leaves the shared summary near `carrier8_physics6`; keep physics6 as baseline unless the geodesic/candidate metrics improve in detail.
+- `carrier8_physics8` stays close to physics6/7 on the shared surface; keep physics6 as baseline unless the geodesic/strict metrics improve.
 - The 8-register lane should now be treated as a serious parallel experiment track, not just instrumentation, because `carrier8_physics2` already beats the 6-register baseline on at least one geometry surrogate.
 
 ## Branch-Local Observables
@@ -35,3 +39,7 @@
 - `carrier8_physics5` transport_debt_profile = `{'deterministic_sources': {'negative': 58, 'zero': 134, 'positive': 65}, 'cycle_reachable_sources': {'negative': 29, 'zero': 69, 'positive': 19}}`
 - `carrier8_physics6` boundary_return_profile = `{'deterministic_sources': {'negative': 16, 'zero': 159, 'positive': 58}, 'cycle_reachable_sources': {'negative': 7, 'zero': 56, 'positive': 32}}`
 - `carrier8_physics6` transport_debt_profile = `{'deterministic_sources': {'negative': 56, 'zero': 107, 'positive': 70}, 'cycle_reachable_sources': {'negative': 29, 'zero': 40, 'positive': 26}}`
+- `carrier8_physics7` boundary_return_profile = `{'deterministic_sources': {'negative': 16, 'zero': 159, 'positive': 58}, 'cycle_reachable_sources': {'negative': 7, 'zero': 56, 'positive': 32}}`
+- `carrier8_physics7` transport_debt_profile = `{'deterministic_sources': {'negative': 56, 'zero': 107, 'positive': 70}, 'cycle_reachable_sources': {'negative': 29, 'zero': 40, 'positive': 26}}`
+- `carrier8_physics8` boundary_return_profile = `{'deterministic_sources': {'negative': 16, 'zero': 159, 'positive': 58}, 'cycle_reachable_sources': {'negative': 7, 'zero': 56, 'positive': 32}}`
+- `carrier8_physics8` transport_debt_profile = `{'deterministic_sources': {'negative': 56, 'zero': 107, 'positive': 70}, 'cycle_reachable_sources': {'negative': 29, 'zero': 40, 'positive': 26}}`

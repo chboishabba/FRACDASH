@@ -1498,6 +1498,81 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
             ),
         )
     ]
+    carrier8_physics7 = [
+        TemplateRule(
+            name=rule.name,
+            template_set="carrier8_physics7",
+            module=rule.module,
+            condition=dict(rule.condition),
+            action=dict(rule.action),
+            description=rule.description,
+        )
+        for rule in carrier8_physics6
+    ]
+    carrier8_physics7.append(
+        TemplateRule(
+            name="carrier8_reentry_curvature_damp",
+            template_set="carrier8_physics7",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R5": "positive", "R8": "positive"},
+            action={"R5": "zero", "R6": "zero", "R8": "zero"},
+            description=(
+                "8-register: after the curvature boost pulse, damp latch/action/transport back to neutral "
+                "to improve geodesic and candidate monotonicity without removing the boundary recovery."
+            ),
+        )
+    )
+    carrier8_physics7.append(
+        TemplateRule(
+            name="carrier8_action_contract_after_reentry",
+            template_set="carrier8_physics7",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R6": "positive", "R7": "zero", "R8": "zero"},
+            action={"R6": "zero"},
+            description=(
+                "8-register: contract action phase inside interior when memory/transport are neutral to "
+                "push action_rank downward and strengthen best-candidate monotonicity."
+            ),
+        )
+    )
+    carrier8_physics8 = [
+        TemplateRule(
+            name=rule.name,
+            template_set="carrier8_physics8",
+            module=rule.module,
+            condition=dict(rule.condition),
+            action=dict(rule.action),
+            description=rule.description,
+        )
+        for rule in carrier8_physics6
+    ]
+    # Soften the post-boost effect to chase geodesic/strict recovery while keeping curvature gain.
+    carrier8_physics8.append(
+        TemplateRule(
+            name="carrier8_reentry_transport_relax",
+            template_set="carrier8_physics8",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R5": "positive", "R8": "positive"},
+            action={"R8": "zero"},
+            description=(
+                "8-register: after curvature boost, relax transport to neutral while leaving latch set; aims to "
+                "reduce path length (geodesic) without removing the boundary recovery/cuvature boost."
+            ),
+        )
+    )
+    carrier8_physics8.append(
+        TemplateRule(
+            name="carrier8_reentry_action_relax",
+            template_set="carrier8_physics8",
+            module="UFTC_Lattice.ConeInteriorPreserved",
+            condition={"R4": "positive", "R5": "positive", "R6": "positive"},
+            action={"R6": "zero"},
+            description=(
+                "8-register: optional action relax after the boost to improve action_rank strict decrease "
+                "while keeping latch/transport structure intact."
+            ),
+        )
+    )
     carrier8_physics1: list[TemplateRule] = []
     for rule in physics20:
         action = dict(rule.action)
@@ -1642,10 +1717,14 @@ def _template_rules(template_set: str = "wave1") -> list[TemplateRule]:
         return carrier8_physics5
     if template_set == "carrier8_physics6":
         return carrier8_physics6
+    if template_set == "carrier8_physics7":
+        return carrier8_physics7
+    if template_set == "carrier8_physics8":
+        return carrier8_physics8
     if template_set == "wave3":
         return wave3
     if template_set == "all":
-        return wave1 + wave2 + physics1 + physics2 + physics3 + physics4 + physics5 + physics6 + physics7 + physics8 + physics9 + physics10 + physics11 + physics12 + physics13 + physics14 + physics15 + physics16 + physics17 + physics18 + physics19 + physics20 + physics21 + physics22 + physics23 + carrier8_physics1 + carrier8_physics2 + carrier8_physics3 + carrier8_physics4 + carrier8_physics5 + carrier8_physics6 + wave3
+        return wave1 + wave2 + physics1 + physics2 + physics3 + physics4 + physics5 + physics6 + physics7 + physics8 + physics9 + physics10 + physics11 + physics12 + physics13 + physics14 + physics15 + physics16 + physics17 + physics18 + physics19 + physics20 + physics21 + physics22 + physics23 + carrier8_physics1 + carrier8_physics2 + carrier8_physics3 + carrier8_physics4 + carrier8_physics5 + carrier8_physics6 + carrier8_physics7 + carrier8_physics8 + wave3
     raise ValueError(f"unknown template set: {template_set}")
 
 

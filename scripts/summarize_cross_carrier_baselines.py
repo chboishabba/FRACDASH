@@ -11,7 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "benchmarks" / "results"
-TEMPLATES = ("physics22", "carrier8_physics1", "carrier8_physics2", "carrier8_physics3", "carrier8_physics4", "carrier8_physics5", "carrier8_physics6")
+TEMPLATES = ("physics22", "carrier8_physics1", "carrier8_physics2", "carrier8_physics3", "carrier8_physics4", "carrier8_physics5", "carrier8_physics6", "carrier8_physics7", "carrier8_physics8")
 
 
 def _latest(pattern: str) -> Path:
@@ -78,6 +78,8 @@ def _interpretation(rows: list[dict[str, object]]) -> list[str]:
     c4 = by_name["carrier8_physics4"]
     c5 = by_name["carrier8_physics5"]
     c6 = by_name["carrier8_physics6"]
+    c7 = by_name["carrier8_physics7"]
+    c8 = by_name.get("carrier8_physics8")
 
     notes.append(
         "The active 6-register baseline remains easier to interpret: `physics22` combines strong direct re-entry with a still-disciplined recurrent core and a stable best-candidate signal."
@@ -116,6 +118,23 @@ def _interpretation(rows: list[dict[str, object]]) -> list[str]:
         notes.append(
             "`carrier8_physics6` does not yet change the shared cross-carrier surface beyond `carrier8_physics5`; if curvature stays low, `carrier8_physics2` remains the baseline."
         )
+    if (c7.get("boundary_to_interior") or 0) > (c6.get("boundary_to_interior") or 0):
+        notes.append(
+            "`carrier8_physics7` improves boundary recovery further; evaluate if geodesic/strict-decrease regain ground without losing curvature."
+        )
+    elif c7.get("deterministic_edges") == c2.get("deterministic_edges"):
+        notes.append(
+            "`carrier8_physics7` leaves the shared summary near `carrier8_physics6`; keep physics6 as baseline unless the geodesic/candidate metrics improve in detail."
+        )
+    if c8:
+        if (c8.get("boundary_to_interior") or 0) > (c6.get("boundary_to_interior") or 0):
+            notes.append(
+                "`carrier8_physics8` pushes boundary recovery further; check geodesic/strict effects before promotion."
+            )
+        elif c8.get("deterministic_edges") == c2.get("deterministic_edges"):
+            notes.append(
+                "`carrier8_physics8` stays close to physics6/7 on the shared surface; keep physics6 as baseline unless the geodesic/strict metrics improve."
+            )
     if (c2.get("geodesic_like_near_min_ratio") or 0) > (p22.get("geodesic_like_near_min_ratio") or 0):
         notes.append(
             "The 8-register lane should now be treated as a serious parallel experiment track, not just instrumentation, because `carrier8_physics2` already beats the 6-register baseline on at least one geometry surrogate."

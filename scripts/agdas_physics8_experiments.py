@@ -337,7 +337,7 @@ def main() -> None:
     parser.add_argument(
         "--template-set",
         default="carrier8_physics1",
-        choices=("carrier8_physics1", "carrier8_physics2", "carrier8_physics3", "carrier8_physics4", "carrier8_physics5", "carrier8_physics6"),
+        choices=("carrier8_physics1", "carrier8_physics2", "carrier8_physics3", "carrier8_physics4", "carrier8_physics5", "carrier8_physics6", "carrier8_physics7", "carrier8_physics8"),
         help="Template set to execute.",
     )
     parser.add_argument("--max-steps", type=int, default=12, help="Deterministic walk step cap.")

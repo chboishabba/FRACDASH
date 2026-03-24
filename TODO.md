@@ -165,7 +165,10 @@
 - [x] Treat `carrier8_physics2` as the active parallel 8-register track for now; `carrier8_physics3` did not move the shared comparison surface enough to dislodge it.
 - [x] Design the next 8-register refinement beyond `carrier8_physics2/3`; target the actual weak point from `carrier8_physics3` by inserting an earlier boundary-return re-entry hook that can compete with the broad return-memory damping rules.
 - [x] Design the next 8-register refinement beyond `carrier8_physics4`; the first early re-entry insertion still leaves the shared cross-carrier summary flat, so the next branch should target a deeper carrier8 basin/selection change rather than another placement-only tweak.
-- [ ] Decide whether `carrier8_physics5` is enough to replace `carrier8_physics2` as the active parallel 8-register baseline or should remain a successor candidate only; it is the first branch with nonzero sampled `boundary_to_interior`, but it gives back some curvature spread.
+- [x] Decide whether `carrier8_physics5` is enough to replace `carrier8_physics2` as the active parallel 8-register baseline or should remain a successor candidate only; it is the first branch with nonzero sampled `boundary_to_interior`, but it gives back some curvature spread.
+- [x] Promote `carrier8_physics6` as the provisional 8-register baseline: keeps `boundary_to_interior=6`, restores curvature (`~0.97`), small geodesic dip (`~0.989`), best-candidate strict decrease back to baseline (`~0.515`).
+- [ ] Ingest a real source/attractor basis (ERDFA/CFT eigenvectors or PCA) and rerun physics6 with `--cone-basis` to get selective Δ-cone rejection; current placeholder bases reject 0 edges.
+- [ ] Design the next 8-register refinement beyond `carrier8_physics6` informed by the rejection pattern from a source-aligned cone; target geodesic/strict recovery without losing boundary/curvature.
 - [ ] Decide whether the `113` total degeneracy has structural support or should be discarded as coincidence.
 - [ ] Write and maintain the short result note distinguishing observations from conjectures for the active `physics22` exploratory baseline.
 - [ ] Intake `monster/MonsterLean` references into FRACDASH with proof-completeness filtering:

@@ -858,8 +858,31 @@ def main() -> None:
     parser.add_argument(
         "--template-set",
         default="physics8",
-        choices=("physics2", "physics3", "physics4", "physics5", "physics6", "physics7", "physics8", "physics9", "physics10", "physics11", "physics12", "physics13", "physics14", "physics15", "physics16", "physics17", "physics18", "physics19", "physics20", "physics21", "physics22", "physics23", "carrier8_physics1", "carrier8_physics2", "carrier8_physics3", "carrier8_physics4", "carrier8_physics5", "carrier8_physics6"),
+        choices=("physics2", "physics3", "physics4", "physics5", "physics6", "physics7", "physics8", "physics9", "physics10", "physics11", "physics12", "physics13", "physics14", "physics15", "physics16", "physics17", "physics18", "physics19", "physics20", "physics21", "physics22", "physics23", "carrier8_physics1", "carrier8_physics2", "carrier8_physics3", "carrier8_physics4", "carrier8_physics5", "carrier8_physics6", "carrier8_physics7", "carrier8_physics8"),
         help="Physics template set to analyze.",
+    )
+    parser.add_argument(
+        "--enforce-delta-cone",
+        action="store_true",
+        help="Reject deterministic edges whose projected Δ violates Q<=0. Defaults off.",
+    )
+    parser.add_argument(
+        "--cone-weights",
+        type=str,
+        default="",
+        help="Comma-separated weights for Q(Δ)=Σ w_i * Δ_i^2 (after drop/projection). If omitted, uses all -1.",
+    )
+    parser.add_argument(
+        "--cone-drop",
+        type=str,
+        default="",
+        help="Comma-separated register indices to drop before evaluating Q (0-based).",
+    )
+    parser.add_argument(
+        "--cone-basis",
+        type=Path,
+        default=None,
+        help="Optional path to JSON basis for source-aligned projection. If set, deltas are projected into this basis before Q.",
     )
     parser.add_argument("--max-trace-steps", type=int, default=24, help="Max steps per sample trace.")
     parser.add_argument("--json", action="store_true", help="Print JSON payload.")
@@ -879,7 +902,43 @@ def main() -> None:
     carrier_family, runtime = load_runtime(args.template_set)
     transitions, transition_source_summary = runtime.transitions_from_templates(args.template_set)
     succ, edge_name, nodes = deterministic_graph(transitions, runtime.matches, runtime.apply_transition)
+    cone_info: dict[str, object] = {"enabled": False}
+    if args.enforce_delta_cone:
+        basis = None
+        if args.cone_basis:
+            from scripts.load_source_basis import load_basis, project
+            basis = load_basis(args.cone_basis)
+        drop_idx = {int(x) for x in args.cone_drop.split(",") if x.strip()} if args.cone_drop else set()
+        deltas = {}
+        for src, dst in succ.items():
+            delta = [dst[i] - src[i] for i in range(len(src)) if i not in drop_idx]
+            if basis is not None:
+                delta = project(delta, basis)
+            deltas[src] = delta
+        dim = len(next(iter(deltas.values()))) if deltas else 0
+        if args.cone_weights:
+            weights = [float(x) for x in args.cone_weights.split(",")]
+            if len(weights) != dim:
+                raise SystemExit(f"cone_weights length {len(weights)} != projected delta dimension {dim}")
+        else:
+            weights = [-1.0] * dim
 
+        def q(delta):
+            return sum(w * (d ** 2) for w, d in zip(weights, delta))
+
+        rejected = {src for src, delta in deltas.items() if q(delta) > 0}
+        if rejected:
+            for src in rejected:
+                succ.pop(src, None)
+                edge_name.pop(src, None)
+        cone_info = {
+            "enabled": True,
+            "drop_indices": sorted(drop_idx),
+            "weights": weights,
+            "basis": str(args.cone_basis) if args.cone_basis else None,
+            "rejected_edges": len(rejected),
+            "total_edges_before": len(deltas),
+        }
     candidates: list[CandidateScore] = []
     if len(REGISTERS) == 8:
         sample_starts = [
@@ -970,6 +1029,7 @@ def main() -> None:
         "analysis_state_count": len(analysis_nodes),
         "deterministic_edges": len(analysis_succ),
         "deterministic_edges_full": len(succ),
+        "delta_cone": cone_info,
         "scc_count": len(components),
         "cycle_component_count": len(cycles),
         "physics_target_suite": {
