@@ -28,6 +28,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 RESULTS_DIR = ROOT / "benchmarks" / "results"
 
+ROUNDS = int(os.environ.get("FRACTRAN_ROUNDS", "10"))
+
 # ── Canonical programs (public, well-known) ──────────────────────
 
 PROGRAMS = {
@@ -36,6 +38,7 @@ PROGRAMS = {
         "cases": [
             {"init": 8, "max_steps": 100, "expected_final": 27},
             {"init": 32, "max_steps": 100, "expected_final": 243},
+            {"init": 1024, "max_steps": 200, "expected_final": 3**10},
         ],
     },
     "primegame": {
@@ -46,6 +49,8 @@ PROGRAMS = {
         ],
         "cases": [
             {"init": 2, "max_steps": 20, "expected_final": None},
+            {"init": 2, "max_steps": 100, "expected_final": None},
+            {"init": 2, "max_steps": 500, "expected_final": None},
         ],
     },
     "multiply": {
@@ -54,6 +59,7 @@ PROGRAMS = {
         ],
         "cases": [
             {"init": 108, "max_steps": 200, "expected_final": 15625},
+            {"init": 72, "max_steps": 200, "expected_final": 5**6},
         ],
     },
 }
@@ -83,6 +89,7 @@ def py_run(program: list[Fraction], n: int, max_steps: int) -> list[int]:
 def make_witness(context: str, elapsed_ns: int, trace_len: int,
                  program_name: str, backend: str) -> dict:
     elapsed_ms = elapsed_ns / 1_000_000
+    per_round_ms = elapsed_ms / ROUNDS
     sig_input = f"{backend}:{program_name}:{trace_len}"
     signature = hashlib.sha256(sig_input.encode()).hexdigest()
     return {
@@ -92,6 +99,8 @@ def make_witness(context: str, elapsed_ns: int, trace_len: int,
         "max_n": trace_len,
         "max_ms": 60000,
         "elapsed_ms": round(elapsed_ms, 3),
+        "per_round_ms": round(per_round_ms, 6),
+        "rounds": ROUNDS,
         "violated": elapsed_ms > 60000,
         "timestamp": int(time.time() * 1000),
         "platform": platform.system().lower(),
@@ -106,7 +115,8 @@ def make_witness(context: str, elapsed_ns: int, trace_len: int,
 def run_python(fracs_raw, init, max_steps):
     program = [Fraction(n, d) for n, d in fracs_raw]
     t0 = time.perf_counter_ns()
-    trace = py_run(program, init, max_steps)
+    for _ in range(ROUNDS):
+        trace = py_run(program, init, max_steps)
     elapsed = time.perf_counter_ns() - t0
     return trace, elapsed
 
@@ -122,13 +132,12 @@ def rust_available():
 
 
 def run_rust(fracs_raw, init, max_steps):
-    payload = json.dumps({"program": list(fracs_raw), "init": init, "max_steps": max_steps})
-    t0 = time.perf_counter_ns()
-    proc = subprocess.run([RUST_VM, "fractran-json"], input=payload, capture_output=True, text=True, timeout=10)
-    elapsed = time.perf_counter_ns() - t0
+    payload = json.dumps({"program": list(fracs_raw), "init": init, "max_steps": max_steps, "rounds": ROUNDS})
+    proc = subprocess.run([RUST_VM, "fractran-json"], input=payload, capture_output=True, text=True, timeout=30)
     if proc.returncode != 0:
         return None
-    return json.loads(proc.stdout)["trace"], elapsed
+    result = json.loads(proc.stdout)
+    return result["trace"], result.get("elapsed_ns", 0)
 
 
 HS_BIN = ROOT / "fractran" / "fractran"
@@ -175,6 +184,7 @@ def run_harness():
                       f"got {final_py}, expected {expected}")
 
             # Rust comparison
+            rs_per_round = ""
             if rust_available():
                 rs_result = run_rust(fracs, init, max_steps)
                 if rs_result:
@@ -182,6 +192,7 @@ def run_harness():
                     w_rs = make_witness(ctx, elapsed_rs, len(trace_rs),
                                         prog_name, "rust")
                     witnesses.append(w_rs)
+                    rs_per_round = f" rust={w_rs['per_round_ms']:.4f}ms/round"
                     if trace_rs != trace_py:
                         comparisons.append({
                             "program": prog_name, "init": init,
@@ -206,7 +217,7 @@ def run_harness():
 
             print(f"  {prog_name} init={init}: "
                   f"steps={len(trace_py)-1} final={final_py} "
-                  f"elapsed={w['elapsed_ms']:.3f}ms")
+                  f"py={w['per_round_ms']:.4f}ms/round{rs_per_round}")
 
     # Write artifact
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
