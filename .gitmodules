@@ -1,3 +1,6 @@
 [submodule "monster"]
 	path = monster
 	url = https://github.com/meta-introspector/monster.git
+[submodule "fractran"]
+	path = fractran
+	url = https://github.com/chboishabba/fractran.git

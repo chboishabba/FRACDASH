@@ -238,6 +238,32 @@ marks the cycle boundary when present, and emits:
 If a matching invariant artifact exists, the renderer auto-loads it to annotate
 the waveform with the current best candidate and regime usage summary.
 
+### Deterministic Walk Graph
+
+Use the trace-graph renderer when you want the saved deterministic walk shown as
+an explicit directed state graph rather than as a register heatmap:
+
+```sh
+python3 scripts/render_trace_graph.py \
+  benchmarks/results/2026-03-23-agdas-physics23-phase2.json
+```
+
+It emits:
+
+- `<input>.trace-graph.html`
+- `<input>.trace-graph.png`
+
+Scope note:
+
+- this renderer uses the saved deterministic walk only
+- edge width reports repeated edge use inside that walk
+- edge color reports transition family
+- it does **not** claim to reconstruct the full basin graph unless the source
+  artifact already contains that graph explicitly
+- keep this entrypoint as a lightweight explicit walk-graph utility; the
+  `branch-density` mode below is the more canonical basin/topology view for the
+  current rank-4 discussion
+
 To compare multiple FRACDASH runs on the same page and in one PNG:
 
 ```sh
@@ -259,6 +285,49 @@ That adapter currently renders the extracted `sample_*.cbor` rows as a small
 temporal perf-side trace and records the wider shard-family counts in the output
 metadata, so the FRACDASH waveform surface can start accepting zkperf-derived
 inputs before the full `perf -> DA51Trace -> SensibLaw` reducer is closed.
+
+An additional graph-facing mode now exists on the same renderer entrypoint:
+
+```sh
+python3 scripts/render_trace_waveform.py \
+  --mode branch-density \
+  --rank4-dataset benchmarks/results/rank4-dataset-latest.json \
+  --phase2-artifact benchmarks/results/2026-03-23-agdas-physics23-phase2.json
+```
+
+This mode is separate from the existing deterministic-walk heatmap. It renders a
+spectrogram-style view of the canonical rank-4 quotient surface using:
+
+- a structural panel ordered by sector/stability over the projected raw-state axis
+- an optional walk-time panel over the same axis
+- graph branch activity as the default signal instead of plain occupancy density
+
+Current scope note:
+
+- it is aligned to the canonical 6-register rank-4 surface
+- it uses the rank-4 quotient machinery (`q(N)`) to project raw states into the
+  same 10-sector frame
+- it is experimental visualization support for the basin/topology discussion,
+  not a proof of the 10-basin or chain-height-4 claims
+- this is the preferred visualization path for the current basin/topology
+  discussion, while `render_trace_graph.py` remains available for simpler
+  explicit walk-graph inspection
+
+### Fractran Submodule State
+
+The local `fractran/` checkout is now in an interim repaired state:
+
+- `.gitmodules` declares `fractran` again
+- the local benchmark work is preserved on branch `frackdash-bench`
+- the preserved local benchmark commit is currently `6ccc7cc`
+
+Remaining blocker:
+
+- the canonical remote should be a maintained fork rather than only
+  `https://github.com/pimlu/fractran.git`
+- until that fork exists and the preserved branch is pushed there, the repo is
+  still carrying an interim submodule URL and a locally advanced gitlink
+
 That cross-carrier summary now exists at [`benchmarks/results/2026-03-23-cross-carrier-baseline-summary.md`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-23-cross-carrier-baseline-summary.md). Current read: `physics22` remains the clearer active 6-register baseline, `carrier8_physics1` remains mainly an observable branch, and `carrier8_physics2` should now be treated as the active parallel 8-register experiment track because it already exceeds the 6-register baseline on at least one geometry surrogate, even though it is not yet a direct replacement baseline.
 The first concrete successor trials are now in-repo as well. `physics23` clears the minimum 6-register successor condition by improving deterministic recurrent edges from `476 -> 503` while keeping the fixed-walk split, best-candidate signal, and geometry surrogates flat, but it does not yet improve terminal mass or direct re-entry beyond `physics22`, so it should still be read as a successor candidate rather than the new default baseline. On the 8-register side, `carrier8_physics3` does not materially move the `carrier8_physics2` baseline, `carrier8_physics4` showed that simple early hook placement was still not enough, and `carrier8_physics5` first made sampled `boundary_to_interior` nonzero but at a curvature cost. `carrier8_physics6` is now promoted as the provisional 8-register baseline: it keeps `boundary_to_interior = 6`, restores curvature (`~0.97`), accepts a small geodesic dip, and brings best-candidate strict decrease back near baseline. [`CARRIER8_PHYSICS5_TARGET_NOTE.md`](/home/c/Documents/code/FRACDASH/CARRIER8_PHYSICS5_TARGET_NOTE.md) remains the prior target; the next refinement should aim to recover the small geodesic/strict-decrease loss without giving back boundary recovery or curvature.
 

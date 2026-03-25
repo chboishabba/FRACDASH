@@ -175,6 +175,14 @@
   - auto-enriches from matching invariant artifacts when available
 - [x] Extend the waveform renderer to compare multiple saved phase-2 artifacts on
   one normalized stacked surface (single HTML + PNG comparison output).
+- [x] Extend the same renderer with a graph-facing `branch-density` mode for the
+  canonical rank-4 dataset, keeping the current waveform HTML/PNG behavior
+  unchanged unless the new mode is explicitly requested.
+- [x] Keep both visualization entrypoints:
+  - `scripts/render_trace_waveform.py --mode branch-density` stays the
+    canonical rank-4 basin/topology surface
+  - `scripts/render_trace_graph.py` stays the simpler explicit
+    deterministic-walk graph utility
 - [x] Enrich saved `deterministic_walk` payloads with explicit per-step trace
   fields (`delta`, changed-register mask/list, L1 step delta, action-rank
   before/after, and precomputed state rows/register labels) so downstream
@@ -186,6 +194,10 @@
   - emits normalized JSON plus HTML + PNG waveform artifacts
 - [ ] Decide whether the `113` total degeneracy has structural support or should be discarded as coincidence.
 - [ ] Write and maintain the short result note distinguishing observations from conjectures for the active `physics22` exploratory baseline.
+- [ ] Finish the `fractran` submodule repair after the maintained fork exists:
+  - push preserved local branch `frackdash-bench` (commit `6ccc7cc`) to the fork
+  - switch `.gitmodules` from `pimlu/fractran` to that fork URL
+  - update the tracked `fractran` gitlink to the pushed benchmark commit
 - [ ] Intake `monster/MonsterLean` references into FRACDASH with proof-completeness filtering:
   - [x] generate a machine-readable inventory for candidate modules (`MonsterWalk*`, `ComplexityLattice`) with `sorry`/`axiom` flags
   - [x] extract only reusable definitions/constants into FRACDASH-side notes

@@ -2,10 +2,31 @@
 
 ## 2026-03-25
 
+- Added [`scripts/render_trace_graph.py`](/home/c/Documents/code/FRACDASH/scripts/render_trace_graph.py)
+  as a directed deterministic-walk graph renderer for phase-2 artifacts. It
+  consumes the saved `deterministic_walk.path`, renders visited states as
+  nodes, uses transition-family labels on edges, and scales edge width by
+  repeated edge use inside the saved walk.
+- Updated [`README.md`](/home/c/Documents/code/FRACDASH/README.md) with the new
+  trace-graph entrypoint and an explicit scope note: this view shows the saved
+  deterministic walk honestly and does not claim to reconstruct the full basin
+  graph unless that graph is present in the source artifact.
 - Added [`scripts/render_trace_waveform.py`](/home/c/Documents/code/FRACDASH/scripts/render_trace_waveform.py) as the first deterministic-walk waveform renderer for phase-2 FRACDASH artifacts. It consumes `deterministic_walk.path`, reconstructs the full state rows, overlays cycle-start and transition summaries, and emits both a standalone HTML view and a PNG artifact.
 - The renderer auto-resolves a matching invariant artifact when one exists, so the waveform can annotate the walk with `best_candidate` and regime/execution-status context without introducing a second trace schema.
 - Verified the renderer on [`benchmarks/results/2026-03-23-agdas-physics23-phase2.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-23-agdas-physics23-phase2.json) and [`benchmarks/results/2026-03-23-agdas-carrier8-physics6-phase2.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-23-agdas-carrier8-physics6-phase2.json), generating companion `.trace-waveform.html` and `.trace-waveform.png` artifacts for each.
 - Extended the waveform renderer to support stacked multi-artifact comparison output from the same normalized trace contract, so `physics*` and `carrier8_*` runs can be compared in one HTML + PNG artifact rather than by opening multiple single-run files.
+- Extended [`scripts/render_trace_waveform.py`](/home/c/Documents/code/FRACDASH/scripts/render_trace_waveform.py) with a separate `branch-density` mode for the canonical rank-4 dataset. It leaves the current walk waveform untouched unless requested, and adds a graph-facing spectrogram view with structural sector/stability rows plus an optional walk-time panel on the same projected raw-state axis.
+- Repo-status boundary for the branch-density work on `2026-03-25`: the intended local changes are currently limited to [`scripts/render_trace_waveform.py`](/home/c/Documents/code/FRACDASH/scripts/render_trace_waveform.py), [`README.md`](/home/c/Documents/code/FRACDASH/README.md), [`TODO.md`](/home/c/Documents/code/FRACDASH/TODO.md), [`CHANGELOG.md`](/home/c/Documents/code/FRACDASH/CHANGELOG.md), and the generated `rank4-dataset-latest.branch-density-view.branch-density.{html,png}` artifacts. Unrelated worktree state (`.gitmodules`, dirty `fractran`, and untracked [`scripts/render_trace_graph.py`](/home/c/Documents/code/FRACDASH/scripts/render_trace_graph.py)) was left untouched.
+- Recorded the visualization split explicitly in the docs: keep
+  `render_trace_waveform.py --mode branch-density` as the canonical
+  basin/topology surface for the current rank-4 discussion, while retaining
+  [`scripts/render_trace_graph.py`](/home/c/Documents/code/FRACDASH/scripts/render_trace_graph.py)
+  as a simpler deterministic-walk graph utility.
+- Recorded the current `fractran` repair boundary in the docs as well:
+  the local benchmark work is preserved on branch `frackdash-bench`
+  at commit `6ccc7cc`, `.gitmodules` declares `fractran` again, and the
+  remaining step is to flip the canonical submodule URL from `pimlu/fractran`
+  to the maintained fork once that fork exists.
 - Enriched phase-2 deterministic-walk payloads in the FRACDASH experiment runners with explicit per-step trace fields (`delta`, changed-register mask/list, L1 step delta, action-rank before/after, state rows, register labels), reducing downstream recomputation and fixing the renderer contract directly in the saved artifacts.
 - Added the first zkperf waveform adapter [`scripts/render_zkperf_waveform.py`](/home/c/Documents/code/FRACDASH/scripts/render_zkperf_waveform.py). It decodes extracted `sample_*.cbor` DA51 shards from `zkperf-schema extract`, maps them into the same internal waveform contract, emits normalized JSON, and renders HTML + PNG artifacts while carrying shard-family counts as metadata.
 
