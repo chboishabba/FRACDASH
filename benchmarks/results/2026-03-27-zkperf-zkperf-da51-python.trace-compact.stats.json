@@ -1,0 +1,12 @@
+{
+  "source": "benchmarks/results/2026-03-25-zkperf-zkperf-da51-python.trace-waveform.json",
+  "compact": "benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-compact.json",
+  "roundtrip": "benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-roundtrip.json",
+  "source_bytes": 5875,
+  "compact_bytes": 2139,
+  "saved_bytes": 3736,
+  "reduction_ratio": 0.6359148936170212,
+  "row_count": 6,
+  "event_count": 1,
+  "roundtrip_equal": true
+}

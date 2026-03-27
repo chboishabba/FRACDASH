@@ -1,0 +1,506 @@
+{
+  "trace_kind": "dashi_perf_summary_semantic_motif/v1",
+  "source_kind": "dashi_agda_da51_summary",
+  "motifs": [
+    {
+      "dashi_class": "structural",
+      "dashi_family": "proof_surface"
+    },
+    {
+      "dashi_class": "module_antifascistsystem",
+      "dashi_family": "structural"
+    },
+    {
+      "dashi_class": "module_base369",
+      "dashi_family": "structural"
+    },
+    {
+      "dashi_class": "module_crtperiod",
+      "dashi_family": "structural"
+    },
+    {
+      "dashi_class": "geometry",
+      "dashi_family": "proof_surface"
+    },
+    {
+      "dashi_class": "test_harness",
+      "dashi_family": "derived_test"
+    },
+    {
+      "dashi_class": "trace",
+      "dashi_family": "witness"
+    },
+    {
+      "dashi_class": "module_daslimport",
+      "dashi_family": "structural"
+    },
+    {
+      "dashi_class": "module_fascisticsystem",
+      "dashi_family": "structural"
+    },
+    {
+      "dashi_class": "fixed_point",
+      "dashi_family": "proof_surface"
+    },
+    {
+      "dashi_class": "layer",
+      "dashi_family": "dynamics"
+    },
+    {
+      "dashi_class": "module_maassrestoration",
+      "dashi_family": "structural"
+    },
+    {
+      "dashi_class": "monster",
+      "dashi_family": "dynamics"
+    },
+    {
+      "dashi_class": "moonshine",
+      "dashi_family": "dynamics"
+    },
+    {
+      "dashi_class": "module_overflow",
+      "dashi_family": "structural"
+    },
+    {
+      "dashi_class": "module_reflectall",
+      "dashi_family": "structural"
+    },
+    {
+      "dashi_class": "module_swar_equivalence",
+      "dashi_family": "structural"
+    },
+    {
+      "dashi_class": "module_selfwitness",
+      "dashi_family": "structural"
+    },
+    {
+      "dashi_class": "module_tenfoldbridges",
+      "dashi_family": "structural"
+    },
+    {
+      "dashi_class": "module_threeadic_attractor",
+      "dashi_family": "structural"
+    },
+    {
+      "dashi_class": "module_uftc_lattice",
+      "dashi_family": "structural"
+    },
+    {
+      "dashi_class": "module_z6_regularinverse",
+      "dashi_family": "structural"
+    }
+  ],
+  "rows": [
+    {
+      "step": 1,
+      "file": "ActionMonotonicity.agda",
+      "src_sha256": "9b55de89582f2e0ef2e1426b07f6c02836aa332aa0d7ef047e00a361f683e886",
+      "cycles": 34176685,
+      "instructions": 35438949,
+      "cache_misses": 194755,
+      "branch_misses": 226177,
+      "motif_idx": 0
+    },
+    {
+      "step": 2,
+      "file": "AntiFascistSystem.agda",
+      "src_sha256": "04b34784271e339cfc8909c289921d57d93f974c78d8f9c3b8f1a4e91ffb7362",
+      "cycles": 32007566,
+      "instructions": 47047885,
+      "cache_misses": 197821,
+      "branch_misses": 199100,
+      "motif_idx": 1
+    },
+    {
+      "step": 3,
+      "file": "Base369.agda",
+      "src_sha256": "d4f5ad1916787c76139985da63eeb24fd90449c7070cf284df6a29889f0487cd",
+      "cycles": 28085810,
+      "instructions": 33206992,
+      "cache_misses": 126415,
+      "branch_misses": 190941,
+      "motif_idx": 2
+    },
+    {
+      "step": 4,
+      "file": "CRTPeriod.agda",
+      "src_sha256": "8440f88b4a7eabb912ed98a161ce5b435099768362d83b35ade32b7c492e1843",
+      "cycles": 36157563,
+      "instructions": 51252696,
+      "cache_misses": 185875,
+      "branch_misses": 253438,
+      "motif_idx": 3
+    },
+    {
+      "step": 5,
+      "file": "Contraction.agda",
+      "src_sha256": "2ac48ac31b501002642bacba234e3775d866511aa687ae163c10c64108ab930a",
+      "cycles": 38424270,
+      "instructions": 53583336,
+      "cache_misses": 173104,
+      "branch_misses": 267430,
+      "motif_idx": 4
+    },
+    {
+      "step": 6,
+      "file": "CounterexampleHarness.agda",
+      "src_sha256": "083b1d7c56252173477d17a754ecfd83d3a55af7de76b3f44f35488f657fd253",
+      "cycles": 27729299,
+      "instructions": 33691238,
+      "cache_misses": 106099,
+      "branch_misses": 193088,
+      "motif_idx": 5
+    },
+    {
+      "step": 7,
+      "file": "DA51Tag.agda",
+      "src_sha256": "a192940a7538ae4c92b96d0942b25df4c949d64b7d17f97e69a467eada792357",
+      "cycles": 39740515,
+      "instructions": 54293898,
+      "cache_misses": 227841,
+      "branch_misses": 277177,
+      "motif_idx": 6
+    },
+    {
+      "step": 8,
+      "file": "DA51Trace.agda",
+      "src_sha256": "3e019ae618ae2eeb2737c481e814df602e2d35eca87b810364ee7903db6be4d2",
+      "cycles": 33055068,
+      "instructions": 34779718,
+      "cache_misses": 144286,
+      "branch_misses": 221276,
+      "motif_idx": 6
+    },
+    {
+      "step": 9,
+      "file": "DASHI_Tests.agda",
+      "src_sha256": "b8d0a74d9c40a3f164f45fa90a32b07db0de72076ea0aea8ad926653127754d7",
+      "cycles": 43080283,
+      "instructions": 57194788,
+      "cache_misses": 248070,
+      "branch_misses": 244496,
+      "motif_idx": 5
+    },
+    {
+      "step": 10,
+      "file": "DaslImport.agda",
+      "src_sha256": "0f160f83ab3826b935c63536dbf20f4945c839d5029649c29cd0ea6e9bca6b59",
+      "cycles": 27557559,
+      "instructions": 33533750,
+      "cache_misses": 130700,
+      "branch_misses": 193555,
+      "motif_idx": 7
+    },
+    {
+      "step": 11,
+      "file": "Fascism_Tests.agda",
+      "src_sha256": "481aa099ee1c6de160efa83de3dcd1025ba091d559c4c375d0185f39ed87523f",
+      "cycles": 46669044,
+      "instructions": 62040455,
+      "cache_misses": 218032,
+      "branch_misses": 264300,
+      "motif_idx": 5
+    },
+    {
+      "step": 12,
+      "file": "FascisticSystem.agda",
+      "src_sha256": "89e4324641d727081c5abd4a7fe9d5fdde92a3de3ed037c3da67be0fb1e4b0ff",
+      "cycles": 33208240,
+      "instructions": 34868446,
+      "cache_misses": 157763,
+      "branch_misses": 214709,
+      "motif_idx": 8
+    },
+    {
+      "step": 13,
+      "file": "FixedPoint.agda",
+      "src_sha256": "170ae6b1afc141329feb2268128cd0d7efc6a13ab2d71a34d0a3aa83d8b69da4",
+      "cycles": 59808320,
+      "instructions": 77809947,
+      "cache_misses": 402438,
+      "branch_misses": 309455,
+      "motif_idx": 9
+    },
+    {
+      "step": 14,
+      "file": "HGSA_Fixpoints.agda",
+      "src_sha256": "c2063170df9bfa14b866ba97ce538f75b224db67c1f8034bafa157796ab399e3",
+      "cycles": 27467033,
+      "instructions": 34334105,
+      "cache_misses": 139391,
+      "branch_misses": 188102,
+      "motif_idx": 9
+    },
+    {
+      "step": 15,
+      "file": "JFixedPoint.agda",
+      "src_sha256": "1dc85d471f03ca520348e4b3f0bbc979b3b2bfe825d2ac7720e6a842f1b4004a",
+      "cycles": 42527604,
+      "instructions": 65799009,
+      "cache_misses": 228228,
+      "branch_misses": 252973,
+      "motif_idx": 9
+    },
+    {
+      "step": 16,
+      "file": "Layer0.agda",
+      "src_sha256": "0b1f062aee227599a8dcaf360dc4663a061200a6bcafd3b03a139cb24321ce81",
+      "cycles": 37861033,
+      "instructions": 52881850,
+      "cache_misses": 109857,
+      "branch_misses": 256756,
+      "motif_idx": 10
+    },
+    {
+      "step": 17,
+      "file": "Layer1.agda",
+      "src_sha256": "9522d67b2837be7d758b6f9465fc753c82739664ddf433a8d8769509e34fd618",
+      "cycles": 31212908,
+      "instructions": 34732523,
+      "cache_misses": 144854,
+      "branch_misses": 208231,
+      "motif_idx": 10
+    },
+    {
+      "step": 18,
+      "file": "Layer2.agda",
+      "src_sha256": "02807f7f2cbf7cf278f7079f525de713409326147303e80699e9d4fb11f44120",
+      "cycles": 45778854,
+      "instructions": 56412865,
+      "cache_misses": 283639,
+      "branch_misses": 247169,
+      "motif_idx": 10
+    },
+    {
+      "step": 19,
+      "file": "Layer3.agda",
+      "src_sha256": "9c1c9e375d4e2f45085356b1ca8b47df3dd12e099d4056b0ce66ed0e388c8df2",
+      "cycles": 44585055,
+      "instructions": 63563265,
+      "cache_misses": 220055,
+      "branch_misses": 358286,
+      "motif_idx": 10
+    },
+    {
+      "step": 20,
+      "file": "LogicTlurey.agda",
+      "src_sha256": "ccee7396d94271b38daee3b9d61911a66355ec0052033618c27924792d64df05",
+      "cycles": 36619759,
+      "instructions": 47505090,
+      "cache_misses": 154293,
+      "branch_misses": 250805,
+      "motif_idx": 0
+    },
+    {
+      "step": 21,
+      "file": "MaassRestoration.agda",
+      "src_sha256": "4240b9e65b973cda0ec650dfe7f922dc7e472f7c8d1e54e5a7d754134e521bbb",
+      "cycles": 46128721,
+      "instructions": 62468277,
+      "cache_misses": 294258,
+      "branch_misses": 252415,
+      "motif_idx": 11
+    },
+    {
+      "step": 22,
+      "file": "MonsterConformance.agda",
+      "src_sha256": "2c2f1da161cea1e3af0c1b356acbf8bcc1f67027cdb294f0da5177d55b7c001e",
+      "cycles": 28353152,
+      "instructions": 33629960,
+      "cache_misses": 135673,
+      "branch_misses": 183132,
+      "motif_idx": 12
+    },
+    {
+      "step": 23,
+      "file": "MonsterGroups.agda",
+      "src_sha256": "a4f5a5e6a0c070d119cf5f7c817260f75c02399da5fc41f14abdc9a76e3ea3c1",
+      "cycles": 29218619,
+      "instructions": 34448659,
+      "cache_misses": 151255,
+      "branch_misses": 187442,
+      "motif_idx": 12
+    },
+    {
+      "step": 24,
+      "file": "MonsterOntos.agda",
+      "src_sha256": "7cb03b70693d9f202a57b41f847bb74f401208c27be7d7494237fadc38b48af5",
+      "cycles": 21649820,
+      "instructions": 26651192,
+      "cache_misses": 118642,
+      "branch_misses": 141618,
+      "motif_idx": 12
+    },
+    {
+      "step": 25,
+      "file": "MonsterSpec.agda",
+      "src_sha256": "3730b28450831f914fd6d175d37712cc5b2b8e9aec1d7f5687c914ec8304db9f",
+      "cycles": 28120351,
+      "instructions": 33714341,
+      "cache_misses": 131357,
+      "branch_misses": 185140,
+      "motif_idx": 12
+    },
+    {
+      "step": 26,
+      "file": "MonsterState.agda",
+      "src_sha256": "65138e03abab170edbee24c82a916c19ef836c9317c35eaa717ae8f9ab0abc4f",
+      "cycles": 28350211,
+      "instructions": 33734210,
+      "cache_misses": 126734,
+      "branch_misses": 185316,
+      "motif_idx": 12
+    },
+    {
+      "step": 27,
+      "file": "MonsterTraceCounts.agda",
+      "src_sha256": "48c6ce44605c8534c91e2019a16fa5e1929cfad2d87bd1e04c9a84cce0999a20",
+      "cycles": 36020595,
+      "instructions": 46574509,
+      "cache_misses": 154694,
+      "branch_misses": 249444,
+      "motif_idx": 12
+    },
+    {
+      "step": 28,
+      "file": "MonsterVectors.agda",
+      "src_sha256": "39bb74494af6d2faefb5a36c43b09938d5573ee704580c0cf92ddd0bb9669024",
+      "cycles": 29409322,
+      "instructions": 33953540,
+      "cache_misses": 154381,
+      "branch_misses": 186715,
+      "motif_idx": 12
+    },
+    {
+      "step": 29,
+      "file": "Moonshine.agda",
+      "src_sha256": "1db6ae9cccef044a04025dba52a6518dc52d1ff24bdef2084c9c908a3728e4b8",
+      "cycles": 37540519,
+      "instructions": 49799868,
+      "cache_misses": 174512,
+      "branch_misses": 254378,
+      "motif_idx": 13
+    },
+    {
+      "step": 30,
+      "file": "MoonshineEarn.agda",
+      "src_sha256": "5fe46ad19640fa09d5b6bfb7d79e9a1d754b5be5e8da369b43701e2ae874174a",
+      "cycles": 22260381,
+      "instructions": 26858344,
+      "cache_misses": 142874,
+      "branch_misses": 138937,
+      "motif_idx": 13
+    },
+    {
+      "step": 31,
+      "file": "Overflow.agda",
+      "src_sha256": "7ca3a9c71d5951e261cccce8709305007e744592ba23c018b6d5e61131a1a74d",
+      "cycles": 32416881,
+      "instructions": 33713113,
+      "cache_misses": 205155,
+      "branch_misses": 191910,
+      "motif_idx": 14
+    },
+    {
+      "step": 32,
+      "file": "PrimeRoles.agda",
+      "src_sha256": "813f9c3bb00e43a5cdf1c8a6934dba07a9cfb3ea9a885779a9af904e5a3d53b1",
+      "cycles": 37663825,
+      "instructions": 47641004,
+      "cache_misses": 218285,
+      "branch_misses": 254532,
+      "motif_idx": 0
+    },
+    {
+      "step": 33,
+      "file": "ReflectAll.agda",
+      "src_sha256": "b955be78b94a46e68c46e729a68982a58f9d34947192723b22ae22204b8b2fa7",
+      "cycles": 28422938,
+      "instructions": 31765115,
+      "cache_misses": 162479,
+      "branch_misses": 158914,
+      "motif_idx": 15
+    },
+    {
+      "step": 34,
+      "file": "SWAR_Equivalence.agda",
+      "src_sha256": "4770dfab0cdbcdffe2c5116f93b5786cc1d25a2f6eb5d0f0712f90f647aaf058",
+      "cycles": 40860020,
+      "instructions": 86440413,
+      "cache_misses": 173716,
+      "branch_misses": 204869,
+      "motif_idx": 16
+    },
+    {
+      "step": 35,
+      "file": "SelfTrace.agda",
+      "src_sha256": "fc2e6da7af184743c3a5df39f15f2c4129bd758f105045666731e8ed2c68c1c9",
+      "cycles": 27950781,
+      "instructions": 33516401,
+      "cache_misses": 121170,
+      "branch_misses": 188687,
+      "motif_idx": 6
+    },
+    {
+      "step": 36,
+      "file": "SelfWitness.agda",
+      "src_sha256": "b2a62c677a6188d610bcb41ce2fa8661323eb2bb840a083b6c0519866ea40ed9",
+      "cycles": 31239680,
+      "instructions": 40942867,
+      "cache_misses": 135965,
+      "branch_misses": 200002,
+      "motif_idx": 17
+    },
+    {
+      "step": 37,
+      "file": "TenfoldBridges.agda",
+      "src_sha256": "4cd2ee34cba96b027baa126c9365b5ce3c6a9369b87e633e5a5037aa0d2c7d6b",
+      "cycles": 45251338,
+      "instructions": 59056016,
+      "cache_misses": 198393,
+      "branch_misses": 356620,
+      "motif_idx": 18
+    },
+    {
+      "step": 38,
+      "file": "ThreeAdic_Attractor.agda",
+      "src_sha256": "5b345b9f42be4d8936eb9dd788cd06f9fcbc3e4eec5b96ef97c646bc768d6ef0",
+      "cycles": 20863519,
+      "instructions": 26667200,
+      "cache_misses": 99882,
+      "branch_misses": 138719,
+      "motif_idx": 19
+    },
+    {
+      "step": 39,
+      "file": "UFTC_Lattice.agda",
+      "src_sha256": "04564f65bc45b15d3f7cf0b9f48718a8b3fa28d526498caff75168d55dc8fe0a",
+      "cycles": 30730184,
+      "instructions": 34327743,
+      "cache_misses": 162823,
+      "branch_misses": 198152,
+      "motif_idx": 20
+    },
+    {
+      "step": 40,
+      "file": "Ultrametric.agda",
+      "src_sha256": "ece54f5f6c33a7d60ed1d9613ff8867892e668fb9f6dc28abee2a59c34a44939",
+      "cycles": 31267728,
+      "instructions": 41754226,
+      "cache_misses": 140017,
+      "branch_misses": 208065,
+      "motif_idx": 4
+    },
+    {
+      "step": 41,
+      "file": "Z6_RegularInverse.agda",
+      "src_sha256": "59ee997e66ca22fe5437ca32b1a527cfd04c19178a30add42bd6dfe0bc0030dc",
+      "cycles": 31116893,
+      "instructions": 35033488,
+      "cache_misses": 130017,
+      "branch_misses": 206561,
+      "motif_idx": 21
+    }
+  ]
+}

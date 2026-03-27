@@ -62,6 +62,108 @@ These were fetched into the canonical archive for traceability but should not dr
 
 FRACDASH is a fresh repo whose immediate purpose is to reimplement DASHI-style dynamics in FRACTRAN and evaluate the mathematical behavior experimentally.
 
+The first bounded perf-compression slice is now real on `2026-03-27`:
+`scripts/compact_zkperf_trace.py` compresses the checked-in normalized zkperf
+waveform JSON by storing only the raw sample facts needed to reconstruct the
+derived trace contract. The first DA51 sample artifact shrank from `5875` bytes
+to `1695` bytes with exact round-trip reconstruction, so the current codec
+target is no longer hypothetical. This remains a narrow zkperf-side witness
+codec, not yet the general perf-output or Zelph shard packaging solution.
+
+Follow-up clarification from the main thread on `2026-03-27`:
+- source: current working turn
+- online UUID: not provided in-turn
+- main decision:
+  - the current codec should be understood as
+    `projection(model) + residual = exact reconstruction`
+  - the win comes from dropping duplicated derived structure (`matrix`,
+    expanded annotations) and keeping only the canonical generating fields
+  - this is the first concrete MDL-style witness in FRACDASH, not merely a
+    generic compressor
+  - the next compression increment should be motif compression on top of the
+    current compact rows, not a replacement of the projection layer
+- first motif target:
+  - repeated `(event_idx, pid, tid, cpu_mode)` structure with timestamp/period
+    parameters
+- followthrough:
+  - the first motif layer is now implemented in
+    `scripts/compact_zkperf_trace.py`
+  - it lifts repeated `(event_idx, pid, tid, cpu_mode)` tuples into a motif
+    table and keeps row-local `step`, `timestamp`, `period`, and `cid`
+    parameters
+  - on the checked-in DA51 sample it finds `2` motifs and shrinks the compact
+    artifact from `1695` bytes to `1539` bytes with exact round-trip back to
+    the compact rows
+  - current read: the motif layer is valid, but the measured gain on this tiny
+    sample is modest, so richer traces are now the more important next test
+- next Dashi-facing test:
+  add `dashi_class` / `dashi_family` labels to the compact rows and rerun
+  motif extraction over semantic labels rather than only surface tuples
+- followthrough:
+  - the compact rows now carry heuristic `dashi_class` / `dashi_family` labels
+  - `scripts/compact_zkperf_trace.py` now supports side-by-side comparison of:
+    - raw -> compact
+    - raw -> compact -> surface motif
+    - raw -> compact -> semantic motif
+  - on the checked-in DA51 sample:
+    - compact with semantic labels: `2139` bytes
+    - surface motif: `1687` bytes with `2` motifs
+    - semantic motif: `1658` bytes with `1` motif
+  - current read:
+    semantic labeling helps, but only slightly on this tiny trace; projection
+    remains the dominant gain source and richer traces are still needed before
+    claiming strong Dashi-native compression
+  - next concrete target:
+    `../dashi_agda/da51_shards/summary.json`, because it is directly emitted by
+    `perf_da51.py` and carries real Agda module names suitable for better
+    `dashi_class` / `dashi_family` labeling than the tiny zkperf sample
+  - followthrough:
+    `scripts/compact_dashi_perfhistory.py` now normalizes that summary and
+    compares compact, surface-motif, and semantic-motif layers over the
+    Dashi-linked rows
+  - current result on the upstream summary:
+    - raw summary: `9758` bytes
+    - normalized analysis form: `23722` bytes
+    - compact normalized form: `14245` bytes
+    - surface motif: `16586` bytes
+    - semantic motif: `14156` bytes
+  - current read:
+    the summary path is a useful Dashi-linked semantic calibration target, but
+    not yet the correct compression target if the goal is to beat the raw
+    upstream artifact on storage
+  - next concrete target:
+    the aggregate CBOR shard set under `../dashi_agda/da51_shards/*.cbor`
+  - reason:
+    the shard set still carries repeated CBOR keys, repeated FRACTRAN program
+    skeletons, and real module-family semantics that `summary.json` already
+    collapsed away
+  - measured regularity before implementation:
+    - `41` shard files totaling `15658` bytes
+    - `24` shards share the exact FRACTRAN fractions
+      `('47/2', '59/3', '71/5')`
+    - `40` shards share `steps = 3`, `trace` length `4`, and
+      `earns_moonshine = True`
+    - `MonsterVectors.cbor` is the only current negative case, with no full
+      FRACTRAN trace and `earns_moonshine = False`
+  - constraint:
+    the next codec should compare aggregate shard bytes against a compact
+    aggregate representation with exact shard-byte reconstruction, not against
+    another analysis-only JSON expansion
+  - followthrough:
+    `scripts/compact_dashi_da51_shards.py` now compacts the entire
+    `../dashi_agda/da51_shards/*.cbor` corpus into a single aggregate CBOR
+    payload and decodes exactly back to the original per-file shard bytes
+  - first aggregate result:
+    - raw shard set: `15658` bytes across `41` files
+    - compact surface aggregate: `9275` bytes with `33` repeated program motifs
+    - semantic aggregate: `9971` bytes with `22` semantic motifs
+  - current read:
+    aggregate CBOR factorization is the first Dashi-linked storage win that
+    beats the raw upstream artifact itself; the remaining open decision is
+    whether the next gain should come from deeper trace payloads beneath the
+    current shard level or whether this aggregate boundary is already the right
+    publish/export unit
+
 Upstream `../dashi_agda` now has PR `#1` merged on `2026-03-27`, which adds a
 small witness/perf surface on top of the existing closure spine:
 `Kernel/KAlgebra.agda`, `Monster/MUltrametric.agda`, `Moonshine.agda`,

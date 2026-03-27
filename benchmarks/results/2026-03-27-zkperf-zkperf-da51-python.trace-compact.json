@@ -1,0 +1,89 @@
+{
+  "trace_kind": "zkperf_sample_trace_compact/v1",
+  "source_dir": "/tmp/zkperf-da51-python",
+  "artifact": "/tmp/zkperf-da51-python",
+  "template_set": "zkperf_samples:zkperf-da51-python",
+  "shard_family_counts": {
+    "sample": 6,
+    "mmap": 164,
+    "other": 4,
+    "schema": 10
+  },
+  "events": [
+    "cycles:P"
+  ],
+  "rows": [
+    {
+      "step": 1,
+      "event_idx": 0,
+      "timestamp": 154426714458099,
+      "period": 9058801,
+      "pid": 27,
+      "tid": 27,
+      "cpu_mode": "User",
+      "cid": "bafk20df905de8748aca04dd054c64296439",
+      "dashi_class": "cycle_probe",
+      "dashi_family": "perf_history"
+    },
+    {
+      "step": 2,
+      "event_idx": 0,
+      "timestamp": 154426719829555,
+      "period": 13033266,
+      "pid": 27,
+      "tid": 27,
+      "cpu_mode": "User",
+      "cid": "bafk5273c32ebd7f2afebeaeae22b63abfb8",
+      "dashi_class": "cycle_probe",
+      "dashi_family": "perf_history"
+    },
+    {
+      "step": 3,
+      "event_idx": 0,
+      "timestamp": 154426821272912,
+      "period": 6660822,
+      "pid": 27,
+      "tid": 27,
+      "cpu_mode": "User",
+      "cid": "bafk2f18d3989f17f5f5a57d4d686b7f9efa",
+      "dashi_class": "cycle_probe",
+      "dashi_family": "perf_history"
+    },
+    {
+      "step": 4,
+      "event_idx": 0,
+      "timestamp": 154426869037229,
+      "period": 12699824,
+      "pid": 27,
+      "tid": 27,
+      "cpu_mode": "User",
+      "cid": "bafk82aa3e1d520403a49eb07e17a06c1f28",
+      "dashi_class": "cycle_probe",
+      "dashi_family": "perf_history"
+    },
+    {
+      "step": 5,
+      "event_idx": 0,
+      "timestamp": 154426984661005,
+      "period": 6580929,
+      "pid": 27,
+      "tid": 27,
+      "cpu_mode": "Kernel",
+      "cid": "bafk1fab7583adb03b0bfa12af0f25a9f7f6",
+      "dashi_class": "cycle_probe",
+      "dashi_family": "perf_history"
+    },
+    {
+      "step": 6,
+      "event_idx": 0,
+      "timestamp": 154427028663916,
+      "period": 7315506,
+      "pid": 27,
+      "tid": 27,
+      "cpu_mode": "User",
+      "cid": "bafkcaf1844b94a167186e5c530c079d2773",
+      "dashi_class": "cycle_probe",
+      "dashi_family": "perf_history"
+    }
+  ]
+}

@@ -45,6 +45,29 @@ Upstream note:
   for bridging and provenance, not as a change to the local executable subset
   or bridge correctness obligations.
 
+Current Dashi-facing compression note:
+
+- the tiny zkperf waveform sample established the first projection/reconstruction
+  win, and the `summary.json` pass established that semantic labels help
+  calibrate motifs, but `../dashi_agda/da51_shards/summary.json` is already too
+  compact to be the real storage target
+- the next correct target was the aggregate DA51 CBOR shard set under
+  [`../dashi_agda/da51_shards/`](/home/c/Documents/code/dashi_agda/da51_shards),
+  because that layer still carries repeated CBOR keys, repeated FRACTRAN
+  program skeletons, and real module-family semantics
+- that aggregate CBOR codec now exists in
+  [`scripts/compact_dashi_da51_shards.py`](/home/c/Documents/code/FRACDASH/scripts/compact_dashi_da51_shards.py)
+  with exact shard-byte reconstruction
+- first measured result on the full shard set:
+  - raw shards: `15658` bytes across `41` files
+  - compact surface aggregate: `9275` bytes (`~40.8%` smaller)
+  - semantic aggregate: `9971` bytes (`~36.3%` smaller)
+- current read:
+  aggregate CBOR factorization is the first Dashi-linked storage win that beats
+  the raw upstream artifact itself; the remaining open question is whether the
+  next meaningful gain is below the current shard boundary rather than in
+  another higher-level normalization layer
+
 What does not exist yet:
 
 - the executable 10-basin obstruction experiments
@@ -296,6 +319,137 @@ That adapter currently renders the extracted `sample_*.cbor` rows as a small
 temporal perf-side trace and records the wider shard-family counts in the output
 metadata, so the FRACDASH waveform surface can start accepting zkperf-derived
 inputs before the full `perf -> DA51Trace -> SensibLaw` reducer is closed.
+
+The same normalized zkperf waveform JSON now has a first schema-aware compact
+codec:
+
+```sh
+python3 scripts/compact_zkperf_trace.py stats \
+  benchmarks/results/2026-03-25-zkperf-zkperf-da51-python.trace-waveform.json \
+  benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-compact.json \
+  --roundtrip-output \
+  benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-roundtrip.json
+```
+
+This compact form stores only the raw sample fields needed to reconstruct the
+normalized waveform contract (`step`, event id, timestamp, period, pid, tid,
+cpu mode, cid`) plus the current heuristic semantic labels
+(`dashi_class`, `dashi_family`) and drops the derived matrix and annotation
+fields. The first checked-in DA51 sample now shrinks from `5875` bytes to
+`2139` bytes while round-tripping exactly.
+
+The important point is that this is not generic entropy coding. The current
+codec is a projection/reconstruction witness:
+
+- persistent payload: the compact raw sample rows
+- dropped payload: derived matrix and expanded annotations
+- reconstruction: deterministic rebuild of the normalized waveform contract
+
+In other words, the current gain comes from removing duplicated derived
+structure, not from a general-purpose byte-level coder. This is the first local
+MDL-style witness in the repo: keep the generating fields, recompute the
+projection when needed, and require exact round-trip before promotion.
+
+The next compression layer, if pursued, should sit above this one as motif
+compression over repeated row patterns rather than replacing the current codec.
+The most obvious first motif candidate is repeated
+`(event_idx, pid, tid, cpu_mode)` structure with timestamp/period parameters.
+
+That second layer now exists in the same entrypoint:
+
+```sh
+python3 scripts/compact_zkperf_trace.py stats-motif \
+  benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-compact.json \
+  benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-motif.json \
+  --roundtrip-output \
+  benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-motif-roundtrip.json
+```
+
+On the checked-in DA51 sample, the motif layer finds two motifs and reduces the
+compact artifact from `1695` bytes to `1539` bytes (`~9.2%` smaller than the
+base compact form) while round-tripping exactly back to the compact rows. That
+is a useful but modest gain, so the next real question is not whether motif
+compression is valid, but which richer traces or motif grammars justify it.
+
+The next Dashi-facing experiment is to insert a semantic labeling pass before
+motif extraction. The compact row schema grows to include:
+
+- `dashi_class`
+- `dashi_family`
+
+The initial classifier is deliberately heuristic rather than theorem-backed. The
+goal is to test whether semantic equivalence classes yield materially better
+motif reuse than the current surface grammar. The measurement stack for that
+experiment is:
+
+- raw -> compact
+- raw -> compact -> surface motif
+- raw -> compact -> semantic motif
+
+That comparison now exists in the same entrypoint:
+
+```sh
+python3 scripts/compact_zkperf_trace.py stats-compare \
+  benchmarks/results/2026-03-25-zkperf-zkperf-da51-python.trace-waveform.json \
+  benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-compact.json \
+  benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-motif.json \
+  benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-semantic-motif.json
+```
+
+On the checked-in DA51 sample:
+
+- compact with semantic labels: `2139` bytes
+- surface motif layer: `1687` bytes, `2` motifs
+- semantic motif layer: `1658` bytes, `1` motif
+
+So the semantic path does beat the surface motif grammar, but only slightly on
+this tiny trace (`29` bytes better than the surface motif layer). That is
+enough to justify the direction, but not enough to claim that semantics has
+become the dominant compression source yet.
+
+The next target for tightening that result is not another tiny sample. It is
+the real upstream witness summary emitted by
+`../dashi_agda/perf_da51.py`:
+
+- `../dashi_agda/da51_shards/summary.json`
+
+That file is a better Dashi-facing compression target because it is directly
+generated from the merged Agda/perf witness lane and carries real module names
+such as `ActionMonotonicity.agda`, `Contraction.agda`, `DA51Trace.agda`,
+`FixedPoint.agda`, `JFixedPoint.agda`, `Moonshine.agda`, `MonsterSpec.agda`,
+and `Ultrametric.agda`. The next codec increment should therefore normalize and
+compress that summary artifact before expanding to broader perf families.
+
+That Dashi-summary normalizer now exists in a separate entrypoint:
+
+```sh
+python3 scripts/compact_dashi_perfhistory.py stats-compare \
+  ../dashi_agda/da51_shards/summary.json \
+  benchmarks/results/2026-03-27-dashi-perfhistory-normalized.json \
+  benchmarks/results/2026-03-27-dashi-perfhistory-compact.json \
+  benchmarks/results/2026-03-27-dashi-perfhistory-surface-motif.json \
+  benchmarks/results/2026-03-27-dashi-perfhistory-semantic-motif.json
+```
+
+On the current upstream summary:
+
+- raw summary: `9758` bytes
+- normalized analysis form: `23722` bytes across `41` rows
+- compact normalized form: `14245` bytes
+- surface motif form: `16586` bytes, `14` motifs
+- semantic motif form: `14156` bytes, `22` motifs
+
+So the Dashi-linked result is mixed:
+
+- good: semantic normalization is real and semantic motif beats surface motif by
+  `2430` bytes
+- bad: the raw upstream `summary.json` is already more compact than the
+  normalized/compact forms, so this is not yet a storage win over the source
+  artifact itself
+
+That means the `summary.json` path is useful for semantic analysis and Dashi
+label testing, but not yet the right compression target if the goal is raw
+artifact shrinkage.
 
 An additional graph-facing mode now exists on the same renderer entrypoint:
 

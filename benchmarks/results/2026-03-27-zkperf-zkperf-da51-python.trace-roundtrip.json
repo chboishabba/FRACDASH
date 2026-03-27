@@ -1,0 +1,316 @@
+{
+  "trace_kind": "zkperf_sample_trace",
+  "source_dir": "/tmp/zkperf-da51-python",
+  "register_labels": [
+    "idx",
+    "log10(period+1)",
+    "log10(ts_gap+1)",
+    "pid",
+    "tid",
+    "cpu_mode"
+  ],
+  "matrix": [
+    [
+      1.0,
+      6.957070767302545,
+      0.0,
+      27.0,
+      27.0,
+      1.0
+    ],
+    [
+      2.0,
+      7.115053292322705,
+      6.730092103433968,
+      27.0,
+      27.0,
+      1.0
+    ],
+    [
+      3.0,
+      6.823527893175755,
+      8.006223616885572,
+      27.0,
+      27.0,
+      1.0
+    ],
+    [
+      4.0,
+      7.103797736541943,
+      7.679103581077875,
+      27.0,
+      27.0,
+      1.0
+    ],
+    [
+      5.0,
+      6.81828727132341,
+      8.063047152060944,
+      27.0,
+      27.0,
+      -1.0
+    ],
+    [
+      6.0,
+      6.86424443021145,
+      7.643481417933556,
+      27.0,
+      27.0,
+      1.0
+    ]
+  ],
+  "metadata": {
+    "template_set": "zkperf_samples:zkperf-da51-python",
+    "artifact": "/tmp/zkperf-da51-python",
+    "register_count": 6,
+    "walk_status": "sample_trace",
+    "steps": 6,
+    "cycle_start": null,
+    "final_state": [
+      6.0,
+      6.86424443021145,
+      7.643481417933556,
+      27.0,
+      27.0,
+      1.0
+    ],
+    "best_candidate": null,
+    "regime_usage_by_slice": null,
+    "shard_family_counts": {
+      "sample": 6,
+      "mmap": 164,
+      "other": 4,
+      "schema": 10
+    }
+  },
+  "step_annotations": [
+    {
+      "step": 1,
+      "transition": "cycles:P",
+      "changed_register_count": 1,
+      "changed_registers": [
+        "sample"
+      ],
+      "changed_register_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "delta": [
+        1.0,
+        6.957070767302545,
+        0.0,
+        27.0,
+        27.0,
+        1.0
+      ],
+      "l1_step_delta": 62.95707076730255,
+      "state": null,
+      "next_state": [
+        1.0,
+        6.957070767302545,
+        0.0,
+        27.0,
+        27.0,
+        1.0
+      ],
+      "cid": "bafk20df905de8748aca04dd054c64296439",
+      "cpu_mode": "User",
+      "timestamp": 154426714458099,
+      "period": 9058801
+    },
+    {
+      "step": 2,
+      "transition": "cycles:P",
+      "changed_register_count": 1,
+      "changed_registers": [
+        "sample"
+      ],
+      "changed_register_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "delta": [
+        2.0,
+        7.115053292322705,
+        6.730092103433968,
+        27.0,
+        27.0,
+        1.0
+      ],
+      "l1_step_delta": 70.84514539575667,
+      "state": null,
+      "next_state": [
+        2.0,
+        7.115053292322705,
+        6.730092103433968,
+        27.0,
+        27.0,
+        1.0
+      ],
+      "cid": "bafk5273c32ebd7f2afebeaeae22b63abfb8",
+      "cpu_mode": "User",
+      "timestamp": 154426719829555,
+      "period": 13033266
+    },
+    {
+      "step": 3,
+      "transition": "cycles:P",
+      "changed_register_count": 1,
+      "changed_registers": [
+        "sample"
+      ],
+      "changed_register_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "delta": [
+        3.0,
+        6.823527893175755,
+        8.006223616885572,
+        27.0,
+        27.0,
+        1.0
+      ],
+      "l1_step_delta": 72.82975151006133,
+      "state": null,
+      "next_state": [
+        3.0,
+        6.823527893175755,
+        8.006223616885572,
+        27.0,
+        27.0,
+        1.0
+      ],
+      "cid": "bafk2f18d3989f17f5f5a57d4d686b7f9efa",
+      "cpu_mode": "User",
+      "timestamp": 154426821272912,
+      "period": 6660822
+    },
+    {
+      "step": 4,
+      "transition": "cycles:P",
+      "changed_register_count": 1,
+      "changed_registers": [
+        "sample"
+      ],
+      "changed_register_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "delta": [
+        4.0,
+        7.103797736541943,
+        7.679103581077875,
+        27.0,
+        27.0,
+        1.0
+      ],
+      "l1_step_delta": 73.78290131761982,
+      "state": null,
+      "next_state": [
+        4.0,
+        7.103797736541943,
+        7.679103581077875,
+        27.0,
+        27.0,
+        1.0
+      ],
+      "cid": "bafk82aa3e1d520403a49eb07e17a06c1f28",
+      "cpu_mode": "User",
+      "timestamp": 154426869037229,
+      "period": 12699824
+    },
+    {
+      "step": 5,
+      "transition": "cycles:P",
+      "changed_register_count": 1,
+      "changed_registers": [
+        "sample"
+      ],
+      "changed_register_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "delta": [
+        5.0,
+        6.81828727132341,
+        8.063047152060944,
+        27.0,
+        27.0,
+        -1.0
+      ],
+      "l1_step_delta": 74.88133442338436,
+      "state": null,
+      "next_state": [
+        5.0,
+        6.81828727132341,
+        8.063047152060944,
+        27.0,
+        27.0,
+        -1.0
+      ],
+      "cid": "bafk1fab7583adb03b0bfa12af0f25a9f7f6",
+      "cpu_mode": "Kernel",
+      "timestamp": 154426984661005,
+      "period": 6580929
+    },
+    {
+      "step": 6,
+      "transition": "cycles:P",
+      "changed_register_count": 1,
+      "changed_registers": [
+        "sample"
+      ],
+      "changed_register_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "delta": [
+        6.0,
+        6.86424443021145,
+        7.643481417933556,
+        27.0,
+        27.0,
+        1.0
+      ],
+      "l1_step_delta": 75.507725848145,
+      "state": null,
+      "next_state": [
+        6.0,
+        6.86424443021145,
+        7.643481417933556,
+        27.0,
+        27.0,
+        1.0
+      ],
+      "cid": "bafkcaf1844b94a167186e5c530c079d2773",
+      "cpu_mode": "User",
+      "timestamp": 154427028663916,
+      "period": 7315506
+    }
+  ]
+}

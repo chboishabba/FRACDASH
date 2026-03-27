@@ -2,6 +2,99 @@
 
 ## 2026-03-27
 
+- Added [`scripts/compact_zkperf_trace.py`](/home/c/Documents/code/FRACDASH/scripts/compact_zkperf_trace.py)
+  as the first schema-aware compact codec for the normalized zkperf waveform
+  JSON contract. It keeps only the raw sample fields needed to reconstruct the
+  waveform (`step`, event id, timestamp, period, pid, tid, cpu mode, cid) plus
+  the current heuristic semantic labels (`dashi_class`, `dashi_family`) and
+  rebuilds the derived matrix/annotation surface on decode.
+- Added the direct regression check
+  [`scripts/test_compact_zkperf_trace.py`](/home/c/Documents/code/FRACDASH/scripts/test_compact_zkperf_trace.py),
+  which asserts exact round-trip equality against the checked-in DA51 sample
+  waveform artifact.
+- Captured the first compact zkperf artifacts:
+  [`benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-compact.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-compact.json),
+  [`benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-compact.stats.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-compact.stats.json),
+  and
+  [`benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-roundtrip.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-roundtrip.json).
+  Result: the checked-in sample now shrinks from `5875` bytes to `2139` bytes
+  (`~63.6%` smaller) with exact normalized-trace reconstruction and heuristic
+  semantic labels preserved in the compact rows.
+- Clarified the interpretation of that codec in the repo docs/context:
+  it is now explicitly treated as a projection/reconstruction witness that
+  removes duplicated derived structure, making it the first concrete
+  MDL-style compression surface in FRACDASH rather than a generic byte-level
+  coder.
+- Extended [`scripts/compact_zkperf_trace.py`](/home/c/Documents/code/FRACDASH/scripts/compact_zkperf_trace.py)
+  with a second-layer motif codec over the compact rows. The current motif
+  grammar lifts repeated `(event_idx, pid, tid, cpu_mode)` tuples into a motif
+  table while keeping `step`, `timestamp`, `period`, and `cid` as row-local
+  parameters. The exact compact-row round-trip now also preserves the heuristic
+  `dashi_class` / `dashi_family` labels.
+- Extended the regression check
+  [`scripts/test_compact_zkperf_trace.py`](/home/c/Documents/code/FRACDASH/scripts/test_compact_zkperf_trace.py)
+  so the motif layer must round-trip exactly back to the compact rows and still
+  be smaller than the compact source payload.
+- Captured the first motif-layer artifacts:
+  [`benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-motif.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-motif.json),
+  [`benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-motif.stats.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-motif.stats.json),
+  and
+  [`benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-motif-roundtrip.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-motif-roundtrip.json).
+  Result: on the tiny checked-in DA51 sample, the surface motif layer finds `2`
+  motifs and reduces the compact payload from `2139` bytes to `1687` bytes
+  (`~21.1%` smaller than the compact base layer) with exact round-trip.
+- Extended the same codec with a semantic-motif layer that groups rows by
+  `(event_idx, pid, tid, dashi_class, dashi_family)` and keeps `cpu_mode` as a
+  row-local parameter. Captured:
+  [`benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-semantic-motif.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-semantic-motif.json),
+  [`benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-semantic-motif-roundtrip.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-semantic-motif-roundtrip.json),
+  and the side-by-side summary
+  [`benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-compare.stats.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-compare.stats.json).
+  Result: the semantic motif layer collapses the sample to `1` motif and
+  reaches `1658` bytes, beating the current surface motif grammar by `29`
+  bytes but not yet changing the overall conclusion that projection remains the
+  dominant gain source on this tiny trace.
+- Recorded the next tighter Dashi-facing target in the docs/context/TODO:
+  normalize and compress `../dashi_agda/da51_shards/summary.json`, which is
+  directly emitted by `perf_da51.py` and carries real Agda module names for
+  semantic labeling.
+- Added [`scripts/compact_dashi_perfhistory.py`](/home/c/Documents/code/FRACDASH/scripts/compact_dashi_perfhistory.py)
+  plus regression coverage in
+  [`scripts/test_compact_dashi_perfhistory.py`](/home/c/Documents/code/FRACDASH/scripts/test_compact_dashi_perfhistory.py)
+  as the first Dashi-linked summary normalizer/codec. It derives
+  `dashi_class` / `dashi_family` from real Agda module names in
+  `../dashi_agda/da51_shards/summary.json` and compares compact, surface-motif,
+  and semantic-motif layers over that normalized summary.
+- Captured the first Dashi-summary artifacts:
+  [`benchmarks/results/2026-03-27-dashi-perfhistory-normalized.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-dashi-perfhistory-normalized.json),
+  [`benchmarks/results/2026-03-27-dashi-perfhistory-compact.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-dashi-perfhistory-compact.json),
+  [`benchmarks/results/2026-03-27-dashi-perfhistory-surface-motif.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-dashi-perfhistory-surface-motif.json),
+  [`benchmarks/results/2026-03-27-dashi-perfhistory-semantic-motif.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-dashi-perfhistory-semantic-motif.json),
+  and
+  [`benchmarks/results/2026-03-27-dashi-perfhistory-compare.stats.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-dashi-perfhistory-compare.stats.json).
+  Result: semantic motif clearly beats surface motif on the normalized summary
+  (`14156` vs `16586` bytes), but the raw upstream `summary.json` (`9758`
+  bytes) is already smaller than the normalized/compact forms, so this run is
+  a semantic calibration success rather than a storage-compression success.
+- Added [`scripts/compact_dashi_da51_shards.py`](/home/c/Documents/code/FRACDASH/scripts/compact_dashi_da51_shards.py)
+  plus regression coverage in
+  [`scripts/test_compact_dashi_da51_shards.py`](/home/c/Documents/code/FRACDASH/scripts/test_compact_dashi_da51_shards.py)
+  as the first aggregate DA51 CBOR shard codec. It factors repeated FRACTRAN
+  program skeletons across the full `../dashi_agda/da51_shards/*.cbor` corpus
+  and decodes exactly back to the original per-file shard bytes.
+- Captured the first aggregate DA51 shard artifacts:
+  [`benchmarks/results/2026-03-27-dashi-da51-shards-surface.cbor`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-dashi-da51-shards-surface.cbor),
+  [`benchmarks/results/2026-03-27-dashi-da51-shards-semantic.cbor`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-dashi-da51-shards-semantic.cbor),
+  and
+  [`benchmarks/results/2026-03-27-dashi-da51-shards-compare.stats.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-dashi-da51-shards-compare.stats.json).
+  Result: the raw shard set (`15658` bytes across `41` files) compresses to
+  `9275` bytes in the compact surface aggregate (`33` repeated program motifs)
+  and to `9971` bytes in the semantic aggregate (`33` program motifs, `22`
+  semantic motifs), both with exact shard-byte reconstruction.
+- Recorded the new boundary decision in the docs/TODO/context: the Dashi-linked
+  storage win now exists at the aggregate DA51 CBOR shard level, so the next
+  question is whether to package that boundary or to drill below it into deeper
+  trace payloads rather than building more analysis-only JSON layers.
 - Updated the downstream FRACDASH bridge docs to reflect that upstream
   `../dashi_agda` already merged PR `#1` on `2026-03-27`, adding the auxiliary
   witness/perf surface (`Kernel/KAlgebra.agda`, `Monster/MUltrametric.agda`,

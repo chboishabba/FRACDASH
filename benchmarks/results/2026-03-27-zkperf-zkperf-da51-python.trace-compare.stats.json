@@ -1,0 +1,22 @@
+{
+  "raw": "benchmarks/results/2026-03-25-zkperf-zkperf-da51-python.trace-waveform.json",
+  "compact": {
+    "path": "benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-compact.json",
+    "bytes": 2139
+  },
+  "surface_motif": {
+    "path": "benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-motif.json",
+    "bytes": 1687,
+    "motif_count": 2
+  },
+  "semantic_motif": {
+    "path": "benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-semantic-motif.json",
+    "bytes": 1658,
+    "motif_count": 1
+  },
+  "raw_bytes": 5875,
+  "compact_gain": 3736,
+  "surface_motif_gain_over_compact": 452,
+  "semantic_motif_gain_over_compact": 481,
+  "semantic_minus_surface_bytes": 29
+}

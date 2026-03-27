@@ -1,0 +1,17 @@
+{
+  "source_kind": "dashi_agda_da51_cbor_aggregate",
+  "file_count": 41,
+  "raw_total_bytes": 15658,
+  "surface": {
+    "bytes": 9275,
+    "program_motifs": 33,
+    "gain_over_raw": 6383
+  },
+  "semantic": {
+    "bytes": 9971,
+    "program_motifs": 33,
+    "semantic_motifs": 22,
+    "gain_over_raw": 5687,
+    "semantic_minus_surface_bytes": 696
+  }
+}

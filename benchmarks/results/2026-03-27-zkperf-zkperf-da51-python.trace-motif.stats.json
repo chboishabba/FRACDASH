@@ -1,0 +1,13 @@
+{
+  "source": "benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-compact.json",
+  "motif": "benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-motif.json",
+  "roundtrip": "benchmarks/results/2026-03-27-zkperf-zkperf-da51-python.trace-motif-roundtrip.json",
+  "source_bytes": 2139,
+  "motif_bytes": 1687,
+  "saved_bytes": 452,
+  "reduction_ratio": 0.21131369798971483,
+  "row_count": 6,
+  "event_count": 1,
+  "motif_count": 2,
+  "roundtrip_equal": true
+}

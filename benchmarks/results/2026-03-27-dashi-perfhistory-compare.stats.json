@@ -1,0 +1,27 @@
+{
+  "raw": "../dashi_agda/da51_shards/summary.json",
+  "normalized": {
+    "path": "benchmarks/results/2026-03-27-dashi-perfhistory-normalized.json",
+    "bytes": 23722,
+    "rows": 41
+  },
+  "compact": {
+    "path": "benchmarks/results/2026-03-27-dashi-perfhistory-compact.json",
+    "bytes": 14245
+  },
+  "surface_motif": {
+    "path": "benchmarks/results/2026-03-27-dashi-perfhistory-surface-motif.json",
+    "bytes": 16586,
+    "motif_count": 14
+  },
+  "semantic_motif": {
+    "path": "benchmarks/results/2026-03-27-dashi-perfhistory-semantic-motif.json",
+    "bytes": 14156,
+    "motif_count": 22
+  },
+  "raw_bytes": 9758,
+  "compact_gain_over_normalized": 9477,
+  "surface_motif_gain_over_compact": -2341,
+  "semantic_motif_gain_over_compact": 89,
+  "semantic_minus_surface_bytes": 2430
+}
