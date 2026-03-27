@@ -1,0 +1,15 @@
+{
+  "source_kind": "dashi_agda_da51_inner_payload",
+  "file_count": 41,
+  "raw_total_bytes": 15658,
+  "inner": {
+    "bytes": 5387,
+    "positive_programs": 32,
+    "negative_cases": 1,
+    "gain_over_raw": 10271
+  },
+  "aggregate_surface_reference": {
+    "bytes": 9275,
+    "inner_minus_aggregate_bytes": -3888
+  }
+}

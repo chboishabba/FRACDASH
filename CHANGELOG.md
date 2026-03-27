@@ -95,6 +95,26 @@
   storage win now exists at the aggregate DA51 CBOR shard level, so the next
   question is whether to package that boundary or to drill below it into deeper
   trace payloads rather than building more analysis-only JSON layers.
+- Added [`DA51_BELOW_SHARD_CONTRACT.md`](/home/c/Documents/code/FRACDASH/DA51_BELOW_SHARD_CONTRACT.md)
+  to freeze the current shipped DA51 inner-payload contract against the actual
+  shard corpus plus [`../dashi_agda/PerfHistory.agda`](/home/c/Documents/code/dashi_agda/PerfHistory.agda),
+  not [`../dashi_agda/perf_da51.py`](/home/c/Documents/code/dashi_agda/perf_da51.py)
+  alone. The note records the current positive/negative FRACTRAN shapes,
+  documents that `trace_sha256` currently hashes `counters`, and marks
+  `fractions`, `trace`, and `trace_sha256` as derivable for the current corpus.
+- Added [`scripts/compact_dashi_da51_inner.py`](/home/c/Documents/code/FRACDASH/scripts/compact_dashi_da51_inner.py)
+  plus regression coverage in
+  [`scripts/test_compact_dashi_da51_inner.py`](/home/c/Documents/code/FRACDASH/scripts/test_compact_dashi_da51_inner.py)
+  as the first below-shard DA51 codec. It stores only counters, positive
+  program skeletons, positive `state`, and the negative exception case, then
+  reconstructs `fractions`, `trace`, and `trace_sha256` on decode.
+- Captured the first below-shard artifacts:
+  [`benchmarks/results/2026-03-27-dashi-da51-inner.cbor`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-dashi-da51-inner.cbor)
+  and
+  [`benchmarks/results/2026-03-27-dashi-da51-inner-compare.stats.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-dashi-da51-inner-compare.stats.json).
+  Result: the current shipped shard corpus shrinks from `15658` bytes to
+  `5387` bytes with exact shard-byte reconstruction, beating the current
+  aggregate shard surface codec (`9275` bytes) by `3888` bytes.
 - Updated the downstream FRACDASH bridge docs to reflect that upstream
   `../dashi_agda` already merged PR `#1` on `2026-03-27`, adding the auxiliary
   witness/perf surface (`Kernel/KAlgebra.agda`, `Monster/MUltrametric.agda`,

@@ -67,6 +67,22 @@ Current Dashi-facing compression note:
   the raw upstream artifact itself; the remaining open question is whether the
   next meaningful gain is below the current shard boundary rather than in
   another higher-level normalization layer
+- that below-shard question is now answered for the current shipped corpus:
+  [`scripts/compact_dashi_da51_inner.py`](/home/c/Documents/code/FRACDASH/scripts/compact_dashi_da51_inner.py)
+  uses the frozen inner contract in
+  [`DA51_BELOW_SHARD_CONTRACT.md`](/home/c/Documents/code/FRACDASH/DA51_BELOW_SHARD_CONTRACT.md)
+  to derive `fractions`, `trace`, and `trace_sha256` instead of storing them
+  redundantly
+- first measured below-shard result:
+  - raw shards: `15658` bytes
+  - aggregate shard surface codec: `9275` bytes
+  - inner-payload codec: `5387` bytes (`~65.6%` smaller than raw, `3888` bytes
+    smaller than the aggregate shard codec)
+- current read:
+  for the current shipped DA51 corpus, the meaningful next gain is below the
+  shard boundary; the remaining policy question is whether to upstream this as
+  a corpus-specific codec or keep it as FRACDASH-side research until the
+  generator side is reconciled
 
 What does not exist yet:
 
@@ -97,6 +113,7 @@ The near-term questions are:
 - [`MONSTER10WALK_CANONICAL.md`](/home/c/Documents/code/FRACDASH/MONSTER10WALK_CANONICAL.md): frozen canonical semantics and lock criteria for the Monster 10-walk lane
 - [`MONSTERLEAN_INTAKE.md`](/home/c/Documents/code/FRACDASH/MONSTERLEAN_INTAKE.md): intake notes for the local `monster/MonsterLean` clone and proof-completeness caveats
 - [`AGDAS_FORMALISM_INTAKE.md`](/home/c/Documents/code/FRACDASH/AGDAS_FORMALISM_INTAKE.md): authoritative intake note for the upstream `../dashi_agda` physics/closure formalism
+- [`DA51_BELOW_SHARD_CONTRACT.md`](/home/c/Documents/code/FRACDASH/DA51_BELOW_SHARD_CONTRACT.md): frozen contract note for the current shipped `da51_shards/*.cbor` inner payload shape used by below-shard compression/modeling work
 - [`BRIDGE_CORRECTNESS.md`](/home/c/Documents/code/FRACDASH/BRIDGE_CORRECTNESS.md): formal target note for semantics-preserving compilation, quotient validity, decoder correctness, and robustness
 - [`CURRENT_FORMAL_RESULT.md`](/home/c/Documents/code/FRACDASH/CURRENT_FORMAL_RESULT.md): short current formal result statement for the closed bridge family
 - [`JMD_HANDOFF_NOTE.md`](/home/c/Documents/code/FRACDASH/JMD_HANDOFF_NOTE.md): short handoff note separating the closed bridge result from the still-open 10-walk / rank-4 semantics question

@@ -163,6 +163,30 @@ Follow-up clarification from the main thread on `2026-03-27`:
     whether the next gain should come from deeper trace payloads beneath the
     current shard level or whether this aggregate boundary is already the right
     publish/export unit
+  - governance update for the next step:
+    below-shard work should treat the checked-in shard corpus plus
+    `../dashi_agda/PerfHistory.agda` as canonical, not `../dashi_agda/perf_da51.py`
+    alone
+  - reason:
+    `perf_da51.py` currently explains `file`, `sha256`, `counters`, and
+    `trace_sha256`, but the shipped shards and `PerfHistory.agda` also contain
+    a `fractran` payload, so the generator source is stale or incomplete
+    relative to the emitted artifact surface for this lane
+  - frozen below-shard contract:
+    see `DA51_BELOW_SHARD_CONTRACT.md`
+  - followthrough:
+    `scripts/compact_dashi_da51_inner.py` now compacts the inner FRACTRAN
+    payload against that frozen contract and decodes exactly back to the
+    original shard bytes
+  - first below-shard result:
+    - raw shard set: `15658` bytes
+    - aggregate shard surface codec: `9275` bytes
+    - below-shard inner codec: `5387` bytes
+  - current read:
+    for the current shipped corpus, the meaningful next gain is indeed below
+    the shard boundary because `fractions`, `trace`, and `trace_sha256` are
+    redundant given the frozen contract; the remaining open question is
+    governance, not feasibility
 
 Upstream `../dashi_agda` now has PR `#1` merged on `2026-03-27`, which adds a
 small witness/perf surface on top of the existing closure spine:

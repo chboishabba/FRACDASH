@@ -325,6 +325,45 @@
   - if the real target is still per-trace structure under the current shard
     payload, inspect deeper trace surfaces rather than building more JSON-side
     analysis layers
+- [x] Freeze the below-shard DA51 contract against the shipped shards and
+  `PerfHistory.agda`, not `perf_da51.py` alone:
+  - document the current positive and negative FRACTRAN payload shapes
+  - record that `trace_sha256` currently hashes `counters`, not the FRACTRAN
+    trace
+  - record which fields are derivable in the current shipped corpus
+  - treat `perf_da51.py` as stale or incomplete for this lane until it matches
+    the emitted shard surface
+  - implemented in `DA51_BELOW_SHARD_CONTRACT.md`
+- [ ] Build the first below-shard codec/model over the real inner FRACTRAN
+- [x] Build the first below-shard codec/model over the real inner FRACTRAN
+  payload:
+  - factor counters, program skeleton, trace, and exception case against the
+    frozen below-shard contract
+  - use the current corpus invariants only where they are explicitly documented
+    in `DA51_BELOW_SHARD_CONTRACT.md`
+  - require exact decode back to the original shard bytes for the current
+    checked-in corpus
+  - compare its size against the current aggregate-shard codec before treating
+    it as the new preferred boundary
+  - implemented in `scripts/compact_dashi_da51_inner.py`
+  - regression-covered by `scripts/test_compact_dashi_da51_inner.py`
+  - first measured comparison artifact:
+    `benchmarks/results/2026-03-27-dashi-da51-inner-compare.stats.json`
+  - current result on the current shipped shard corpus:
+    - raw shard set: `15658` bytes
+    - aggregate shard surface codec: `9275` bytes
+    - inner-payload codec: `5387` bytes
+  - conclusion:
+    for the current corpus, below-shard factorization beats the aggregate shard
+    codec materially while still decoding exactly back to the original shard
+    bytes
+- [ ] Decide whether to upstream the below-shard codec shape or keep it local
+  until the generator side is reconciled:
+  - current blocker: `perf_da51.py` does not describe the full shipped shard
+    contract, so upstreaming a corpus-specific inner codec without clarifying
+    generator ownership could create confusion
+  - if upstreamed, present it as operating on the current emitted corpus rather
+    than as a guaranteed future generator contract
 - [ ] Decide whether the `113` total degeneracy has structural support or should be discarded as coincidence.
 - [ ] Write and maintain the short result note distinguishing observations from conjectures for the active `physics22` exploratory baseline.
 - [ ] Finish the `fractran` submodule repair after the maintained fork exists:
