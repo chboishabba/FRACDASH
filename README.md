@@ -34,6 +34,17 @@ What exists now:
 - a stable cross-slice bridge regime summary at [`benchmarks/results/2026-03-19-bridge-regime-summary.md`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-19-bridge-regime-summary.md)
 - an executable witness/status surface for the closed bridge family via [`formalism/ExecutionWitnessSketch.agda`](/home/c/Documents/code/FRACDASH/formalism/ExecutionWitnessSketch.agda) and `execution_status` emission in invariant artifacts
 
+Upstream note:
+
+- `../dashi_agda` merged PR `#1` on `2026-03-27`, adding the auxiliary
+  witness/perf surface (`Kernel/KAlgebra.agda`, `Monster/MUltrametric.agda`,
+  `Moonshine.agda`, `MoonshineEarn.agda`, `JFixedPoint.agda`,
+  `PerfHistory.agda`, and `perf_da51.py`) on top of the canonical closure
+  spine.
+- FRACDASH should continue to treat that upstream addition as witness material
+  for bridging and provenance, not as a change to the local executable subset
+  or bridge correctness obligations.
+
 What does not exist yet:
 
 - the executable 10-basin obstruction experiments
@@ -302,11 +313,35 @@ spectrogram-style view of the canonical rank-4 quotient surface using:
 - an optional walk-time panel over the same axis
 - graph branch activity as the default signal instead of plain occupancy density
 
+The branch-density x-axis is now explicitly versioned by projection:
+
+- `--x-axis raw-state`: detailed projected raw-state columns for debugging and hotspot inspection
+- `--x-axis basin`: canonical 10-basin columns with reachability/stability annotations
+- `--x-axis bucket`: experimental Gödel/fraction-band buckets for the "jumping between fractions" view
+
+Examples:
+
+```sh
+python3 scripts/render_trace_waveform.py \
+  --mode branch-density \
+  --x-axis basin \
+  --rank4-dataset benchmarks/results/rank4-dataset-latest.json \
+  --phase2-artifact benchmarks/results/2026-03-23-agdas-physics23-phase2.json
+
+python3 scripts/render_trace_waveform.py \
+  --mode branch-density \
+  --x-axis bucket \
+  --rank4-dataset benchmarks/results/rank4-dataset-latest.json \
+  --phase2-artifact benchmarks/results/2026-03-23-agdas-physics23-phase2.json
+```
+
 Current scope note:
 
 - it is aligned to the canonical 6-register rank-4 surface
 - it uses the rank-4 quotient machinery (`q(N)`) to project raw states into the
   same 10-sector frame
+- `basin` is the preferred explanatory projection for the 10-basin / chain-height-4 discussion
+- `bucket` is exploratory and should be read as an encoded fraction-band view, not a canonical basin claim
 - it is experimental visualization support for the basin/topology discussion,
   not a proof of the 10-basin or chain-height-4 claims
 - this is the preferred visualization path for the current basin/topology

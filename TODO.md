@@ -63,6 +63,7 @@
   - [x] add a compressed wave-2 `MonsterState` / `Monster.Step` template set
   - [x] run the wave-2 template set through the Phase 2 verifier path and capture the artifact
   - [x] decide to enlarge the encoded state model before widening beyond the compressed Monster seam
+  - [x] note the upstream PR `#1` witness/perf surface as merged and treat it as auxiliary bridge material only
   - [x] add a prototype wave-3 enlarged state carrier in `scripts/agdas_wave3_state.py`
   - [x] thread the wave-3 carrier into executable bridge experiments
   - [x] add a wave-3 Monster-facing template set in `scripts/agdas_bridge.py`
@@ -178,6 +179,10 @@
 - [x] Extend the same renderer with a graph-facing `branch-density` mode for the
   canonical rank-4 dataset, keeping the current waveform HTML/PNG behavior
   unchanged unless the new mode is explicitly requested.
+- [x] Add explicit `branch-density` x-axis projections so the renderer can show
+  the same rank-4 surface as projected raw states, canonical basins, or
+  experimental Gödel/fraction buckets without changing the existing waveform
+  defaults.
 - [x] Keep both visualization entrypoints:
   - `scripts/render_trace_waveform.py --mode branch-density` stays the
     canonical rank-4 basin/topology surface

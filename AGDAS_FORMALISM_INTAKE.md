@@ -18,6 +18,11 @@ Current practical status:
 - upstream minimal-credible closure now also carries explicit execution
   admissibility and family-classification witnesses through the core/full
   closure witness records,
+- upstream PR `#1` additionally adds a small witness/perf surface
+  (`Kernel/KAlgebra.agda`, `Monster/MUltrametric.agda`, `Moonshine.agda`,
+  `MoonshineEarn.agda`, `JFixedPoint.agda`, `PerfHistory.agda`, and
+  `perf_da51.py`); FRACDASH should treat these as auxiliary witness artifacts
+  rather than canonical closure modules,
 - FRACDASH currently executes a deliberately compressed subset of that surface
   through local carrier/template experiments,
 - local claims about "physics closure" must stay at the level of implemented

@@ -459,8 +459,33 @@ def _load_rank4_graph(rank4_path: Path) -> dict[str, Any]:
     }
 
 
+def _longest_descending_depths(node_count: int, edges: list[tuple[int, int]]) -> list[int]:
+    graph: dict[int, list[int]] = {idx: [] for idx in range(node_count)}
+    for src, dst in edges:
+        graph[src].append(dst)
+    memo: dict[int, int] = {}
+
+    def dfs(node: int) -> int:
+        if node in memo:
+            return memo[node]
+        best = 1
+        for child in graph[node]:
+            best = max(best, 1 + dfs(child))
+        memo[node] = best
+        return best
+
+    return [dfs(idx) for idx in range(node_count)]
+
+
+def _godel_bucket_index(state: tuple[int, ...], register_specs: list[dict[str, Any]], bucket_count: int) -> int:
+    values = sorted(_state_to_godel_value(tuple(int(v) for v in s), register_specs) for s in product((-1, 0, 1), repeat=len(register_specs)))
+    value = _state_to_godel_value(state, register_specs)
+    rank = values.index(value)
+    return min(bucket_count - 1, int(rank * bucket_count / len(values)))
+
+
 def _build_branch_density_payload(
-    rank4_path: Path, phase2_path: Path | None, density_mode: str, panels: str
+    rank4_path: Path, phase2_path: Path | None, density_mode: str, panels: str, x_axis: str
 ) -> dict[str, Any]:
     graph = _load_rank4_graph(rank4_path)
     canonical = graph["canonical"]
@@ -471,9 +496,11 @@ def _build_branch_density_payload(
     full_states = [tuple(int(v) for v in state) for state in product((-1, 0, 1), repeat=register_count)]
     projected_states = [tuple(int(v) for v in state) for state in product((-1, 0, 1), repeat=project_width)]
 
-    sector_by_proj = {_project_state(state, project_width): _q_sector_id(_state_to_godel_value(_project_state(state, project_width), register_specs)) for state in projected_states}
+    sector_by_proj = {
+        _project_state(state, project_width): _q_sector_id(_state_to_godel_value(_project_state(state, project_width), register_specs))
+        for state in projected_states
+    }
     ordered_states = sorted(projected_states, key=lambda s: (sector_by_proj[s], s))
-    x_index = {state: idx for idx, state in enumerate(ordered_states)}
 
     out_counts = {state: 0 for state in ordered_states}
     in_counts = {state: 0 for state in ordered_states}
@@ -503,9 +530,105 @@ def _build_branch_density_payload(
             state: float(out_counts[state] + in_counts[state] + 2 * cross_counts[state]) for state in ordered_states
         }
 
-    structural_matrix = np.full((10, len(ordered_states)), np.nan, dtype=float)
-    for state in ordered_states:
-        structural_matrix[sector_by_proj[state], x_index[state]] = base_graph_score[state]
+    if x_axis == "raw-state":
+        x_labels = [str(state) for state in ordered_states]
+        x_key_for_state = {state: state for state in ordered_states}
+        column_order = ordered_states
+        row_labels = [f"S{i}" for i in range(10)]
+        structural_matrix = np.full((10, len(column_order)), np.nan, dtype=float)
+        x_index = {state: idx for idx, state in enumerate(column_order)}
+        for state in ordered_states:
+            structural_matrix[sector_by_proj[state], x_index[state]] = base_graph_score[state]
+        separators = []
+        cursor = 0
+        for sector in range(10):
+            cursor += sum(1 for state in ordered_states if sector_by_proj[state] == sector)
+            separators.append(cursor - 0.5)
+        hot_units = ordered_states
+        hot_rows_title = "Hot Projected States"
+        hot_rows_kind = "state"
+        reachability_depths = canonical.get("metrics", {}).get("monotone_chain_height")
+    elif x_axis == "basin":
+        basins = canonical.get("basins", [])
+        stability = [int(v) for v in canonical.get("stability", [])]
+        adjacency = canonical.get("adjacency", [])
+        basin_ids = [str(basin.get("id", f"sector:{idx}")) for idx, basin in enumerate(basins)]
+        basin_index = {basin_id: idx for idx, basin_id in enumerate(basin_ids)}
+        descending_edges = []
+        for edge in adjacency:
+            src = int(edge["from"])
+            dst = int(edge["to"])
+            if 0 <= src < len(stability) and 0 <= dst < len(stability) and stability[src] > stability[dst]:
+                descending_edges.append((src, dst))
+        reachability = _longest_descending_depths(len(basin_ids), descending_edges)
+        agg_graph = {basin_id: 0.0 for basin_id in basin_ids}
+        agg_cross = {basin_id: 0 for basin_id in basin_ids}
+        agg_in = {basin_id: 0 for basin_id in basin_ids}
+        agg_out = {basin_id: 0 for basin_id in basin_ids}
+        for state in ordered_states:
+            basin_id = f"sector:{sector_by_proj[state]}"
+            agg_graph[basin_id] += base_graph_score[state]
+            agg_cross[basin_id] += cross_counts[state]
+            agg_in[basin_id] += in_counts[state]
+            agg_out[basin_id] += out_counts[state]
+        column_order = basin_ids
+        x_labels = basin_ids
+        x_key_for_state = {state: f"sector:{sector_by_proj[state]}" for state in ordered_states}
+        x_index = {key: idx for idx, key in enumerate(column_order)}
+        structural_matrix = np.asarray(
+            [
+                [agg_graph[key] for key in column_order],
+                [float(agg_cross[key]) for key in column_order],
+                [float(agg_in[key]) for key in column_order],
+                [float(agg_out[key]) for key in column_order],
+                [float(stability[basin_index[key]]) for key in column_order],
+                [float(reachability[basin_index[key]]) for key in column_order],
+            ],
+            dtype=float,
+        )
+        row_labels = ["graph", "cross", "in", "out", "stability", "reachability"]
+        separators = [idx - 0.5 for idx in range(1, len(column_order))]
+        hot_units = column_order
+        hot_rows_title = "Hot Basins"
+        hot_rows_kind = "basin"
+        reachability_depths = reachability
+    elif x_axis == "bucket":
+        bucket_count = 10
+        bucket_labels = [f"bucket:{idx}" for idx in range(bucket_count)]
+        x_key_for_state = {state: bucket_labels[_godel_bucket_index(state, register_specs, bucket_count)] for state in ordered_states}
+        agg_graph = {label: 0.0 for label in bucket_labels}
+        agg_cross = {label: 0 for label in bucket_labels}
+        agg_in = {label: 0 for label in bucket_labels}
+        agg_out = {label: 0 for label in bucket_labels}
+        bucket_sectors: dict[str, set[int]] = {label: set() for label in bucket_labels}
+        for state in ordered_states:
+            bucket = x_key_for_state[state]
+            agg_graph[bucket] += base_graph_score[state]
+            agg_cross[bucket] += cross_counts[state]
+            agg_in[bucket] += in_counts[state]
+            agg_out[bucket] += out_counts[state]
+            bucket_sectors[bucket].add(sector_by_proj[state])
+        column_order = bucket_labels
+        x_labels = bucket_labels
+        x_index = {key: idx for idx, key in enumerate(column_order)}
+        structural_matrix = np.asarray(
+            [
+                [agg_graph[key] for key in column_order],
+                [float(agg_cross[key]) for key in column_order],
+                [float(agg_in[key]) for key in column_order],
+                [float(agg_out[key]) for key in column_order],
+                [float(len(bucket_sectors[key])) for key in column_order],
+            ],
+            dtype=float,
+        )
+        row_labels = ["graph", "cross", "in", "out", "sector_span"]
+        separators = [idx - 0.5 for idx in range(1, len(column_order))]
+        hot_units = column_order
+        hot_rows_title = "Hot Buckets"
+        hot_rows_kind = "bucket"
+        reachability_depths = None
+    else:
+        raise ValueError(f"unsupported x-axis projection: {x_axis}")
 
     walk_matrix: np.ndarray | None = None
     walk_steps: list[dict[str, Any]] = []
@@ -521,38 +644,40 @@ def _build_branch_density_payload(
         if len(path[0].get("state", [])) < project_width:
             raise ValueError("phase2 artifact does not have enough registers for rank4 projection")
         walk_rows = len(path) + 1
-        walk_matrix = np.zeros((walk_rows, len(ordered_states)), dtype=float)
+        walk_matrix = np.zeros((walk_rows, len(column_order)), dtype=float)
         states = [tuple(int(v) for v in path[0]["state"])]
         states.extend(tuple(int(v) for v in step["next_state"]) for step in path)
-        visit_counts = {state: 0 for state in ordered_states}
+        visit_counts = {key: 0 for key in column_order}
         for row_idx, state in enumerate(states):
             proj = _project_state(state, project_width)
-            if proj not in x_index:
+            if proj not in x_key_for_state:
                 continue
-            visit_counts[proj] += 1
+            bucket = x_key_for_state[proj]
+            visit_counts[bucket] += 1
             if density_mode == "visit":
-                value = float(visit_counts[proj])
+                value = float(visit_counts[bucket])
             elif density_mode == "hybrid":
-                value = float(1.0 + base_graph_score[proj])
+                if x_axis == "raw-state":
+                    value = float(1.0 + base_graph_score[proj])
+                elif x_axis == "basin":
+                    value = float(1.0 + structural_matrix[0, x_index[bucket]])
+                else:
+                    value = float(1.0 + structural_matrix[0, x_index[bucket]])
             else:
                 value = 1.0
-            walk_matrix[row_idx, x_index[proj]] = value
+            walk_matrix[row_idx, x_index[bucket]] = value
         walk_steps = trace["step_annotations"]
         walk_notes.append(f"walk_template={trace['metadata']['template_set']}")
         walk_notes.append(f"walk_cycle_start={trace['metadata']['cycle_start']}")
     elif panels in {"time", "both"}:
         raise ValueError("--phase2-artifact is required when panels include time")
 
-    sector_sizes = {sector: sum(1 for state in ordered_states if sector_by_proj[state] == sector) for sector in range(10)}
-    separators = []
-    cursor = 0
-    for sector in range(10):
-        cursor += sector_sizes[sector]
-        separators.append(cursor - 0.5)
-
-    hot_states = sorted(
-        ordered_states,
-        key=lambda state: (base_graph_score[state], cross_counts[state], in_counts[state], out_counts[state], state),
+    hot_units_sorted = sorted(
+        hot_units,
+        key=lambda unit: (
+            structural_matrix[0, x_index[unit]] if x_axis != "raw-state" else base_graph_score[unit],
+            unit,
+        ),
         reverse=True,
     )[:12]
 
@@ -571,7 +696,11 @@ def _build_branch_density_payload(
         "stability_values": canonical.get("stability"),
         "q_rows": len(q_rows),
         "density_mode": density_mode,
+        "x_axis": x_axis,
+        "x_labels": x_labels,
+        "row_labels": row_labels,
         "phase2_artifact": str(phase2_path) if phase2_path else None,
+        "reachability_depths": reachability_depths,
     }
 
     return {
@@ -583,6 +712,8 @@ def _build_branch_density_payload(
         "walk_steps": walk_steps,
         "walk_notes": walk_notes,
         "separators": separators,
+        "column_order": column_order,
+        "x_index": x_index,
         "state_scores": {
             "out": out_counts,
             "in": in_counts,
@@ -590,7 +721,9 @@ def _build_branch_density_payload(
             "transfer": transfer_counts,
             "graph": base_graph_score,
         },
-        "hot_states": hot_states,
+        "hot_units": hot_units_sorted,
+        "hot_rows_title": hot_rows_title,
+        "hot_rows_kind": hot_rows_kind,
     }
 
 
@@ -609,11 +742,15 @@ def render_branch_density_png(payload: dict[str, Any], title: str, panels: str) 
         matrix = payload["structural_matrix"]
         masked = np.ma.masked_invalid(matrix)
         im = ax.imshow(masked, aspect="auto", interpolation="nearest", cmap="magma")
-        ax.set_ylabel("Sector")
-        ax.set_yticks(np.arange(10))
-        ax.set_yticklabels([f"S{i}" for i in range(10)], fontsize=8)
-        ax.set_xticks([])
-        ax.set_title("Structural branch density by projected raw state", loc="left", fontsize=11)
+        ax.set_ylabel("Structure")
+        ax.set_yticks(np.arange(matrix.shape[0]))
+        ax.set_yticklabels(payload["metadata"]["row_labels"], fontsize=8)
+        if len(payload["metadata"]["x_labels"]) <= 20:
+            ax.set_xticks(np.arange(len(payload["metadata"]["x_labels"])))
+            ax.set_xticklabels(payload["metadata"]["x_labels"], fontsize=7, rotation=90)
+        else:
+            ax.set_xticks([])
+        ax.set_title(f"Structural branch density by {payload['metadata']['x_axis']}", loc="left", fontsize=11)
         for sep in payload["separators"][:-1]:
             ax.axvline(sep, color="white", linewidth=0.35, alpha=0.8)
         cbar = fig.colorbar(im, ax=ax, fraction=0.02, pad=0.02)
@@ -626,8 +763,12 @@ def render_branch_density_png(payload: dict[str, Any], title: str, panels: str) 
         ax.set_ylabel("Walk Step")
         ax.set_yticks(np.arange(matrix.shape[0]))
         ax.set_yticklabels([str(i) for i in range(matrix.shape[0])], fontsize=8)
-        ax.set_xticks([])
-        ax.set_title("Walk-time activation on the same projected raw-state axis", loc="left", fontsize=11)
+        if len(payload["metadata"]["x_labels"]) <= 20:
+            ax.set_xticks(np.arange(len(payload["metadata"]["x_labels"])))
+            ax.set_xticklabels(payload["metadata"]["x_labels"], fontsize=7, rotation=90)
+        else:
+            ax.set_xticks([])
+        ax.set_title(f"Walk-time activation on the same {payload['metadata']['x_axis']} axis", loc="left", fontsize=11)
         for sep in payload["separators"][:-1]:
             ax.axvline(sep, color="white", linewidth=0.35, alpha=0.8)
         cbar = fig.colorbar(im, ax=ax, fraction=0.02, pad=0.02)
@@ -643,18 +784,36 @@ def render_branch_density_html(payload: dict[str, Any], png_bytes: bytes, title:
     img_b64 = base64.b64encode(png_bytes).decode("ascii")
     meta = payload["metadata"]
     hot_rows = []
-    for state in payload["hot_states"]:
+    for unit in payload["hot_units"]:
+        x_idx = payload["x_index"][unit]
+        if payload["hot_rows_kind"] == "state":
+            graph_score = payload["state_scores"]["graph"][unit]
+            cross = payload["state_scores"]["cross"][unit]
+            indeg = payload["state_scores"]["in"][unit]
+            outdeg = payload["state_scores"]["out"][unit]
+            sector = payload["sector_by_state"][unit]
+        else:
+            graph_score = payload["structural_matrix"][0, x_idx]
+            cross = payload["structural_matrix"][1, x_idx] if payload["structural_matrix"].shape[0] > 1 else 0
+            indeg = payload["structural_matrix"][2, x_idx] if payload["structural_matrix"].shape[0] > 2 else 0
+            outdeg = payload["structural_matrix"][3, x_idx] if payload["structural_matrix"].shape[0] > 3 else 0
+            sector = unit
         hot_rows.append(
             "<tr>"
-            f"<td><code>{state}</code></td>"
-            f"<td>{payload['sector_by_state'][state]}</td>"
-            f"<td>{payload['state_scores']['graph'][state]:.1f}</td>"
-            f"<td>{payload['state_scores']['cross'][state]}</td>"
-            f"<td>{payload['state_scores']['in'][state]}</td>"
-            f"<td>{payload['state_scores']['out'][state]}</td>"
+            f"<td><code>{unit}</code></td>"
+            f"<td>{sector}</td>"
+            f"<td>{float(graph_score):.1f}</td>"
+            f"<td>{int(cross)}</td>"
+            f"<td>{int(indeg)}</td>"
+            f"<td>{int(outdeg)}</td>"
             "</tr>"
         )
     notes_html = "".join(f"<li><code>{note}</code></li>" for note in payload["walk_notes"])
+    reachability_html = ""
+    if meta["x_axis"] == "basin" and meta.get("reachability_depths") is not None:
+        reachability_html = (
+            f"<li><strong>Reachability depths:</strong> <code>{meta['reachability_depths']}</code></li>"
+        )
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -675,7 +834,7 @@ def render_branch_density_html(payload: dict[str, Any], png_bytes: bytes, title:
 <body>
   <h1>{title}</h1>
   <div class="panel">
-    <p>This is the graph-facing spectrogram view. The structural panel shows graph branch activity over the projected raw-state axis; the optional traversal panel shows a walk projected onto the same axis. It is experimental evidence for the basin/topology discussion, not a proof of the 10-basin or chain-height-4 claims.</p>
+    <p>This is the graph-facing spectrogram view. The structural panel shows graph branch activity over the selected branch-density x-axis; the optional traversal panel shows a walk projected onto the same axis. It is experimental evidence for the basin/topology discussion, not a proof of the 10-basin or chain-height-4 claims.</p>
     <p><img alt="Branch density spectrogram" src="data:image/png;base64,{img_b64}"></p>
   </div>
   <div class="panel">
@@ -690,14 +849,16 @@ def render_branch_density_html(payload: dict[str, Any], png_bytes: bytes, title:
       <li><strong>Sector count:</strong> <code>{meta['sector_count']}</code></li>
       <li><strong>Chain height:</strong> <code>{meta['chain_height']}</code></li>
       <li><strong>Effective dimension:</strong> <code>{meta['effective_dimension']}</code></li>
+      <li><strong>X Axis:</strong> <code>{meta['x_axis']}</code></li>
       <li><strong>Density mode:</strong> <code>{meta['density_mode']}</code></li>
       <li><strong>Panels:</strong> <code>{panels}</code></li>
       <li><strong>Walk artifact:</strong> <code>{meta['phase2_artifact'] or '-'}</code></li>
+      {reachability_html}
     </ul>
-    <p>Sector separators on the x-axis are induced by the canonical quotient `q(N)`, applied to the projected raw-state coordinates used by the rank-4 dataset.</p>
+    <p>Sector separators and basin assignment are induced by the canonical quotient `q(N)`. The `bucket` projection is exploratory and groups projected states by Gödel/fraction-band order rather than canonical basin identity.</p>
   </div>
   <div class="panel">
-    <h2>Hot Projected States</h2>
+    <h2>{payload['hot_rows_title']}</h2>
     <table>
       <thead>
         <tr>
@@ -744,6 +905,7 @@ def main() -> None:
     parser.add_argument("--rank4-dataset", type=Path, help="Canonical rank-4 dataset JSON for branch-density mode")
     parser.add_argument("--phase2-artifact", type=Path, help="Optional phase-2 walk artifact for branch-density mode")
     parser.add_argument("--density-mode", choices=("graph", "visit", "hybrid"), default="graph")
+    parser.add_argument("--x-axis", choices=("raw-state", "basin", "bucket"), default="raw-state")
     parser.add_argument("--panels", choices=("stability", "time", "both"), default="both")
     args = parser.parse_args()
 
@@ -771,12 +933,12 @@ def main() -> None:
 
     if args.rank4_dataset is None:
         raise SystemExit("branch-density mode requires --rank4-dataset")
-    payload = _build_branch_density_payload(args.rank4_dataset, args.phase2_artifact, args.density_mode, args.panels)
-    title = args.title or "Branch Density Spectrogram"
+    payload = _build_branch_density_payload(args.rank4_dataset, args.phase2_artifact, args.density_mode, args.panels, args.x_axis)
+    title = args.title or f"Branch Density Spectrogram ({args.x_axis})"
     prefix = (
         Path(args.output_prefix)
         if args.output_prefix
-        else args.rank4_dataset.with_suffix("").with_name(args.rank4_dataset.with_suffix("").name + ".branch-density-view")
+        else args.rank4_dataset.with_suffix("").with_name(args.rank4_dataset.with_suffix("").name + f".branch-density-view.{args.x_axis}")
     )
     png_path, html_path = write_branch_density_outputs(payload, prefix, title, args.panels)
     _print_paths(
@@ -786,6 +948,7 @@ def main() -> None:
             "rank4_dataset": str(args.rank4_dataset),
             "phase2_artifact": str(args.phase2_artifact) if args.phase2_artifact else None,
             "density_mode": args.density_mode,
+            "x_axis": args.x_axis,
             "panels": args.panels,
         },
     )

@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-03-27
+
+- Updated the downstream FRACDASH bridge docs to reflect that upstream
+  `../dashi_agda` already merged PR `#1` on `2026-03-27`, adding the auxiliary
+  witness/perf surface (`Kernel/KAlgebra.agda`, `Monster/MUltrametric.agda`,
+  `Moonshine.agda`, `MoonshineEarn.agda`, `JFixedPoint.agda`,
+  `PerfHistory.agda`, and `perf_da51.py`).
+- Clarified that FRACDASH should treat that upstream addition as witness and
+  provenance material, not as a change to the local executable bridge
+  obligations or the canonical closure intake.
+
 ## 2026-03-25
 
 - Added [`scripts/render_trace_graph.py`](/home/c/Documents/code/FRACDASH/scripts/render_trace_graph.py)
@@ -16,6 +27,7 @@
 - Verified the renderer on [`benchmarks/results/2026-03-23-agdas-physics23-phase2.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-23-agdas-physics23-phase2.json) and [`benchmarks/results/2026-03-23-agdas-carrier8-physics6-phase2.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-23-agdas-carrier8-physics6-phase2.json), generating companion `.trace-waveform.html` and `.trace-waveform.png` artifacts for each.
 - Extended the waveform renderer to support stacked multi-artifact comparison output from the same normalized trace contract, so `physics*` and `carrier8_*` runs can be compared in one HTML + PNG artifact rather than by opening multiple single-run files.
 - Extended [`scripts/render_trace_waveform.py`](/home/c/Documents/code/FRACDASH/scripts/render_trace_waveform.py) with a separate `branch-density` mode for the canonical rank-4 dataset. It leaves the current walk waveform untouched unless requested, and adds a graph-facing spectrogram view with structural sector/stability rows plus an optional walk-time panel on the same projected raw-state axis.
+- Extended the same `branch-density` mode with explicit x-axis projections: `raw-state` for the detailed projected lattice, `basin` for the canonical 10-sector explanation surface with reachability annotations, and `bucket` for an experimental Gödel/fraction-band view intended to make "jumping between fractions" legible without conflating it with the basin claim.
 - Repo-status boundary for the branch-density work on `2026-03-25`: the intended local changes are currently limited to [`scripts/render_trace_waveform.py`](/home/c/Documents/code/FRACDASH/scripts/render_trace_waveform.py), [`README.md`](/home/c/Documents/code/FRACDASH/README.md), [`TODO.md`](/home/c/Documents/code/FRACDASH/TODO.md), [`CHANGELOG.md`](/home/c/Documents/code/FRACDASH/CHANGELOG.md), and the generated `rank4-dataset-latest.branch-density-view.branch-density.{html,png}` artifacts. Unrelated worktree state (`.gitmodules`, dirty `fractran`, and untracked [`scripts/render_trace_graph.py`](/home/c/Documents/code/FRACDASH/scripts/render_trace_graph.py)) was left untouched.
 - Recorded the visualization split explicitly in the docs: keep
   `render_trace_waveform.py --mode branch-density` as the canonical
