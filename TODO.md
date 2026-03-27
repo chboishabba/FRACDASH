@@ -364,8 +364,20 @@
   - current blocker: `perf_da51.py` does not describe the full shipped shard
     contract, so upstreaming a corpus-specific inner codec without clarifying
     generator ownership could create confusion
-  - if upstreamed, present it as operating on the current emitted corpus rather
-    than as a guaranteed future generator contract
+  - temporary reconciliation now exists via `--fractran-template` on
+    `../dashi_agda/perf_da51.py`:
+    - when enabled, generated shards copy matching `fractran` payloads from a
+      source shard directory.
+    - when disabled, legacy schema-only emission is preserved.
+  - if upstreamed, present it as operating on the **current emitted corpus**
+    while defaulting off to avoid changing existing generator semantics.
+    - when upstreaming, document the exact provenance requirement for full-schema
+      generation and the open expectation for a default future mode.
+- [ ] Validate and harden the `perf_da51.py` template mode before enabling it by
+  default:
+  - include a dry-run contract check for full-schema parity
+  - decide whether to ship `--fractran-template` as optional only or switch it to
+    the canonical mode once the upstream contract is agreed
 - [ ] Decide whether the `113` total degeneracy has structural support or should be discarded as coincidence.
 - [ ] Write and maintain the short result note distinguishing observations from conjectures for the active `physics22` exploratory baseline.
 - [ ] Finish the `fractran` submodule repair after the maintained fork exists:

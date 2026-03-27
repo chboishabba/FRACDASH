@@ -29,6 +29,15 @@ Reason:
 - so the generator source is stale or incomplete relative to the checked-in
   artifact surface for this lane
 
+Temporary reconciliation path (2026-03-27):
+
+- `../dashi_agda/perf_da51.py` now supports `--fractran-template`, which copies
+  a `fractran` payload by file name from an existing shard directory when
+  generating fresh shards.
+- this keeps legacy output unchanged unless the flag is explicitly enabled, so
+  existing local workflows remain stable while a full contract migration is being
+  decided upstream.
+
 ## Source-File Boundary Map
 
 To keep upstreaming and local implementation aligned, this is the authoritative

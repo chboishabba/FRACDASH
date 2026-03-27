@@ -118,6 +118,12 @@
   [`benchmarks/results/2026-03-27-dashi-da51-inner.cbor`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-dashi-da51-inner.cbor)
   and
   [`benchmarks/results/2026-03-27-dashi-da51-inner-compare.stats.json`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-27-dashi-da51-inner-compare.stats.json).
+- Documented and validated a compatibility pathway for shard regeneration in
+  `../dashi_agda/perf_da51.py`: `--fractran-template` can copy full
+  `fractran` payloads from existing shards without changing the default legacy
+  schema-only emission. This enables deterministic rebuilds against the frozen
+  shipped corpus while we keep generator-vs-canonical contract decisions
+  explicit.
   Result: the current shipped shard corpus shrinks from `15658` bytes to
   `5387` bytes with exact shard-byte reconstruction, beating the current
   aggregate shard surface codec (`9275` bytes) by `3888` bytes.
