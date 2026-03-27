@@ -29,6 +29,35 @@ Reason:
 - so the generator source is stale or incomplete relative to the checked-in
   artifact surface for this lane
 
+## Source-File Boundary Map
+
+To keep upstreaming and local implementation aligned, this is the authoritative
+below-shard boundary mapping:
+
+- `../dashi_agda/perf_da51.py`
+  - `da51_shard(...)` currently emits only:
+    - `file`
+    - `sha256`
+    - `counters`
+    - `trace_sha256`
+  - it writes to `../dashi_agda/da51_shards`
+  - it does not emit `fractran`, so it is incomplete as a canonical description of
+    the currently shipped payload
+- `../dashi_agda/PerfHistory.agda`
+  - `shard-0` .. `shard-39` provide the checked-in payload mirror with
+    full fields:
+    - `file`
+    - `sha256`
+    - `counters`
+    - `trace_sha256`
+    - `fractran`
+- `../dashi_agda/da51_shards/*.cbor`
+  - `41` checked-in payload files plus one `summary.json`
+  - `40` files are positive FRACTRAN rows with explicit `denominators`,
+    `fractions`, `trace`, `steps`, `earns_moonshine`
+  - `1` file is a negative exception (`MonsterVectors.cbor`) with only `ssp_primes`,
+    `state`, `earns_moonshine`, and `reason`
+
 ## Current Top-Level Shard Shape
 
 All current shards use DA51 CBOR tag `55889` and carry:
@@ -44,6 +73,23 @@ SHA-256 of the sorted `counters` JSON payload, matching the implementation in
 [`perf_da51.py`](/home/c/Documents/code/dashi_agda/perf_da51.py).
 
 ## Current FRACTRAN Variants
+
+Concrete file-level shape split for the current checked-in corpus:
+
+- Positive shape (40 files): `ActionMonotonicity.agda`, `AntiFascistSystem.agda`,
+  `Base369.agda`, `CRTPeriod.agda`, `Contraction.agda`,
+  `CounterexampleHarness.agda`, `DA51Tag.agda`, `DA51Trace.agda`,
+  `DASHI_Tests.agda`, `DaslImport.agda`, `Fascism_Tests.agda`,
+  `FascisticSystem.agda`, `FixedPoint.agda`, `HGSA_Fixpoints.agda`,
+  `JFixedPoint.agda`, `Layer0.agda`, `Layer1.agda`, `Layer2.agda`,
+  `Layer3.agda`, `LogicTlurey.agda`, `MaassRestoration.agda`,
+  `MonsterConformance.agda`, `MonsterGroups.agda`, `MonsterOntos.agda`,
+  `MonsterSpec.agda`, `MonsterState.agda`, `MonsterTraceCounts.agda`,
+  `Moonshine.agda`, `MoonshineEarn.agda`, `Overflow.agda`, `PrimeRoles.agda`,
+  `ReflectAll.agda`, `SWAR_Equivalence.agda`, `SelfTrace.agda`,
+  `SelfWitness.agda`, `TenfoldBridges.agda`, `ThreeAdic_Attractor.agda`,
+  `UFTC_Lattice.agda`, `Ultrametric.agda`, `Z6_RegularInverse.agda`
+- Negative exception (1 file): `MonsterVectors.agda`
 
 ### Positive FRACTRAN shape
 
@@ -100,3 +146,9 @@ the current checked-in corpus.
 
 If future JMD artifacts add richer perf or trace payloads, this contract must be
 reopened rather than silently stretched.
+
+## Boundary Freeze
+
+- Freeze date: `2026-03-27`
+- Scope owner: `FRACDASH`, using `da51_shards` + `PerfHistory.agda` as the
+  canonical input for below-shard codec/modeling claims.

@@ -102,6 +102,12 @@
   alone. The note records the current positive/negative FRACTRAN shapes,
   documents that `trace_sha256` currently hashes `counters`, and marks
   `fractions`, `trace`, and `trace_sha256` as derivable for the current corpus.
+- Added a source-file boundary appendix in
+  [`DA51_BELOW_SHARD_CONTRACT.md`](/home/c/Documents/code/FRACDASH/DA51_BELOW_SHARD_CONTRACT.md)
+  to remove ambiguity between `perf_da51.py` and `PerfHistory.agda`:
+  which inputs FRACDASH should treat as canonical for below-shard modeling,
+  and the exact file-level shape split (`40` positive + `1` negative) in
+  `../dashi_agda/da51_shards`.
 - Added [`scripts/compact_dashi_da51_inner.py`](/home/c/Documents/code/FRACDASH/scripts/compact_dashi_da51_inner.py)
   plus regression coverage in
   [`scripts/test_compact_dashi_da51_inner.py`](/home/c/Documents/code/FRACDASH/scripts/test_compact_dashi_da51_inner.py)

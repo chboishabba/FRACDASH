@@ -334,6 +334,8 @@
   - treat `perf_da51.py` as stale or incomplete for this lane until it matches
     the emitted shard surface
   - implemented in `DA51_BELOW_SHARD_CONTRACT.md`
+  - added a file-by-file boundary map (40 positive + 1 negative) and explicit
+    source-side mapping for `perf_da51.py` vs `PerfHistory.agda`
 - [ ] Build the first below-shard codec/model over the real inner FRACTRAN
 - [x] Build the first below-shard codec/model over the real inner FRACTRAN
   payload:
