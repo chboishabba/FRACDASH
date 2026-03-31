@@ -1,0 +1,6 @@
+[flake8]
+max-line-length = 500
+extend-ignore = E,W,F401,F841
+# Baseline: suppress all style (E/W) and unused-import (F401/F841) for existing code.
+# Active checks: F811 (redefined unused), F821 (undefined name), F822, F823.
+# Tighten progressively as the codebase is cleaned up.
