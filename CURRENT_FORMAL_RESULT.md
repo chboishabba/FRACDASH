@@ -17,14 +17,15 @@ Across the current closed family, FRACDASH has:
 - deterministic unit-step normalization
 - exact decode-back after macro execution
 - structural well-formedness preservation at the paired-prime `Y` layer
-- class-indexed regime witnesses for strict contraction and bounded transmutation
+- class-indexed regime witnesses for slice-local target-relative residual
+  decrease and bounded transmutation
 
 ## Numeric Result
 
 Across the currently closed family, the master theorem layer proves:
 
 - target-relative residual decrease
-- strict contraction
+- class-indexed strict-contraction witnesses for the slice-local residual notion
 - bounded transmutation
 
 The conservative slices are the zero-transmutation subregime:
@@ -51,5 +52,6 @@ Conservative slices are the zero-transmutation special case. Widened Batch C sli
 This note does not claim:
 
 - a fully numeric generic theorem inside `RegimeValidBridge`
+- a global source Lyapunov theorem or metric contraction proof
 - a proof that every future slice must use the same residual notion or numeric bounds
 - any downstream physics interpretation beyond the current regime-valid bridge taxonomy

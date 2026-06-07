@@ -364,7 +364,9 @@ Artifacts and checks:
   - [scripts/bridge_core_validators.py](/home/c/Documents/code/FRACDASH/scripts/bridge_core_validators.py)
 - reusable Agda execution layer:
   - [formalism/GenericMacroBridge.agda](/home/c/Documents/code/FRACDASH/formalism/GenericMacroBridge.agda)
-  - now includes a generic `RegimeValidBridge` surface for strict contraction, bounded transmutation, classification, and well-formedness preservation
+  - now includes a generic `RegimeValidBridge` surface for class-indexed
+    strict-contraction witnesses over the local residual notion, bounded
+    transmutation, classification, and well-formedness preservation
 - thin master instantiation layer:
   - [formalism/BridgeInstances.agda](/home/c/Documents/code/FRACDASH/formalism/BridgeInstances.agda)
   - keeps `physics1`, `physics3`, and `physics15` separate as concrete witnesses while stating the current bridge family once
@@ -426,10 +428,14 @@ Current widened bridge result:
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `physics1` | Exact slice-local `StepDelta`, instantiated through `GenericMacroBridge` | Deterministic unit-step normalization | Paired-prime macro realization with checked soundness | `conservative_contracting`: conservation + exact L1 descent + strictly contracting validator trace | `implemented` |
 | `physics3` | Exact slice-local `StepDelta`, instantiated through `GenericMacroBridge` | Deterministic unit-step normalization | Paired-prime macro realization with checked soundness | `conservative_contracting`: conservation + exact L1 descent + strictly contracting validator trace | `implemented` |
-| `physics15` | Exact slice-local `StepDelta`, instantiated through the same generic macro layer as `physics1`/`physics3` | Deterministic unit-step normalization | Paired-prime macro realization with checked soundness | `28 conservative_contracting + 1 transmuting_contracting`; exact decode-back, strict contraction witness, exclusivity, and bounded-transmutation regime witness now live in the Agda slice; `R1/R2` source-signature conservation is not universal on this slice | `implemented` |
-| `physics19..physics22` | Exact slice-local `StepDelta`, instantiated through the same master theorem layer as `physics15` | Deterministic unit-step normalization | Paired-prime macro realization with checked soundness | Stable widened Batch C regime: each slice remains `regime-valid`, strictly contracting, and contains the same three transmuting rules (`physics15_boundary_crossfeed_neutral`, `physics17_boundary_handoff_left_to_mid`, `physics19_tail_handoff_n0_to_nn`) | `implemented` |
-| `wave1` | Python proposing | TBD | TBD | `Base369` | `assumed` |
-| `monster` | Python proposing | TBD | TBD | `Monster.Step` | `conjectural` |
+| `physics15` | Exact slice-local `StepDelta`, instantiated through the same generic macro layer as `physics1`/`physics3` | Deterministic unit-step normalization | Paired-prime macro realization with checked soundness | `28 conservative_contracting + 1 transmuting_contracting`; exact decode-back, local strict-contraction witness, exclusivity, and bounded-transmutation regime witness now live in the Agda slice; `R1/R2` source-signature conservation is not universal on this slice | `implemented` |
+| `physics19..physics22` | Exact slice-local `StepDelta`, instantiated through the same master theorem layer as `physics15` | Deterministic unit-step normalization | Paired-prime macro realization with checked soundness | Stable widened Batch C regime: each slice remains `regime-valid`, has a local strict-contraction witness, and contains the same three transmuting rules (`physics15_boundary_crossfeed_neutral`, `physics17_boundary_handoff_left_to_mid`, `physics19_tail_handoff_n0_to_nn`) | `implemented` |
+| `wave1` | Python proposing | TBD | TBD | `Base369` | `conjectured` |
+| `monster` | Python proposing | TBD | TBD | `Monster.Step` | `conjectured` |
+
+The contraction wording above is target-relative and slice-local. It should not
+be read as a global source Lyapunov theorem, a metric contraction theorem over
+all future carriers, or a downstream physics claim.
 
 ## Current Status Split
 

@@ -19,6 +19,46 @@ The current non-targets are:
 - PQ-specific storage/transport code
 - vkFFT path unless FRACDASH later needs FFT specifically
 
+## Baseline Check (`2026-06-07`)
+
+The local `../dashiCORE` checkout was inspected from FRACDASH and the reuse
+smoke passed:
+
+```sh
+python3 scripts/check_dashicore_reuse.py
+```
+
+Observed result:
+
+- `../dashiCORE` resolved at `/home/c/Documents/code/dashiCORE`
+- reusable modules imported by reference:
+  - `gpu_common_methods`
+  - `gpu_vulkan_dispatcher`
+  - `gpu_vulkan_backend`
+  - `gpu_vulkan_adapter`
+  - `gpu_vulkan_gemv`
+- passthrough shader resolved from
+  `../dashiCORE/gpu_shaders/carrier_passthrough.comp`
+- passthrough SPIR-V resolved from
+  `../dashiCORE/spv/carrier_passthrough.spv`
+- passthrough smoke preserved both signed values and support bits
+
+Read against the current FRACDASH runtime target, this means:
+
+```text
+dashiCORE provides:
+    Vulkan handles, buffers, shader lookup/compile, backend registration,
+    timing/hash patterns, and Carrier-oriented smoke kernels
+
+FRACDASH must provide:
+    FRACTRAN valuation lanes, require/delta rule tables, priority projection,
+    incremental frontier refresh, and FRACTRAN-specific parity tests
+```
+
+So the next priority-frontier runtime should still be developed and benchmarked
+inside FRACDASH first. `dashiCORE` becomes the GPU plumbing source when that
+runtime is lifted to a resident batched Vulkan path.
+
 ## What Looks Reusable Now
 
 ### 1. Vulkan host-side plumbing
@@ -63,6 +103,19 @@ The most relevant existing design notes are:
 
 These already support the “GPU helpers outside the pure core” approach, which matches FRACDASH’s needs.
 
+### 4. Timing and residency patterns
+
+`../dashiCORE/gpu_vulkan_gemv.py` is useful as a worked pattern for:
+
+- reusable Vulkan handles and pipelines
+- buffer allocation separated from repeated execution
+- timestamp query support
+- device-local and host-visible timing distinction
+- hash-only / reduced-readback measurement style
+
+These patterns are relevant to a future FRACDASH resident batch executor, but
+they do not implement FRACTRAN priority semantics.
+
 ## What Does Not Look Reusable Yet
 
 ### 1. Domain semantics
@@ -76,6 +129,14 @@ These already support the “GPU helpers outside the pure core” approach, whic
 ### 3. FFT path
 
 `gpu_vkfft_adapter.py` and `vkfft_vulkan_py*` are not on the critical path for FRACTRAN stepping. They should stay out unless FRACDASH later grows an FFT-shaped workload.
+
+### 4. Existing shader zoo as semantics
+
+The `../dashiCORE/spv/comp/` tree contains many useful idioms
+(`prefix_scan`, `reduce_*`, `argmin_finalize`, `spmv_csr`, GEMV, PQ kernels,
+and spectral kernels). Treat these as implementation examples or possible
+building blocks only. None of them is currently the FRACDASH
+valuation-priority frontier VM.
 
 ## Recommended Non-Duplicating Integration Shape
 
@@ -134,4 +195,8 @@ then move it into `../dashiCORE` and keep FRACDASH consuming it by reference.
 
 If a kernel is specific to FRACTRAN execution semantics, keep it in FRACDASH even if it uses CORE’s Vulkan plumbing.
 
-Once the deterministic GPU routing rule is locked in (see `README.md` and `benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json` for the expanded matrix), the upstreaming trigger is simple: move any helper or adapter piece that is agnostic enough to document into `../dashiCORE`, then keep the FRACTRAN parser/contract here.
+Once the host-local GPU routing heuristic is revalidated (see `README.md` and
+`benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json`), the
+upstreaming trigger is simple: move any helper or adapter piece that is
+agnostic enough to document into `../dashiCORE`, then keep the FRACTRAN
+parser, rule tables, frontier logic, and parity contract here.

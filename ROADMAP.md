@@ -9,6 +9,9 @@ This roadmap assumes:
 - CPU correctness and benchmark baselines come first.
 - GPU work must justify itself with measured hotspots.
 - Existing GPU plumbing in `../dashiCORE` should be referenced, adapted, or linked rather than duplicated.
+- Native-code work, including Zig, is scoped to the missing low-latency
+  priority-frontier CPU runtime. It should not replace the current Python/NumPy
+  experiment harnesses or the existing SPIR-V/Vulkan batch path.
 
 ## External Dependencies
 
@@ -57,7 +60,11 @@ Tasks:
 
 Current status:
 - A first compilation seam now exists in [`fractran/src/Compiled.hs`](/home/c/Documents/code/FRACDASH/fractran/src/Compiled.hs).
-- This prototype matches baseline outputs on sampled workloads but is not yet faster than `frac-opt`, so optimization should focus on data layout and rule compatibility checks rather than adding more abstraction.
+- The compiled path is the active exact-step CPU baseline for sampled
+  `primegame_*` workloads, while profiling still leaves CPU low-latency
+  guard/selection work open.
+- Runtime guards should be valuation-vector threshold comparisons
+  (`state_lanes >= require_lanes`), not integer division or modulus.
 
 ### Phase 2: LUT and Batch Optimization
 
@@ -68,6 +75,23 @@ Tasks:
 - prototype `mask -> rule` and possibly `mask -> delta` lookup
 - benchmark scan-based versus LUT-based selection
 - determine how many primes can stay in-cache before the table shape becomes unattractive
+
+Current decision:
+- The earlier LUT path is parked because it did not beat the current compiled
+  matrix.
+- The next CPU runtime target is a cache-resident priority-frontier VM:
+  maintain an enabled-rule bitset, project with first-set/`ctz`, apply sparse
+  deltas, and refresh only rules that depend on changed lanes.
+- Zig is a candidate implementation language for this native engine because it
+  gives explicit aligned arrays, bitsets, low allocation, C ABI options, and
+  SIMD/`ctz` control. This is a targeted native lane, not a repo-wide rewrite.
+
+Zig promotion gate:
+- first reproduce `fractran-bench --engine compiled` semantics on
+  `mult_smoke` and `primegame_small`
+- emit JSON/parity artifacts comparable to the current benchmark harness
+- beat or clearly explain failure against the Haskell compiled baseline on the
+  same step budgets before expanding scope
 
 ### Phase 3: FRACDASH Adapter To dashiCORE GPU Infrastructure
 
@@ -116,7 +140,9 @@ Do not start by writing new Vulkan code in FRACDASH.
 Start with:
 1. benchmark harness around [`fractran/`](/home/c/Documents/code/FRACDASH/fractran)
 2. exponent-vector prototype on CPU
-3. only then a thin reuse layer over [`../dashiCORE`](/home/c/Documents/code/dashiCORE)
+3. a CPU priority-frontier runtime prototype, potentially in Zig if the Python
+   / Haskell surfaces make the contract stable enough
+4. only then a thin reuse layer over [`../dashiCORE`](/home/c/Documents/code/dashiCORE)
 
 ## Bridge Roadmap
 
@@ -224,7 +250,7 @@ without changing the core bridge obligations.
    - macro length
 3. Add a small bridge-status table to repo docs.
    - columns: template family, exact `StepDelta`, normalization, FRACTRAN realization, invariants, status
-   - statuses: `inherited`, `assumed`, `observed`, `conjectural`
+   - statuses: `implemented`, `observed experimentally`, `conjectured`
 4. Add one runner that regenerates the `physics1` oracle artifact deterministically.
    - keep timestamped outputs for experiments
    - keep one canonical named artifact for regression comparison

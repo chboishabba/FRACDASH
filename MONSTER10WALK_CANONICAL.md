@@ -2,6 +2,10 @@
 
 This file freezes the FRACDASH-side canonical semantics for the Monster 10-walk reproduction lane.
 
+Here `Monster` names the imported constant source and 10-walk lane. Passing
+this lock does not establish a Monster-group, moonshine, root-system, or Lean
+theorem identity.
+
 Status labels:
 
 - `implemented`: executable + artifact-backed in FRACDASH

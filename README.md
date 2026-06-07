@@ -22,13 +22,17 @@ What exists now:
 
 - a trusted local CPU reference implementation in [`fractran/`](/home/c/Documents/code/FRACDASH/fractran)
 - a deterministic benchmark CLI via `fractran-bench`
-- a compiled exponent-vector execution path for comparison against the baseline
-- benchmark summaries showing the current optimization focus is still CPU work, specifically compiled-path tuning
-- an expanded GPU routing matrix that now includes `primegame_small`, `mult_smoke`, `paper_smoke`, and the new `hamming_smoke` headless program across the batch_size `16..64` / steps `4..16` band
-- three closed local bridge slices:
+- a compiled exponent-vector execution path that is the active exact-step CPU baseline for sampled `primegame_*` workloads, while lower-latency rule selection/SIMD work remains open
+- a runtime contract where denominator divisibility is compiled into valuation-vector guards (`state_lanes >= require_lanes`) rather than runtime division or modulus
+- an expanded GPU routing matrix that now includes `primegame_small`, `mult_smoke`, `paper_smoke`, and `hamming_smoke` across batch sizes `4, 16, 32, 64, 128` and steps `4, 8, 16`
+- a closed/formalized bridge family spanning:
   - [`formalism/Physics1StepDelta.agda`](/home/c/Documents/code/FRACDASH/formalism/Physics1StepDelta.agda)
   - [`formalism/Physics3StepDelta.agda`](/home/c/Documents/code/FRACDASH/formalism/Physics3StepDelta.agda)
   - [`formalism/Physics15StepDelta.agda`](/home/c/Documents/code/FRACDASH/formalism/Physics15StepDelta.agda)
+  - [`formalism/Physics19StepDelta.agda`](/home/c/Documents/code/FRACDASH/formalism/Physics19StepDelta.agda)
+  - [`formalism/Physics20StepDelta.agda`](/home/c/Documents/code/FRACDASH/formalism/Physics20StepDelta.agda)
+  - [`formalism/Physics21StepDelta.agda`](/home/c/Documents/code/FRACDASH/formalism/Physics21StepDelta.agda)
+  - [`formalism/Physics22StepDelta.agda`](/home/c/Documents/code/FRACDASH/formalism/Physics22StepDelta.agda)
 - one thin master instantiation layer over those witnesses:
   - [`formalism/BridgeInstances.agda`](/home/c/Documents/code/FRACDASH/formalism/BridgeInstances.agda)
 - a stable cross-slice bridge regime summary at [`benchmarks/results/2026-03-19-bridge-regime-summary.md`](/home/c/Documents/code/FRACDASH/benchmarks/results/2026-03-19-bridge-regime-summary.md)
@@ -86,8 +90,8 @@ Current Dashi-facing compression note:
 
 What does not exist yet:
 
-- the executable 10-basin obstruction experiments
-- the canonical Phase 2 AGDAS bridge path from `all_dashi_agdas.txt` into executable FRACTRAN physics
+- a theorem-grade 10-basin obstruction proof; current support is an executable rank-4 / 10-walk reproduction pipeline with artifact-backed diagnostics
+- a final canonical Phase 2 AGDAS bridge path from `all_dashi_agdas.txt` into executable FRACTRAN physics; current support includes parsed/template bridge paths, physics bridge slices, and saved artifacts
 - a fully numeric generic Agda theorem built directly into `RegimeValidBridge`; the current numeric layer is master-level and slice-dispatched in `formalism/BridgeInstances.agda`
 - a confirmed runtime win over a standard named-equation reference solver
 
@@ -119,6 +123,11 @@ The near-term questions are:
 - [`JMD_HANDOFF_NOTE.md`](/home/c/Documents/code/FRACDASH/JMD_HANDOFF_NOTE.md): short handoff note separating the closed bridge result from the still-open 10-walk / rank-4 semantics question
 - [`benchmarks/`](/home/c/Documents/code/FRACDASH/benchmarks): benchmark runners, summaries, and result artifacts
 - [`fractran/`](/home/c/Documents/code/FRACDASH/fractran): local FRACTRAN baseline interpreter and benchmark binary
+
+Submodule/navigation notes:
+
+- [`fractran/`](/home/c/Documents/code/FRACDASH/fractran) is the CPU baseline surface. The current `.gitmodules` entry points at the maintained `chboishabba/fractran` fork; local checkout state should be reconciled with that gitlink before publishing benchmark changes.
+- [`monster/`](/home/c/Documents/code/FRACDASH/monster) is imported reference context, not the source of FRACDASH truth. Use [`MONSTERLEAN_INTAKE.md`](/home/c/Documents/code/FRACDASH/MONSTERLEAN_INTAKE.md) and [`MONSTER10WALK_CANONICAL.md`](/home/c/Documents/code/FRACDASH/MONSTER10WALK_CANONICAL.md) before searching that subtree.
 
 ## Getting Started
 
@@ -758,19 +767,24 @@ Current measured hint on this host:
 - in the broader matrix, CPU remains the safe default for `batch_size <= 4`, GPU is already preferred for `batch_size >= 128`, and `primegame_small` reaches the GPU-preferred region at `batch_size = 32`, `steps >= 8`
 - `paper_smoke` shows the same threshold behavior, with GPU preferred at `batch_size = 32`, `steps >= 8`
 
-## Deterministic GPU Routing Rule
+## GPU Routing Heuristic
 
-The new extended matrix (`benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json`) now samples the `16..64` batch / `4..16` step band for `primegame_small`, `mult_smoke`, `paper_smoke`, and the new `hamming_smoke` program. The measured shape lets us commit to a deterministic CPU/GPU rule on this host:
+The extended matrix (`benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json`) samples batch sizes `4, 16, 32, 64, 128` and steps `4, 8, 16` for `primegame_small`, `mult_smoke`, `paper_smoke`, and `hamming_smoke`. The measured shape supports this host-local heuristic:
 
-- Route to CPU when `batch_size <= 4` or when `batch_size = 16` and `steps < 16`.
-- Route to GPU when `batch_size >= 32` and `steps >= 8`, or when the run has at least `16` exact steps regardless of batch size.
-- The measurement still notes scenario-specific wins at `batch_size = 16`, `steps = 8` (particularly `hamming_smoke`) and at `batch_size = 32`, `steps = 4` for non-`primegame_small` workloads, but the deterministic rule above keeps the routing policy stable until we intentionally tune further.
+- Route to CPU for tiny batches (`batch_size <= 4`).
+- Prefer GPU for warm resident batches in the consistently sampled region
+  `batch_size >= 32` and `steps >= 8`.
+- Treat smaller or scenario-specific GPU wins as measurement candidates, not
+  project-wide routing gates.
 
-This deterministic routing rule now feeds the GPU handoff plan: once the rule stabilizes, FRACDASH will upstream reusable dispatch helpers while keeping FRACTRAN semantics local.
+This heuristic feeds the GPU handoff plan: once it is revalidated after CPU
+changes, FRACDASH can upstream reusable dispatch helpers while keeping
+FRACTRAN semantics local.
 
 ## GPU Upstream Plan
 
-The deterministic routing rule also serves as the gatekeeper for elevating reusable GPU helpers into `../dashiCORE`. See [`GPU_UPSTREAM.md`](/home/c/Documents/code/FRACDASH/GPU_UPSTREAM.md) for the checklist: it reiterates the rule, requires rerunning the extended matrix after any CPU change to keep `compiled` stable, and then stages the actual upstream work module by module.
+The routing heuristic also serves as the gatekeeper for elevating reusable GPU
+helpers into `../dashiCORE`. See [`GPU_UPSTREAM.md`](/home/c/Documents/code/FRACDASH/GPU_UPSTREAM.md) for the checklist: it requires rerunning the extended matrix after material CPU changes, then stages the actual upstream work module by module.
 
 ## Phase 2: Toy DASHI transitions
 

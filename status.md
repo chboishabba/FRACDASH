@@ -2,31 +2,37 @@
 
 ## Snapshot
 
-- Date: `2026-03-23`
-- Phase: `Phase 2 CORE experiments running`
+- Date: `2026-06-07`
+- Artifact baseline: docs refreshed over the `2026-03-27` artifact state
+- Phase: `Phase 2 CORE experiments running; docs refreshed over 2026-03-27 artifact state`
 - State: `active`
 
 ## Active Performance Decision
 
-The next CPU/GPU task is now a profiling milestone rather than another blind
-optimization round.
+The CPU/GPU profiling milestone is complete. The next runtime task is a focused
+low-latency valuation-guard benchmark rather than another blind optimization
+round.
 
 Current read:
 
 - `compiled` is already the leading exact-step CPU path on the sampled
   `primegame_*` workloads
 - `frac-opt` remains the imported exact-step CPU comparison baseline
-- the resident GPU path already wins in parts of the measured medium/large batch
-  region, but current timing still mixes real device work with host/setup cost
+- denominator divisibility should execute as valuation-vector threshold guards:
+  `state_lanes >= require_lanes`, with no runtime division/modulus in the guard
+  hot path
+- the resident GPU path wins in parts of the measured medium/large batch region,
+  but remains a throughput path for independent batched states or wide frontier
+  scans, not the default single-trace executor
 
 So the immediate deliverable is:
 
-- one CPU profiling artifact with exact-step timing plus `.prof` / RTS hotspot
-  summaries
-- one GPU profiling artifact with cold-start versus warm-resident timing
-  breakdowns
-- one short decision note classifying likely next wins as `obvious_now`,
-  `possible_but_unproven`, or `not worth immediate effort`
+- benchmark a CPU/SIMD/cache-resident guard/selection path around
+  threshold-compare, reduction, first-enabled priority selection, and delta
+  update
+- keep GPU routing host-local and remeasure before using it as a release gate
+- keep FFT/wave formalisms out of the exact VM runtime path unless a real
+  convolution/spectral workload appears
 
 ## Active Experiment Decision
 
@@ -207,8 +213,13 @@ So the immediate deliverable on the experiment side is:
 - The first routing benchmark now shows the resident GPU path ahead of the dense CPU contract on `primegame_small` for batch sizes `32`, `128`, and `512` at `32` exact steps.
 - The broader routing matrix now supports a first conservative rule on this host: CPU for `batch_size <= 4`, GPU for `batch_size >= 128`, and a scenario-sensitive middle band that already favors GPU for `primegame_small` at `batch_size = 32`, `steps >= 8`.
 - The `paper_smoke` matrix aligns with the same threshold, with GPU preferred at `batch_size = 32`, `steps >= 8`, and the `batch_size = 4`, `steps = 32` case still marked `measure-more`.
-- The extended routing matrix now supports a deterministic rule (CPU when `batch_size <= 4` or `batch_size = 16` with `steps < 16`; GPU when `batch_size >= 32 && steps >= 8`, or whenever `steps >= 16`), and the artifact lives in `benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json`.
-- The deterministic rule provides a stable trigger for upstreaming, so once the routing policy is validated we will move the reusable dispatch/adapter plumbing back into `../dashiCORE` while keeping the FRACTRAN state layout local to FRACDASH.
+- The extended routing matrix now supports a host-local heuristic: keep CPU as
+  the default for `batch_size <= 4`, prefer warm resident GPU in the sampled
+  `batch_size >= 32 && steps >= 8` region, and treat smaller scenario-specific
+  wins as measurement candidates rather than release gates.
+- The routing heuristic provides a trigger for upstreaming reusable
+  dispatch/adapter plumbing back into `../dashiCORE` once revalidated after CPU
+  changes, while keeping the FRACTRAN state layout local to FRACDASH.
 - Added a CPU timing-regression gate at `scripts/check_timing_regression.py` to catch material slowdowns between matrix artifacts.
 - Added a physics relationship-regression gate at `scripts/check_physics_invariant_targets.py` and verified it passes on current `physics2..physics8` artifacts.
 - Added `physics9` execution support across `scripts/agdas_bridge.py`, `scripts/agdas_physics_experiments.py`, `scripts/physics_invariant_analysis.py`, and `scripts/ablate_prime_triplets.py`.

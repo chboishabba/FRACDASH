@@ -17,6 +17,30 @@ Secondary resolved conversation:
 - Resolution date: `2026-03-13`
 - Note: web view succeeded, but persistence back into `~/chat_archive.sqlite` timed out during the download step, so the archive copy may still lag the live thread.
 
+Tertiary resolved conversation on `2026-06-07`:
+
+- Title: `FRACTRAN Encoding Optimization`
+- Online UUID: `6a24c84d-b05c-83ec-aaf8-3cb14063c0aa`
+- Canonical thread ID: `27ecbf503f302726d1891c019a1401f1fe5e0360`
+- Source used: `db` after successful live pull
+- Pull result: `99` messages parsed, `97` inserted, `2` duplicates
+- Main topics:
+  - exact FRACTRAN execution should compile denominator divisibility into
+    lane-wise valuation guard comparisons:
+    `nu_P(b_i) <= nu_P(n)` becomes `state_lanes >= require_lanes`
+  - runtime should not perform integer division or modulus for rule guards;
+    division remains a compile/proof-time theorem and optional host-side
+    value-tracking concern
+  - the exact VM hot path is threshold comparison, horizontal reduction,
+    first-enabled priority selection, and sparse/dense delta update
+  - single-trace execution remains sequential, so the first low-latency target
+    is CPU/SIMD and cache-resident rule/state layout
+  - GPU/Vulkan becomes attractive for wide frontier scans or many independent
+    batched states kept resident on device
+  - FFT/wave formalisms are not expected to beat binary/SIMD/shader masks for
+    the exact FRACTRAN VM; wave/FFT language remains separate from exact-step
+    runtime execution unless a genuine convolution/spectral workload appears
+
 Supplemental resolved conversations on `2026-03-19`:
 
 - Title: `Quantum Computer in DASHI`

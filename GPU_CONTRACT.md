@@ -44,9 +44,19 @@ Semantics:
 
 The current parity smoke uses `required_mask` only as derived metadata for future GPU-side rule screening. Exact applicability is still the threshold check.
 
-## Dense Buffer Set
+Operationally, denominator divisibility is compiled away before runtime:
 
-The current local contract exports the following GPU-oriented buffers:
+- compile/proof-time statement: `b_i | n` iff `nu_P(b_i) <= nu_P(n)`
+- runtime guard: `state_lanes >= require_lanes`
+- hot path: lane-wise integer compares, reduction to an enabled-rule mask,
+  priority first-enabled selection, and delta update
+
+Runtime rule guards should not perform integer division or modulus. Integer
+value tracking is optional host-side accounting, not the guard path.
+
+## Dense CPU Layout Buffers
+
+The current local CPU proof/layout contract exports:
 
 - `primes: int32[prime_count]`
 - `den_thresholds: int32[rule_count, prime_count]`
@@ -56,6 +66,22 @@ The current local contract exports the following GPU-oriented buffers:
 - `denominator_values: object[rule_count]`
 
 The object-typed value arrays are fine for the current CPU contract proof. A real shader path will need fixed-width scalar choices for device-side arithmetic or a different host-side value-tracking strategy.
+
+## Current Vulkan Kernel Bindings
+
+The current shader path uploads only the buffers needed for exact-step
+selection and state update:
+
+- denominator thresholds
+- deltas
+- required masks
+- state exponent buffers
+- per-state selected-rule / halt output
+- small metadata buffers
+
+It does not upload numerator or denominator integer-value arrays. Those remain
+CPU proof/layout fields until a separate fixed-width device-side value strategy
+is justified.
 
 ## What Is Proven
 
@@ -98,6 +124,8 @@ Use `../dashiCORE` for:
 - Vulkan instance/device setup
 - shader compilation/path resolution
 - dispatch and buffer plumbing
+- backend probing/registration and adapter shape
+- timing/query and reduced-readback patterns
 
 Keep local to FRACDASH:
 
@@ -105,6 +133,12 @@ Keep local to FRACDASH:
 - FRACTRAN rule thresholds and deltas
 - exact-step parity logic
 - any FRACTRAN-specific kernels
+- priority first-enabled projection
+- incremental enabled-frontier refresh
+
+The verified dashiCORE reuse smoke is `scripts/check_dashicore_reuse.py`. It
+proves the helper import and Carrier passthrough boundary, not FRACTRAN
+semantics.
 
 ## Next Step
 
@@ -116,8 +150,11 @@ The first minimal Vulkan kernel interface now exists:
 
 Immediate next expansion:
 
-- the routing benchmark now spans `primegame_small`, `mult_smoke`, `paper_smoke`, and `hamming_smoke` over `batch_size = 4, 16, 32, 64, 128` and `steps = 4, 8, 16`, producing `benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json` so the `measure-more` band can be replaced with the deterministic rule in README
+- the routing benchmark spans `primegame_small`, `mult_smoke`, `paper_smoke`, and `hamming_smoke` over `batch_size = 4, 16, 32, 64, 128` and `steps = 4, 8, 16`, producing `benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json`; use it as a host-local heuristic, not a portable deterministic gate
 - decide whether tracked integer values stay on host or gain a device-side fixed-width representation
 - preserve the current exact-step parity harness while moving toward real CPU/GPU routing decisions
 
-Once the routing rule stabilizes, the next GPU helper upstream step is to fold any general-purpose dispatch/adapter helpers back into `../dashiCORE` while keeping the FRACTRAN-specific state layout local to FRACDASH.
+Once the routing heuristic is revalidated after CPU/runtime changes, the next
+GPU helper upstream step is to fold any general-purpose dispatch/adapter
+helpers back into `../dashiCORE` while keeping the FRACTRAN-specific state
+layout, rule tables, and frontier semantics local to FRACDASH.

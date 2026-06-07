@@ -124,12 +124,14 @@ The V1 suite is anchored to the current `physics2..physics8` artifacts:
   - corrected `geodesic_like_flow.near_min_ratio 0.9094 -> 0.9181`
   - corrected `curvature_like_concentration.mean_neighbor_spread 1.8258 -> 1.9273`
   - `defect_attraction.nonincrease_ratio 0.6496 -> 0.6811`
-  - remains in the `conservative_contracting` subregime on the current checked branch
+  - remains bridge-valid under the mixed conservative/transmuting taxonomy in
+    the current artifact suite
 - `physics22` is now the leading 6-register exploratory branch:
   - deterministic edges `310 -> 364`
   - boundary-to-interior re-entry `9 -> 63`
   - corrected `geodesic_like_flow.near_min_ratio = 0.9207` (still strong)
-  - remains in the `conservative_contracting` subregime on the current checked branch
+  - remains bridge-valid under the mixed conservative/transmuting taxonomy in
+    the current artifact suite
 - A separate exploratory branch now exists for a physics-local 8-register carrier (`carrier8_physics1`); it is excluded from the hard lock and should be interpreted through branch-local observables rather than direct comparison to the locked `physics2..physics8` lineage.
   - first artifact: `benchmarks/results/2026-03-15-agdas-carrier8-physics1-phase2.json`
   - first invariant artifact: `benchmarks/results/2026-03-15-physics-invariants-carrier8_physics1.json`
@@ -137,7 +139,7 @@ The V1 suite is anchored to the current `physics2..physics8` artifacts:
 
 ## Wider Bridge Reading (`observed experimentally`)
 
-The bridge result is now wider than the locked conservative exact-law package:
+For the current artifact suite, the bridge result is now wider than the locked conservative exact-law package:
 
 - conservation is not the universal bridge invariant
 - conservation is the zero-transmutation special case

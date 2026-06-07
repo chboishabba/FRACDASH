@@ -44,6 +44,19 @@ Broader `MonsterLean` still includes quarantined files (for example `ComplexityL
 - Any adopted claim must be reproduced as executable FRACDASH experiment output (JSON artifact + script).
 - Keep monster-repo references as optional external context, not hard dependencies for the main FRACTRAN path.
 
+## Non-authoritative imported corpus
+
+All non-FRACDASH Markdown under `monster/` is imported context and may contain
+stale, rhetorical, or inflated claims. FRACDASH may reuse only:
+
+- explicit constants or definitions from closed Lean files,
+- claims reproduced by local FRACDASH scripts and artifacts,
+- or documented hypotheses marked `conjectured`.
+
+The `monster/` subtree should not be searched by default for FRACDASH truth.
+Use this intake note, `MONSTER10WALK_CANONICAL.md`, and the local benchmark
+artifacts as the governing surfaces.
+
 ## First extracted clue (constants-only)
 
 FRACDASH now includes a constants-only extractor:

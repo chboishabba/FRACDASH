@@ -2,12 +2,21 @@
 
 ## Gatekeeper
 
-The deterministic routing rule captured in `benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json` is the binary gate for upstreaming any FRACDASH-side helper into `../dashiCORE`. On this host the rule is:
+The routing evidence captured in
+`benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json` is a
+host-local heuristic, not a portable binary gate. On this host the defensible
+read is:
 
-- default to CPU when `batch_size <= 4` or when `batch_size = 16` with `steps < 16`
-- prefer GPU when `batch_size >= 32 && steps >= 8`, or whenever `steps >= 16` regardless of batch size
+- default to CPU for tiny batches (`batch_size <= 4`)
+- prefer GPU for warm resident batches in the consistently sampled region
+  `batch_size >= 32 && steps >= 8`
+- treat smaller or scenario-specific wins as measurement candidates, not
+  project-wide gates
 
-When that rule stabilizes (i.e., the measured matrix continues to satisfy those boundaries and `compiled` remains the active CPU baseline), the gate opens and we begin upstreaming the reusable dispatch/adapter plumbing instead of keeping it local to FRACDASH.
+When the measured matrix continues to support those boundaries and `compiled`
+remains the active CPU baseline, upstream reusable dispatch/adapter plumbing
+instead of keeping it local to FRACDASH. Re-measure before using this heuristic
+as a release or CI gate.
 
 ## Steps Before Upstreaming
 
@@ -29,5 +38,5 @@ When that rule stabilizes (i.e., the measured matrix continues to satisfy those 
 
 ## Post-Upstream Monitoring
 
-- Continue capturing routing metrics so that the deterministic rule remains defensible.
+- Continue capturing routing metrics so that the host-local heuristic remains defensible.
 - Keep logging CPU baseline checkpoints (e.g., `benchmarks/results/2026-03-13-cpu-matrix.jsonl`) so GPU comparisons stay anchored to a known-good exact-step path.

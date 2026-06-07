@@ -7,7 +7,7 @@ Claim status:
 - `observed experimentally`: rank-4 effective dimension and chain-height signal
 - `conjectured`: specific Weyl/root-system identity
 
-## Theorem-style empirical statement
+## Empirical diagnostic statement
 
 Let `M in R^(10x15)` be the basin-prime matrix (10 basins, 15 primes in the
 monster-walk coordinate system), and let `s : B -> R` be the basin stability
@@ -25,7 +25,14 @@ Observed diagnostics:
 
 Empirical conclusion:
 
-- The basin system behaves as if controlled by a rank-4 latent structure.
+- The basin system is currently modeled by diagnostics as having a rank-4
+  latent structure.
+
+Claim boundary:
+
+- The canonical 10-walk lock reports a chain/rank proxy of `4`.
+- The local derived rank-4 reproduction is executable and artifact-backed, but
+  it is not a proof of a global root-system, Monster, or moonshine identity.
 
 ## Interpretation (conjectural)
 

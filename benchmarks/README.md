@@ -11,7 +11,7 @@ Current baseline notes:
   - `cycle`
   - `compiled`
   - `lut`
-- The current `compiled` engine is now the active exact-step CPU baseline for the sampled `primegame` workloads.
+- The current `compiled` engine is the active exact-step CPU baseline for the sampled `primegame` workloads, but CPU low-latency guard/selection work remains open.
 - The benchmark harness now summarizes `compiled` by tracking emitted integer values directly, avoiding repeated `unfExpVec` reconstruction during checksum generation.
 - The current `lut` engine is limited to binary-threshold denominator programs where every denominator exponent is `<= 1`.
 - The benchmark matrix is run via `benchmarks/run_cpu_matrix.sh`.
@@ -21,7 +21,7 @@ Current baseline notes:
   - `reg`, `frac-opt`, `compiled`, `lut`: `exact`
   - `cycle`: `at-least`
 - `mult_smoke` is a 2-step exact logical-step smoke scenario.
-- Current decision: CPU tuning has reached a good checkpoint; `compiled` is the exact-step baseline and the next milestone is the minimal GPU path.
+- Current decision: `compiled` is the exact-step baseline for the sampled matrix; GPU work is a resident batch-throughput path, while single-trace low-latency work remains CPU-first.
 
 Initial snapshot date:
 
@@ -64,11 +64,12 @@ Broader routing matrix artifact:
 - `benchmarks/results/2026-03-13-gpu-routing-paper.json`
 - `benchmarks/results/2026-03-13-gpu-routing-matrix-extended.json`
 
-The extended matrix now includes `primegame_small`, `mult_smoke`, `paper_smoke`, and the new `hamming_smoke` program sampled across `batch_size = 4, 16, 32, 64, 128` and `steps = 4, 8, 16`. That coverage lets us fix the previous `measure-more` band into a deterministic routing rule:
+The extended matrix now includes `primegame_small`, `mult_smoke`, `paper_smoke`, and the new `hamming_smoke` program sampled across `batch_size = 4, 16, 32, 64, 128` and `steps = 4, 8, 16`. That coverage supports a host-local routing heuristic:
 
-- default to CPU when `batch_size <= 4` or when `batch_size = 16` and `steps < 16`
-- prefer GPU when `batch_size >= 32` and `steps >= 8`, or when the run lasts at least `16` exact steps regardless of batch size
-- scenario-specific GPU wins still appear (e.g., `paper_smoke` at `batch_size = 16`, `steps = 4` or `primegame_small` at `batch_size = 32`, `steps = 4`), but the deterministic rule above stays stable until further tuning requires per-scenario overrides
+- default to CPU for tiny batches (`batch_size <= 4`)
+- prefer GPU in the consistently sampled warm-resident region
+  `batch_size >= 32` and `steps >= 8`
+- scenario-specific GPU wins still appear (e.g., `paper_smoke` at `batch_size = 16`, `steps = 4` or `primegame_small` at `batch_size = 32`, `steps = 4`), but these remain measurement candidates until further tuning justifies per-scenario overrides
 
 Additional paper smoke result:
 
@@ -197,3 +198,35 @@ Current lock artifacts:
 - `benchmarks/results/2026-03-15-monster10walk-canonical.json`
 - `benchmarks/results/2026-03-15-monsterlean-claim-status.json`
 - `benchmarks/results/2026-03-15-monsterlean-claim-status.md`
+
+## Experiment Entrypoint Index
+
+This table is the current navigation surface for reproducible experiment lanes.
+Claim status uses the repo vocabulary: `implemented`, `observed
+experimentally`, or `conjectured`.
+
+| Lane | Entrypoint | Canonical outputs / summaries | Claim status |
+| :--- | :--- | :--- | :--- |
+| CPU exact-step baseline | `benchmarks/run_cpu_matrix.sh`; `benchmarks/summarize_cpu_matrix.py` | `2026-03-13-cpu-matrix*.jsonl/json`; `2026-03-20-cpu-profile.json`; `2026-03-20-perf-profile-summary.{json,md}` | `implemented` |
+| GPU threshold/delta contract | `scripts/check_fractran_gpu_layout.py`; `scripts/check_fractran_vulkan_step.py`; `scripts/benchmark_fractran_gpu.py`; `scripts/profile_fractran_gpu.py` | `2026-03-13-gpu-routing-matrix*.json`; `2026-03-20-gpu-profile.json` | `implemented` for parity smokes; `observed experimentally` for routing |
+| Toy DASHI fixed-prime comparison | `scripts/toy_dashi_transitions.py`; `scripts/run_toy_dashi_phase2.sh` | `2026-03-13-toy-dashi-phase2.json` | `implemented` toy model |
+| AGDAS physics phase-2 family | `scripts/agdas_physics_experiments.py`; `scripts/run_agdas_physics*_phase2.sh` | `2026-03-14/15/23-agdas-physics*-phase2.json`; invariant JSONs | `observed experimentally` |
+| Carrier8 branch | `scripts/agdas_physics8_experiments.py --template-set carrier8_physicsN --json` | `2026-03-15/23-agdas-carrier8-physics*-phase2.json`; `2026-03-23-cross-carrier-baseline-summary.{json,md}` | `observed experimentally` |
+| Bridge macro/invariant checks | `scripts/export_physics_family_deltas.py`; `scripts/check_physics_family_macro_soundness.py`; `scripts/check_physics_family_bridge_invariants.py`; `scripts/build_bridge_regime_summary.py` | `2026-03-19-physics*-{deltas,macro-soundness,bridge-*}.json`; `2026-03-19-bridge-regime-summary.{json,md}` | `implemented` for checked slices |
+| Formalism intake | `scripts/check_dashi_agda_formalism.py`; `scripts/check_dashi_agda_wave_surface.py` | `2026-03-22-dashi-agda-formalism-check.{json,md}`; `2026-03-20-dashi-agda-wave-surface.{json,md}` | `implemented` intake checks |
+| Rank-4 / 10-walk | `scripts/derive_rank4_dataset.py`; `scripts/run_rank4_diagnostics.py`; `scripts/run_rank4_discriminators.py`; `scripts/freeze_monster10walk_canonical.py --strict-lock` | rank4 dataset/diagnostics/discriminators; `2026-03-15-monster10walk-canonical.json` | `observed experimentally`; theorem identity `conjectured` |
+| Prime dynamics | `scripts/toy_dashi_transitions.py`; `scripts/ablate_prime_triplets.py --template-set physics8` | `2026-03-15-prime-triplet-ablation*.json` | `observed experimentally` |
+| Named-equation probe | `scripts/named_equation_probe.py` | `2026-03-20-equation-probe-{wave,heat}.json`; `2026-03-20-equation-probe-summary.md` | `observed experimentally` |
+| Waveform / branch-density rendering | `scripts/render_trace_waveform.py`; `scripts/render_trace_graph.py`; `scripts/render_zkperf_waveform.py` | `*.trace-waveform.{json,html,png}`; `rank4-dataset-latest.branch-density-view.*` | `implemented` visualization |
+| DA51 / zkperf compression | `scripts/compact_zkperf_trace.py`; `scripts/compact_dashi_perfhistory.py`; `scripts/compact_dashi_da51_shards.py`; `scripts/compact_dashi_da51_inner.py` | `2026-03-27-zkperf-*`; `2026-03-27-dashi-da51-*`; compare stats JSON | `implemented` codecs for frozen corpora |
+
+## Artifact Retention Policy
+
+- Track canonical JSON/Markdown summaries when they are named in
+  `CHANGELOG.md`, `README.md`, `status.md`, or this benchmark index.
+- Track selected `.html`, `.png`, `.cbor`, `.spv`, and `.agdai` artifacts only
+  when they are reproducibility evidence for a named experiment or formal
+  interface.
+- Treat `__pycache__`, `.pytest_cache`, GHC scratch output, `.prof` files, and
+  submodule-local build products as transient unless a document explicitly
+  promotes a specific file as a canonical artifact.

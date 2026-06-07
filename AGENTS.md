@@ -34,6 +34,23 @@ Related implementation context:
   - GPU wins depend on batching, persistent/fused kernels, DMA overlap, and keeping state resident on device.
   - Out-of-order execution is acceptable if each worker owns its own state and shared data remains read-only.
 
+Current runtime optimization context:
+
+- Title: `FRACTRAN Encoding Optimization`
+- Online UUID: `6a24c84d-b05c-83ec-aaf8-3cb14063c0aa`
+- Canonical thread ID: `27ecbf503f302726d1891c019a1401f1fe5e0360`
+- Source: `db` after live pull on `2026-06-07`
+- Main topics:
+  - Compile denominator divisibility into valuation-vector guards:
+    `nu_P(b_i) <= nu_P(n)`, executed as `state_lanes >= require_lanes`.
+  - Do not put integer division or modulus in the runtime guard hot path.
+  - Optimize single traces for low per-step latency, cache locality, and
+    CPU/SIMD rule scanning before treating Vulkan as the default.
+  - Use GPU/Vulkan for wide frontier scans or many independent batched states
+    with resident state/rule buffers.
+  - Treat FFT/wave methods as non-critical for exact FRACTRAN execution unless
+    a real convolution or spectral workload is introduced.
+
 Read [`COMPACTIFIED_CONTEXT.md`](/home/c/Documents/code/FRACDASH/COMPACTIFIED_CONTEXT.md) before making substantial changes.
 
 ## Working Rules

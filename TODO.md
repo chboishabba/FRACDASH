@@ -138,8 +138,21 @@
     - [x] add Stage C / minimal-credible targets to the invariant/observable reporters
     - [x] surface MDL/Fejér and seam certificate checks (or TODO stubs) in the physics target suite
     - [x] emit lift/scan/Monster provenance on generated templates for debugging and regression
-- [ ] Introduce a prime-exponent-vector engine for batched runs and compare it against the bigint/cycle-detecting baseline.
-- [ ] Prototype LUT or divisibility-mask rule selection on CPU before any GPU port.
+- [x] Introduce a prime-exponent-vector engine for exact-step runs and compare it against the bigint/cycle-detecting baseline.
+- [x] Prototype LUT/divisibility-mask rule selection on CPU and park it when it did not beat the current compiled/`frac-opt` matrix.
+- [ ] Benchmark the next CPU low-latency guard path explicitly:
+  - compile denominator divisibility to `state_lanes >= require_lanes`
+  - test SIMD/cache-resident rule scans and priority first-enabled selection
+  - compare against the current compiled baseline before changing GPU routing
+- [ ] Decide and prototype the native CPU priority-frontier lane:
+  - start with a tiny parity target, not a runtime rewrite
+  - candidate language: Zig
+  - maintain an enabled-rule bitset and lane-to-dependent-rules index
+  - use first-set/`ctz` projection for vanilla FRACTRAN priority semantics
+  - reproduce `mult_smoke` and `primegame_small` against
+    `fractran-bench --engine compiled`
+  - only add Python bindings or wider benchmark integration after parity and a
+    measurable CPU win are demonstrated
 
 ## Phase 3: Interpretation
 

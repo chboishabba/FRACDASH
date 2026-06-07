@@ -20,7 +20,13 @@
 
 - Source: `fractran/src/Compiled.hs`
 - Purpose: explicit compiled program representation and dense exponent-vector stepping path.
-- Current status: exact-step prototype now entering a tuning phase against `frac-opt`.
+- Current status: active exact-step CPU baseline for sampled `primegame_*`
+  workloads, with further low-latency rule-selection and SIMD/layout work still
+  open.
+- Hot path: denominator divisibility is compiled to lane-wise valuation
+  threshold checks (`state_lanes >= require_lanes`), followed by priority
+  first-enabled rule selection and a delta update. Runtime rule guards should
+  not use integer division or modulus.
 
 ### 4. Benchmark layer
 
@@ -48,20 +54,49 @@
 - Current resident-execution shape: one upload of rule/state buffers, repeated exact-step dispatches, one final readback
 - Current low-overhead execution shape: one recorded multi-dispatch command buffer using ping-pong descriptor sets and a single queue submission
 - Current routing evidence: the low-overhead resident GPU path already beats the dense CPU contract on the tested `primegame_small` batch benchmark for batch sizes `32+` at `32` exact steps
-- Current conservative routing rule: CPU for very small batches (`<= 4`), GPU for clearly large batches (`>= 128`), and a scenario-sensitive middle region that already favors GPU for `primegame_small` at `batch_size = 32`, `steps >= 8`
+- Current conservative routing heuristic: CPU for very small batches (`<= 4`);
+  warm resident GPU is consistently preferred in the sampled
+  `batch_size >= 32`, `steps >= 8` region; smaller scenario-specific wins need
+  remeasurement before becoming gates
+- Current dashiCORE baseline check: `scripts/check_dashicore_reuse.py` imports
+  the reusable Vulkan helper modules by reference and passes the Carrier
+  passthrough smoke, confirming the reuse boundary is live
 
-## Intended Near-Term Evolution
+## Current Execution Stack
 
-1. Stabilize CPU benchmark coverage.
-2. Improve compiled path data layout and compatibility testing.
-3. Add LUT-oriented CPU experiments.
-4. Define a thin adapter to `../dashiCORE` GPU infrastructure without copying helper code.
-5. Prove one minimal FRACDASH-side import/passthrough path through that adapter before FRACTRAN-specific kernel work.
-6. Fix the FRACTRAN-specific device contract around dense exponent vectors and per-rule thresholds/deltas.
-7. Add the first minimal Vulkan kernel over that dense contract and validate it against the CPU step semantics.
-8. Widen that kernel from single-state dispatch to batched state buffers while preserving exact-step parity.
-9. Keep those batched buffers resident across repeated exact steps and validate the final state against CPU parity.
-10. Upstream any general-purpose kernel/dispatch helper back into `dashiCORE` once it proves reusable beyond FRACTRAN.
+1. CPU reference and benchmark harness remain the semantic oracle.
+2. Compiled CPU execution uses prime-valuation vectors, denominator threshold
+   vectors, and rule deltas.
+3. GPU layout and Vulkan smokes mirror the same threshold/delta contract for
+   independent batched states.
+4. Resident GPU execution is a throughput path for batches or wide frontier
+   scans, not the default low-latency path for one sequential trace.
+5. General-purpose Vulkan helper improvements should be upstreamed to
+   `../dashiCORE`; FRACTRAN state semantics stay local.
+
+`../dashiCORE` should be read as a source of Vulkan handles, buffer plumbing,
+shader/SPIR-V conventions, backend registration, timing/hash patterns, and
+Carrier smoke kernels. It is not currently a FRACTRAN priority-frontier runtime.
+
+## Next Runtime Optimization
+
+1. Make the CPU guard/selection path smaller and more predictable:
+   threshold compare, horizontal reduction, first-enabled priority projection,
+   and delta update.
+2. Maintain an enabled-rule frontier bitset where possible:
+   - `chosen = first_set(enabled)` / `ctz`
+   - apply the selected sparse/dense delta
+   - refresh only rules depending on changed lanes via a lane-to-rules index
+3. Explore SIMD/cache-resident layouts for rule scans before adding new GPU
+   semantics.
+4. Treat Zig as an optional implementation language for this native CPU engine,
+   not as a replacement for Python/NumPy experiment code or SPIR-V batch
+   kernels. The first Zig prototype must reproduce compiled-engine parity on
+   small canonical workloads before growing bindings or GPU integration.
+5. Use GPU only when many independent states or a wide frontier can amortize
+   dispatch and transfer costs.
+6. Keep FFT/wave approaches out of the exact FRACTRAN VM unless a genuine
+   convolution or spectral workload is introduced.
 
 ## CPU To GPU Handoff
 

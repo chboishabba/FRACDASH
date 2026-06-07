@@ -1,5 +1,29 @@
 # Changelog
 
+## 2026-06-07
+
+- Refreshed the FRACDASH documentation against the resolved
+  `FRACTRAN Encoding Optimization` context. The docs now explicitly state that
+  denominator divisibility is compiled to valuation-vector guards
+  (`state_lanes >= require_lanes`) and that the next runtime gap is the
+  CPU/SIMD cache-resident priority-frontier engine, not more GPU-first work.
+- Audited the local `../dashiCORE` Vulkan baseline and documented the reuse
+  boundary in [`DASHICORE_REUSE.md`](DASHICORE_REUSE.md),
+  [`architecture.md`](architecture.md), [`GPU_CONTRACT.md`](GPU_CONTRACT.md),
+  and [`GPU_UPSTREAM.md`](GPU_UPSTREAM.md). Current result:
+  `scripts/check_dashicore_reuse.py` imports the reusable dashiCORE Vulkan
+  helper modules by reference and passes the Carrier passthrough smoke.
+- Clarified that `../dashiCORE` provides Vulkan handles, buffer plumbing,
+  shader/SPIR-V conventions, backend registration, timing/hash patterns, and
+  Carrier smoke kernels, while FRACDASH must keep FRACTRAN valuation lanes,
+  require/delta tables, priority projection, incremental frontier refresh, and
+  parity tests local.
+- Recorded the native-runtime priority decision in [`ROADMAP.md`](ROADMAP.md),
+  [`architecture.md`](architecture.md), and [`TODO.md`](TODO.md): Zig may be
+  useful for a small CPU/SIMD cache-resident priority-frontier VM, but only as a
+  targeted lane after the valuation-guard contract is stable. It should not
+  replace the current NumPy experiment harnesses or SPIR-V/Vulkan batch path.
+
 ## 2026-03-27
 
 - Added [`scripts/compact_zkperf_trace.py`](scripts/compact_zkperf_trace.py)
