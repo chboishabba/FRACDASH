@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# FRACDASH pre-commit hook — SOPS/ISO 9001 local quality gate
+# Install: git config core.hooksPath .githooks
+set -euo pipefail
+
+echo "FRACDASH pre-commit: running quality gate…"
+
+# If pre-commit framework is available, use it; otherwise fall back to make.
+if command -v pre-commit &>/dev/null; then
+  pre-commit run --files "$(git diff --cached --name-only)" || exit 1
+else
+  nix develop --command make check || exit 1
+fi
+
+echo "FRACDASH pre-commit: passed"
