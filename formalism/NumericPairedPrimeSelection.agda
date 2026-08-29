@@ -3,9 +3,26 @@ module formalism.NumericPairedPrimeSelection where
 open import Agda.Builtin.Equality using (_≡_; refl)
 open import Agda.Builtin.Bool using (Bool; true; false)
 open import Agda.Builtin.List using (List; []; _∷_)
-open import Agda.Builtin.Unit using (⊤; tt)
 
 import formalism.GenericMacroBridge as G
+
+-- Minimal local logic/list helpers; keep this module independent of a second
+-- proposition hierarchy.
+data ⊥ : Set where
+
+record _×_ (A B : Set) : Set where
+  constructor _,_
+  field
+    fst : A
+    snd : B
+
+infixr 4 _×_
+
+open _×_ public
+
+data Member {A : Set} (x : A) : List A → Set where
+  here : ∀ {xs} → Member x (x ∷ xs)
+  there : ∀ {y xs} → Member x xs → Member x (y ∷ xs)
 
 ------------------------------------------------------------------------
 -- Numeric paired-prime seam.
@@ -129,10 +146,6 @@ record NumericIntendedStepReceipt
 
 open NumericIntendedStepReceipt public
 
-data Member {A : Set} (x : A) : List A → Set where
-  here : ∀ {xs} → Member x (x ∷ xs)
-  there : ∀ {y xs} → Member x xs → Member x (y ∷ xs)
-
 receiptBlocksEveryEarlierNumericFraction :
   ∀ {I : G.SignedIROps}
     {P : G.PrimeExecution I}
@@ -190,6 +203,3 @@ canonicalNumericPairedPrimeBoundary =
     true refl
     false refl
     true refl
-
--- Local empty type avoids importing a second logic hierarchy.
-data ⊥ : Set where
