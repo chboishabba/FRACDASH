@@ -92,6 +92,14 @@ class SignedShiftTests(unittest.TestCase):
         self.assertEqual(delta.shift_moment(1), 1)
         self.assertEqual(delta.shift_moment(2), 1)
 
+    def test_two_prime_phase_sign_flip_is_only_toy(self):
+        from scripts.signed_shift_two_prime_phase import experiment
+        result = experiment()
+        self.assertTrue(result["dominance_certificate"])
+        self.assertTrue(result["phase_sign_flips"])
+        self.assertGreater(result["phase_zero_response"], 0)
+        self.assertLess(result["phase_pi_over_log2_response"], 0)
+
     def test_shift_units_are_not_prime_labels(self):
         with self.assertRaises(TypeError):
             SignedShiftOperator.of([("SSP prime 3", 1)])
