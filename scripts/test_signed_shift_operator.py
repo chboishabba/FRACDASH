@@ -57,6 +57,22 @@ class SignedShiftTests(unittest.TestCase):
                 a.compose(b).apply(g, u, L),
                 a.apply(lambda v: b.apply(g, v, L), u, L))
 
+    def test_exponential_symbol_and_composition(self):
+        from cmath import exp
+        L = math.log(2)
+        z = .3 + .21j
+        op = three_tap(Fraction(1, 20))
+        multiplier = 1 + .05 * (exp(-z*L) + exp(z*L))
+        self.assertAlmostEqual(op.exponential_symbol(z, L), multiplier)
+        sh = SignedShiftOperator.shift(3)
+        self.assertAlmostEqual(op.compose(sh).exponential_symbol(z, L),
+                               op.exponential_symbol(z, L) *
+                               sh.exponential_symbol(z, L))
+        u = .7
+        self.assertAlmostEqual(
+            sum(float(c) * exp(z*(u-j*L)) for j, c in op.taps),
+            exp(z*u)*op.exponential_symbol(z, L))
+
     def test_shift_units_are_not_prime_labels(self):
         with self.assertRaises(TypeError):
             SignedShiftOperator.of([("SSP prime 3", 1)])
