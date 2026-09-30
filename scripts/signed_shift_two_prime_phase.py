@@ -11,7 +11,10 @@ from __future__ import annotations
 
 from fractions import Fraction
 from math import cos, log, pi, sqrt
-from scripts.signed_shift_operator import compact_toy, three_tap
+try:
+    from scripts.signed_shift_operator import compact_toy, three_tap
+except ModuleNotFoundError:
+    from signed_shift_operator import compact_toy, three_tap
 
 
 def prime_coefficient_data(epsilon=Fraction(1, 20), relative_radius=0.9):
