@@ -8,6 +8,7 @@ on:
     paths:
       - "scripts/signed_shift_operator.py"
       - "scripts/test_signed_shift_operator.py"
+      - "scripts/selected_rh_three_tap_receipt.py"
       - ".github/workflows/signed-shift-operator.yml"
   workflow_dispatch:
 
@@ -26,3 +27,5 @@ jobs:
         run: python3 -m unittest scripts.test_signed_shift_operator -v
       - name: Reproducible sample report
         run: python3 scripts/signed_shift_operator.py
+      - name: Source-native selected RH receipt
+        run: python3 scripts/selected_rh_three_tap_receipt.py
