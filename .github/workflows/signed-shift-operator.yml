@@ -1,0 +1,28 @@
+name: Signed Shift Operator Semantics
+
+on:
+  push:
+    branches:
+      - agent/signed-shift-operator-semantics-20260930
+  pull_request:
+    paths:
+      - "scripts/signed_shift_operator.py"
+      - "scripts/test_signed_shift_operator.py"
+      - ".github/workflows/signed-shift-operator.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Signed translation algebra regression
+        run: python3 -m unittest scripts.test_signed_shift_operator -v
+      - name: Reproducible sample report
+        run: python3 scripts/signed_shift_operator.py
