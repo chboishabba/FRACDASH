@@ -61,6 +61,17 @@ class SignedShiftOperator:
             raise ValueError("L must be positive")
         return sum(float(c) * g(u - j*L) for j, c in self.taps)
 
+    def exponential_symbol(self, z: complex, L: float) -> complex:
+        """Eigenvalue on exp(z*u); the sign follows Shift(a)g(u)=g(u-a).
+
+        Finite exact tap algebra; complex exponential evaluation is numerical.
+        This is NOT the full Riemann explicit-formula response.
+        """
+        from cmath import exp
+        if not L > 0:
+            raise ValueError("L must be positive")
+        return sum(float(c) * exp(-z*j*L) for j, c in self.taps)
+
     def support_envelope(self, R: float, L: float) -> tuple[float, float] | None:
         """If supp(g) subset (-R,R), output supported in union of shifted
         intervals. Returns a containing envelope (not its exact support)."""
