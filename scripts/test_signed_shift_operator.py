@@ -100,6 +100,22 @@ class SignedShiftTests(unittest.TestCase):
         self.assertGreater(result["phase_zero_response"], 0)
         self.assertLess(result["phase_pi_over_log2_response"], 0)
 
+    def test_actual_selected_rh_receipt(self):
+        from scripts.selected_rh_three_tap_receipt import (
+            SelectedDetectorPrimeReceipt, resonance_height
+        )
+        t = resonance_height(50)
+        r = SelectedDetectorPrimeReceipt(
+            eps=0.05, inv_window_mass=2.0, t=t)
+        self.assertAlmostEqual(r.literal_prime_sample(2), 0.2)
+        self.assertEqual(r.literal_prime_sample(3), 0.0)
+        self.assertEqual(r.literal_prime_sample(4), 0.0)
+        self.assertAlmostEqual(r.prime_channel(1.3), 0.0, places=12)
+        self.assertAlmostEqual(
+            r.signed_projective_prime_common_centre(
+                7.0, 3.0, 2.0, -1.0),
+            0.0, places=12)
+
     def test_shift_units_are_not_prime_labels(self):
         with self.assertRaises(TypeError):
             SignedShiftOperator.of([("SSP prime 3", 1)])
