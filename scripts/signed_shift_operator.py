@@ -61,6 +61,29 @@ class SignedShiftOperator:
             raise ValueError("L must be positive")
         return sum(float(c) * g(u - j*L) for j, c in self.taps)
 
+    def shift_moment(self, k: int) -> Fraction:
+        """Exact signed moment sum_j c_j*j^k, with 0^0=1.
+
+        Actual dimensional kernel moment is L^k times this number.
+        These are source-independent algebraic invariants; they are NOT
+        the moments of a concrete RH test function.
+        """
+        if k < 0:
+            raise ValueError("moment degree must be nonnegative")
+        return sum((c * j**k for j, c in self.taps), Fraction(0))
+
+    def transformed_moment_coefficients(self, degree: int) -> tuple[Fraction, ...]:
+        """For source moments m_k=int u^k*g(u) du (all integrable),
+        transformed m_degree = sum_k C(degree,k)*L^(degree-k)*
+            shiftMoment(degree-k)*m_k.
+        Returned vector is ordered by k=0,...,degree.
+        """
+        from math import comb
+        if degree < 0:
+            raise ValueError("moment degree must be nonnegative")
+        return tuple(Fraction(comb(degree, k))*self.shift_moment(degree-k)
+                     for k in range(degree+1))
+
     def exponential_symbol(self, z: complex, L: float) -> complex:
         """Eigenvalue on exp(z*u); the sign follows Shift(a)g(u)=g(u-a).
 
