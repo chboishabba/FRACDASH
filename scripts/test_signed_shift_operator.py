@@ -73,6 +73,25 @@ class SignedShiftTests(unittest.TestCase):
             sum(float(c) * exp(z*(u-j*L)) for j, c in op.taps),
             exp(z*u)*op.exponential_symbol(z, L))
 
+    def test_moment_transport_and_vanishing(self):
+        op = three_tap(Fraction(1, 20))
+        self.assertEqual(op.shift_moment(0), Fraction(11, 10))
+        self.assertEqual(op.shift_moment(1), Fraction(0))
+        self.assertEqual(op.shift_moment(2), Fraction(1, 10))
+        self.assertEqual(op.transformed_moment_coefficients(2),
+                         (Fraction(1, 10), Fraction(0), Fraction(11, 10)))
+        # If source m0=m1=m2=0, transformed m2=0 exactly.
+        left = op.transformed_moment_coefficients(2)
+        self.assertEqual(sum(c*m for c, m in zip(left, (0, 0, 0))), 0)
+        # A nonvanishing source integral changes under the three-tap.
+        self.assertNotEqual(op.shift_moment(0), Fraction(1))
+        # A first finite-difference operator kills constant moments.
+        delta = SignedShiftOperator.shift(1).add(
+            SignedShiftOperator.identity().scale(-1))
+        self.assertEqual(delta.shift_moment(0), 0)
+        self.assertEqual(delta.shift_moment(1), 1)
+        self.assertEqual(delta.shift_moment(2), 1)
+
     def test_shift_units_are_not_prime_labels(self):
         with self.assertRaises(TypeError):
             SignedShiftOperator.of([("SSP prime 3", 1)])
