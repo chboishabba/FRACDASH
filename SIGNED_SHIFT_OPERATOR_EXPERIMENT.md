@@ -32,3 +32,16 @@ and completed explicit-formula response independently.
 
 Reproduce: `python3 -m unittest scripts.test_signed_shift_operator`.
 Run demonstration: `python3 scripts/signed_shift_operator.py`.
+
+
+## Selected RH authority
+
+The generic compact toy remains only a regression fixture for the operator algebra.
+It is **not** the RH detector.
+
+For RH-facing execution use `scripts/selected_rh_three_tap_receipt.py`. That
+module consumes the theorem surface of dashi_lean4 PR #22 for the actual selected
+four-window physical detector: n=3 vanishes at t>=200, n>=4 vanishes, the centre
+is `2 / quarticWindowMass(R)`, and the one-prime channel/projective common-centre
+formula retains the exact `cos(t log 2)` resonance. The completed zero/Gamma/pole
+and off-ordinate response stays authoritative in Lean; FRACDASH does not replace it.
