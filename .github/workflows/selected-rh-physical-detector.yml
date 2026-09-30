@@ -1,0 +1,41 @@
+name: Actual RH selected detector source verification
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/selected-rh-physical-detector.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selected-rh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout ACTUAL RH worker source (pinned)
+        uses: actions/checkout@v4
+        with:
+          repository: chboishabba/dashi_lean4
+          ref: 58e18af7df83b768e640a14e70a8a1a153be4da8
+          path: rh-source
+          persist-credentials: false
+      - name: Setup Lean from RH source
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          lake-package-directory: rh-source
+      - name: Check source-selected physical two-prime theorem
+        working-directory: rh-source
+        run: |
+          lake exe cache get
+          lake env lean Synthesis/RiemannSelectedPrimeSensitiveThreeTap.lean
+          lake env lean Synthesis/RiemannSelectedPrimeSensitiveThreeTapSupportCut.lean
+          lake env lean Synthesis/RiemannSelectedPrimeSensitiveThreeTapTwoPrime.lean
+          lake env lean Synthesis/RiemannSelectedPrimeSensitiveThreeTapCompleted.lean
+      - name: Source identity receipt
+        working-directory: rh-source
+        run: |
+          test "$(git rev-parse HEAD)" = "58e18af7df83b768e640a14e70a8a1a153be4da8"
+          grep -q 'quarticFourPhysicalDetector_threeTap_primeTerm_eq_first' Synthesis/RiemannSelectedPrimeSensitiveThreeTapTwoPrime.lean
+          grep -q 'quarticFourPhysicalDetector_threeTap_completedBalance' Synthesis/RiemannSelectedPrimeSensitiveThreeTapCompleted.lean
